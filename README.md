@@ -1,2 +1,2 @@
 # cathyrinemenguito.github.io
-Personal portfolio website of Cathyrine Menguito, BS Computer Science graduate.
+Personal portfolio of Cathyrine Menguito, a BS Computer Science graduate showcasing web development projects, technical skills, and professional growth.
