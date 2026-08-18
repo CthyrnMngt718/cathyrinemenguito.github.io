@@ -1686,3 +1686,45 @@ footer .container {
         font-size: 0.3rem;
     }
 }
+/* ============================================
+   PARTICLES CANVAS
+   ============================================ */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle:hover {
+    color: var(--mint-primary);
+    transform: rotate(20deg);
+}
+
+[data-theme="light"] #theme-toggle {
+    color: #0b1a14;
+}
+
+[data-theme="light"] #theme-toggle:hover {
+    color: var(--mint-primary);
+}
