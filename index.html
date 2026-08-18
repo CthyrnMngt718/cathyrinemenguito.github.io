@@ -21,6 +21,55 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
+    
+    <!-- ===== FIX: Tagline Cut-Off ===== -->
+    <style>
+        /* Fix for tagline cut-off */
+        .tagline {
+            white-space: nowrap;
+            overflow: visible !important;
+            display: inline-block;
+            min-width: 250px;
+            max-width: 100%;
+            min-height: 2.5rem;
+            line-height: 1.4;
+        }
+        
+        /* Ensure hero-content doesn't clip */
+        .hero-content {
+            overflow: visible !important;
+        }
+        
+        /* Fix for hero section */
+        #hero {
+            overflow: visible !important;
+        }
+        
+        /* Responsive fixes */
+        @media (max-width: 480px) {
+            .tagline {
+                font-size: 1rem;
+                min-width: 180px;
+                white-space: normal;
+                min-height: 2.8rem;
+                line-height: 1.4;
+            }
+            .hero-content {
+                overflow: visible !important;
+            }
+            #hero {
+                overflow: visible !important;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .tagline {
+                font-size: 0.9rem;
+                min-width: 160px;
+                min-height: 3rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- ========== PAGE LOADER ========== -->
