@@ -4,68 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cathyrine Menguito | Portfolio</title>
-    <!-- Google Fonts for better typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <!-- Font Awesome 6 (Free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 </head>
 <body>
+    <!-- ========== NAVIGATION ========== -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">CM</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
 
-    <!-- ============================================================
-    HERO SECTION (with overlay & profile image)
-    ============================================================ -->
+    <!-- ========== HERO SECTION ========== -->
     <section id="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <!-- Profile Image -->
-                <div class="hero-profile-image">
-                    <img src="1000014492.jpg" alt="Cathyrine Menguito" />
-                </div>
-                <!-- Text Content -->
-                <h1>Cathyrine Menguito</h1>
-                <p class="hero-typed-text">
-                    <span class="typed-text">BS Computer Science Graduate</span>
-                    <span class="typed-cursor">|</span>
-                    <span class="typed-text">Web Developer</span>
-                </p>
-                <p class="hero-description">
-                    I build clean, responsive, and user‑friendly web experiences.
-                    Explore my work and let's create something amazing together.
-                </p>
-                <div class="hero-buttons">
-                    <a href="projects.html" class="btn btn-primary">
-                        <i class="fas fa-briefcase"></i> View My Work
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i> Contact Me
-                    </a>
-                </div>
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Cathyrine Menguito</span></h1>
+            <p class="tagline">BS Computer Science Graduate &amp; Web Developer</p>
+            <p class="description">
+                I build clean, responsive, and user‑friendly web experiences.
+                Explore my work and let's create something amazing together.
+            </p>
+            <div class="hero-buttons">
+                <a href="projects.html" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
             </div>
         </div>
-        <!-- Scroll down indicator -->
-        <div class="scroll-down">
-            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        <div class="hero-image">
+            <img src="1000014492.jpg" alt="Cathyrine Menguito" />
         </div>
     </section>
 
-    <!-- ============================================================
-    ABOUT SECTION
-    ============================================================ -->
-    <section id="about" class="section-bg">
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about">
         <div class="container">
-            <div class="section-title">
-                <h2>About Me</h2>
-                <p>Learn more about who I am and what I do</p>
-            </div>
+            <h2>About Me</h2>
+
             <div class="about-grid">
+
                 <div class="about-text">
                     <p>
-                        I'm Cathyrine Menguito, a <strong>Bachelor of Science in Computer Science</strong>
-                        graduate from Renaissance School of Science and Technology, Inc.
+                        I'm Cathyrine Menguito, a Bachelor of Science in Computer
+                        Science graduate from Renaissance School of Science and Technology, Inc.
                         I am passionate about web development, user interface design, and
                         building technology solutions that make a difference.
                     </p>
+
                     <p>
                         Throughout my academic journey, I developed several web-based systems
                         that solve real-world problems — from healthcare management to career
@@ -73,23 +72,38 @@
                         focus on creating intuitive, user-friendly interfaces that enhance
                         the overall user experience.
                     </p>
+
                     <p>
-                        I am <strong>TESDA NC II certified</strong> in Computer Systems Servicing and have
+                        I am TESDA NC II certified in Computer Systems Servicing and have
                         experience in customer support, leadership, and collaborative project
                         development. I am continuously learning and seeking opportunities to
                         grow as an IT professional while contributing to meaningful projects.
                     </p>
-                    <div class="about-badges">
-                        <span><i class="fas fa-award"></i> TESDA NC II (CSS)</span>
-                        <span><i class="fas fa-trophy"></i> Outstanding System Design</span>
-                        <span><i class="fas fa-users"></i> Class President 2024-2025</span>
+
+                    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;">
+                        <span style="background:rgba(0,255,171,0.1);padding:6px 16px;border-radius:50px;font-size:0.85rem;border:1px solid var(--border-mint);">
+                            <i class="fas fa-award" style="color:var(--mint-primary);"></i> TESDA NC II (CSS)
+                        </span>
+                        <span style="background:rgba(0,255,171,0.1);padding:6px 16px;border-radius:50px;font-size:0.85rem;border:1px solid var(--border-mint);">
+                            <i class="fas fa-trophy" style="color:var(--mint-primary);"></i> Outstanding System Design
+                        </span>
+                        <span style="background:rgba(0,255,171,0.1);padding:6px 16px;border-radius:50px;font-size:0.85rem;border:1px solid var(--border-mint);">
+                            <i class="fas fa-users" style="color:var(--mint-primary);"></i> Class President 2024-2025
+                        </span>
                     </div>
-                    <a href="resume/Cathyrine-Menguito-Resume.pdf" class="btn btn-primary" target="_blank">
+
+                    <br />
+
+                    <a href="resume/Cathyrine-Menguito-Resume.pdf"
+                       class="btn btn-primary"
+                       target="_blank">
                         <i class="fas fa-file-pdf"></i> View Resume
                     </a>
                 </div>
+
                 <div class="about-skills">
                     <h3>Technical Skills</h3>
+
                     <ul class="skills-list">
                         <li><i class="fab fa-html5"></i> HTML5</li>
                         <li><i class="fab fa-css3-alt"></i> CSS3</li>
@@ -100,7 +114,8 @@
                         <li><i class="fas fa-pencil-alt"></i> UI/UX Design</li>
                         <li><i class="fas fa-code"></i> Web Development</li>
                     </ul>
-                    <h3 style="margin-top: 30px;">Tools &amp; Technologies</h3>
+
+                    <h3 style="margin-top:30px;">Tools &amp; Technologies</h3>
                     <ul class="skills-list">
                         <li><i class="fas fa-file-word"></i> Microsoft Office</li>
                         <li><i class="fas fa-paint-brush"></i> Canva</li>
@@ -108,104 +123,105 @@
                         <li><i class="fab fa-windows"></i> Windows OS</li>
                         <li><i class="fas fa-code"></i> VS Code</li>
                     </ul>
+
+                    <h3 style="margin-top:30px;">Professional Skills</h3>
+                    <ul class="skills-list">
+                        <li><i class="fas fa-lightbulb"></i> Problem-Solving</li>
+                        <li><i class="fas fa-comments"></i> Communication</li>
+                        <li><i class="fas fa-users"></i> Team Collaboration</li>
+                        <li><i class="fas fa-clock"></i> Time Management</li>
+                        <li><i class="fas fa-search"></i> Detail-Oriented</li>
+                        <li><i class="fas fa-graduation-cap"></i> Continuous Learning</li>
+                    </ul>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ============================================================
-    FEATURED PROJECTS SECTION
-    ============================================================ -->
+    <!-- ========== FEATURED PROJECTS ========== -->
     <section id="featured-projects">
         <div class="container">
-            <div class="section-title">
-                <h2>Featured Projects</h2>
-                <p>Check out some of my recent work</p>
-            </div>
+            <h2>Featured Projects</h2>
             <div class="project-grid">
+
                 <!-- Project 1: RHU Morong -->
                 <div class="project-card">
                     <div class="project-info">
                         <h3>RHU Morong Health System</h3>
-                        <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal.</p>
-                        <div class="project-tech">
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>JavaScript</span>
+                        <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal. Securely manages patient records and clinic operations.</p>
+                        <div class="project-tech" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">PHP</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">MySQL</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">JavaScript</span>
                         </div>
                         <a href="http://healthcare.morongcenter.com/" target="_blank" class="btn btn-small">
                             <i class="fas fa-external-link-alt"></i> View Project
                         </a>
                     </div>
                 </div>
-                <!-- Project 2: Angono NHS -->
+
+                <!-- Project 2: Angono NHS Career Assessment -->
                 <div class="project-card">
                     <div class="project-info">
                         <h3>Angono NHS Career Assessment</h3>
-                        <p>Career assessment tool for incoming Senior High School students.</p>
-                        <div class="project-tech">
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
+                        <p>Web‑based career assessment tool for incoming Senior High School students. Helps students discover the right SHS strand based on their interests.</p>
+                        <div class="project-tech" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">PHP</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">MySQL</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">Bootstrap</span>
                         </div>
                         <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" class="btn btn-small">
                             <i class="fas fa-external-link-alt"></i> View Project
                         </a>
                     </div>
                 </div>
+
                 <!-- Project 3: HowCan-i-Help -->
                 <div class="project-card">
                     <div class="project-info">
                         <h3>HowCan‑i‑Help</h3>
-                        <p>Integrated clinic record and healthcare management system.</p>
-                        <div class="project-tech">
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
+                        <p>Integrated clinic record and healthcare management system connecting patients, clinics, and donors. Supports outreach campaigns and assistance drives.</p>
+                        <div class="project-tech" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">PHP</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">MySQL</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">Bootstrap</span>
                         </div>
                         <a href="https://howcan-i-help.org/" target="_blank" class="btn btn-small">
                             <i class="fas fa-external-link-alt"></i> View Project
                         </a>
                     </div>
                 </div>
+
             </div>
+
             <div class="center-btn">
                 <a href="projects.html" class="btn btn-primary">See All Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- ============================================================
-    CONTACT SECTION
-    ============================================================ -->
-    <section id="contact" class="section-bg">
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>Get In Touch</h2>
-                <p>I'm always open to new opportunities and collaborations</p>
-            </div>
-            <div class="contact-grid">
+            <h2>Get In Touch</h2>
+            <p class="contact-sub">
+                I'm always open to new opportunities, collaborations, or just a
+                friendly chat. Feel free to reach out!
+            </p>
+            <div class="contact-content">
                 <div class="contact-details">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>cthyrnmngt718@gmail.com</p>
-                        </div>
+                        <span>cthyrnmngt718@gmail.com</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+63 965 803 9637</p>
-                        </div>
+                        <span>+63 965 803 9637</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Morong, Rizal, Philippines</p>
-                        </div>
+                        <span>Morong, Rizal, Philippines</span>
                     </div>
                     <div class="social-links">
                         <a href="https://github.com/CthyrnMngt718" target="_blank"><i class="fab fa-github"></i></a>
@@ -224,9 +240,7 @@
         </div>
     </section>
 
-    <!-- ============================================================
-    FOOTER
-    ============================================================ -->
+    <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Cathyrine Menguito</p>
