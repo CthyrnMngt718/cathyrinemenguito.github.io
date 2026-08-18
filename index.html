@@ -10,7 +10,6 @@
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <!-- Content Security Policy (adjust as needed) -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://formspree.io https://api.countapi.xyz;
@@ -75,6 +74,34 @@
             .tagline {
                 font-size: 0.9rem;
                 min-height: 3rem;
+            }
+        }
+
+        /* ===== SIGNATURE STYLES ===== */
+        .signature-container {
+            margin: 4px 0 8px;
+        }
+        .signature-img {
+            height: 50px;
+            width: auto;
+            opacity: 0.7;
+            transition: var(--transition);
+            filter: brightness(0.8) saturate(0.5);
+        }
+        .signature-img:hover {
+            opacity: 1;
+            filter: brightness(1) saturate(1);
+            transform: scale(1.02);
+        }
+        [data-theme="light"] .signature-img {
+            filter: brightness(0.9) saturate(0.6);
+        }
+        [data-theme="light"] .signature-img:hover {
+            filter: brightness(1) saturate(1);
+        }
+        @media (max-width: 480px) {
+            .signature-img {
+                height: 40px;
             }
         }
     </style>
@@ -539,153 +566,153 @@
         </div>
     </section>
 
-  <!-- ========== FEATURED PROJECTS ========== -->
-<section id="featured-projects">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Portfolio</span>
-            <h2>Featured <span class="gradient-text">Projects</span></h2>
-        </div>
-        <div class="project-grid">
-
-            <!-- ===== PROJECT 1: RHU Morong ===== -->
-            <div class="project-card" data-tilt>
-                <div class="project-header">
-                    <div class="project-badges">
-                        <span class="badge badge-healthcare">Healthcare</span>
-                        <span class="badge badge-php">PHP</span>
-                        <span class="badge badge-live">Live</span>
-                    </div>
-                    <span class="project-emoji">🏥</span>
-                </div>
-                <div class="project-info">
-                    <h3>RHU Morong Health System</h3>
-                    <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal.</p>
-                    
-                    <div class="project-metrics">
-                        <div class="metric">
-                            <span class="metric-number">70%</span>
-                            <span class="metric-label">Reduced Paperwork</span>
-                        </div>
-                        <div class="metric-divider"></div>
-                        <div class="metric">
-                            <span class="metric-number">60+</span>
-                            <span class="metric-label">Health Workers Served</span>
-                        </div>
-                    </div>
-                    
-                    <div class="status-badge">
-                        <span class="status-dot green"></span>
-                        <span>Live Demo Available</span>
-                    </div>
-                    
-                    <div class="project-tech">
-                        <span>PHP</span>
-                        <span>Bootstrap</span>
-                        <span>JavaScript</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                    </div>
-                    <a href="http://healthcare.morongcenter.com/" target="_blank" class="btn btn-small magnetic-btn">
-                        <i class="fas fa-external-link-alt"></i> View Project
-                    </a>
-                </div>
+    <!-- ========== FEATURED PROJECTS ========== -->
+    <section id="featured-projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2>Featured <span class="gradient-text">Projects</span></h2>
             </div>
+            <div class="project-grid">
 
-            <!-- ===== PROJECT 2: Angono NHS ===== -->
-            <div class="project-card" data-tilt>
-                <div class="project-header">
-                    <div class="project-badges">
-                        <span class="badge badge-education">Education</span>
-                        <span class="badge badge-php">PHP</span>
-                        <span class="badge badge-live">Live</span>
-                    </div>
-                    <span class="project-emoji">🎓</span>
-                </div>
-                <div class="project-info">
-                    <h3>Angono NHS Career Assessment</h3>
-                    <p>Web‑based career assessment tool for incoming Senior High School students.</p>
-                    
-                    <div class="project-metrics">
-                        <div class="metric">
-                            <span class="metric-number">100+</span>
-                            <span class="metric-label">Students Assessed</span>
+                <!-- ===== PROJECT 1: RHU Morong ===== -->
+                <div class="project-card" data-tilt>
+                    <div class="project-header">
+                        <div class="project-badges">
+                            <span class="badge badge-healthcare">Healthcare</span>
+                            <span class="badge badge-php">PHP</span>
+                            <span class="badge badge-live">Live</span>
                         </div>
-                        <div class="metric-divider"></div>
-                        <div class="metric">
-                            <span class="metric-number">4</span>
-                            <span class="metric-label">SHS Strands</span>
+                        <span class="project-emoji">🏥</span>
+                    </div>
+                    <div class="project-info">
+                        <h3>RHU Morong Health System</h3>
+                        <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal.</p>
+                        
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-number">70%</span>
+                                <span class="metric-label">Reduced Paperwork</span>
+                            </div>
+                            <div class="metric-divider"></div>
+                            <div class="metric">
+                                <span class="metric-number">60+</span>
+                                <span class="metric-label">Health Workers Served</span>
+                            </div>
                         </div>
+                        
+                        <div class="status-badge">
+                            <span class="status-dot green"></span>
+                            <span>Live Demo Available</span>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span>PHP</span>
+                            <span>Bootstrap</span>
+                            <span>JavaScript</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+                        <a href="http://healthcare.morongcenter.com/" target="_blank" class="btn btn-small magnetic-btn">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
                     </div>
-                    
-                    <div class="status-badge">
-                        <span class="status-dot green"></span>
-                        <span>Live Demo Available</span>
-                    </div>
-                    
-                    <div class="project-tech">
-                        <span>PHP</span>
-                        <span>JavaScript</span>
-                        <span>Bootstrap</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                    </div>
-                    <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" class="btn btn-small magnetic-btn">
-                        <i class="fas fa-external-link-alt"></i> View Project
-                    </a>
                 </div>
+
+                <!-- ===== PROJECT 2: Angono NHS ===== -->
+                <div class="project-card" data-tilt>
+                    <div class="project-header">
+                        <div class="project-badges">
+                            <span class="badge badge-education">Education</span>
+                            <span class="badge badge-php">PHP</span>
+                            <span class="badge badge-live">Live</span>
+                        </div>
+                        <span class="project-emoji">🎓</span>
+                    </div>
+                    <div class="project-info">
+                        <h3>Angono NHS Career Assessment</h3>
+                        <p>Web‑based career assessment tool for incoming Senior High School students.</p>
+                        
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-number">100+</span>
+                                <span class="metric-label">Students Assessed</span>
+                            </div>
+                            <div class="metric-divider"></div>
+                            <div class="metric">
+                                <span class="metric-number">4</span>
+                                <span class="metric-label">SHS Strands</span>
+                            </div>
+                        </div>
+                        
+                        <div class="status-badge">
+                            <span class="status-dot green"></span>
+                            <span>Live Demo Available</span>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span>PHP</span>
+                            <span>JavaScript</span>
+                            <span>Bootstrap</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+                        <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" class="btn btn-small magnetic-btn">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ===== PROJECT 3: HowCan-i-Help ===== -->
+                <div class="project-card" data-tilt>
+                    <div class="project-header">
+                        <div class="project-badges">
+                            <span class="badge badge-healthcare">Healthcare</span>
+                            <span class="badge badge-php">PHP</span>
+                            <span class="badge badge-live">Live</span>
+                        </div>
+                        <span class="project-emoji">🤝</span>
+                    </div>
+                    <div class="project-info">
+                        <h3>HowCan‑i‑Help</h3>
+                        <p>Integrated clinic record and healthcare management system connecting patients, clinics, and donors.</p>
+                        
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-number">3</span>
+                                <span class="metric-label">Connected Entities</span>
+                            </div>
+                            <div class="metric-divider"></div>
+                            <div class="metric">
+                                <span class="metric-number">100%</span>
+                                <span class="metric-label">Digital Records</span>
+                            </div>
+                        </div>
+                        
+                        <div class="status-badge">
+                            <span class="status-dot green"></span>
+                            <span>Live Demo Available</span>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span>PHP</span>
+                            <span>JavaScript</span>
+                            <span>Bootstrap</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+                        <a href="https://howcan-i-help.org/" target="_blank" class="btn btn-small magnetic-btn">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                    </div>
+                </div>
+
             </div>
-
-            <!-- ===== PROJECT 3: HowCan-i-Help ===== -->
-            <div class="project-card" data-tilt>
-                <div class="project-header">
-                    <div class="project-badges">
-                        <span class="badge badge-healthcare">Healthcare</span>
-                        <span class="badge badge-php">PHP</span>
-                        <span class="badge badge-live">Live</span>
-                    </div>
-                    <span class="project-emoji">🤝</span>
-                </div>
-                <div class="project-info">
-                    <h3>HowCan‑i‑Help</h3>
-                    <p>Integrated clinic record and healthcare management system connecting patients, clinics, and donors.</p>
-                    
-                    <div class="project-metrics">
-                        <div class="metric">
-                            <span class="metric-number">3</span>
-                            <span class="metric-label">Connected Entities</span>
-                        </div>
-                        <div class="metric-divider"></div>
-                        <div class="metric">
-                            <span class="metric-number">100%</span>
-                            <span class="metric-label">Digital Records</span>
-                        </div>
-                    </div>
-                    
-                    <div class="status-badge">
-                        <span class="status-dot green"></span>
-                        <span>Live Demo Available</span>
-                    </div>
-                    
-                    <div class="project-tech">
-                        <span>PHP</span>
-                        <span>JavaScript</span>
-                        <span>Bootstrap</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                    </div>
-                    <a href="https://howcan-i-help.org/" target="_blank" class="btn btn-small magnetic-btn">
-                        <i class="fas fa-external-link-alt"></i> View Project
-                    </a>
-                </div>
+            <div class="center-btn">
+                <a href="projects.html" class="btn btn-primary magnetic-btn">See All Projects</a>
             </div>
-
         </div>
-        <div class="center-btn">
-            <a href="projects.html" class="btn btn-primary magnetic-btn">See All Projects</a>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- ========== RECENT WORK CAROUSEL ========== -->
     <section id="carousel-section">
@@ -828,6 +855,12 @@
     <footer>
         <div class="container">
             <div class="footer-divider"></div>
+            
+            <!-- ===== SIGNATURE ===== -->
+            <div class="signature-container">
+                <img src="images/Signature.png" alt="Cathyrine Menguito Signature" class="signature-img" loading="lazy" />
+            </div>
+            
             <div class="footer-social">
                 <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub">
                     <i class="fab fa-github"></i>
