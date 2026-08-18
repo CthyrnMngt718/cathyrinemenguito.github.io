@@ -1295,6 +1295,26 @@ nav {
 }
 
 /* ============================================
+   QUOTE TYPE BADGE
+   ============================================ */
+.quote-type {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    color: var(--mint-primary);
+    background: rgba(0, 255, 171, 0.08);
+    padding: 4px 14px;
+    border-radius: 50px;
+    border: 1px solid var(--border-mint);
+    margin-bottom: 16px;
+}
+
+.quote-type i {
+    margin-right: 6px;
+}
+
+/* ============================================
    QUOTE OF THE DAY
    ============================================ */
 #quote-section {
@@ -2211,6 +2231,11 @@ footer .container {
     color: #2a4a3a;
 }
 
+[data-theme="light"] .quote-type {
+    background: rgba(0, 200, 120, 0.06);
+    color: var(--mint-primary);
+}
+
 [data-theme="light"] .floating-cta {
     color: #0b0e0c;
 }
@@ -2238,6 +2263,14 @@ footer .container {
 
 [data-theme="light"] .timeline-marker {
     border-color: var(--bg-primary);
+}
+
+[data-theme="light"] .badge-dot {
+    box-shadow: 0 0 12px rgba(0, 200, 120, 0.25);
+}
+
+[data-theme="light"] .status-dot {
+    box-shadow: 0 0 12px rgba(0, 200, 120, 0.25);
 }
 
 /* ============================================
