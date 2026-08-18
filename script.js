@@ -113,7 +113,6 @@ const quotes = [
     { text: "You are never too old to set another goal or to dream a new dream.", author: "C.S. Lewis", type: "motivational" },
     { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt", type: "motivational" },
     { text: "Dream big and dare to fail.", author: "Norman Vaughan", type: "motivational" },
-
     // ===== BIBLE VERSES =====
     { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13", type: "bible" },
     { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", author: "Jeremiah 29:11", type: "bible" },
@@ -144,18 +143,14 @@ function displayQuote() {
     
     if (!quoteText) return;
     
-    // Get today's date and use it as seed
     const today = new Date();
     const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-    
-    // Cycle through quotes based on day of year
     const quoteIndex = dayOfYear % quotes.length;
     
     const selectedQuote = quotes[quoteIndex];
     quoteText.textContent = selectedQuote.text;
     quoteAuthor.textContent = `— ${selectedQuote.author}`;
     
-    // Update type badge
     if (quoteType) {
         if (selectedQuote.type === 'bible') {
             quoteType.innerHTML = '<i class="fas fa-bible"></i> Verse of the Day';
@@ -208,7 +203,28 @@ window.addEventListener('scroll', () => {
     }
 
     updateScrollButton();
+    updateProgressRing();
 });
+
+// ============================================
+// 8b. SCROLL PROGRESS RING
+// ============================================
+const ringFill = document.querySelector('.progress-ring-fill');
+const percentDisplay = document.getElementById('progress-percent');
+const circumference = 2 * Math.PI * 26; // 163.36
+
+function updateProgressRing() {
+    if (!ringFill) return;
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    const offset = circumference - (progress / 100) * circumference;
+    ringFill.style.strokeDashoffset = offset;
+    if (percentDisplay) {
+        percentDisplay.textContent = Math.round(progress) + '%';
+    }
+}
+updateProgressRing();
 
 // ============================================
 // 9. VERSATILE SCROLL BUTTON
