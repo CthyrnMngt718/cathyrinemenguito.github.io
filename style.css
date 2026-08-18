@@ -1628,75 +1628,50 @@ footer .container {
     }
 }
 /* ============================================
-   LOGO - BOX + NAME (Option 3)
+   LOGO - GLOWING CIRCLE
    ============================================ */
 .logo a {
     display: flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none;
+    gap: -4px;
 }
 
-.logo-box {
-    display: inline-block;
-    padding: 2px 10px;
-    border: 2px solid var(--mint-primary);
-    border-radius: 6px;
-    background: rgba(0, 255, 171, 0.06);
-    color: var(--mint-primary);
-    font-size: 0.85rem;
-    font-weight: 800;
+.logo-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 900;
     font-family: var(--font-mono);
-    letter-spacing: 1px;
-    box-shadow: 0 0 20px var(--mint-glow);
     transition: all 0.3s var(--ease-spring);
+    letter-spacing: -0.5px;
 }
 
-.logo-full {
-    font-size: 1rem;
-    font-weight: 500;
+.logo-circle:first-child {
+    background: rgba(0, 255, 171, 0.1);
+    border: 2px solid var(--mint-primary);
+    color: var(--mint-primary);
+    box-shadow: 0 0 25px var(--mint-glow);
+    margin-right: -8px;
+    z-index: 1;
+}
+
+.logo-circle:last-child {
+    background: rgba(0, 255, 171, 0.05);
+    border: 2px solid var(--border-mint);
     color: var(--text-secondary);
-    transition: var(--transition);
 }
 
-.logo-full span {
-    font-weight: 700;
-    background: var(--mint-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.logo-circle:hover:first-child {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 50px var(--mint-glow);
 }
 
-.logo a:hover .logo-box {
-    background: rgba(0, 255, 171, 0.15);
-    box-shadow: 0 0 40px var(--mint-glow);
-    transform: scale(1.05);
-}
-
-.logo a:hover .logo-full {
-    color: var(--text-primary);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .logo a {
-        gap: 8px;
-    }
-    .logo-box {
-        font-size: 0.7rem;
-        padding: 1px 8px;
-        border-radius: 4px;
-    }
-    .logo-full {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo-full {
-        font-size: 0.7rem;
-    }
-    .logo-box {
-        font-size: 0.6rem;
-        padding: 1px 6px;
-    }
+.logo-circle:hover:last-child {
+    border-color: var(--mint-primary);
+    color: var(--mint-primary);
 }
