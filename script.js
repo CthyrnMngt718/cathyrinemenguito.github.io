@@ -147,24 +147,51 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// 7. FORM SUBMISSION HANDLER (Formspree)
+// 7. FORM SUBMISSION HANDLER (AJAX - No Refresh)
 // ============================================
-const form = document.querySelector('.contact-form');
+const contactForm = document.querySelector('.contact-form');
 const successMsg = document.getElementById('form-success');
 
-// Check for success parameter on page load
-if (window.location.href.includes('?success=true')) {
-    if (form) form.style.display = 'none';
-    if (successMsg) successMsg.style.display = 'block';
-}
-
-// Handle form submission
-if (form) {
-    form.addEventListener('submit', function() {
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevent page refresh
+        
         const btn = this.querySelector('button[type="submit"]');
-        if (btn) {
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            btn.disabled = true;
+        const originalText = btn.innerHTML;
+        
+        // Show loading state
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        btn.disabled = true;
+        
+        try {
+            const formData = new FormData(this);
+            const response = await fetch('https://formspree.io/f/mzepkbgw', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Success - hide form, show success message
+                contactForm.style.display = 'none';
+                if (successMsg) {
+                    successMsg.style.display = 'block';
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                // Reset form
+                contactForm.reset();
+            } else {
+                // Error
+                alert('Oops! Something went wrong. Please try again.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        } catch (error) {
+            alert('Network error. Please check your connection and try again.');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
         }
     });
 }
@@ -209,7 +236,6 @@ if (typedText) {
         }
     }
 
-    // Start typing when page loads (after a small delay)
     window.addEventListener('load', () => {
         setTimeout(typeWriter, 600);
     });
@@ -278,7 +304,6 @@ if (canvas) {
             this.x += this.speedX;
             this.y += this.speedY;
 
-            // Mouse interaction
             if (mouse.x && mouse.y) {
                 const dx = this.x - mouse.x;
                 const dy = this.y - mouse.y;
@@ -290,11 +315,9 @@ if (canvas) {
                 }
             }
 
-            // Damping
             this.speedX *= 0.99;
             this.speedY *= 0.99;
 
-            // Boundary bounce
             if (this.x < 0 || this.x > width) this.speedX *= -1;
             if (this.y < 0 || this.y > height) this.speedY *= -1;
         }
@@ -324,7 +347,6 @@ if (canvas) {
             p.draw();
         });
 
-        // Draw connections
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
@@ -345,7 +367,6 @@ if (canvas) {
     }
     animateParticles();
 
-    // Mouse tracking
     document.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
@@ -356,7 +377,6 @@ if (canvas) {
         mouse.y = null;
     });
 
-    // Recalculate on resize
     window.addEventListener('resize', () => {
         resize();
         initParticles();
