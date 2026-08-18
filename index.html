@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cathyrine Menguito | Portfolio</title>
     
+    <!-- ===== SECURITY HEADERS ===== -->
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <!-- Content Security Policy (adjust as needed) -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://formspree.io https://api.countapi.xyz;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+        img-src 'self' data:;
+        connect-src 'self' https://formspree.io https://api.countapi.xyz;
+    " />
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -85,6 +100,15 @@
         <i class="fas fa-comment"></i>
         <span>Let's Talk</span>
     </a>
+
+    <!-- ========== SCROLL PROGRESS RING ========== -->
+    <div class="scroll-progress-ring">
+        <svg class="progress-ring" width="60" height="60">
+            <circle class="progress-ring-bg" cx="30" cy="30" r="26" />
+            <circle class="progress-ring-fill" cx="30" cy="30" r="26" />
+        </svg>
+        <span class="progress-percent" id="progress-percent">0%</span>
+    </div>
 
     <!-- ========== NAVIGATION ========== -->
     <header>
@@ -708,6 +732,9 @@
                     
                     <!-- Honeypot for spam protection -->
                     <input type="text" name="_gotcha" style="display:none;" />
+                    
+                    <!-- Add captcha for extra spam protection -->
+                    <input type="hidden" name="_captcha" value="true" />
                     
                     <button type="submit" class="btn btn-primary magnetic-btn">
                         <i class="fas fa-paper-plane"></i> Send Message
