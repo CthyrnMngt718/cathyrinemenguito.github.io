@@ -2815,3 +2815,313 @@ textarea:focus-visible {
 [data-theme="light"] .project-metrics {
     background: rgba(0, 200, 120, 0.03);
 }
+/* ============================================
+   ENHANCED FOOTER WITH SIGNATURE
+   ============================================ */
+
+/* Footer Container */
+footer {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-mint);
+    padding: 48px 24px 36px;
+    text-align: center;
+}
+
+footer .container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+/* ============================================
+   DECORATIVE DIVIDER
+   ============================================ */
+.footer-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--mint-gradient);
+    opacity: 0.3;
+}
+
+.divider-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--mint-primary);
+    box-shadow: 0 0 12px var(--mint-glow);
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+.divider-dot:first-child {
+    opacity: 0.3;
+}
+.divider-dot:last-child {
+    opacity: 0.3;
+}
+
+/* ============================================
+   SIGNATURE SECTION
+   ============================================ */
+.signature-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.signature-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.signature-img {
+    height: 55px;
+    width: auto;
+    opacity: 0.75;
+    transition: all 0.5s var(--ease-spring);
+    filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(0, 255, 171, 0.05));
+}
+
+.signature-img:hover {
+    opacity: 1;
+    transform: scale(1.04);
+    filter: brightness(0) invert(1) drop-shadow(0 0 40px rgba(0, 255, 171, 0.15));
+}
+
+.signature-line {
+    display: block;
+    width: 80px;
+    height: 1px;
+    margin: 4px auto 0;
+    background: var(--mint-gradient);
+    opacity: 0.3;
+    transition: var(--transition);
+}
+
+.signature-wrapper:hover .signature-line {
+    opacity: 0.8;
+    width: 120px;
+}
+
+.signature-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.signature-sub {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+/* ============================================
+   SOCIAL LINKS (Enhanced)
+   ============================================ */
+.footer-social {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-mint);
+    color: var(--text-secondary);
+    transition: all 0.4s var(--ease-spring);
+    font-size: 1rem;
+    position: relative;
+    background: var(--bg-card);
+}
+
+.footer-social a::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: var(--mint-gradient);
+    opacity: 0;
+    z-index: -1;
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    border-color: transparent;
+    color: #0b0e0c;
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 0 30px var(--mint-glow);
+    background: var(--mint-primary);
+}
+
+.footer-social a:hover::before {
+    opacity: 1;
+}
+
+/* ============================================
+   FOOTER BOTTOM
+   ============================================ */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-mint);
+}
+
+.footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    letter-spacing: 0.5px;
+    background: rgba(0, 255, 171, 0.04);
+    padding: 4px 14px;
+    border-radius: 50px;
+    border: 1px solid var(--border-mint);
+}
+
+.badge-dot-small {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00ff88;
+    animation: pulseDot 2s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+/* ============================================
+   VISITOR COUNTER (Enhanced)
+   ============================================ */
+.visitor-count {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    opacity: 0.4;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.visitor-count i {
+    color: var(--mint-primary);
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+[data-theme="light"] .signature-img {
+    filter: brightness(0) drop-shadow(0 0 20px rgba(0, 200, 120, 0.05));
+    opacity: 0.7;
+}
+
+[data-theme="light"] .signature-img:hover {
+    filter: brightness(0) drop-shadow(0 0 40px rgba(0, 200, 120, 0.15));
+    opacity: 0.9;
+}
+
+[data-theme="light"] .footer-social a {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .footer-social a:hover {
+    color: #0b0e0c;
+    background: var(--mint-primary);
+}
+
+[data-theme="light"] .footer-badge {
+    background: rgba(0, 200, 120, 0.04);
+}
+
+[data-theme="light"] .signature-title {
+    color: #0b1a14;
+}
+
+[data-theme="light"] .signature-sub {
+    color: #2a4a3a;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    footer {
+        padding: 32px 20px 24px;
+    }
+    
+    .signature-img {
+        height: 42px;
+    }
+    
+    .signature-title {
+        font-size: 0.9rem;
+    }
+    
+    .signature-sub {
+        font-size: 0.7rem;
+    }
+    
+    .footer-social a {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom {
+        gap: 6px;
+    }
+    
+    .footer-badge {
+        font-size: 0.6rem;
+        padding: 3px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signature-img {
+        height: 36px;
+    }
+    
+    .signature-title {
+        font-size: 0.8rem;
+    }
+    
+    .footer-social a {
+        width: 34px;
+        height: 34px;
+        font-size: 0.8rem;
+    }
+}
