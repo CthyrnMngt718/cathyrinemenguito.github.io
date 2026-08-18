@@ -19,12 +19,14 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
+    <!-- Chart.js for Radar Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
     
     <!-- ===== FIX: Tagline Cut-Off ===== -->
     <style>
-        /* Fix for tagline cut-off - REMOVED white-space: nowrap */
         .tagline {
             white-space: normal !important;
             overflow: visible !important;
@@ -34,18 +36,12 @@
             line-height: 1.4;
             word-break: break-word;
         }
-        
-        /* Ensure hero-content doesn't clip */
         .hero-content {
             overflow: visible !important;
         }
-        
-        /* Fix for hero section */
         #hero {
             overflow: visible !important;
         }
-        
-        /* Responsive fixes */
         @media (max-width: 480px) {
             .tagline {
                 font-size: 1rem;
@@ -60,7 +56,6 @@
                 overflow: visible !important;
             }
         }
-        
         @media (max-width: 380px) {
             .tagline {
                 font-size: 0.9rem;
@@ -84,6 +79,12 @@
 
     <!-- ========== CUSTOM CURSOR ========== -->
     <div class="custom-cursor" id="custom-cursor"></div>
+
+    <!-- ========== FLOATING CTA ========== -->
+    <a href="#contact" class="floating-cta" id="floating-cta">
+        <i class="fas fa-comment"></i>
+        <span>Let's Talk</span>
+    </a>
 
     <!-- ========== NAVIGATION ========== -->
     <header>
@@ -118,9 +119,20 @@
                 <span class="badge-dot"></span>
                 Available for opportunities
             </div>
+            
+            <!-- ===== LIVE STATUS ===== -->
+            <div class="live-status">
+                <span class="status-dot"></span>
+                <span class="status-text">Currently exploring: React.js &amp; Tailwind CSS</span>
+            </div>
+            
             <h1>
                 Hi, I'm <span class="gradient-text">Cathyrine Menguito</span>
             </h1>
+            
+            <p class="tagline" id="tagline">
+                Computer Science Graduate
+            </p>
             
             <p class="description">
                 I'm a recent Computer Science graduate with a growing interest in
@@ -163,6 +175,17 @@
             <div class="hero-image-wrapper" data-tilt>
                 <img src="1000014492.jpg" alt="Cathyrine Menguito" />
                 <div class="hero-image-ring"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== QUOTE OF THE DAY ========== -->
+    <section id="quote-section">
+        <div class="container">
+            <div class="quote-box">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="quote-text" id="quote-text">Loading quote...</p>
+                <p class="quote-author" id="quote-author">— Author</p>
             </div>
         </div>
     </section>
@@ -363,6 +386,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- ===== SKILLS RADAR CHART ===== -->
+                    <div class="radar-chart-container">
+                        <h3>Skill Distribution</h3>
+                        <canvas id="radarChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -448,6 +477,50 @@
         </div>
     </section>
 
+    <!-- ========== PROJECTS TIMELINE ========== -->
+    <section id="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Journey</span>
+                <h2>Project <span class="gradient-text">Timeline</span></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2024</span>
+                        <h3>RHU Morong Health System</h3>
+                        <p>Healthcare management system for Rural Health Unit</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2025</span>
+                        <h3>Angono NHS Career Assessment</h3>
+                        <p>Career assessment tool for Senior High students</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2025</span>
+                        <h3>HowCan‑i‑Help</h3>
+                        <p>Healthcare and assistance platform</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2026</span>
+                        <h3>RITREMIS</h3>
+                        <p>Real Estate Management &amp; Property System</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== FEATURED PROJECTS ========== -->
     <section id="featured-projects">
         <div class="container">
@@ -510,6 +583,51 @@
             </div>
             <div class="center-btn">
                 <a href="projects.html" class="btn btn-primary magnetic-btn">See All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RECENT WORK CAROUSEL ========== -->
+    <section id="carousel-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Recent Work</span>
+                <h2>Project <span class="gradient-text">Showcase</span></h2>
+            </div>
+            <div class="carousel">
+                <div class="carousel-track" id="carousel-track">
+                    <div class="carousel-slide">
+                        <div class="carousel-content">
+                            <h3>RHU Morong Health System</h3>
+                            <p>Healthcare management system</p>
+                            <span class="carousel-tag">PHP</span>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-content">
+                            <h3>Angono NHS Career Assessment</h3>
+                            <p>Education career tool</p>
+                            <span class="carousel-tag">PHP</span>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-content">
+                            <h3>HowCan‑i‑Help</h3>
+                            <p>Healthcare assistance platform</p>
+                            <span class="carousel-tag">PHP</span>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-content">
+                            <h3>RITREMIS</h3>
+                            <p>Real Estate Management</p>
+                            <span class="carousel-tag">PHP</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" id="carousel-prev">❮</button>
+                <button class="carousel-btn next" id="carousel-next">❯</button>
+                <div class="carousel-dots" id="carousel-dots"></div>
             </div>
         </div>
     </section>
@@ -607,6 +725,11 @@
                     UI/UX Design
                 </p>
                 <p class="footer-copy">&copy; 2026 Cathyrine Menguito. All rights reserved.</p>
+                <!-- ===== VISITOR COUNTER ===== -->
+                <p class="visitor-count">
+                    <i class="fas fa-eye"></i> 
+                    <span id="visitor-count">0</span> visitors
+                </p>
             </div>
         </div>
     </footer>
