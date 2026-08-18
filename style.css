@@ -1628,64 +1628,75 @@ footer .container {
     }
 }
 /* ============================================
-   LOGO - FULL NAME
+   LOGO - BOX + NAME (Option 3)
    ============================================ */
 .logo a {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 12px;
     text-decoration: none;
-    font-family: var(--font-sans);
-    font-size: 1.1rem;
-    position: relative;
 }
 
-.logo-first {
+.logo-box {
+    display: inline-block;
+    padding: 2px 10px;
+    border: 2px solid var(--mint-primary);
+    border-radius: 6px;
+    background: rgba(0, 255, 171, 0.06);
+    color: var(--mint-primary);
+    font-size: 0.85rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px var(--mint-glow);
+    transition: all 0.3s var(--ease-spring);
+}
+
+.logo-full {
+    font-size: 1rem;
     font-weight: 500;
     color: var(--text-secondary);
     transition: var(--transition);
 }
 
-.logo-last {
+.logo-full span {
     font-weight: 700;
     background: var(--mint-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 200% 200%;
-    animation: gradientShift 4s ease-in-out infinite;
 }
 
-/* Optional: Add a small dot separator */
-.logo a::after {
-    content: '';
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    background: var(--mint-primary);
-    border-radius: 50%;
-    margin-left: 4px;
-    box-shadow: 0 0 12px var(--mint-glow);
-    transition: var(--transition);
+.logo a:hover .logo-box {
+    background: rgba(0, 255, 171, 0.15);
+    box-shadow: 0 0 40px var(--mint-glow);
+    transform: scale(1.05);
 }
 
-/* Hover effect */
-.logo a:hover .logo-first {
+.logo a:hover .logo-full {
     color: var(--text-primary);
-}
-
-.logo a:hover::after {
-    transform: scale(1.3);
-    box-shadow: 0 0 25px var(--mint-glow);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .logo a {
-        font-size: 0.95rem;
-        gap: 3px;
+        gap: 8px;
     }
-    .logo a::after {
-        width: 4px;
-        height: 4px;
+    .logo-box {
+        font-size: 0.7rem;
+        padding: 1px 8px;
+        border-radius: 4px;
+    }
+    .logo-full {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-full {
+        font-size: 0.7rem;
+    }
+    .logo-box {
+        font-size: 0.6rem;
+        padding: 1px 6px;
     }
 }
