@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- ========== CURSOR GLOW (Optional) ========== -->
+    <!-- ========== CURSOR GLOW ========== -->
     <div id="cursor-glow"></div>
 
     <!-- ========== NAVIGATION ========== -->
@@ -303,75 +303,91 @@
         </div>
     </section>
 
-   <!-- ========== CONTACT SECTION ========== -->
-<section id="contact">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Contact</span>
-            <h2>Get In <span class="gradient-text">Touch</span></h2>
-        </div>
-        <p class="contact-sub">
-            I'm always open to new opportunities, collaborations, or just a
-            friendly chat. Feel free to reach out!
-        </p>
-        <div class="contact-content">
-            <div class="contact-details">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>cthyrnmngt718@gmail.com</span>
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contact</span>
+                <h2>Get In <span class="gradient-text">Touch</span></h2>
+            </div>
+            <p class="contact-sub">
+                I'm always open to new opportunities, collaborations, or just a
+                friendly chat. Feel free to reach out!
+            </p>
+            <div class="contact-content">
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>cthyrnmgt718@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+63 965 803 9637</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Morong, Rizal, Philippines</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:cthyrnmgt718@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>+63 965 803 9637</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Morong, Rizal, Philippines</span>
-                </div>
-                <div class="social-links">
-                    <a href="https://github.com/CthyrnMngt718" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-dev"></i></a>
+
+                <!-- ===== FORMSPREE FORM ===== -->
+                <form class="contact-form" action="https://formspree.io/f/mzepkbgw" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required />
+                    <input type="email" name="email" placeholder="Your Email" required />
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    
+                    <!-- Honeypot for spam protection -->
+                    <input type="text" name="_gotcha" style="display:none;" />
+                    
+                    <!-- Redirect back to your site after submission -->
+                    <input type="hidden" name="_next" value="https://cthyrnmngt718.github.io/#contact" />
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+
+                <!-- ===== SUCCESS MESSAGE ===== -->
+                <div id="form-success" style="display:none; padding:24px; border:1px solid var(--mint-primary); border-radius:var(--radius); background:rgba(0,255,171,0.05); text-align:center; margin-top:20px;">
+                    <i class="fas fa-check-circle" style="color:var(--mint-primary);font-size:2.5rem;display:block;margin-bottom:12px;"></i>
+                    <h3 style="color:var(--text-primary);">Thank You!</h3>
+                    <p style="color:var(--text-secondary);">Your message has been sent. I'll get back to you soon!</p>
                 </div>
             </div>
-
-            <!-- ===== UPDATED FORM WITH FORMSPREE ===== -->
-            <form class="contact-form" action="https://formspree.io/f/mzepkbgw" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required />
-                <input type="email" name="email" placeholder="Your Email" required />
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                
-                <!-- Honeypot for spam protection -->
-                <input type="text" name="_gotcha" style="display:none;" />
-                
-                <!-- Redirect back to your site after submission -->
-                <input type="hidden" name="_next" value="https://cthyrnmngt718.github.io/#contact" />
-                
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-            </form>
-
-            <!-- ===== SUCCESS MESSAGE ===== -->
-            <div id="form-success" style="display:none; padding:24px; border:1px solid var(--mint-primary); border-radius:var(--radius); background:rgba(0,255,171,0.05); text-align:center; margin-top:20px;">
-                <i class="fas fa-check-circle" style="color:var(--mint-primary);font-size:2.5rem;display:block;margin-bottom:12px;"></i>
-                <h3 style="color:var(--text-primary);">Thank You!</h3>
-                <p style="color:var(--text-secondary);">Your message has been sent. I'll get back to you soon!</p>
-            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
             <div class="footer-divider"></div>
             <div class="footer-social">
-                <a href="https://github.com/CthyrnMngt718" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-dev"></i></a>
+                <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:cthyrnmgt718@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
             <div class="footer-text">
                 <p class="footer-name">Cathyrine Menguito</p>
