@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet" />
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -23,11 +23,20 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <!-- ========== PARTICLES CANVAS ========== -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ========== CURSOR GLOW ========== -->
+    <div id="cursor-glow"></div>
+
     <!-- ========== NAVIGATION ========== -->
     <header>
         <nav>
             <div class="logo">
-                <a href="index.html">CM</a>
+                <a href="index.html">
+                    <span class="logo-c">C</span>
+                    <span class="logo-m">M</span>
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -35,6 +44,9 @@
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
+            <button id="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -50,14 +62,24 @@
                 <span class="section-tag">Portfolio</span>
                 <h1 style="font-size:2.8rem;font-weight:700;margin-bottom:8px;">My <span class="gradient-text">Projects</span></h1>
             </div>
-            <p class="projects-sub" style="color:var(--text-secondary);margin-bottom:40px;font-size:1.05rem;">
+            <p class="projects-sub" style="color:var(--text-secondary);margin-bottom:30px;font-size:1.05rem;">
                 A collection of web applications and systems I've built throughout my academic and professional journey.
             </p>
+
+            <!-- ===== FILTER BUTTONS ===== -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+                <button class="filter-btn" data-filter="education">Education</button>
+                <button class="filter-btn" data-filter="realestate">Real Estate</button>
+                <button class="filter-btn" data-filter="php">PHP</button>
+                <button class="filter-btn" data-filter="bootstrap">Bootstrap</button>
+            </div>
 
             <div class="project-grid">
 
                 <!-- Project 1: RHU Morong -->
-                <div class="project-card">
+                <div class="project-card" data-category="healthcare php">
                     <div class="project-info">
                         <h3>RHU Morong Health System</h3>
                         <p>
@@ -80,7 +102,7 @@
                 </div>
 
                 <!-- Project 2: Angono NHS Career Assessment -->
-                <div class="project-card">
+                <div class="project-card" data-category="education php bootstrap">
                     <div class="project-info">
                         <h3>Angono NHS Career Assessment</h3>
                         <p>
@@ -103,7 +125,7 @@
                 </div>
 
                 <!-- Project 3: HowCan-i-Help -->
-                <div class="project-card">
+                <div class="project-card" data-category="healthcare php bootstrap">
                     <div class="project-info">
                         <h3>HowCan‑i‑Help</h3>
                         <p>
@@ -126,7 +148,7 @@
                 </div>
 
                 <!-- Project 4: RITREMIS -->
-                <div class="project-card">
+                <div class="project-card" data-category="realestate php bootstrap">
                     <div class="project-info">
                         <h3>RITREMIS</h3>
                         <p>
