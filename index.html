@@ -23,11 +23,20 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <!-- ========== PAGE LOADER ========== -->
+    <div class="loader" id="page-loader">
+        <div class="loader-spinner"></div>
+        <p class="loader-text">Loading...</p>
+    </div>
+
     <!-- ========== PARTICLES CANVAS ========== -->
     <canvas id="particles-canvas"></canvas>
 
     <!-- ========== CURSOR GLOW ========== -->
     <div id="cursor-glow"></div>
+
+    <!-- ========== CUSTOM CURSOR ========== -->
+    <div class="custom-cursor" id="custom-cursor"></div>
 
     <!-- ========== NAVIGATION ========== -->
     <header>
@@ -66,8 +75,8 @@
                 Hi, I'm <span class="gradient-text">Cathyrine Menguito</span>
             </h1>
             
-            <p class="tagline">
-                Computer Science Graduate | Aspiring IT Professional
+            <p class="tagline" id="tagline">
+                Computer Science Graduate
             </p>
             
             <p class="description">
@@ -78,10 +87,10 @@
                 learning, gain real-world experience, and begin my journey in the IT industry.
             </p>
             <div class="hero-buttons">
-                <a href="projects.html" class="btn btn-primary">
+                <a href="projects.html" class="btn btn-primary magnetic-btn">
                     <i class="fas fa-rocket"></i> View My Work
                 </a>
-                <a href="#contact" class="btn btn-secondary">
+                <a href="#contact" class="btn btn-secondary magnetic-btn">
                     <i class="fas fa-paper-plane"></i> Contact Me
                 </a>
             </div>
@@ -108,7 +117,7 @@
             </div>
         </div>
         <div class="hero-image">
-            <div class="hero-image-wrapper">
+            <div class="hero-image-wrapper" data-tilt>
                 <img src="1000014492.jpg" alt="Cathyrine Menguito" />
                 <div class="hero-image-ring"></div>
             </div>
@@ -116,66 +125,61 @@
     </section>
 
     <!-- ========== SERVICES SECTION ========== -->
-        <section id="services">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">What I Can Help With</span>
-                    <h2>Areas I Can <span class="gradient-text">Contribute</span></h2>
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What I Can Help With</span>
+                <h2>Areas I Can <span class="gradient-text">Contribute</span></h2>
+            </div>
+    
+            <div class="services-grid">
+                <div class="service-card" data-tilt>
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>
+                        Developing responsive and functional websites and
+                        web-based applications using technologies such as
+                        HTML, CSS, JavaScript, PHP, and MySQL.
+                    </p>
                 </div>
-        
-                <div class="services-grid">
-        
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Web Development</h3>
-                        <p>
-                            Developing responsive and functional websites and
-                            web-based applications using technologies such as
-                            HTML, CSS, JavaScript, PHP, and MySQL.
-                        </p>
+                <div class="service-card" data-tilt>
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-ruler"></i>
                     </div>
-        
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-pencil-ruler"></i>
-                        </div>
-                        <h3>UI/UX &amp; Interface Design</h3>
-                        <p>
-                            Designing clean and intuitive user interfaces with
-                            attention to usability, organization, and the overall
-                            user experience.
-                        </p>
+                    <h3>UI/UX &amp; Interface Design</h3>
+                    <p>
+                        Designing clean and intuitive user interfaces with
+                        attention to usability, organization, and the overall
+                        user experience.
+                    </p>
+                </div>
+                <div class="service-card" data-tilt>
+                    <div class="service-icon">
+                        <i class="fas fa-project-diagram"></i>
                     </div>
-        
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <h3>Academic System Development</h3>
-                        <p>
-                            Providing technical assistance for academic and
-                            capstone projects, including web-based systems,
-                            system interfaces, and related development tasks.
-                        </p>
+                    <h3>Academic System Development</h3>
+                    <p>
+                        Providing technical assistance for academic and
+                        capstone projects, including web-based systems,
+                        system interfaces, and related development tasks.
+                    </p>
+                </div>
+                <div class="service-card" data-tilt>
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
                     </div>
-        
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h3>Technical Documentation</h3>
-                        <p>
-                            Assisting with system documentation, technical
-                            diagrams, project presentations, and other
-                            documentation related to software projects.
-                        </p>
-                    </div>
-        
+                    <h3>Technical Documentation</h3>
+                    <p>
+                        Assisting with system documentation, technical
+                        diagrams, project presentations, and other
+                        documentation related to software projects.
+                    </p>
                 </div>
             </div>
-        </section>    
+        </div>
+    </section>
 
     <!-- ========== ABOUT SECTION ========== -->
     <section id="about">
@@ -186,7 +190,7 @@
             </div>
             <div class="about-grid">
                 <div class="about-text">
-                   <p>
+                    <p>
                         I'm Cathyrine Menguito, a Bachelor of Science in Computer Science graduate
                         from Renaissance School of Science and Technology, Inc. I have a growing
                         interest in web development, user interface design, and creating practical
@@ -215,18 +219,16 @@
                             <i class="fas fa-award"></i>
                             TESDA NC II – Computer Systems Servicing
                         </span>
-                    
                         <span>
                             <i class="fas fa-trophy"></i>
                             Outstanding System Design
                         </span>
-                    
                         <span>
                             <i class="fas fa-users"></i>
                             Class President 2024–2025
                         </span>
                     </div>
-                    <a href="Cathyrine%20Menguito%20Resume.pdf" class="btn btn-primary" target="_blank">
+                    <a href="Cathyrine%20Menguito%20Resume.pdf" class="btn btn-primary magnetic-btn" target="_blank">
                         <i class="fas fa-file-pdf"></i> View Resume
                     </a>
                 </div>
@@ -332,7 +334,7 @@
             </div>
             <div class="education-grid">
                 <!-- Tertiary -->
-                <div class="edu-card">
+                <div class="edu-card" data-tilt>
                     <div class="edu-header">
                         <span class="edu-tag"><i class="fas fa-graduation-cap"></i> Tertiary</span>
                         <span class="edu-year">2022 – 2026</span>
@@ -349,7 +351,7 @@
                     </div>
                 </div>
                 <!-- Senior High -->
-                <div class="edu-card">
+                <div class="edu-card" data-tilt>
                     <div class="edu-header">
                         <span class="edu-tag"><i class="fas fa-school"></i> Senior High</span>
                         <span class="edu-year">2021 – 2022</span>
@@ -367,7 +369,7 @@
                     </div>
                 </div>
                 <!-- Junior High -->
-                <div class="edu-card">
+                <div class="edu-card" data-tilt>
                     <div class="edu-header">
                         <span class="edu-tag"><i class="fas fa-school"></i> Junior High</span>
                         <span class="edu-year">2015 – 2019</span>
@@ -377,7 +379,7 @@
                     <p class="edu-location"><i class="fas fa-map-pin"></i> Morong, Rizal</p>
                 </div>
                 <!-- Elementary -->
-                <div class="edu-card">
+                <div class="edu-card" data-tilt>
                     <div class="edu-header">
                         <span class="edu-tag"><i class="fas fa-child"></i> Elementary</span>
                         <span class="edu-year">2009 – 2015</span>
@@ -387,7 +389,7 @@
                     <p class="edu-location"><i class="fas fa-map-pin"></i> Morong, Rizal</p>
                 </div>
                 <!-- Certification -->
-                <div class="edu-card cert-card">
+                <div class="edu-card cert-card" data-tilt>
                     <div class="edu-header">
                         <span class="edu-tag" style="background:rgba(0,255,171,0.2);color:var(--mint-primary);"><i class="fas fa-certificate"></i> Certification</span>
                         <span class="edu-year">May 8, 2024</span>
@@ -412,7 +414,7 @@
             </div>
             <div class="project-grid">
                 <!-- Project 1 -->
-                <div class="project-card">
+                <div class="project-card" data-tilt>
                     <div class="project-info">
                         <h3>RHU Morong Health System</h3>
                         <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal.</p>
@@ -423,13 +425,13 @@
                             <span>HTML</span>
                             <span>CSS</span>
                         </div>
-                        <a href="http://healthcare.morongcenter.com/" target="_blank" class="btn btn-small">
+                        <a href="http://healthcare.morongcenter.com/" target="_blank" class="btn btn-small magnetic-btn">
                             <i class="fas fa-external-link-alt"></i> View Project
                         </a>
                     </div>
                 </div>
                 <!-- Project 2 -->
-                <div class="project-card">
+                <div class="project-card" data-tilt>
                     <div class="project-info">
                         <h3>Angono NHS Career Assessment</h3>
                         <p>Web‑based career assessment tool for incoming Senior High School students.</p>
@@ -440,13 +442,13 @@
                             <span>HTML</span>
                             <span>CSS</span>
                         </div>
-                        <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" class="btn btn-small">
+                        <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" class="btn btn-small magnetic-btn">
                             <i class="fas fa-external-link-alt"></i> View Project
                         </a>
                     </div>
                 </div>
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="project-card" data-tilt>
                     <div class="project-info">
                         <h3>HowCan‑i‑Help</h3>
                         <p>Integrated clinic record and healthcare management system connecting patients, clinics, and donors.</p>
@@ -457,14 +459,14 @@
                             <span>HTML</span>
                             <span>CSS</span>
                         </div>
-                        <a href="https://howcan-i-help.org/" target="_blank" class="btn btn-small">
+                        <a href="https://howcan-i-help.org/" target="_blank" class="btn btn-small magnetic-btn">
                             <i class="fas fa-external-link-alt"></i> View Project
                         </a>
                     </div>
                 </div>
             </div>
             <div class="center-btn">
-                <a href="projects.html" class="btn btn-primary">See All Projects</a>
+                <a href="projects.html" class="btn btn-primary magnetic-btn">See All Projects</a>
             </div>
         </div>
     </section>
@@ -519,7 +521,7 @@
                     <!-- Honeypot for spam protection -->
                     <input type="text" name="_gotcha" style="display:none;" />
                     
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary magnetic-btn">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
                 </form>
