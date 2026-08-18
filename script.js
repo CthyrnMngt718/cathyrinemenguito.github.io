@@ -89,51 +89,51 @@ async function getVisitorCount() {
 getVisitorCount();
 
 // ============================================
-// 6. QUOTE OF THE DAY (Motivational + Bible Verses)
+// 6. QUOTE OF THE DAY (Church of Christ Bible Verses)
 // ============================================
-const quotes = [
-    // ===== MOTIVATIONAL QUOTES =====
-    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs", type: "motivational" },
-    { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs", type: "motivational" },
-    { text: "The best way to predict the future is to create it.", author: "Peter Drucker", type: "motivational" },
-    { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci", type: "motivational" },
-    { text: "Learning never exhausts the mind.", author: "Leonardo da Vinci", type: "motivational" },
-    { text: "Design is not just what it looks like, it's how it works.", author: "Steve Jobs", type: "motivational" },
-    { text: "The art of being wise is the art of knowing what to overlook.", author: "William James", type: "motivational" },
-    { text: "Technology is best when it brings people together.", author: "Matt Mullenweg", type: "motivational" },
-    { text: "The only constant in technology is change.", author: "Unknown", type: "motivational" },
-    { text: "Code is like poetry. It should be clean, elegant, and tell a story.", author: "Unknown", type: "motivational" },
-    { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill", type: "motivational" },
-    { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt", type: "motivational" },
-    { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius", type: "motivational" },
-    { text: "The secret of getting ahead is getting started.", author: "Mark Twain", type: "motivational" },
-    { text: "Your time is limited, don't waste it living someone else's life.", author: "Steve Jobs", type: "motivational" },
-    { text: "The only person you are destined to become is the person you decide to be.", author: "Ralph Waldo Emerson", type: "motivational" },
-    { text: "What you get by achieving your goals is not as important as what you become by achieving your goals.", author: "Zig Ziglar", type: "motivational" },
-    { text: "You are never too old to set another goal or to dream a new dream.", author: "C.S. Lewis", type: "motivational" },
-    { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt", type: "motivational" },
-    { text: "Dream big and dare to fail.", author: "Norman Vaughan", type: "motivational" },
-    // ===== BIBLE VERSES =====
-    { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13", type: "bible" },
-    { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", author: "Jeremiah 29:11", type: "bible" },
-    { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", author: "Joshua 1:9", type: "bible" },
-    { text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", author: "Proverbs 3:5-6", type: "bible" },
-    { text: "The Lord is my shepherd; I shall not want.", author: "Psalm 23:1", type: "bible" },
-    { text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.", author: "Philippians 4:6", type: "bible" },
-    { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", author: "John 3:16", type: "bible" },
-    { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles.", author: "Isaiah 40:31", type: "bible" },
-    { text: "The Lord is my light and my salvation—whom shall I fear?", author: "Psalm 27:1", type: "bible" },
-    { text: "Be still, and know that I am God.", author: "Psalm 46:10", type: "bible" },
-    { text: "For I am convinced that neither death nor life... will be able to separate us from the love of God that is in Christ Jesus our Lord.", author: "Romans 8:38-39", type: "bible" },
-    { text: "Let your light shine before others, that they may see your good deeds and glorify your Father in heaven.", author: "Matthew 5:16", type: "bible" },
-    { text: "The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding.", author: "Proverbs 9:10", type: "bible" },
-    { text: "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.", author: "Matthew 28:19", type: "bible" },
-    { text: "Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.", author: "Mark 12:30", type: "bible" },
-    { text: "The peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.", author: "Philippians 4:7", type: "bible" },
-    { text: "For we walk by faith, not by sight.", author: "2 Corinthians 5:7", type: "bible" },
-    { text: "The Lord will fight for you; you need only to be still.", author: "Exodus 14:14", type: "bible" },
-    { text: "Do not conform to the pattern of this world, but be transformed by the renewing of your mind.", author: "Romans 12:2", type: "bible" },
-    { text: "Above all else, guard your heart, for everything you do flows from it.", author: "Proverbs 4:23", type: "bible" },
+const bibleVerses = [
+    // ===== CHURCH OF CHRIST BIBLE VERSES =====
+    { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13" },
+    { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", author: "Jeremiah 29:11" },
+    { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", author: "Joshua 1:9" },
+    { text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", author: "Proverbs 3:5-6" },
+    { text: "The Lord is my shepherd; I shall not want.", author: "Psalm 23:1" },
+    { text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.", author: "Philippians 4:6" },
+    { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", author: "John 3:16" },
+    { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles.", author: "Isaiah 40:31" },
+    { text: "The Lord is my light and my salvation—whom shall I fear?", author: "Psalm 27:1" },
+    { text: "Be still, and know that I am God.", author: "Psalm 46:10" },
+    { text: "Let your light shine before others, that they may see your good deeds and glorify your Father in heaven.", author: "Matthew 5:16" },
+    { text: "The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding.", author: "Proverbs 9:10" },
+    { text: "Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.", author: "Mark 12:30" },
+    { text: "The peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.", author: "Philippians 4:7" },
+    { text: "For we walk by faith, not by sight.", author: "2 Corinthians 5:7" },
+    { text: "The Lord will fight for you; you need only to be still.", author: "Exodus 14:14" },
+    { text: "Do not conform to the pattern of this world, but be transformed by the renewing of your mind.", author: "Romans 12:2" },
+    { text: "Above all else, guard your heart, for everything you do flows from it.", author: "Proverbs 4:23" },
+    { text: "Commit to the Lord whatever you do, and he will establish your plans.", author: "Proverbs 16:3" },
+    { text: "The Lord is gracious and compassionate, slow to anger and rich in love.", author: "Psalm 145:8" },
+    { text: "Your word is a lamp for my feet, a light on my path.", author: "Psalm 119:105" },
+    { text: "For the Lord gives wisdom; from his mouth come knowledge and understanding.", author: "Proverbs 2:6" },
+    { text: "The name of the Lord is a fortified tower; the righteous run to it and are safe.", author: "Proverbs 18:10" },
+    { text: "The Lord is my strength and my shield; my heart trusts in him, and he helps me.", author: "Psalm 28:7" },
+    { text: "Cast all your anxiety on him because he cares for you.", author: "1 Peter 5:7" },
+    { text: "For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline.", author: "2 Timothy 1:7" },
+    { text: "The Lord is good to those whose hope is in him, to the one who seeks him.", author: "Lamentations 3:25" },
+    { text: "I have hidden your word in my heart that I might not sin against you.", author: "Psalm 119:11" },
+    { text: "The Lord is near to all who call on him, to all who call on him in truth.", author: "Psalm 145:18" },
+    { text: "But those who trust in the Lord will find new strength. They will soar high on wings like eagles.", author: "Isaiah 40:31" },
+    { text: "The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you.", author: "Numbers 6:24-25" },
+    { text: "He has shown you, O mortal, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.", author: "Micah 6:8" },
+    { text: "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.", author: "Ephesians 2:10" },
+    { text: "The Lord is my rock, my fortress and my deliverer; my God is my rock, in whom I take refuge.", author: "Psalm 18:2" },
+    { text: "He gives strength to the weary and increases the power of the weak.", author: "Isaiah 40:29" },
+    { text: "The Lord is compassionate and gracious, slow to anger, abounding in love.", author: "Psalm 103:8" },
+    { text: "The path of the righteous is like the morning sun, shining ever brighter till the full light of day.", author: "Proverbs 4:18" },
+    { text: "The Lord is my helper; I will not be afraid. What can mere mortals do to me?", author: "Hebrews 13:6" },
+    { text: "Seek the Lord while he may be found; call on him while he is near.", author: "Isaiah 55:6" },
+    { text: "The Lord is faithful to all his promises and loving toward all he has made.", author: "Psalm 145:13" },
+    { text: "A heart at peace gives life to the body, but envy rots the bones.", author: "Proverbs 14:30" },
 ];
 
 function displayQuote() {
@@ -143,26 +143,28 @@ function displayQuote() {
     
     if (!quoteText) return;
     
-    const today = new Date();
-    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-    const quoteIndex = dayOfYear % quotes.length;
+    // Get Philippine Time (PHT UTC+8)
+    const now = new Date();
+    const philippineTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
     
-    const selectedQuote = quotes[quoteIndex];
-    quoteText.textContent = selectedQuote.text;
-    quoteAuthor.textContent = `— ${selectedQuote.author}`;
+    // Calculate day of year based on Philippine Time
+    const startOfYear = new Date(philippineTime.getFullYear(), 0, 0);
+    const diff = philippineTime - startOfYear;
+    const dayOfYear = Math.floor(diff / 86400000);
     
+    // Cycle through verses based on day of year
+    const verseIndex = dayOfYear % bibleVerses.length;
+    
+    const selectedVerse = bibleVerses[verseIndex];
+    quoteText.textContent = selectedVerse.text;
+    quoteAuthor.textContent = `— ${selectedVerse.author}`;
+    
+    // Update type badge
     if (quoteType) {
-        if (selectedQuote.type === 'bible') {
-            quoteType.innerHTML = '<i class="fas fa-bible"></i> Verse of the Day';
-            quoteType.style.color = '#ffdd44';
-            quoteType.style.borderColor = 'rgba(255, 221, 68, 0.3)';
-            quoteType.style.background = 'rgba(255, 221, 68, 0.1)';
-        } else {
-            quoteType.innerHTML = '<i class="fas fa-quote-right"></i> Quote of the Day';
-            quoteType.style.color = 'var(--mint-primary)';
-            quoteType.style.borderColor = 'var(--border-mint)';
-            quoteType.style.background = 'rgba(0, 255, 171, 0.08)';
-        }
+        quoteType.innerHTML = '<i class="fas fa-bible"></i> Verse of the Day';
+        quoteType.style.color = '#ffdd44';
+        quoteType.style.borderColor = 'rgba(255, 221, 68, 0.3)';
+        quoteType.style.background = 'rgba(255, 221, 68, 0.1)';
     }
 }
 
