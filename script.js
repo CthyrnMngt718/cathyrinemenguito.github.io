@@ -145,3 +145,26 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+// ============================================
+// 7. FORM SUBMISSION HANDLER (Formspree)
+// ============================================
+const form = document.querySelector('.contact-form');
+const successMsg = document.getElementById('form-success');
+
+// Check for success parameter on page load
+if (window.location.href.includes('?success=true')) {
+    if (form) form.style.display = 'none';
+    if (successMsg) successMsg.style.display = 'block';
+}
+
+// Handle form submission
+if (form) {
+    form.addEventListener('submit', function() {
+        const btn = this.querySelector('button[type="submit"]');
+        if (btn) {
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+        }
+    });
+}
