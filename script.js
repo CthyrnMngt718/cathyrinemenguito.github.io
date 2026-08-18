@@ -168,3 +168,197 @@ if (form) {
         }
     });
 }
+
+// ============================================
+// 8. DARK/LIGHT MODE TOGGLE
+// ============================================
+const themeToggle = document.getElementById('theme-toggle');
+const currentTheme = localStorage.getItem('theme') || 'dark';
+
+if (currentTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    if (themeToggle) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        themeToggle.innerHTML = theme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    });
+}
+
+// ============================================
+// 9. TYPING ANIMATION (Hero Description)
+// ============================================
+const typedText = document.querySelector('.description');
+if (typedText) {
+    const originalText = typedText.textContent;
+    typedText.textContent = '';
+    let charIndex = 0;
+    const typeSpeed = 40;
+
+    function typeWriter() {
+        if (charIndex < originalText.length) {
+            typedText.textContent += originalText.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWriter, typeSpeed);
+        }
+    }
+
+    // Start typing when page loads (after a small delay)
+    window.addEventListener('load', () => {
+        setTimeout(typeWriter, 600);
+    });
+}
+
+// ============================================
+// 10. ANIMATED STATS COUNTERS
+// ============================================
+const stats = document.querySelectorAll('.stat-number');
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const stat = entry.target;
+            const text = stat.textContent;
+            const isPlus = text.includes('+');
+            const target = parseInt(text.replace('+', ''));
+            let current = 0;
+            const increment = Math.ceil(target / 60);
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                stat.textContent = isPlus ? current + '+' : current;
+            }, 20);
+            counterObserver.unobserve(stat);
+        }
+    });
+}, { threshold: 0.5 });
+
+stats.forEach(stat => counterObserver.observe(stat));
+
+// ============================================
+// 11. PARTICLE BACKGROUND
+// ============================================
+const canvas = document.getElementById('particles-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let particles = [];
+    let mouse = { x: null, y: null };
+
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.size = Math.random() * 3 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.4;
+            this.speedY = (Math.random() - 0.5) * 0.4;
+            this.opacity = Math.random() * 0.4 + 0.1;
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // Mouse interaction
+            if (mouse.x && mouse.y) {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 150) {
+                    const force = 0.02;
+                    this.speedX += (dx / dist) * force;
+                    this.speedY += (dy / dist) * force;
+                }
+            }
+
+            // Damping
+            this.speedX *= 0.99;
+            this.speedY *= 0.99;
+
+            // Boundary bounce
+            if (this.x < 0 || this.x > width) this.speedX *= -1;
+            if (this.y < 0 || this.y > height) this.speedY *= -1;
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 255, 171, ${this.opacity})`;
+            ctx.fill();
+        }
+    }
+
+    function initParticles() {
+        particles = [];
+        const count = Math.min(80, Math.floor((width * height) / 15000));
+        for (let i = 0; i < count; i++) {
+            particles.push(new Particle());
+        }
+    }
+    initParticles();
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(0, 255, 171, ${0.06 * (1 - dist / 120)})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+        }
+
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Mouse tracking
+    document.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    document.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+        resize();
+        initParticles();
+    });
+}
