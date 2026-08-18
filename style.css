@@ -1726,20 +1726,7 @@ footer .container {
     }
 }
 
-/* ============================================
-   SCROLL PROGRESS BAR (Keep existing)
-   ============================================ */
-#progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: var(--mint-gradient);
-    width: 0%;
-    z-index: 9999;
-    box-shadow: 0 0 20px var(--mint-glow);
-    transition: width 0.1s ease-out;
-}
+
 
 /* ============================================
    FLOATING BUTTON
