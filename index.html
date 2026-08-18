@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <!-- ========== PARTICLES CANVAS ========== -->
+    <canvas id="particles-canvas"></canvas>
+
     <!-- ========== CURSOR GLOW ========== -->
     <div id="cursor-glow"></div>
 
@@ -41,6 +44,10 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <!-- ===== THEME TOGGLE ===== -->
+            <button id="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -69,6 +76,11 @@
                 <a href="#contact" class="btn btn-secondary">
                     <i class="fas fa-paper-plane"></i> Contact Me
                 </a>
+            </div>
+            <!-- ===== SCROLL INDICATOR ===== -->
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
             <div class="hero-stats">
                 <div class="stat">
@@ -197,7 +209,7 @@
                         <span class="edu-tag"><i class="fas fa-school"></i> Senior High</span>
                         <span class="edu-year">2021 – 2022</span>
                     </div>
-                    <h3>HUMSS Strand</h3>
+                    <h3>STEM Strand</h3>
                     <p class="edu-school">Renaissance School of Science and Technology, Inc.</p>
                     <p class="edu-location"><i class="fas fa-map-pin"></i> Morong, Rizal</p>
                     <div class="edu-achievements">
