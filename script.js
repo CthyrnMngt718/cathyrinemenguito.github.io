@@ -89,33 +89,86 @@ async function getVisitorCount() {
 getVisitorCount();
 
 // ============================================
-// 6. QUOTE OF THE DAY
+// 6. QUOTE OF THE DAY (Motivational + Bible Verses)
 // ============================================
 const quotes = [
-    { text: "Code is like poetry. It should be clean, elegant, and tell a story.", author: "Unknown" },
-    { text: "The best way to predict the future is to create it.", author: "Peter Drucker" },
-    { text: "Design is not just what it looks like, it's how it works.", author: "Steve Jobs" },
-    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-    { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
-    { text: "Learning never exhausts the mind.", author: "Leonardo da Vinci" },
-    { text: "The art of being wise is the art of knowing what to overlook.", author: "William James" },
-    { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
-    { text: "Technology is best when it brings people together.", author: "Matt Mullenweg" },
-    { text: "The only constant in technology is change.", author: "Unknown" }
+    // ===== MOTIVATIONAL QUOTES =====
+    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs", type: "motivational" },
+    { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs", type: "motivational" },
+    { text: "The best way to predict the future is to create it.", author: "Peter Drucker", type: "motivational" },
+    { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci", type: "motivational" },
+    { text: "Learning never exhausts the mind.", author: "Leonardo da Vinci", type: "motivational" },
+    { text: "Design is not just what it looks like, it's how it works.", author: "Steve Jobs", type: "motivational" },
+    { text: "The art of being wise is the art of knowing what to overlook.", author: "William James", type: "motivational" },
+    { text: "Technology is best when it brings people together.", author: "Matt Mullenweg", type: "motivational" },
+    { text: "The only constant in technology is change.", author: "Unknown", type: "motivational" },
+    { text: "Code is like poetry. It should be clean, elegant, and tell a story.", author: "Unknown", type: "motivational" },
+    { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill", type: "motivational" },
+    { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt", type: "motivational" },
+    { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius", type: "motivational" },
+    { text: "The secret of getting ahead is getting started.", author: "Mark Twain", type: "motivational" },
+    { text: "Your time is limited, don't waste it living someone else's life.", author: "Steve Jobs", type: "motivational" },
+    { text: "The only person you are destined to become is the person you decide to be.", author: "Ralph Waldo Emerson", type: "motivational" },
+    { text: "What you get by achieving your goals is not as important as what you become by achieving your goals.", author: "Zig Ziglar", type: "motivational" },
+    { text: "You are never too old to set another goal or to dream a new dream.", author: "C.S. Lewis", type: "motivational" },
+    { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt", type: "motivational" },
+    { text: "Dream big and dare to fail.", author: "Norman Vaughan", type: "motivational" },
+
+    // ===== BIBLE VERSES =====
+    { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13", type: "bible" },
+    { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", author: "Jeremiah 29:11", type: "bible" },
+    { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", author: "Joshua 1:9", type: "bible" },
+    { text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", author: "Proverbs 3:5-6", type: "bible" },
+    { text: "The Lord is my shepherd; I shall not want.", author: "Psalm 23:1", type: "bible" },
+    { text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.", author: "Philippians 4:6", type: "bible" },
+    { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", author: "John 3:16", type: "bible" },
+    { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles.", author: "Isaiah 40:31", type: "bible" },
+    { text: "The Lord is my light and my salvation—whom shall I fear?", author: "Psalm 27:1", type: "bible" },
+    { text: "Be still, and know that I am God.", author: "Psalm 46:10", type: "bible" },
+    { text: "For I am convinced that neither death nor life... will be able to separate us from the love of God that is in Christ Jesus our Lord.", author: "Romans 8:38-39", type: "bible" },
+    { text: "Let your light shine before others, that they may see your good deeds and glorify your Father in heaven.", author: "Matthew 5:16", type: "bible" },
+    { text: "The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding.", author: "Proverbs 9:10", type: "bible" },
+    { text: "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.", author: "Matthew 28:19", type: "bible" },
+    { text: "Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.", author: "Mark 12:30", type: "bible" },
+    { text: "The peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.", author: "Philippians 4:7", type: "bible" },
+    { text: "For we walk by faith, not by sight.", author: "2 Corinthians 5:7", type: "bible" },
+    { text: "The Lord will fight for you; you need only to be still.", author: "Exodus 14:14", type: "bible" },
+    { text: "Do not conform to the pattern of this world, but be transformed by the renewing of your mind.", author: "Romans 12:2", type: "bible" },
+    { text: "Above all else, guard your heart, for everything you do flows from it.", author: "Proverbs 4:23", type: "bible" },
 ];
 
 function displayQuote() {
     const quoteText = document.getElementById('quote-text');
     const quoteAuthor = document.getElementById('quote-author');
+    const quoteType = document.getElementById('quote-type');
     
     if (!quoteText) return;
     
+    // Get today's date and use it as seed
     const today = new Date();
     const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+    
+    // Cycle through quotes based on day of year
     const quoteIndex = dayOfYear % quotes.length;
     
-    quoteText.textContent = quotes[quoteIndex].text;
-    quoteAuthor.textContent = `— ${quotes[quoteIndex].author}`;
+    const selectedQuote = quotes[quoteIndex];
+    quoteText.textContent = selectedQuote.text;
+    quoteAuthor.textContent = `— ${selectedQuote.author}`;
+    
+    // Update type badge
+    if (quoteType) {
+        if (selectedQuote.type === 'bible') {
+            quoteType.innerHTML = '<i class="fas fa-bible"></i> Verse of the Day';
+            quoteType.style.color = '#ffdd44';
+            quoteType.style.borderColor = 'rgba(255, 221, 68, 0.3)';
+            quoteType.style.background = 'rgba(255, 221, 68, 0.1)';
+        } else {
+            quoteType.innerHTML = '<i class="fas fa-quote-right"></i> Quote of the Day';
+            quoteType.style.color = 'var(--mint-primary)';
+            quoteType.style.borderColor = 'var(--border-mint)';
+            quoteType.style.background = 'rgba(0, 255, 171, 0.08)';
+        }
+    }
 }
 
 document.addEventListener('DOMContentLoaded', displayQuote);
