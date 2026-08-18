@@ -49,9 +49,79 @@ tiltElements.forEach(el => {
     });
 });
 
+// ============================================
+// 4. LIVE STATUS
+// ============================================
+const statusTexts = [
+    'Currently exploring: React.js & Tailwind CSS',
+    'Building: New portfolio projects',
+    'Learning: Advanced JavaScript',
+    'Available for freelance work'
+];
+let statusIndex = 0;
+const statusElement = document.querySelector('.status-text');
+
+if (statusElement) {
+    setInterval(() => {
+        statusIndex = (statusIndex + 1) % statusTexts.length;
+        statusElement.textContent = statusTexts[statusIndex];
+    }, 5000);
+}
 
 // ============================================
-// 6. MOBILE MENU TOGGLE
+// 5. VISITOR COUNTER
+// ============================================
+async function getVisitorCount() {
+    const countElement = document.getElementById('visitor-count');
+    if (!countElement) return;
+    
+    try {
+        const response = await fetch('https://api.countapi.xyz/hit/cthyrnmngt718/visits');
+        const data = await response.json();
+        countElement.textContent = data.value || 0;
+    } catch (error) {
+        let count = parseInt(localStorage.getItem('visitorCount') || '0');
+        count++;
+        localStorage.setItem('visitorCount', count);
+        countElement.textContent = count;
+    }
+}
+getVisitorCount();
+
+// ============================================
+// 6. QUOTE OF THE DAY
+// ============================================
+const quotes = [
+    { text: "Code is like poetry. It should be clean, elegant, and tell a story.", author: "Unknown" },
+    { text: "The best way to predict the future is to create it.", author: "Peter Drucker" },
+    { text: "Design is not just what it looks like, it's how it works.", author: "Steve Jobs" },
+    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+    { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
+    { text: "Learning never exhausts the mind.", author: "Leonardo da Vinci" },
+    { text: "The art of being wise is the art of knowing what to overlook.", author: "William James" },
+    { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+    { text: "Technology is best when it brings people together.", author: "Matt Mullenweg" },
+    { text: "The only constant in technology is change.", author: "Unknown" }
+];
+
+function displayQuote() {
+    const quoteText = document.getElementById('quote-text');
+    const quoteAuthor = document.getElementById('quote-author');
+    
+    if (!quoteText) return;
+    
+    const today = new Date();
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+    const quoteIndex = dayOfYear % quotes.length;
+    
+    quoteText.textContent = quotes[quoteIndex].text;
+    quoteAuthor.textContent = `— ${quotes[quoteIndex].author}`;
+}
+
+document.addEventListener('DOMContentLoaded', displayQuote);
+
+// ============================================
+// 7. MOBILE MENU TOGGLE
 // ============================================
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -71,7 +141,7 @@ if (mobileMenu && navLinks) {
 }
 
 // ============================================
-// 7. SCROLL PROGRESS BAR
+// 8. SCROLL PROGRESS BAR
 // ============================================
 const progressBar = document.getElementById('progress-bar');
 
@@ -88,7 +158,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// 8. VERSATILE SCROLL BUTTON
+// 9. VERSATILE SCROLL BUTTON
 // ============================================
 const scrollBtn = document.getElementById('scroll-btn');
 const scrollIcon = document.getElementById('scroll-icon');
@@ -136,7 +206,7 @@ scrollBtn.addEventListener('click', () => {
 });
 
 // ============================================
-// 9. SCROLL REVEAL
+// 10. SCROLL REVEAL
 // ============================================
 const observerOptions = {
     threshold: 0.15,
@@ -164,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// 10. ACTIVE NAV LINK
+// 11. ACTIVE NAV LINK
 // ============================================
 const sections = document.querySelectorAll('section[id]');
 const navLinks2 = document.querySelectorAll('.nav-links a:not([href*="projects"])');
@@ -187,7 +257,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// 11. FORM SUBMISSION HANDLER (AJAX)
+// 12. FORM SUBMISSION HANDLER (AJAX)
 // ============================================
 const contactForm = document.querySelector('.contact-form');
 const successMsg = document.getElementById('form-success');
@@ -234,7 +304,7 @@ if (contactForm) {
 }
 
 // ============================================
-// 12. DARK/LIGHT MODE TOGGLE
+// 13. DARK/LIGHT MODE TOGGLE
 // ============================================
 const themeToggle = document.getElementById('theme-toggle');
 const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -256,7 +326,7 @@ if (themeToggle) {
 }
 
 // ============================================
-// 13. ANIMATED STATS COUNTERS
+// 14. ANIMATED STATS COUNTERS
 // ============================================
 const stats = document.querySelectorAll('.stat-number');
 
@@ -285,7 +355,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 stats.forEach(stat => counterObserver.observe(stat));
 
 // ============================================
-// 14. PARTICLE BACKGROUND
+// 15. PARTICLE BACKGROUND
 // ============================================
 const canvas = document.getElementById('particles-canvas');
 if (canvas) {
@@ -304,38 +374,38 @@ if (canvas) {
     window.addEventListener('resize', resize);
     resize();
 
-      class Particle {
+    class Particle {
         constructor() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.size = Math.random() * 6 + 4;   // ← Larger: 4-10px
+            this.size = Math.random() * 6 + 4;
             this.speedX = (Math.random() - 0.5) * 0.3;
             this.speedY = (Math.random() - 0.5) * 0.3;
-            this.opacity = Math.random() * 0.5 + 0.15;  // Slightly more visible
+            this.opacity = Math.random() * 0.5 + 0.15;
         }
-    
+
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-    
+
             if (mouse.x && mouse.y) {
                 const dx = this.x - mouse.x;
                 const dy = this.y - mouse.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 200) {  // Increased interaction distance
+                if (dist < 200) {
                     const force = 0.015;
                     this.speedX += (dx / dist) * force;
                     this.speedY += (dy / dist) * force;
                 }
             }
-    
+
             this.speedX *= 0.99;
             this.speedY *= 0.99;
-    
+
             if (this.x < 0 || this.x > width) this.speedX *= -1;
             if (this.y < 0 || this.y > height) this.speedY *= -1;
         }
-    
+
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -398,7 +468,7 @@ if (canvas) {
 }
 
 // ============================================
-// 15. CONFETTI EFFECT
+// 16. CONFETTI EFFECT
 // ============================================
 function launchConfetti() {
     const colors = ['#00ffab', '#00cc88', '#e8f5ed', '#88ffc8', '#00dd99', '#ff6b8a', '#ffdd44'];
@@ -430,7 +500,7 @@ function launchConfetti() {
 }
 
 // ============================================
-// 16. SKILLS BAR ANIMATION
+// 17. SKILLS BAR ANIMATION
 // ============================================
 const skillBars = document.querySelectorAll('.skill-bar-fill');
 
@@ -448,7 +518,7 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillBars.forEach(bar => skillObserver.observe(bar));
 
 // ============================================
-// 17. FILTER BUTTONS (Projects Page)
+// 18. FILTER BUTTONS (Projects Page)
 // ============================================
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
@@ -472,7 +542,7 @@ filterButtons.forEach(btn => {
 });
 
 // ============================================
-// 18. PAGE LOADER
+// 19. PAGE LOADER
 // ============================================
 window.addEventListener('load', () => {
     setTimeout(() => {
@@ -484,7 +554,7 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
-// 19. KEYBOARD NAVIGATION
+// 20. KEYBOARD NAVIGATION
 // ============================================
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown') {
@@ -498,7 +568,169 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// 20. DYNAMIC STYLES
+// 21. CAROUSEL
+// ============================================
+const track = document.getElementById('carousel-track');
+const slides = track ? track.querySelectorAll('.carousel-slide') : [];
+const dotsContainer = document.getElementById('carousel-dots');
+let currentSlide = 0;
+let autoSlideInterval;
+
+function createDots() {
+    if (!dotsContainer || slides.length === 0) return;
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+}
+
+function goToSlide(index) {
+    if (!track || slides.length === 0) return;
+    currentSlide = index;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    
+    const dots = dotsContainer ? dotsContainer.querySelectorAll('.carousel-dot') : [];
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+function nextSlide() {
+    if (slides.length === 0) return;
+    goToSlide((currentSlide + 1) % slides.length);
+}
+
+function prevSlide() {
+    if (slides.length === 0) return;
+    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+}
+
+function startAutoSlide() {
+    if (slides.length <= 1) return;
+    stopAutoSlide();
+    autoSlideInterval = setInterval(nextSlide, 4000);
+}
+
+function stopAutoSlide() {
+    if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+    }
+}
+
+if (slides.length > 0) {
+    createDots();
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    
+    if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAutoSlide(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAutoSlide(); });
+    
+    const carousel = document.querySelector('.carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopAutoSlide);
+        carousel.addEventListener('mouseleave', startAutoSlide);
+    }
+    
+    startAutoSlide();
+}
+
+// ============================================
+// 22. RADAR CHART
+// ============================================
+function loadRadarChart() {
+    const canvas = document.getElementById('radarChart');
+    if (!canvas) return;
+    
+    if (typeof Chart === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+        script.onload = () => createRadarChart(canvas);
+        document.head.appendChild(script);
+    } else {
+        createRadarChart(canvas);
+    }
+}
+
+function createRadarChart(canvas) {
+    const ctx = canvas.getContext('2d');
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const textColor = isLight ? '#0b1a14' : '#e8f5ed';
+    const gridColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL', 'UI/UX'],
+            datasets: [{
+                label: 'Skill Level',
+                data: [90, 85, 65, 75, 70, 80],
+                backgroundColor: 'rgba(0, 255, 171, 0.2)',
+                borderColor: '#00ffab',
+                pointBackgroundColor: '#00ffab',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#00ffab'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: textColor,
+                        font: {
+                            family: 'Inter',
+                            size: 12
+                        }
+                    }
+                }
+            },
+            scales: {
+                r: {
+                    angleLines: {
+                        color: gridColor
+                    },
+                    grid: {
+                        color: gridColor
+                    },
+                    pointLabels: {
+                        color: textColor,
+                        font: {
+                            family: 'Inter',
+                            size: 11
+                        }
+                    },
+                    ticks: {
+                        color: textColor,
+                        backdropColor: 'transparent',
+                        font: {
+                            size: 9
+                        }
+                    },
+                    max: 100,
+                    min: 0
+                }
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', loadRadarChart);
+
+const themeToggle2 = document.getElementById('theme-toggle');
+if (themeToggle2) {
+    themeToggle2.addEventListener('click', () => {
+        setTimeout(loadRadarChart, 300);
+    });
+}
+
+// ============================================
+// 23. DYNAMIC STYLES
 // ============================================
 const dynamicStyles = document.createElement('style');
 dynamicStyles.textContent = `
