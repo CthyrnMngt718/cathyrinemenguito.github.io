@@ -1,3 +1,6 @@
+/* ============================================
+   ROOT VARIABLES & RESET
+   ============================================ */
 :root {
   --bg-primary: #0b0e0c;
   --bg-secondary: #111611;
@@ -118,7 +121,7 @@ section {
 }
 
 /* ============================================
-   SUBTLE GRID OVERLAY (tech aesthetic)
+   SUBTLE GRID OVERLAY
    ============================================ */
 body::before {
   content: '';
@@ -198,7 +201,6 @@ nav {
   width: 100%;
 }
 
-/* Mobile menu toggle */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -301,7 +303,8 @@ nav {
 
 #about h2,
 #featured-projects h2,
-#contact h2 {
+#contact h2,
+#education h2 {
   font-size: 2.6rem;
   font-weight: 700;
   margin-bottom: 40px;
@@ -310,7 +313,8 @@ nav {
 }
 #about h2::after,
 #featured-projects h2::after,
-#contact h2::after {
+#contact h2::after,
+#education h2::after {
   content: '';
   position: absolute;
   bottom: -8px;
@@ -369,6 +373,112 @@ nav {
 }
 
 /* ============================================
+   EDUCATION SECTION
+   ============================================ */
+#education {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-mint);
+  border-bottom: 1px solid var(--border-mint);
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.edu-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-mint);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: var(--transition);
+}
+.edu-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--mint-primary);
+  box-shadow: 0 12px 40px var(--mint-glow);
+}
+.edu-card.cert-card {
+  border-color: rgba(0, 255, 171, 0.3);
+  background: rgba(0, 255, 171, 0.05);
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edu-tag {
+  background: rgba(0, 255, 171, 0.1);
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--mint-primary);
+  border: 1px solid var(--border-mint);
+}
+.edu-tag i {
+  margin-right: 4px;
+}
+
+.edu-year {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.edu-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.edu-school {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.edu-location {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+.edu-location i {
+  color: var(--mint-primary);
+  width: 16px;
+}
+
+.edu-achievements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.edu-achievements span {
+  background: rgba(0, 255, 171, 0.06);
+  padding: 2px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-mint);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.edu-achievements span i {
+  color: var(--mint-primary);
+  font-size: 0.7rem;
+}
+
+/* ============================================
    FEATURED PROJECTS
    ============================================ */
 #featured-projects {
@@ -394,7 +504,6 @@ nav {
   border-color: var(--mint-primary);
   box-shadow: 0 20px 50px var(--mint-glow);
 }
-
 .project-card img {
   width: 100%;
   height: 200px;
@@ -479,7 +588,6 @@ nav {
   transform: translateY(-4px);
 }
 
-/* Contact Form */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -540,14 +648,96 @@ footer p {
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   SCROLL PROGRESS BAR
+   ============================================ */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--mint-primary), #88ffc8, var(--mint-secondary));
+  width: 0%;
+  z-index: 9999;
+  box-shadow: 0 0 20px var(--mint-glow);
+  transition: width 0.1s ease-out;
+}
+
+/* ============================================
+   FLOATING BUTTONS
+   ============================================ */
+.floating-buttons {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.floating-buttons button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--border-mint);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  color: var(--mint-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+}
+
+.floating-buttons button:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-color: var(--mint-primary);
+  box-shadow: 0 0 40px var(--mint-glow);
+  background: rgba(0, 255, 171, 0.15);
+}
+
+.floating-buttons button:active {
+  transform: scale(0.95);
+}
+
+#scroll-up-btn {
+  display: none;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1),
+              transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays */
+.project-grid .project-card:nth-child(2) { transition-delay: 0.1s; }
+.project-grid .project-card:nth-child(3) { transition-delay: 0.2s; }
+.project-grid .project-card:nth-child(4) { transition-delay: 0.3s; }
+.education-grid .edu-card:nth-child(2) { transition-delay: 0.1s; }
+.education-grid .edu-card:nth-child(3) { transition-delay: 0.2s; }
+.education-grid .edu-card:nth-child(4) { transition-delay: 0.3s; }
+.education-grid .edu-card:nth-child(5) { transition-delay: 0.4s; }
+.about-grid .about-text { transition-delay: 0.1s; }
+.about-grid .about-skills { transition-delay: 0.2s; }
+
+/* ============================================
+   RESPONSIVE
    ============================================ */
 @media (max-width: 992px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  .contact-content {
+  .about-grid, .contact-content {
     grid-template-columns: 1fr;
     gap: 30px;
   }
@@ -556,20 +746,9 @@ footer p {
     text-align: center;
     padding-top: 120px;
   }
-  .hero-content h1 {
-    font-size: 2.8rem;
-  }
-  .hero-buttons {
-    justify-content: center;
-  }
-  .description {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero-image img {
-    width: 240px;
-    height: 240px;
-  }
+  .hero-content h1 { font-size: 2.8rem; }
+  .hero-buttons, .description { justify-content: center; margin-left: auto; margin-right: auto; }
+  .hero-image img { width: 240px; height: 240px; }
 }
 
 @media (max-width: 768px) {
@@ -602,420 +781,25 @@ footer p {
   .menu-toggle.active .bar:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
   }
-
-  .hero-content h1 {
-    font-size: 2.2rem;
+  .hero-content h1 { font-size: 2.2rem; }
+  .tagline { font-size: 1.1rem; }
+  .project-grid, .education-grid { grid-template-columns: 1fr; }
+  #about h2, #featured-projects h2, #contact h2, #education h2 { font-size: 2rem; }
+  footer .container { flex-direction: column; text-align: center; }
+  .floating-buttons {
+    bottom: 20px;
+    right: 20px;
   }
-  .tagline {
-    font-size: 1.1rem;
-  }
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-  #about h2,
-  #featured-projects h2,
-  #contact h2 {
-    font-size: 2rem;
-  }
-  footer .container {
-    flex-direction: column;
-    text-align: center;
+  .floating-buttons button {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 1.8rem;
-  }
-  .btn {
-    padding: 10px 24px;
-    font-size: 0.85rem;
-  }
-  section {
-    padding: 60px 0;
-  }
-  .hero-image img {
-    width: 180px;
-    height: 180px;
-  }
-}
-/* ============================================
-   EDUCATION SECTION
-   ============================================ */
-#education {
-    background: var(--bg-secondary);
-    border-top: 1px solid var(--border-mint);
-    border-bottom: 1px solid var(--border-mint);
-}
-
-#education h2 {
-    font-size: 2.6rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    position: relative;
-    display: inline-block;
-}
-#education h2::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 60px;
-    height: 4px;
-    background: var(--mint-primary);
-    border-radius: 4px;
-    box-shadow: 0 0 20px var(--mint-glow);
-}
-
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-}
-
-.edu-card {
-    background: var(--bg-card);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--border-mint);
-    border-radius: var(--radius);
-    padding: 24px;
-    transition: var(--transition);
-}
-.edu-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--mint-primary);
-    box-shadow: 0 12px 40px var(--mint-glow);
-}
-
-.edu-card.cert-card {
-    border-color: rgba(0, 255, 171, 0.3);
-    background: rgba(0, 255, 171, 0.05);
-}
-
-.edu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.edu-tag {
-    background: rgba(0, 255, 171, 0.1);
-    padding: 4px 14px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--mint-primary);
-    border: 1px solid var(--border-mint);
-}
-.edu-tag i {
-    margin-right: 4px;
-}
-
-.edu-year {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.edu-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 4px;
-    color: var(--text-primary);
-}
-
-.edu-school {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: 2px;
-}
-
-.edu-location {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    opacity: 0.8;
-    margin-bottom: 12px;
-}
-.edu-location i {
-    color: var(--mint-primary);
-    width: 16px;
-}
-
-.edu-achievements {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-}
-.edu-achievements span {
-    background: rgba(0, 255, 171, 0.06);
-    padding: 2px 12px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-mint);
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-.edu-achievements span i {
-    color: var(--mint-primary);
-    font-size: 0.7rem;
-}
-
-@media (max-width: 768px) {
-    .education-grid {
-        grid-template-columns: 1fr;
-    }
-    #education h2 {
-        font-size: 2rem;
-    }
-    .edu-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-/* ============================================
-   SCROLL PROGRESS BAR (Top of Page)
-   ============================================ */
-#progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--mint-primary), #88ffc8, var(--mint-secondary));
-    width: 0%;
-    z-index: 9999;
-    box-shadow: 0 0 20px var(--mint-glow);
-    transition: width 0.1s ease-out;
-}
-
-/* ============================================
-   FLOATING BUTTONS (Up / Down)
-   ============================================ */
-.floating-buttons {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
-}
-
-.floating-buttons button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid var(--border-mint);
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    color: var(--mint-primary);
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-}
-
-.floating-buttons button:hover {
-    transform: translateY(-3px) scale(1.05);
-    border-color: var(--mint-primary);
-    box-shadow: 0 0 40px var(--mint-glow);
-    background: rgba(0, 255, 171, 0.15);
-}
-
-.floating-buttons button:active {
-    transform: scale(0.95);
-}
-
-/* Initially hide the "Up" button */
-#scroll-up-btn {
-    display: none;
-}
-
-/* ============================================
-   SCROLL REVEAL ANIMATIONS (Fade In)
-   ============================================ */
-.fade-in {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1),
-                transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Staggered delays for project cards */
-.project-grid .project-card:nth-child(2) {
-    transition-delay: 0.1s;
-}
-.project-grid .project-card:nth-child(3) {
-    transition-delay: 0.2s;
-}
-.project-grid .project-card:nth-child(4) {
-    transition-delay: 0.3s;
-}
-
-/* Staggered delays for education cards */
-.education-grid .edu-card:nth-child(2) {
-    transition-delay: 0.1s;
-}
-.education-grid .edu-card:nth-child(3) {
-    transition-delay: 0.2s;
-}
-.education-grid .edu-card:nth-child(4) {
-    transition-delay: 0.3s;
-}
-.education-grid .edu-card:nth-child(5) {
-    transition-delay: 0.4s;
-}
-
-/* Staggered delays for about grid */
-.about-grid .about-text {
-    transition-delay: 0.1s;
-}
-.about-grid .about-skills {
-    transition-delay: 0.2s;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .floating-buttons {
-        bottom: 20px;
-        right: 20px;
-    }
-    .floating-buttons button {
-        width: 44px;
-        height: 44px;
-        font-size: 1rem;
-    }
-}
-/* ============================================
-   SCROLL PROGRESS BAR (Top of Page)
-   ============================================ */
-#progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--mint-primary), #88ffc8, var(--mint-secondary));
-    width: 0%;
-    z-index: 9999;
-    box-shadow: 0 0 20px var(--mint-glow);
-    transition: width 0.1s ease-out;
-}
-
-/* ============================================
-   FLOATING BUTTONS (Up / Down)
-   ============================================ */
-.floating-buttons {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
-}
-
-.floating-buttons button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid var(--border-mint);
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    color: var(--mint-primary);
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-}
-
-.floating-buttons button:hover {
-    transform: translateY(-3px) scale(1.05);
-    border-color: var(--mint-primary);
-    box-shadow: 0 0 40px var(--mint-glow);
-    background: rgba(0, 255, 171, 0.15);
-}
-
-.floating-buttons button:active {
-    transform: scale(0.95);
-}
-
-/* Initially hide the "Up" button */
-#scroll-up-btn {
-    display: none;
-}
-
-/* ============================================
-   SCROLL REVEAL ANIMATIONS (Fade In)
-   ============================================ */
-.fade-in {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1),
-                transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Staggered delays for project cards */
-.project-grid .project-card:nth-child(2) {
-    transition-delay: 0.1s;
-}
-.project-grid .project-card:nth-child(3) {
-    transition-delay: 0.2s;
-}
-.project-grid .project-card:nth-child(4) {
-    transition-delay: 0.3s;
-}
-
-/* Staggered delays for education cards */
-.education-grid .edu-card:nth-child(2) {
-    transition-delay: 0.1s;
-}
-.education-grid .edu-card:nth-child(3) {
-    transition-delay: 0.2s;
-}
-.education-grid .edu-card:nth-child(4) {
-    transition-delay: 0.3s;
-}
-.education-grid .edu-card:nth-child(5) {
-    transition-delay: 0.4s;
-}
-
-/* Staggered delays for about grid */
-.about-grid .about-text {
-    transition-delay: 0.1s;
-}
-.about-grid .about-skills {
-    transition-delay: 0.2s;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .floating-buttons {
-        bottom: 20px;
-        right: 20px;
-    }
-    .floating-buttons button {
-        width: 44px;
-        height: 44px;
-        font-size: 1rem;
-    }
+  .hero-content h1 { font-size: 1.8rem; }
+  .btn { padding: 10px 24px; font-size: 0.85rem; }
+  section { padding: 60px 0; }
+  .hero-image img { width: 180px; height: 180px; }
 }
