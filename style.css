@@ -621,30 +621,93 @@ nav {
 }
 
 /* ============================================
-   FOOTER
+   FOOTER — POLISHED VERSION
    ============================================ */
 footer {
   background: var(--bg-primary);
   border-top: 1px solid var(--border-mint);
-  padding: 32px 24px;
+  padding: 40px 24px 30px;
   text-align: center;
 }
+
 footer .container {
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 20px;
 }
-footer p {
+
+.footer-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--mint-primary), transparent);
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-mint);
+  color: var(--text-secondary);
+  transition: var(--transition);
+  font-size: 1.1rem;
+}
+
+.footer-social a:hover {
+  border-color: var(--mint-primary);
+  color: var(--mint-primary);
+  box-shadow: 0 0 30px var(--mint-glow);
+  transform: translateY(-4px);
+  background: rgba(0, 255, 171, 0.06);
+}
+
+.footer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-text p {
   color: var(--text-secondary);
   font-size: 0.9rem;
+  margin: 0;
 }
-.footer-credit i {
-  color: #ff6b8a;
+
+.footer-text .footer-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
-.footer-credit {
+
+.footer-text .footer-tagline {
   font-size: 0.85rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+.footer-text .footer-tagline i {
+  color: var(--mint-primary);
+  margin: 0 4px;
+}
+
+.footer-text .footer-copy {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 4px;
 }
 
 /* ============================================
@@ -663,48 +726,84 @@ footer p {
 }
 
 /* ============================================
-   FLOATING BUTTONS
+   VERSATILE FLOATING BUTTON (Up/Down)
    ============================================ */
 .floating-buttons {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   z-index: 1000;
 }
 
 .floating-buttons button {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: 1px solid var(--border-mint);
   background: var(--bg-card);
   backdrop-filter: blur(12px);
   color: var(--mint-primary);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
 }
 
 .floating-buttons button:hover {
-  transform: translateY(-3px) scale(1.05);
+  transform: scale(1.1) translateY(-2px);
   border-color: var(--mint-primary);
-  box-shadow: 0 0 40px var(--mint-glow);
-  background: rgba(0, 255, 171, 0.15);
+  box-shadow: 0 0 50px var(--mint-glow);
+  background: rgba(0, 255, 171, 0.12);
 }
 
 .floating-buttons button:active {
-  transform: scale(0.95);
+  transform: scale(0.9);
 }
 
-#scroll-up-btn {
-  display: none;
+.floating-buttons button i {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Pulse animation */
+.floating-buttons button.pulse {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 60px var(--mint-glow), 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Tooltip */
+.scroll-tooltip {
+  position: absolute;
+  right: 68px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-mint);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  font-weight: 500;
+}
+
+.floating-buttons button:hover .scroll-tooltip {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ============================================
@@ -785,14 +884,29 @@ footer p {
   .tagline { font-size: 1.1rem; }
   .project-grid, .education-grid { grid-template-columns: 1fr; }
   #about h2, #featured-projects h2, #contact h2, #education h2 { font-size: 2rem; }
-  footer .container { flex-direction: column; text-align: center; }
+
   .floating-buttons {
     bottom: 20px;
     right: 20px;
   }
   .floating-buttons button {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+  .scroll-tooltip {
+    display: none;
+  }
+
+  footer {
+    padding: 30px 20px 24px;
+  }
+  .footer-social a {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  .footer-text .footer-name {
     font-size: 1rem;
   }
 }
@@ -802,100 +916,4 @@ footer p {
   .btn { padding: 10px 24px; font-size: 0.85rem; }
   section { padding: 60px 0; }
   .hero-image img { width: 180px; height: 180px; }
-}
-/* ============================================
-   FLOATING BUTTON - VERSATILE (Up/Down)
-   ============================================ */
-.floating-buttons {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1000;
-}
-
-.floating-buttons button {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: 1px solid var(--border-mint);
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    color: var(--mint-primary);
-    font-size: 1.4rem;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    position: relative;
-}
-
-.floating-buttons button:hover {
-    transform: scale(1.1) translateY(-2px);
-    border-color: var(--mint-primary);
-    box-shadow: 0 0 50px var(--mint-glow);
-    background: rgba(0, 255, 171, 0.12);
-}
-
-.floating-buttons button:active {
-    transform: scale(0.9);
-}
-
-.floating-buttons button i {
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Pulse animation to draw attention */
-.floating-buttons button.pulse {
-    animation: pulseGlow 2s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-    0%, 100% {
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 60px var(--mint-glow), 0 4px 30px rgba(0, 0, 0, 0.5);
-    }
-}
-
-/* Tooltip text */
-.scroll-tooltip {
-    position: absolute;
-    right: 68px;
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-mint);
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateX(10px);
-    transition: all 0.3s ease;
-    pointer-events: none;
-    font-weight: 500;
-}
-
-.floating-buttons button:hover .scroll-tooltip {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Hide tooltip on mobile */
-@media (max-width: 768px) {
-    .scroll-tooltip {
-        display: none;
-    }
-    .floating-buttons button {
-        width: 48px;
-        height: 48px;
-        font-size: 1.2rem;
-    }
-    .floating-buttons {
-        bottom: 20px;
-        right: 20px;
-    }
 }
