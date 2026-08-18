@@ -1,5 +1,17 @@
 // ============================================
-// 1. MOBILE MENU TOGGLE (Hamburger)
+// 1. CURSOR GLOW (Optional)
+// ============================================
+const cursorGlow = document.getElementById('cursor-glow');
+
+if (cursorGlow) {
+    document.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+    });
+}
+
+// ============================================
+// 2. MOBILE MENU TOGGLE
 // ============================================
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -19,7 +31,7 @@ if (mobileMenu && navLinks) {
 }
 
 // ============================================
-// 2. SCROLL PROGRESS BAR
+// 3. SCROLL PROGRESS BAR
 // ============================================
 const progressBar = document.getElementById('progress-bar');
 
@@ -32,12 +44,11 @@ window.addEventListener('scroll', () => {
         progressBar.style.width = Math.min(progress, 100) + '%';
     }
 
-    // Update button state based on scroll position
     updateScrollButton();
 });
 
 // ============================================
-// 3. VERSATILE SCROLL BUTTON (Up/Down in one)
+// 4. VERSATILE SCROLL BUTTON
 // ============================================
 const scrollBtn = document.getElementById('scroll-btn');
 const scrollIcon = document.getElementById('scroll-icon');
@@ -47,48 +58,35 @@ let isAtTop = true;
 
 function updateScrollButton() {
     const scrollY = window.scrollY;
-    const contactSection = document.getElementById('contact');
-    let contactPosition = document.body.scrollHeight;
-
-    if (contactSection) {
-        contactPosition = contactSection.offsetTop - 80;
-    }
 
     if (scrollY < 100) {
-        // Near top → Show DOWN arrow
         scrollIcon.className = 'fas fa-chevron-down';
         tooltip.textContent = 'Scroll Down';
         isAtTop = true;
         scrollBtn.classList.remove('pulse');
     } else if (scrollY > 300) {
-        // Scrolled past 300px → Show UP arrow
         scrollIcon.className = 'fas fa-chevron-up';
         tooltip.textContent = 'Back to Top';
         isAtTop = false;
         scrollBtn.classList.add('pulse');
     } else {
-        // In between → Keep current state
         scrollBtn.classList.add('pulse');
     }
 }
 
-// Click handler
 scrollBtn.addEventListener('click', () => {
     if (isAtTop) {
-        // Scroll down to contact section
         const contactSection = document.getElementById('contact');
         if (contactSection) {
             contactSection.scrollIntoView({ behavior: 'smooth' });
         } else {
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
-        // Briefly change tooltip
         tooltip.textContent = 'Scrolling Down...';
         setTimeout(() => {
             tooltip.textContent = 'Scroll Down';
         }, 800);
     } else {
-        // Scroll back to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
         tooltip.textContent = 'Scrolling Up...';
         setTimeout(() => {
@@ -98,7 +96,7 @@ scrollBtn.addEventListener('click', () => {
 });
 
 // ============================================
-// 4. SCROLL REVEAL (Fade-in Animations)
+// 5. SCROLL REVEAL
 // ============================================
 const observerOptions = {
     threshold: 0.15,
@@ -122,6 +120,28 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Initialize button state
     setTimeout(updateScrollButton, 100);
+});
+
+// ============================================
+// 6. ACTIVE NAV LINK (based on scroll)
+// ============================================
+const sections = document.querySelectorAll('section[id]');
+const navLinks2 = document.querySelectorAll('.nav-links a:not([href*="projects"])');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks2.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
 });
