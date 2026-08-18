@@ -154,12 +154,11 @@ const successMsg = document.getElementById('form-success');
 
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault(); // Prevent page refresh
+        e.preventDefault();
         
         const btn = this.querySelector('button[type="submit"]');
         const originalText = btn.innerHTML;
         
-        // Show loading state
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         btn.disabled = true;
         
@@ -174,16 +173,15 @@ if (contactForm) {
             });
             
             if (response.ok) {
-                // Success - hide form, show success message
                 contactForm.style.display = 'none';
                 if (successMsg) {
                     successMsg.style.display = 'block';
                     successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Trigger confetti
+                    launchConfetti();
                 }
-                // Reset form
                 contactForm.reset();
             } else {
-                // Error
                 alert('Oops! Something went wrong. Please try again.');
                 btn.innerHTML = originalText;
                 btn.disabled = false;
@@ -382,3 +380,97 @@ if (canvas) {
         initParticles();
     });
 }
+
+// ============================================
+// 12. CONFETTI EFFECT (Form Success)
+// ============================================
+function launchConfetti() {
+    const colors = ['#00ffab', '#00cc88', '#e8f5ed', '#88ffc8', '#00dd99', '#ff6b8a', '#ffdd44'];
+    const count = 120;
+    const container = document.body;
+
+    for (let i = 0; i < count; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti-piece');
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '-10px';
+        confetti.style.width = Math.random() * 10 + 4 + 'px';
+        confetti.style.height = Math.random() * 10 + 4 + 'px';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        confetti.style.position = 'fixed';
+        confetti.style.zIndex = '9999';
+        confetti.style.pointerEvents = 'none';
+        confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s linear forwards`;
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        
+        container.appendChild(confetti);
+        
+        setTimeout(() => {
+            confetti.remove();
+        }, 3000);
+    }
+}
+
+// ============================================
+// 13. SKILLS BAR ANIMATION
+// ============================================
+const skillBars = document.querySelectorAll('.skill-bar-fill');
+
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const bar = entry.target;
+            const width = bar.getAttribute('data-width');
+            bar.style.width = width + '%';
+            skillObserver.unobserve(bar);
+        }
+    });
+}, { threshold: 0.3 });
+
+skillBars.forEach(bar => skillObserver.observe(bar));
+
+// ============================================
+// 14. FILTER BUTTONS (Projects Page)
+// ============================================
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        projectCards.forEach(card => {
+            const categories = card.dataset.category ? card.dataset.category.split(' ') : [];
+            if (filter === 'all' || categories.includes(filter)) {
+                card.style.display = 'block';
+                card.style.animation = 'fadeIn 0.5s ease forwards';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+
+// Add confetti styles dynamically
+const confettiStyles = document.createElement('style');
+confettiStyles.textContent = `
+    @keyframes confettiFall {
+        0% {
+            transform: translateY(0) rotate(0deg) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh) rotate(720deg) scale(0.2);
+            opacity: 0;
+        }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+`;
+document.head.appendChild(confettiStyles);
