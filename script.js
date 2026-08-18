@@ -62,7 +62,6 @@ if (downBtn) {
         if (contactSection) {
             contactSection.scrollIntoView({ behavior: 'smooth' });
         } else {
-            // Fallback: scroll to the very bottom of the page
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     });
