@@ -254,7 +254,7 @@ body:hover #cursor-glow {
 }
 
 /* ============================================
-   NAVIGATION
+   NAVIGATION - ENHANCED
    ============================================ */
 header {
     position: fixed;
@@ -262,11 +262,24 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(7, 10, 8, 0.85);
-    backdrop-filter: blur(16px);
+    background: rgba(7, 10, 8, 0.75);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
     border-bottom: 1px solid var(--border-mint);
     padding: 0 24px;
-    transition: var(--transition);
+    transition: all 0.4s var(--ease-spring);
+}
+
+/* Navbar shadow on scroll */
+header.scrolled {
+    background: rgba(7, 10, 8, 0.92);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border-bottom-color: rgba(0, 255, 171, 0.2);
+}
+
+[data-theme="light"] header.scrolled {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
 }
 
 nav {
@@ -279,7 +292,7 @@ nav {
 }
 
 /* ============================================
-   LOGO - INITIALS (CM)
+   LOGO - INITIALS (CM) with Enhanced Hover
    ============================================ */
 .logo a {
     display: flex;
@@ -290,6 +303,21 @@ nav {
     font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: 0px;
+    position: relative;
+}
+
+.logo a::before {
+    content: '';
+    position: absolute;
+    inset: -8px -12px;
+    border-radius: 8px;
+    background: rgba(0, 255, 171, 0.04);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.logo a:hover::before {
+    opacity: 1;
 }
 
 .logo-c {
@@ -306,10 +334,12 @@ nav {
 
 .logo a:hover .logo-c {
     color: var(--mint-primary);
+    transform: translateY(-2px);
 }
 
 .logo a:hover .logo-m {
-    filter: drop-shadow(0 0 20px var(--mint-glow));
+    filter: drop-shadow(0 0 30px var(--mint-glow));
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
@@ -325,43 +355,62 @@ nav {
 }
 
 /* ============================================
-   NAVIGATION LINKS
+   NAVIGATION LINKS - Enhanced
    ============================================ */
 .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 8px;
     align-items: center;
 }
 
 .nav-links a {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-secondary);
-    transition: var(--transition);
+    transition: all 0.3s var(--ease-spring);
     position: relative;
-    padding: 4px 0;
+    padding: 8px 16px;
+    border-radius: 50px;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    background: rgba(0, 255, 171, 0.06);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s var(--ease-spring);
+}
+
+.nav-links a:hover::before,
+.nav-links a.active::before {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -2px;
-    left: 0;
+    bottom: 4px;
+    left: 50%;
     width: 0;
     height: 2px;
     background: var(--mint-gradient);
-    transition: var(--transition);
+    transition: all 0.3s var(--ease-spring);
+    transform: translateX(-50%);
     box-shadow: 0 0 10px var(--mint-glow);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 60%;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--text-primary);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
 }
 
 /* ============================================
@@ -1616,7 +1665,69 @@ footer .container {
 }
 
 /* ============================================
-   SCROLL PROGRESS BAR
+   SCROLL PROGRESS RING
+   ============================================ */
+.scroll-progress-ring {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+    width: 60px;
+    height: 60px;
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: var(--border-mint);
+    stroke-width: 4;
+}
+
+.progress-ring-fill {
+    fill: none;
+    stroke: var(--mint-primary);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 163.36;
+    stroke-dashoffset: 163.36;
+    transition: stroke-dashoffset 0.1s ease;
+}
+
+.progress-percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+    .scroll-progress-ring {
+        bottom: 80px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+    }
+    .progress-ring {
+        width: 48px;
+        height: 48px;
+    }
+    .progress-percent {
+        font-size: 0.6rem;
+    }
+}
+
+/* ============================================
+   SCROLL PROGRESS BAR (Keep existing)
    ============================================ */
 #progress-bar {
     position: fixed;
@@ -1949,9 +2060,38 @@ footer .container {
 }
 
 /* ============================================
-   ============================================
+   ACCESSIBILITY - FOCUS STATES
+   ============================================ */
+:focus-visible {
+    outline: 2px solid var(--mint-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--mint-primary);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================
    LIGHT MODE OVERRIDES
-   ============================================
    ============================================ */
 [data-theme="light"] {
     --bg-primary: #f0f7f3;
@@ -1984,6 +2124,10 @@ footer .container {
 [data-theme="light"] .nav-links a:hover,
 [data-theme="light"] .nav-links a.active {
     color: #0b1a14;
+}
+
+[data-theme="light"] .nav-links a::before {
+    background: rgba(0, 200, 120, 0.06);
 }
 
 [data-theme="light"] .nav-links a::after {
@@ -2273,6 +2417,14 @@ footer .container {
     box-shadow: 0 0 12px rgba(0, 200, 120, 0.25);
 }
 
+[data-theme="light"] .scroll-progress-ring .progress-ring-fill {
+    stroke: var(--mint-primary);
+}
+
+[data-theme="light"] .progress-percent {
+    color: #2a4a3a;
+}
+
 /* ============================================
    RESPONSIVE
    ============================================ */
@@ -2462,6 +2614,19 @@ footer .container {
     }
     .carousel-btn.next {
         right: 8px;
+    }
+    .scroll-progress-ring {
+        bottom: 80px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+    }
+    .progress-ring {
+        width: 48px;
+        height: 48px;
+    }
+    .progress-percent {
+        font-size: 0.6rem;
     }
 }
 
