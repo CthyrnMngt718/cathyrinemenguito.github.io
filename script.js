@@ -1,5 +1,5 @@
 // ============================================
-// 1. CURSOR GLOW (Optional)
+// 1. CURSOR GLOW (Enhanced)
 // ============================================
 const cursorGlow = document.getElementById('cursor-glow');
 
@@ -11,7 +11,114 @@ if (cursorGlow) {
 }
 
 // ============================================
-// 2. MOBILE MENU TOGGLE
+// 2. CUSTOM CURSOR
+// ============================================
+const customCursor = document.getElementById('custom-cursor');
+
+if (customCursor) {
+    document.addEventListener('mousemove', (e) => {
+        customCursor.style.left = e.clientX + 'px';
+        customCursor.style.top = e.clientY + 'px';
+    });
+
+    document.querySelectorAll('a, button, .btn, .project-card, .service-card, .edu-card').forEach(el => {
+        el.addEventListener('mouseenter', () => customCursor.classList.add('active'));
+        el.addEventListener('mouseleave', () => customCursor.classList.remove('active'));
+    });
+}
+
+// ============================================
+// 3. 3D TILT EFFECT ON CARDS
+// ============================================
+const tiltElements = document.querySelectorAll('[data-tilt]');
+
+tiltElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 15;
+        const rotateY = (centerX - x) / 15;
+        el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+    
+    el.addEventListener('mouseleave', () => {
+        el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    });
+});
+
+// ============================================
+// 4. MAGNETIC BUTTONS
+// ============================================
+const magneticBtns = document.querySelectorAll('.magnetic-btn');
+
+magneticBtns.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+    });
+});
+
+// ============================================
+// 5. ENHANCED TYPING ANIMATION (Multiple Phrases)
+// ============================================
+const taglineElement = document.getElementById('tagline');
+if (taglineElement) {
+    const phrases = [
+        'Computer Science Graduate',
+        'Web Developer',
+        'UI/UX Enthusiast',
+        'IT Professional'
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let currentText = '';
+
+    function typeEffect() {
+        const fullText = phrases[phraseIndex];
+        
+        if (!isDeleting) {
+            currentText = fullText.substring(0, charIndex + 1);
+            charIndex++;
+            
+            if (charIndex === fullText.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2500);
+                return;
+            }
+        } else {
+            currentText = fullText.substring(0, charIndex - 1);
+            charIndex--;
+            
+            if (charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(typeEffect, 500);
+                return;
+            }
+        }
+        
+        taglineElement.textContent = currentText;
+        const speed = isDeleting ? 30 : 60;
+        setTimeout(typeEffect, speed);
+    }
+    
+    window.addEventListener('load', () => {
+        setTimeout(typeEffect, 1000);
+    });
+}
+
+// ============================================
+// 6. MOBILE MENU TOGGLE
 // ============================================
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -31,7 +138,7 @@ if (mobileMenu && navLinks) {
 }
 
 // ============================================
-// 3. SCROLL PROGRESS BAR
+// 7. SCROLL PROGRESS BAR
 // ============================================
 const progressBar = document.getElementById('progress-bar');
 
@@ -48,7 +155,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// 4. VERSATILE SCROLL BUTTON
+// 8. VERSATILE SCROLL BUTTON
 // ============================================
 const scrollBtn = document.getElementById('scroll-btn');
 const scrollIcon = document.getElementById('scroll-icon');
@@ -96,7 +203,7 @@ scrollBtn.addEventListener('click', () => {
 });
 
 // ============================================
-// 5. SCROLL REVEAL
+// 9. SCROLL REVEAL
 // ============================================
 const observerOptions = {
     threshold: 0.15,
@@ -113,7 +220,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll(
-        'section, .project-card, .edu-card, .about-text, .about-skills'
+        'section, .project-card, .edu-card, .about-text, .about-skills, .service-card'
     );
     elements.forEach(el => {
         el.classList.add('fade-in');
@@ -124,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// 6. ACTIVE NAV LINK (based on scroll)
+// 10. ACTIVE NAV LINK
 // ============================================
 const sections = document.querySelectorAll('section[id]');
 const navLinks2 = document.querySelectorAll('.nav-links a:not([href*="projects"])');
@@ -147,7 +254,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// 7. FORM SUBMISSION HANDLER (AJAX - No Refresh)
+// 11. FORM SUBMISSION HANDLER (AJAX)
 // ============================================
 const contactForm = document.querySelector('.contact-form');
 const successMsg = document.getElementById('form-success');
@@ -177,7 +284,6 @@ if (contactForm) {
                 if (successMsg) {
                     successMsg.style.display = 'block';
                     successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    // Trigger confetti
                     launchConfetti();
                 }
                 contactForm.reset();
@@ -195,7 +301,7 @@ if (contactForm) {
 }
 
 // ============================================
-// 8. DARK/LIGHT MODE TOGGLE
+// 12. DARK/LIGHT MODE TOGGLE
 // ============================================
 const themeToggle = document.getElementById('theme-toggle');
 const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -217,30 +323,7 @@ if (themeToggle) {
 }
 
 // ============================================
-// 9. TYPING ANIMATION (Hero Description)
-// ============================================
-const typedText = document.querySelector('.description');
-if (typedText) {
-    const originalText = typedText.textContent;
-    typedText.textContent = '';
-    let charIndex = 0;
-    const typeSpeed = 40;
-
-    function typeWriter() {
-        if (charIndex < originalText.length) {
-            typedText.textContent += originalText.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeWriter, typeSpeed);
-        }
-    }
-
-    window.addEventListener('load', () => {
-        setTimeout(typeWriter, 600);
-    });
-}
-
-// ============================================
-// 10. ANIMATED STATS COUNTERS
+// 13. ANIMATED STATS COUNTERS
 // ============================================
 const stats = document.querySelectorAll('.stat-number');
 
@@ -269,7 +352,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 stats.forEach(stat => counterObserver.observe(stat));
 
 // ============================================
-// 11. PARTICLE BACKGROUND
+// 14. PARTICLE BACKGROUND
 // ============================================
 const canvas = document.getElementById('particles-canvas');
 if (canvas) {
@@ -382,7 +465,7 @@ if (canvas) {
 }
 
 // ============================================
-// 12. CONFETTI EFFECT (Form Success)
+// 15. CONFETTI EFFECT
 // ============================================
 function launchConfetti() {
     const colors = ['#00ffab', '#00cc88', '#e8f5ed', '#88ffc8', '#00dd99', '#ff6b8a', '#ffdd44'];
@@ -414,7 +497,7 @@ function launchConfetti() {
 }
 
 // ============================================
-// 13. SKILLS BAR ANIMATION
+// 16. SKILLS BAR ANIMATION
 // ============================================
 const skillBars = document.querySelectorAll('.skill-bar-fill');
 
@@ -432,7 +515,7 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillBars.forEach(bar => skillObserver.observe(bar));
 
 // ============================================
-// 14. FILTER BUTTONS (Projects Page)
+// 17. FILTER BUTTONS (Projects Page)
 // ============================================
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
@@ -455,9 +538,37 @@ filterButtons.forEach(btn => {
     });
 });
 
-// Add confetti styles dynamically
-const confettiStyles = document.createElement('style');
-confettiStyles.textContent = `
+// ============================================
+// 18. PAGE LOADER
+// ============================================
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.getElementById('page-loader');
+        if (loader) {
+            loader.classList.add('hidden');
+        }
+    }, 600);
+});
+
+// ============================================
+// 19. KEYBOARD NAVIGATION
+// ============================================
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') {
+        window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+        e.preventDefault();
+    }
+    if (e.key === 'ArrowUp') {
+        window.scrollBy({ top: -window.innerHeight * 0.8, behavior: 'smooth' });
+        e.preventDefault();
+    }
+});
+
+// ============================================
+// 20. DYNAMIC STYLES
+// ============================================
+const dynamicStyles = document.createElement('style');
+dynamicStyles.textContent = `
     @keyframes confettiFall {
         0% {
             transform: translateY(0) rotate(0deg) scale(1);
@@ -473,4 +584,4 @@ confettiStyles.textContent = `
         to { opacity: 1; transform: scale(1); }
     }
 `;
-document.head.appendChild(confettiStyles);
+document.head.appendChild(dynamicStyles);
