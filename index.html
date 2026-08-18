@@ -24,15 +24,15 @@
     
     <!-- ===== FIX: Tagline Cut-Off ===== -->
     <style>
-        /* Fix for tagline cut-off */
+        /* Fix for tagline cut-off - REMOVED white-space: nowrap */
         .tagline {
-            white-space: nowrap;
+            white-space: normal !important;
             overflow: visible !important;
-            display: inline-block;
-            min-width: 250px;
+            display: block !important;
             max-width: 100%;
             min-height: 2.5rem;
             line-height: 1.4;
+            word-break: break-word;
         }
         
         /* Ensure hero-content doesn't clip */
@@ -49,8 +49,7 @@
         @media (max-width: 480px) {
             .tagline {
                 font-size: 1rem;
-                min-width: 180px;
-                white-space: normal;
+                white-space: normal !important;
                 min-height: 2.8rem;
                 line-height: 1.4;
             }
@@ -65,7 +64,6 @@
         @media (max-width: 380px) {
             .tagline {
                 font-size: 0.9rem;
-                min-width: 160px;
                 min-height: 3rem;
             }
         }
