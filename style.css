@@ -2168,49 +2168,52 @@ footer .container {
     color: var(--text-secondary);
     font-weight: 400;
     margin-bottom: 16px;
-    display: block;
-    min-height: 2.5rem;
+    display: block !important;
+    width: 100%;
+    min-height: 3rem;
     line-height: 1.4;
-    /* Remove white-space: nowrap to allow wrapping */
-    white-space: normal;
+    white-space: normal !important;
     word-break: break-word;
+    overflow-wrap: break-word;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
-/* For tablet screens */
+/* Tablet */
 @media (max-width: 768px) {
     .tagline {
         font-size: 1.1rem;
-        min-height: 2.4rem;
-        white-space: normal;
+        min-height: 3rem;
+        white-space: normal !important;
     }
 }
 
-/* For mobile screens */
+/* Mobile */
 @media (max-width: 480px) {
     .tagline {
         font-size: 1rem;
-        min-height: 2.8rem;
-        white-space: normal;
+        min-height: 3.2rem;
+        white-space: normal !important;
         line-height: 1.5;
     }
 }
 
-/* For very small screens */
+/* Very small screens */
 @media (max-width: 380px) {
     .tagline {
         font-size: 0.9rem;
-        min-height: 3rem;
-        white-space: normal;
+        min-height: 3.5rem;
     }
 }
 
-/* Ensure hero-content doesn't clip anything */
+/* Ensure hero-content doesn't clip */
 .hero-content {
     overflow: visible !important;
+    min-width: 0;
+    flex: 1 1 auto;
 }
 
-/* Ensure hero section doesn't clip anything */
+/* Ensure hero section doesn't clip */
 #hero {
     overflow: visible !important;
 }
