@@ -1305,3 +1305,325 @@ footer .container {
     padding: 3px 12px 3px 10px;
   }
 }
+/* ============================================
+   DARK/LIGHT MODE TOGGLE
+   ============================================ */
+[data-theme="light"] {
+    --bg-primary: #f0f7f3;
+    --bg-secondary: #e6f0ea;
+    --bg-card: rgba(255, 255, 255, 0.75);
+    --text-primary: #0b1a14;
+    --text-secondary: #2a4a3a;
+    --border-mint: rgba(0, 200, 120, 0.2);
+}
+
+[data-theme="light"] .hero-badge {
+    background: rgba(0, 200, 120, 0.08);
+}
+
+[data-theme="light"] .about-badges span,
+[data-theme="light"] .edu-achievements span,
+[data-theme="light"] .project-tech span {
+    background: rgba(0, 200, 120, 0.06);
+}
+
+[data-theme="light"] .contact-form input,
+[data-theme="light"] .contact-form textarea {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .floating-buttons button {
+    background: rgba(255, 255, 255, 0.8);
+    color: #0b1a14;
+}
+
+[data-theme="light"] #progress-bar {
+    box-shadow: 0 0 30px rgba(0, 200, 120, 0.3);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle:hover {
+    color: var(--mint-primary);
+    transform: rotate(20deg);
+}
+
+[data-theme="light"] #theme-toggle {
+    color: #0b1a14;
+}
+
+[data-theme="light"] #theme-toggle:hover {
+    color: var(--mint-primary);
+}
+
+/* ============================================
+   TESTIMONIALS SECTION
+   ============================================ */
+#testimonials {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-mint);
+    border-bottom: 1px solid var(--border-mint);
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.testimonial-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-mint);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: all 0.4s var(--ease-spring);
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    font-size: 4rem;
+    color: var(--mint-primary);
+    opacity: 0.1;
+    font-family: var(--font-mono);
+    line-height: 1;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--mint-primary);
+    box-shadow: 0 16px 50px var(--mint-glow);
+}
+
+.testimonial-card p {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 16px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-card .author-name {
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+}
+
+.testimonial-card .author-title {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+/* ============================================
+   FILTER BUTTONS (Projects Page)
+   ============================================ */
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.filter-btn {
+    background: rgba(0, 255, 171, 0.05);
+    border: 1px solid var(--border-mint);
+    padding: 6px 20px;
+    border-radius: 50px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.filter-btn:hover {
+    border-color: var(--mint-primary);
+    color: var(--text-primary);
+}
+
+.filter-btn.active {
+    background: var(--mint-gradient);
+    color: #0b0e0c;
+    border-color: var(--mint-primary);
+    box-shadow: 0 0 30px var(--mint-glow);
+}
+
+[data-theme="light"] .filter-btn.active {
+    color: #0b0e0c;
+}
+
+/* ============================================
+   FORM SUCCESS MESSAGE
+   ============================================ */
+#form-success {
+    display: none;
+    padding: 32px 24px;
+    border: 1px solid var(--mint-primary);
+    border-radius: var(--radius);
+    background: rgba(0, 255, 171, 0.05);
+    text-align: center;
+    margin-top: 20px;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+#form-success i {
+    color: var(--mint-primary);
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+#form-success h3 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+}
+
+#form-success p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   BLOG / INSIGHTS SECTION
+   ============================================ */
+#blog {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-mint);
+    border-bottom: 1px solid var(--border-mint);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.blog-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-mint);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: all 0.4s var(--ease-spring);
+}
+
+.blog-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--mint-primary);
+    box-shadow: 0 16px 50px var(--mint-glow);
+}
+
+.blog-card .blog-date {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.blog-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.blog-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* ============================================
+   PROJECT CASE STUDY BADGE
+   ============================================ */
+.case-study-badge {
+    display: inline-block;
+    background: rgba(0, 255, 171, 0.08);
+    padding: 2px 12px;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    color: var(--mint-primary);
+    border: 1px solid var(--border-mint);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   RESPONSIVE ADDITIONS
+   ============================================ */
+@media (max-width: 768px) {
+    .testimonial-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #form-success {
+        padding: 24px 16px;
+    }
+
+    #form-success i {
+        font-size: 2rem;
+    }
+
+    .filter-buttons {
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 4px 14px;
+        font-size: 0.75rem;
+    }
+
+    #theme-toggle {
+        font-size: 1rem;
+        padding: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    #form-success h3 {
+        font-size: 1.1rem;
+    }
+
+    #form-success p {
+        font-size: 0.85rem;
+    }
+}
