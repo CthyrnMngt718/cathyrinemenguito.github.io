@@ -31,7 +31,7 @@
 
     <!-- ========== NAVIGATION ========== -->
     <header>
-       <nav>
+        <nav>
             <div class="logo">
                 <a href="index.html">
                     <span class="logo-c">C</span>
@@ -373,17 +373,14 @@
                     </div>
                 </div>
 
-                <!-- ===== FORMSPREE FORM ===== -->
-                <form class="contact-form" action="https://formspree.io/f/mzepkbgw" method="POST">
+                <!-- ===== FORMSPREE FORM (AJAX - No Refresh) ===== -->
+                <form class="contact-form" id="contact-form">
                     <input type="text" name="name" placeholder="Your Name" required />
                     <input type="email" name="email" placeholder="Your Email" required />
                     <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
                     
                     <!-- Honeypot for spam protection -->
                     <input type="text" name="_gotcha" style="display:none;" />
-                    
-                    <!-- Redirect back to your site after submission -->
-                    <input type="hidden" name="_next" value="https://cthyrnmngt718.github.io/#contact" />
                     
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i> Send Message
