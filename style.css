@@ -898,3 +898,124 @@ footer p {
         font-size: 1rem;
     }
 }
+/* ============================================
+   SCROLL PROGRESS BAR (Top of Page)
+   ============================================ */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--mint-primary), #88ffc8, var(--mint-secondary));
+    width: 0%;
+    z-index: 9999;
+    box-shadow: 0 0 20px var(--mint-glow);
+    transition: width 0.1s ease-out;
+}
+
+/* ============================================
+   FLOATING BUTTONS (Up / Down)
+   ============================================ */
+.floating-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.floating-buttons button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--border-mint);
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    color: var(--mint-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+}
+
+.floating-buttons button:hover {
+    transform: translateY(-3px) scale(1.05);
+    border-color: var(--mint-primary);
+    box-shadow: 0 0 40px var(--mint-glow);
+    background: rgba(0, 255, 171, 0.15);
+}
+
+.floating-buttons button:active {
+    transform: scale(0.95);
+}
+
+/* Initially hide the "Up" button */
+#scroll-up-btn {
+    display: none;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS (Fade In)
+   ============================================ */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1),
+                transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for project cards */
+.project-grid .project-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+.project-grid .project-card:nth-child(3) {
+    transition-delay: 0.2s;
+}
+.project-grid .project-card:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+/* Staggered delays for education cards */
+.education-grid .edu-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+.education-grid .edu-card:nth-child(3) {
+    transition-delay: 0.2s;
+}
+.education-grid .edu-card:nth-child(4) {
+    transition-delay: 0.3s;
+}
+.education-grid .edu-card:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+/* Staggered delays for about grid */
+.about-grid .about-text {
+    transition-delay: 0.1s;
+}
+.about-grid .about-skills {
+    transition-delay: 0.2s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .floating-buttons {
+        bottom: 20px;
+        right: 20px;
+    }
+    .floating-buttons button {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+}
