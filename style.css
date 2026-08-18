@@ -2836,7 +2836,7 @@ footer .container {
 }
 
 /* ============================================
-   SIGNATURE SECTION (Larger & More Visible)
+   SIGNATURE SECTION (Fully Centered, No Shift)
    ============================================ */
 .signature-section {
     display: flex;
@@ -2847,23 +2847,31 @@ footer .container {
 }
 
 .signature-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    display: inline-block;
+    width: 100%;
     padding: 0 10px;
 }
 
 .signature-img {
-    height: 70px; /* Increased from 50px */
+    height: 70px;
     width: auto;
     opacity: 0.85;
     transition: all 0.5s var(--ease-spring);
-    /* Dark mode default: white signature with subtle glow */
+    /* Dark mode: white signature with subtle glow */
     filter: brightness(0) invert(1) drop-shadow(0 0 25px rgba(0, 255, 171, 0.08));
+    /* Explicitly set transform origin to center */
+    transform-origin: center center;
+    /* Prevent any layout shift */
+    display: block;
+    flex-shrink: 0;
 }
 
 .signature-img:hover {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.06);
     filter: brightness(0) invert(1) drop-shadow(0 0 50px rgba(0, 255, 171, 0.2));
 }
 
@@ -2876,6 +2884,7 @@ footer .container {
     opacity: 0.4;
     transition: all 0.4s var(--ease-spring);
     border-radius: 2px;
+    flex-shrink: 0;
 }
 
 .signature-wrapper:hover .signature-line {
@@ -2890,6 +2899,7 @@ footer .container {
     color: var(--text-primary);
     letter-spacing: 1.5px;
     margin-top: 4px;
+    text-align: center;
 }
 
 .signature-sub {
@@ -2898,8 +2908,53 @@ footer .container {
     letter-spacing: 0.5px;
     font-weight: 400;
     opacity: 0.75;
+    text-align: center;
 }
 
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+[data-theme="light"] .signature-img {
+    filter: brightness(0) drop-shadow(0 0 25px rgba(0, 200, 120, 0.08));
+    opacity: 0.8;
+}
+
+[data-theme="light"] .signature-img:hover {
+    filter: brightness(0) drop-shadow(0 0 50px rgba(0, 200, 120, 0.2));
+    opacity: 0.95;
+}
+
+[data-theme="light"] .signature-title {
+    color: #0b1a14;
+}
+
+[data-theme="light"] .signature-sub {
+    color: #2a4a3a;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .signature-img {
+        height: 56px;
+    }
+    .signature-title {
+        font-size: 0.95rem;
+    }
+    .signature-sub {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .signature-img {
+        height: 48px;
+    }
+    .signature-title {
+        font-size: 0.85rem;
+    }
+}
 /* ============================================
    LIGHT MODE OVERRIDES FOR SIGNATURE
    ============================================ */
