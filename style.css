@@ -1818,3 +1818,81 @@ footer .container {
 [data-theme="light"] .logo a:hover .logo-c {
     color: var(--mint-primary);
 }
+/* ============================================
+   LIGHT MODE - NAVIGATION FIX
+   ============================================ */
+[data-theme="light"] {
+    --bg-primary: #f0f7f3;
+    --bg-secondary: #e6f0ea;
+    --bg-card: rgba(255, 255, 255, 0.75);
+    --text-primary: #0b1a14;
+    --text-secondary: #2a4a3a;
+    --border-mint: rgba(0, 200, 120, 0.2);
+}
+
+[data-theme="light"] header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .logo-c {
+    color: #0b1a14;
+}
+
+[data-theme="light"] .nav-links a {
+    color: #2a4a3a;
+}
+
+[data-theme="light"] .nav-links a:hover,
+[data-theme="light"] .nav-links a.active {
+    color: #0b1a14;
+}
+
+[data-theme="light"] .nav-links a::after {
+    background: var(--mint-gradient);
+}
+
+[data-theme="light"] .menu-toggle .bar {
+    background: #0b1a14;
+}
+
+[data-theme="light"] #theme-toggle {
+    color: #0b1a14;
+}
+
+[data-theme="light"] #theme-toggle:hover {
+    color: var(--mint-primary);
+}
+
+[data-theme="light"] .hero-badge {
+    background: rgba(0, 200, 120, 0.08);
+}
+
+[data-theme="light"] .about-badges span,
+[data-theme="light"] .edu-achievements span,
+[data-theme="light"] .project-tech span {
+    background: rgba(0, 200, 120, 0.06);
+}
+
+[data-theme="light"] .contact-form input,
+[data-theme="light"] .contact-form textarea {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .floating-buttons button {
+    background: rgba(255, 255, 255, 0.8);
+    color: #0b1a14;
+}
+
+[data-theme="light"] #progress-bar {
+    box-shadow: 0 0 30px rgba(0, 200, 120, 0.3);
+}
+
+[data-theme="light"] .scroll-indicator {
+    color: #2a4a3a;
+}
+
+[data-theme="light"] .scroll-indicator i {
+    color: var(--mint-primary);
+}
