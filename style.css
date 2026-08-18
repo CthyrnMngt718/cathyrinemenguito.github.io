@@ -2160,25 +2160,57 @@ footer .container {
 [data-theme="light"] .filter-btn.active {
     color: #0b0e0c;
 }
-/* Fix for tagline cut-off */
+/* ============================================
+   TAGLINE - FIXED CUT-OFF ISSUE
+   ============================================ */
 .tagline {
-    white-space: nowrap;
-    overflow: visible;
-    display: inline-block;
-    min-width: 200px; /* Adjust as needed */
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 16px;
+    display: block;
+    min-height: 2.5rem;
+    line-height: 1.4;
+    /* Remove white-space: nowrap to allow wrapping */
+    white-space: normal;
+    word-break: break-word;
     max-width: 100%;
 }
 
-/* For mobile responsiveness */
-@media (max-width: 480px) {
+/* For tablet screens */
+@media (max-width: 768px) {
     .tagline {
-        font-size: 1rem;
-        min-width: 150px;
-        white-space: normal; /* Allow wrapping on very small screens */
+        font-size: 1.1rem;
+        min-height: 2.4rem;
+        white-space: normal;
     }
 }
 
-/* Ensure the hero-content doesn't clip */
+/* For mobile screens */
+@media (max-width: 480px) {
+    .tagline {
+        font-size: 1rem;
+        min-height: 2.8rem;
+        white-space: normal;
+        line-height: 1.5;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 380px) {
+    .tagline {
+        font-size: 0.9rem;
+        min-height: 3rem;
+        white-space: normal;
+    }
+}
+
+/* Ensure hero-content doesn't clip anything */
 .hero-content {
-    overflow: visible;
+    overflow: visible !important;
+}
+
+/* Ensure hero section doesn't clip anything */
+#hero {
+    overflow: visible !important;
 }
