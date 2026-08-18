@@ -270,6 +270,7 @@ header {
     transition: all 0.4s var(--ease-spring);
 }
 
+/* Navbar shadow on scroll */
 header.scrolled {
     background: rgba(7, 10, 8, 0.92);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -291,7 +292,7 @@ nav {
 }
 
 /* ============================================
-   LOGO - INITIALS (CM)
+   LOGO - INITIALS (CM) with Enhanced Hover
    ============================================ */
 .logo a {
     display: flex;
@@ -1560,137 +1561,7 @@ nav {
 }
 
 /* ============================================
-   ENHANCED PROJECT CARDS
-   ============================================ */
-.project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px 24px 0;
-    margin-bottom: 4px;
-}
-
-.project-badges {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
-.badge {
-    font-size: 0.6rem;
-    font-weight: 600;
-    padding: 2px 10px;
-    border-radius: 50px;
-    text-transform: uppercase;
-    font-family: var(--font-mono);
-    letter-spacing: 0.5px;
-}
-
-.badge-healthcare {
-    background: rgba(0, 255, 200, 0.15);
-    color: #00ffc8;
-    border: 1px solid rgba(0, 255, 200, 0.2);
-}
-
-.badge-education {
-    background: rgba(100, 200, 255, 0.15);
-    color: #64c8ff;
-    border: 1px solid rgba(100, 200, 255, 0.2);
-}
-
-.badge-realestate {
-    background: rgba(255, 200, 100, 0.15);
-    color: #ffc864;
-    border: 1px solid rgba(255, 200, 100, 0.2);
-}
-
-.badge-php {
-    background: rgba(120, 100, 255, 0.15);
-    color: #7864ff;
-    border: 1px solid rgba(120, 100, 255, 0.2);
-}
-
-.badge-live {
-    background: rgba(0, 255, 136, 0.12);
-    color: #00ff88;
-    border: 1px solid rgba(0, 255, 136, 0.2);
-}
-
-.project-emoji {
-    font-size: 2rem;
-    line-height: 1;
-    opacity: 0.7;
-}
-
-/* ============================================
-   PROJECT METRICS
-   ============================================ */
-.project-metrics {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin: 12px 0 14px;
-    padding: 10px 14px;
-    background: rgba(0, 255, 171, 0.03);
-    border-radius: var(--radius);
-    border: 1px solid var(--border-mint);
-}
-
-.metric {
-    display: flex;
-    flex-direction: column;
-}
-
-.metric-number {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--mint-primary);
-    font-family: var(--font-mono);
-}
-
-.metric-label {
-    font-size: 0.6rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.metric-divider {
-    width: 1px;
-    height: 30px;
-    background: var(--border-mint);
-}
-
-/* ============================================
-   STATUS BADGE
-   ============================================ */
-.status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.7rem;
-    color: var(--text-secondary);
-    margin-bottom: 12px;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-}
-
-.status-dot.green {
-    background: #00ff88;
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-}
-
-.status-dot.yellow {
-    background: #ffaa44;
-    box-shadow: 0 0 10px rgba(255, 170, 68, 0.3);
-}
-
-/* ============================================
-   FOOTER & SIGNATURE (ENHANCED)
+   FOOTER
    ============================================ */
 footer {
     background: var(--bg-primary);
@@ -1705,120 +1576,17 @@ footer .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 24px;
 }
 
-/* ============================================
-   FOOTER DECORATIVE DIVIDER
-   ============================================ */
 .footer-divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    max-width: 200px;
-}
-
-.divider-line {
-    flex: 1;
-    height: 1px;
-    background: var(--mint-gradient);
-    opacity: 0.3;
-}
-
-.divider-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--mint-primary);
-    box-shadow: 0 0 12px var(--mint-glow);
-    flex-shrink: 0;
-    opacity: 0.6;
-}
-
-.divider-dot:first-child {
-    opacity: 0.3;
-}
-.divider-dot:last-child {
-    opacity: 0.3;
-}
-
-/* ============================================
-   SIGNATURE SECTION (Fully Centered, No Shift)
-   ============================================ */
-.signature-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-}
-
-.signature-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    padding: 0 10px;
-}
-
-.signature-img {
-    height: 70px;
-    width: auto;
-    opacity: 0.85;
-    transition: all 0.5s var(--ease-spring);
-    filter: brightness(0) invert(1) drop-shadow(0 0 25px rgba(0, 255, 171, 0.08));
-    transform-origin: center center;
-    display: block;
-    flex-shrink: 0;
-}
-
-.signature-img:hover {
-    opacity: 1;
-    transform: scale(1.06);
-    filter: brightness(0) invert(1) drop-shadow(0 0 50px rgba(0, 255, 171, 0.2));
-}
-
-.signature-line {
-    display: block;
-    width: 100px;
+    width: 60px;
     height: 2px;
-    margin: 6px auto 0;
     background: var(--mint-gradient);
-    opacity: 0.4;
-    transition: all 0.4s var(--ease-spring);
     border-radius: 2px;
-    flex-shrink: 0;
+    opacity: 0.4;
 }
 
-.signature-wrapper:hover .signature-line {
-    opacity: 0.9;
-    width: 160px;
-    box-shadow: 0 0 20px var(--mint-glow);
-}
-
-.signature-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: 1.5px;
-    margin-top: 4px;
-    text-align: center;
-}
-
-.signature-sub {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    letter-spacing: 0.5px;
-    font-weight: 400;
-    opacity: 0.75;
-    text-align: center;
-}
-
-/* ============================================
-   SOCIAL LINKS (Enhanced)
-   ============================================ */
 .footer-social {
     display: flex;
     gap: 16px;
@@ -1830,111 +1598,135 @@ footer .container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: 1px solid var(--border-mint);
     color: var(--text-secondary);
-    transition: all 0.4s var(--ease-spring);
-    font-size: 1rem;
-    position: relative;
-    background: var(--bg-card);
-}
-
-.footer-social a::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 50%;
-    background: var(--mint-gradient);
-    opacity: 0;
-    z-index: -1;
     transition: var(--transition);
+    font-size: 1rem;
 }
 
 .footer-social a:hover {
-    border-color: transparent;
-    color: #0b0e0c;
-    transform: translateY(-4px) scale(1.08);
-    box-shadow: 0 0 30px var(--mint-glow);
-    background: var(--mint-primary);
+    border-color: var(--mint-primary);
+    color: var(--mint-primary);
+    box-shadow: 0 0 20px var(--mint-glow);
+    transform: translateY(-4px);
 }
 
-.footer-social a:hover::before {
-    opacity: 1;
-}
-
-/* ============================================
-   FOOTER BOTTOM
-   ============================================ */
-.footer-bottom {
+.footer-text {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding-top: 16px;
-    border-top: 1px solid var(--border-mint);
+    gap: 4px;
+}
+
+.footer-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.footer-tagline {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.footer-tagline i {
+    color: var(--mint-primary);
+    font-size: 0.8rem;
+}
+
+.footer-tagline .fa-circle {
+    font-size: 4px;
+    vertical-align: middle;
+    margin: 0 6px;
 }
 
 .footer-copy {
     font-size: 0.8rem;
     color: var(--text-secondary);
     opacity: 0.5;
+    margin-top: 4px;
 }
 
-.footer-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.7rem;
-    color: var(--text-secondary);
-    font-family: var(--font-mono);
-    letter-spacing: 0.5px;
-    background: rgba(0, 255, 171, 0.04);
-    padding: 4px 14px;
-    border-radius: 50px;
-    border: 1px solid var(--border-mint);
-}
-
-.badge-dot-small {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #00ff88;
-    animation: pulseDot 2s ease-in-out infinite;
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-}
-
+/* ============================================
+   VISITOR COUNTER
+   ============================================ */
 .visitor-count {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    opacity: 0.4;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    opacity: 0.6;
+    margin-top: 8px;
 }
 
 .visitor-count i {
     color: var(--mint-primary);
-    font-size: 0.7rem;
-    opacity: 0.6;
+    margin-right: 4px;
 }
 
 /* ============================================
-   SCROLL PROGRESS BAR
+   SCROLL PROGRESS RING
    ============================================ */
-#progress-bar {
+.scroll-progress-ring {
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: var(--mint-gradient);
-    width: 0%;
-    z-index: 9999;
-    box-shadow: 0 0 20px var(--mint-glow);
-    transition: width 0.1s ease-out;
+    bottom: 100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    z-index: 999;
+    pointer-events: none;
 }
+
+.progress-ring {
+    transform: rotate(-90deg);
+    width: 60px;
+    height: 60px;
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: var(--border-mint);
+    stroke-width: 4;
+}
+
+.progress-ring-fill {
+    fill: none;
+    stroke: var(--mint-primary);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 163.36;
+    stroke-dashoffset: 163.36;
+    transition: stroke-dashoffset 0.1s ease;
+}
+
+.progress-percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+    .scroll-progress-ring {
+        bottom: 80px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+    }
+    .progress-ring {
+        width: 48px;
+        height: 48px;
+    }
+    .progress-percent {
+        font-size: 0.6rem;
+    }
+}
+
+
 
 /* ============================================
    FLOATING BUTTON
@@ -2430,6 +2222,46 @@ textarea:focus-visible {
     color: #0b0e0c;
 }
 
+[data-theme="light"] .footer-name {
+    color: #0b1a14;
+}
+
+[data-theme="light"] .footer-tagline {
+    color: #2a4a3a;
+}
+
+[data-theme="light"] .footer-copy {
+    color: #2a4a3a;
+}
+
+[data-theme="light"] .footer-social a {
+    color: #2a4a3a;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .footer-social a:hover {
+    border-color: var(--mint-primary);
+    color: var(--mint-primary);
+}
+
+[data-theme="light"] .contact-item {
+    color: #2a4a3a;
+}
+
+[data-theme="light"] .contact-item:hover {
+    color: #0b1a14;
+}
+
+[data-theme="light"] .social-links a {
+    color: #2a4a3a;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .social-links a:hover {
+    border-color: var(--mint-primary);
+    color: var(--mint-primary);
+}
+
 [data-theme="light"] .project-card {
     background: rgba(255, 255, 255, 0.7);
 }
@@ -2572,73 +2404,11 @@ textarea:focus-visible {
     box-shadow: 0 0 12px rgba(0, 200, 120, 0.25);
 }
 
-[data-theme="light"] .badge-healthcare {
-    background: rgba(0, 200, 150, 0.1);
-    color: #00aa88;
-}
-[data-theme="light"] .badge-education {
-    background: rgba(50, 150, 255, 0.1);
-    color: #3088cc;
-}
-[data-theme="light"] .badge-realestate {
-    background: rgba(200, 150, 50, 0.1);
-    color: #cc9933;
-}
-[data-theme="light"] .badge-php {
-    background: rgba(80, 70, 200, 0.1);
-    color: #5544bb;
-}
-[data-theme="light"] .badge-live {
-    background: rgba(0, 200, 100, 0.1);
-    color: #00aa66;
-}
-[data-theme="light"] .project-metrics {
-    background: rgba(0, 200, 120, 0.03);
+[data-theme="light"] .scroll-progress-ring .progress-ring-fill {
+    stroke: var(--mint-primary);
 }
 
-/* ============================================
-   LIGHT MODE OVERRIDES FOR SIGNATURE
-   ============================================ */
-[data-theme="light"] .signature-img {
-    filter: brightness(0) drop-shadow(0 0 25px rgba(0, 200, 120, 0.08));
-    opacity: 0.8;
-}
-
-[data-theme="light"] .signature-img:hover {
-    filter: brightness(0) drop-shadow(0 0 50px rgba(0, 200, 120, 0.2));
-    opacity: 0.95;
-}
-
-[data-theme="light"] .signature-title {
-    color: #0b1a14;
-}
-
-[data-theme="light"] .signature-sub {
-    color: #2a4a3a;
-}
-
-[data-theme="light"] .footer-social a {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-[data-theme="light"] .footer-social a:hover {
-    color: #0b0e0c;
-    background: var(--mint-primary);
-}
-
-[data-theme="light"] .footer-badge {
-    background: rgba(0, 200, 120, 0.04);
-}
-
-[data-theme="light"] .footer-name {
-    color: #0b1a14;
-}
-
-[data-theme="light"] .footer-tagline {
-    color: #2a4a3a;
-}
-
-[data-theme="light"] .footer-copy {
+[data-theme="light"] .progress-percent {
     color: #2a4a3a;
 }
 
@@ -2766,9 +2536,12 @@ textarea:focus-visible {
     }
 
     .footer-social a {
-        width: 38px;
-        height: 38px;
+        width: 36px;
+        height: 36px;
         font-size: 0.9rem;
+    }
+    .footer-name {
+        font-size: 1rem;
     }
 
     .hero-image-wrapper {
@@ -2829,23 +2602,18 @@ textarea:focus-visible {
     .carousel-btn.next {
         right: 8px;
     }
-
-    /* Signature Responsive */
-    .signature-img {
-        height: 56px;
+    .scroll-progress-ring {
+        bottom: 80px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
     }
-    .signature-title {
-        font-size: 0.95rem;
+    .progress-ring {
+        width: 48px;
+        height: 48px;
     }
-    .signature-sub {
-        font-size: 0.7rem;
-    }
-    .footer-bottom {
-        gap: 6px;
-    }
-    .footer-badge {
+    .progress-percent {
         font-size: 0.6rem;
-        padding: 3px 12px;
     }
 }
 
@@ -2890,14 +2658,474 @@ textarea:focus-visible {
         font-size: 0.95rem;
         min-height: 3.2rem;
     }
+}
+/* ============================================
+   ENHANCED PROJECT CARDS
+   ============================================ */
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 24px 0;
+    margin-bottom: 4px;
+}
 
-    /* Signature Responsive */
+.project-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    letter-spacing: 0.5px;
+}
+
+.badge-healthcare {
+    background: rgba(0, 255, 200, 0.15);
+    color: #00ffc8;
+    border: 1px solid rgba(0, 255, 200, 0.2);
+}
+
+.badge-education {
+    background: rgba(100, 200, 255, 0.15);
+    color: #64c8ff;
+    border: 1px solid rgba(100, 200, 255, 0.2);
+}
+
+.badge-realestate {
+    background: rgba(255, 200, 100, 0.15);
+    color: #ffc864;
+    border: 1px solid rgba(255, 200, 100, 0.2);
+}
+
+.badge-php {
+    background: rgba(120, 100, 255, 0.15);
+    color: #7864ff;
+    border: 1px solid rgba(120, 100, 255, 0.2);
+}
+
+.badge-live {
+    background: rgba(0, 255, 136, 0.12);
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.project-emoji {
+    font-size: 2rem;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+/* ============================================
+   PROJECT METRICS
+   ============================================ */
+.project-metrics {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 12px 0 14px;
+    padding: 10px 14px;
+    background: rgba(0, 255, 171, 0.03);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-mint);
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--mint-primary);
+    font-family: var(--font-mono);
+}
+
+.metric-label {
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--border-mint);
+}
+
+/* ============================================
+   STATUS BADGE
+   ============================================ */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-dot.green {
+    background: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.status-dot.yellow {
+    background: #ffaa44;
+    box-shadow: 0 0 10px rgba(255, 170, 68, 0.3);
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+[data-theme="light"] .badge-healthcare {
+    background: rgba(0, 200, 150, 0.1);
+    color: #00aa88;
+}
+[data-theme="light"] .badge-education {
+    background: rgba(50, 150, 255, 0.1);
+    color: #3088cc;
+}
+[data-theme="light"] .badge-realestate {
+    background: rgba(200, 150, 50, 0.1);
+    color: #cc9933;
+}
+[data-theme="light"] .badge-php {
+    background: rgba(80, 70, 200, 0.1);
+    color: #5544bb;
+}
+[data-theme="light"] .badge-live {
+    background: rgba(0, 200, 100, 0.1);
+    color: #00aa66;
+}
+[data-theme="light"] .project-metrics {
+    background: rgba(0, 200, 120, 0.03);
+}
+/* ============================================
+   FOOTER & SIGNATURE (ENHANCED)
+   ============================================ */
+
+footer {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-mint);
+    padding: 48px 24px 36px;
+    text-align: center;
+}
+
+footer .container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+/* ============================================
+   SIGNATURE SECTION (Fully Centered, No Shift)
+   ============================================ */
+.signature-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.signature-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.signature-img {
+    height: 70px;
+    width: auto;
+    opacity: 0.85;
+    transition: all 0.5s var(--ease-spring);
+    /* Dark mode: white signature with subtle glow */
+    filter: brightness(0) invert(1) drop-shadow(0 0 25px rgba(0, 255, 171, 0.08));
+    /* Explicitly set transform origin to center */
+    transform-origin: center center;
+    /* Prevent any layout shift */
+    display: block;
+    flex-shrink: 0;
+}
+
+.signature-img:hover {
+    opacity: 1;
+    transform: scale(1.06);
+    filter: brightness(0) invert(1) drop-shadow(0 0 50px rgba(0, 255, 171, 0.2));
+}
+
+.signature-line {
+    display: block;
+    width: 100px;
+    height: 2px;
+    margin: 6px auto 0;
+    background: var(--mint-gradient);
+    opacity: 0.4;
+    transition: all 0.4s var(--ease-spring);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.signature-wrapper:hover .signature-line {
+    opacity: 0.9;
+    width: 160px;
+    box-shadow: 0 0 20px var(--mint-glow);
+}
+
+.signature-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+    text-align: center;
+}
+
+.signature-sub {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    opacity: 0.75;
+    text-align: center;
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+[data-theme="light"] .signature-img {
+    filter: brightness(0) drop-shadow(0 0 25px rgba(0, 200, 120, 0.08));
+    opacity: 0.8;
+}
+
+[data-theme="light"] .signature-img:hover {
+    filter: brightness(0) drop-shadow(0 0 50px rgba(0, 200, 120, 0.2));
+    opacity: 0.95;
+}
+
+[data-theme="light"] .signature-title {
+    color: #0b1a14;
+}
+
+[data-theme="light"] .signature-sub {
+    color: #2a4a3a;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .signature-img {
+        height: 56px;
+    }
+    .signature-title {
+        font-size: 0.95rem;
+    }
+    .signature-sub {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
     .signature-img {
         height: 48px;
     }
     .signature-title {
         font-size: 0.85rem;
     }
+}
+/* ============================================
+   LIGHT MODE OVERRIDES FOR SIGNATURE
+   ============================================ */
+[data-theme="light"] .signature-img {
+    filter: brightness(0) drop-shadow(0 0 25px rgba(0, 200, 120, 0.08));
+    opacity: 0.8;
+}
+
+[data-theme="light"] .signature-img:hover {
+    filter: brightness(0) drop-shadow(0 0 50px rgba(0, 200, 120, 0.2));
+    opacity: 0.95;
+}
+
+[data-theme="light"] .signature-title {
+    color: #0b1a14;
+}
+
+[data-theme="light"] .signature-sub {
+    color: #2a4a3a;
+}
+
+/* ============================================
+   SOCIAL LINKS (Enhanced)
+   ============================================ */
+.footer-social {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-mint);
+    color: var(--text-secondary);
+    transition: all 0.4s var(--ease-spring);
+    font-size: 1rem;
+    position: relative;
+    background: var(--bg-card);
+}
+
+.footer-social a::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: var(--mint-gradient);
+    opacity: 0;
+    z-index: -1;
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    border-color: transparent;
+    color: #0b0e0c;
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 0 30px var(--mint-glow);
+    background: var(--mint-primary);
+}
+
+.footer-social a:hover::before {
+    opacity: 1;
+}
+
+/* ============================================
+   FOOTER BOTTOM
+   ============================================ */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-mint);
+}
+
+.footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    letter-spacing: 0.5px;
+    background: rgba(0, 255, 171, 0.04);
+    padding: 4px 14px;
+    border-radius: 50px;
+    border: 1px solid var(--border-mint);
+}
+
+.badge-dot-small {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00ff88;
+    animation: pulseDot 2s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.visitor-count {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    opacity: 0.4;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.visitor-count i {
+    color: var(--mint-primary);
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    footer {
+        padding: 32px 20px 24px;
+    }
+    
+    .signature-img {
+        height: 56px;
+    }
+    
+    .signature-title {
+        font-size: 0.95rem;
+    }
+    
+    .signature-sub {
+        font-size: 0.7rem;
+    }
+    
+    .footer-social a {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom {
+        gap: 6px;
+    }
+    
+    .footer-badge {
+        font-size: 0.6rem;
+        padding: 3px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signature-img {
+        height: 48px;
+    }
+    
+    .signature-title {
+        font-size: 0.85rem;
+    }
+    
     .footer-social a {
         width: 34px;
         height: 34px;
