@@ -304,38 +304,38 @@ if (canvas) {
     window.addEventListener('resize', resize);
     resize();
 
-    class Particle {
+      class Particle {
         constructor() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.size = Math.random() * 3 + 1;
-            this.speedX = (Math.random() - 0.5) * 0.4;
-            this.speedY = (Math.random() - 0.5) * 0.4;
-            this.opacity = Math.random() * 0.4 + 0.1;
+            this.size = Math.random() * 6 + 4;   // ← Larger: 4-10px
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = (Math.random() - 0.5) * 0.3;
+            this.opacity = Math.random() * 0.5 + 0.15;  // Slightly more visible
         }
-
+    
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-
+    
             if (mouse.x && mouse.y) {
                 const dx = this.x - mouse.x;
                 const dy = this.y - mouse.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 150) {
-                    const force = 0.02;
+                if (dist < 200) {  // Increased interaction distance
+                    const force = 0.015;
                     this.speedX += (dx / dist) * force;
                     this.speedY += (dy / dist) * force;
                 }
             }
-
+    
             this.speedX *= 0.99;
             this.speedY *= 0.99;
-
+    
             if (this.x < 0 || this.x > width) this.speedX *= -1;
             if (this.y < 0 || this.y > height) this.speedY *= -1;
         }
-
+    
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -346,7 +346,7 @@ if (canvas) {
 
     function initParticles() {
         particles = [];
-        const count = Math.min(80, Math.floor((width * height) / 15000));
+        const count = Math.min(50, Math.floor((width * height) / 20000));
         for (let i = 0; i < count; i++) {
             particles.push(new Particle());
         }
