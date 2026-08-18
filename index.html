@@ -4,22 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cathyrine Menguito | Portfolio</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 </head>
 <body>
-    <!-- ========== CURSOR GLOW (Optional) ========== -->
-    <div id="cursor-glow"></div>
-
     <!-- ========== NAVIGATION ========== -->
     <header>
         <nav>
@@ -27,7 +18,7 @@
                 <a href="index.html">CM</a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -43,56 +34,26 @@
     <!-- ========== HERO SECTION ========== -->
     <section id="hero">
         <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                Available for opportunities
-            </div>
-            <h1>Hi, I'm <span class="gradient-text">Cathyrine Menguito</span></h1>
+            <h1>Hi, I'm <span>Cathyrine Menguito</span></h1>
             <p class="tagline">BS Computer Science Graduate &amp; Web Developer</p>
             <p class="description">
                 I build clean, responsive, and user‑friendly web experiences.
                 Explore my work and let's create something amazing together.
             </p>
             <div class="hero-buttons">
-                <a href="projects.html" class="btn btn-primary">
-                    <i class="fas fa-rocket"></i> View My Work
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <i class="fas fa-paper-plane"></i> Contact Me
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">4+</span>
-                    <span class="stat-label">Projects</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">2</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">5</span>
-                    <span class="stat-label">Certifications</span>
-                </div>
+                <a href="projects.html" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
             </div>
         </div>
         <div class="hero-image">
-            <div class="hero-image-wrapper">
-                <img src="1000014492.jpg" alt="Cathyrine Menguito" />
-                <div class="hero-image-ring"></div>
-            </div>
+            <img src="1000014492.jpg" alt="Cathyrine Menguito" />
         </div>
     </section>
 
     <!-- ========== ABOUT SECTION ========== -->
     <section id="about">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">About Me</span>
-                <h2>Passionate About Building <span class="gradient-text">Meaningful Solutions</span></h2>
-            </div>
+            <h2>About Me</h2>
             <div class="about-grid">
                 <div class="about-text">
                     <p>
@@ -114,12 +75,21 @@
                         development. I am continuously learning and seeking opportunities to
                         grow as an IT professional while contributing to meaningful projects.
                     </p>
-                    <div class="about-badges">
-                        <span><i class="fas fa-award"></i> TESDA NC II (CSS)</span>
-                        <span><i class="fas fa-trophy"></i> Outstanding System Design</span>
-                        <span><i class="fas fa-users"></i> Class President 2024-2025</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;">
+                        <span style="background:rgba(0,255,171,0.1);padding:6px 16px;border-radius:50px;font-size:0.85rem;border:1px solid var(--border-mint);">
+                            <i class="fas fa-award" style="color:var(--mint-primary);"></i> TESDA NC II (CSS)
+                        </span>
+                        <span style="background:rgba(0,255,171,0.1);padding:6px 16px;border-radius:50px;font-size:0.85rem;border:1px solid var(--border-mint);">
+                            <i class="fas fa-trophy" style="color:var(--mint-primary);"></i> Outstanding System Design
+                        </span>
+                        <span style="background:rgba(0,255,171,0.1);padding:6px 16px;border-radius:50px;font-size:0.85rem;border:1px solid var(--border-mint);">
+                            <i class="fas fa-users" style="color:var(--mint-primary);"></i> Class President 2024-2025
+                        </span>
                     </div>
-                    <a href="Cathyrine%20Menguito%20Resume.pdf" class="btn btn-primary" target="_blank">
+                    <br />
+                    <a href="Cathyrine Menguito Resume.pdf"
+                       class="btn btn-primary"
+                       target="_blank">
                         <i class="fas fa-file-pdf"></i> View Resume
                     </a>
                 </div>
@@ -135,7 +105,7 @@
                         <li><i class="fas fa-pencil-alt"></i> UI/UX Design</li>
                         <li><i class="fas fa-code"></i> Web Development</li>
                     </ul>
-                    <h3>Tools &amp; Technologies</h3>
+                    <h3 style="margin-top:30px;">Tools &amp; Technologies</h3>
                     <ul class="skills-list">
                         <li><i class="fas fa-file-word"></i> Microsoft Office</li>
                         <li><i class="fas fa-paint-brush"></i> Canva</li>
@@ -143,7 +113,7 @@
                         <li><i class="fab fa-windows"></i> Windows OS</li>
                         <li><i class="fas fa-code"></i> VS Code</li>
                     </ul>
-                    <h3>Professional Skills</h3>
+                    <h3 style="margin-top:30px;">Professional Skills</h3>
                     <ul class="skills-list">
                         <li><i class="fas fa-lightbulb"></i> Problem-Solving</li>
                         <li><i class="fas fa-comments"></i> Communication</li>
@@ -160,10 +130,7 @@
     <!-- ========== EDUCATION & CERTIFICATIONS ========== -->
     <section id="education">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Education</span>
-                <h2>My <span class="gradient-text">Academic Journey</span></h2>
-            </div>
+            <h2>Education &amp; Certifications</h2>
             <div class="education-grid">
                 <!-- Tertiary -->
                 <div class="edu-card">
@@ -173,7 +140,7 @@
                     </div>
                     <h3>Bachelor of Science in Computer Science</h3>
                     <p class="edu-school">Renaissance School of Science and Technology, Inc.</p>
-                    <p class="edu-location"><i class="fas fa-map-pin"></i> Morong, Rizal</p>
+                    <p class="edu-location"><i class="fas fa-map-pin"></i> Sitio Paglabas, Brgy. San Pedro, Morong, Rizal</p>
                     <div class="edu-achievements">
                         <span><i class="fas fa-trophy"></i> Outstanding System Design</span>
                         <span><i class="fas fa-trophy"></i> Outstanding Thesis Writing</span>
@@ -185,30 +152,30 @@
                 <!-- Senior High -->
                 <div class="edu-card">
                     <div class="edu-header">
-                        <span class="edu-tag"><i class="fas fa-school"></i> Senior High</span>
+                        <span class="edu-tag"><i class="fas fa-school"></i> Senior High School</span>
                         <span class="edu-year">2021 – 2022</span>
                     </div>
-                    <h3>STEM Strand</h3>
+                    <h3>Science, Technology, Engineering, and Mathematics (STEM)</h3>
                     <p class="edu-school">Renaissance School of Science and Technology, Inc.</p>
-                    <p class="edu-location"><i class="fas fa-map-pin"></i> Morong, Rizal</p>
+                    <p class="edu-location"><i class="fas fa-map-pin"></i> Sitio Paglabas, Brgy. San Pedro, Morong, Rizal</p>
                     <div class="edu-achievements">
                         <span><i class="fas fa-star"></i> With Honors (Grade 11 – 12)</span>
                     </div>
-                    <div class="edu-secondary">
-                        <p class="edu-school" style="font-size:0.9rem;">Morong National High School</p>
-                        <p class="edu-location"><i class="fas fa-map-pin"></i> Morong, Rizal</p>
-                        <p class="edu-year" style="font-size:0.8rem;color:var(--text-secondary);">2019 – 2020</p>
+                    <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border-mint);">
+                        <p class="edu-school" style="font-size:0.95rem;">Morong National High School</p>
+                        <p class="edu-location"><i class="fas fa-map-pin"></i> T. Claudio Street, Brgy. San Juan, Morong, Rizal</p>
+                        <p class="edu-year" style="font-size:0.85rem;color:var(--text-secondary);">2019 – 2020</p>
                     </div>
                 </div>
                 <!-- Junior High -->
                 <div class="edu-card">
                     <div class="edu-header">
-                        <span class="edu-tag"><i class="fas fa-school"></i> Junior High</span>
+                        <span class="edu-tag"><i class="fas fa-school"></i> Junior High School</span>
                         <span class="edu-year">2015 – 2019</span>
                     </div>
                     <h3>Junior High School</h3>
                     <p class="edu-school">Morong National High School</p>
-                    <p class="edu-location"><i class="fas fa-map-pin"></i> Morong, Rizal</p>
+                    <p class="edu-location"><i class="fas fa-map-pin"></i> T. Claudio Street, Brgy. San Juan, Morong, Rizal</p>
                 </div>
                 <!-- Elementary -->
                 <div class="edu-card">
@@ -218,7 +185,7 @@
                     </div>
                     <h3>Elementary School</h3>
                     <p class="edu-school">Tomas Claudio Memorial Elementary School</p>
-                    <p class="edu-location"><i class="fas fa-map-pin"></i> Morong, Rizal</p>
+                    <p class="edu-location"><i class="fas fa-map-pin"></i> T. Claudio Street, Brgy. San Juan, Morong, Rizal</p>
                 </div>
                 <!-- Certification -->
                 <div class="edu-card cert-card">
@@ -229,8 +196,10 @@
                     <h3>National Certificate II (NC II)</h3>
                     <p class="edu-school">Computer Systems Servicing (CSS)</p>
                     <p class="edu-location"><i class="fas fa-building"></i> TESDA</p>
-                    <div class="edu-achievements">
-                        <span><i class="fas fa-check-circle"></i> Certified</span>
+                    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+                        <span style="background:rgba(0,255,171,0.08);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">
+                            <i class="fas fa-check-circle"></i> Certified
+                        </span>
                     </div>
                 </div>
             </div>
@@ -240,20 +209,17 @@
     <!-- ========== FEATURED PROJECTS ========== -->
     <section id="featured-projects">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Portfolio</span>
-                <h2>Featured <span class="gradient-text">Projects</span></h2>
-            </div>
+            <h2>Featured Projects</h2>
             <div class="project-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-info">
                         <h3>RHU Morong Health System</h3>
-                        <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal.</p>
-                        <div class="project-tech">
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>JavaScript</span>
+                        <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal. Securely manages patient records and clinic operations.</p>
+                        <div class="project-tech" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">PHP</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">MySQL</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">JavaScript</span>
                         </div>
                         <a href="http://healthcare.morongcenter.com/" target="_blank" class="btn btn-small">
                             <i class="fas fa-external-link-alt"></i> View Project
@@ -264,11 +230,11 @@
                 <div class="project-card">
                     <div class="project-info">
                         <h3>Angono NHS Career Assessment</h3>
-                        <p>Web‑based career assessment tool for incoming Senior High School students.</p>
-                        <div class="project-tech">
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
+                        <p>Web‑based career assessment tool for incoming Senior High School students. Helps students discover the right SHS strand based on their interests.</p>
+                        <div class="project-tech" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">PHP</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">MySQL</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">Bootstrap</span>
                         </div>
                         <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" class="btn btn-small">
                             <i class="fas fa-external-link-alt"></i> View Project
@@ -279,11 +245,11 @@
                 <div class="project-card">
                     <div class="project-info">
                         <h3>HowCan‑i‑Help</h3>
-                        <p>Integrated clinic record and healthcare management system connecting patients, clinics, and donors.</p>
-                        <div class="project-tech">
-                            <span>PHP</span>
-                            <span>MySQL</span>
-                            <span>Bootstrap</span>
+                        <p>Integrated clinic record and healthcare management system connecting patients, clinics, and donors. Supports outreach campaigns and assistance drives.</p>
+                        <div class="project-tech" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">PHP</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">MySQL</span>
+                            <span style="background:rgba(0,255,171,0.12);padding:4px 14px;border-radius:50px;font-size:0.75rem;color:var(--mint-primary);border:1px solid var(--border-mint);">Bootstrap</span>
                         </div>
                         <a href="https://howcan-i-help.org/" target="_blank" class="btn btn-small">
                             <i class="fas fa-external-link-alt"></i> View Project
@@ -300,10 +266,7 @@
     <!-- ========== CONTACT SECTION ========== -->
     <section id="contact">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Contact</span>
-                <h2>Get In <span class="gradient-text">Touch</span></h2>
-            </div>
+            <h2>Get In Touch</h2>
             <p class="contact-sub">
                 I'm always open to new opportunities, collaborations, or just a
                 friendly chat. Feel free to reach out!
@@ -333,9 +296,7 @@
                     <input type="text" placeholder="Your Name" required />
                     <input type="email" placeholder="Your Email" required />
                     <textarea rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
         </div>
