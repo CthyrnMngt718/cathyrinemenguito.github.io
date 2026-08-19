@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cathyrine Menguito | Projects</title>
     
+    <!-- ===== OPEN GRAPH / SOCIAL SHARING ===== -->
+    <meta property="og:title" content="Cathyrine Menguito | Web Developer & UI/UX Designer" />
+    <meta property="og:description" content="Explore my projects in healthcare, education, and real estate." />
+    <meta property="og:image" content="https://cthyrnmngt718.github.io/og-image.jpg" />
+    <meta property="og:url" content="https://cthyrnmngt718.github.io/projects.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,21 +55,21 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="index.html">
+                <a href="index.html" aria-label="Home">
                     <span class="logo-c">C</span>
                     <span class="logo-m">M</span>
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html" class="active">Projects</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html" aria-label="Home page">Home</a></li>
+                <li><a href="projects.html" class="active" aria-label="View my projects">Projects</a></li>
+                <li><a href="index.html#about" aria-label="About me section">About</a></li>
+                <li><a href="index.html#contact" aria-label="Contact me">Contact</a></li>
             </ul>
-            <button id="theme-toggle" aria-label="Toggle theme">
+            <button id="theme-toggle" aria-label="Toggle dark/light theme">
                 <i class="fas fa-moon"></i>
             </button>
-            <div class="menu-toggle" id="mobile-menu">
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" role="button" tabindex="0">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -84,10 +91,10 @@
 
             <!-- ===== FILTER BUTTONS ===== -->
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="healthcare">Healthcare</button>
-                <button class="filter-btn" data-filter="education">Education</button>
-                <button class="filter-btn" data-filter="realestate">Real Estate</button>
+                <button class="filter-btn active" data-filter="all" aria-label="Show all projects">All</button>
+                <button class="filter-btn" data-filter="healthcare" aria-label="Show healthcare projects">Healthcare</button>
+                <button class="filter-btn" data-filter="education" aria-label="Show education projects">Education</button>
+                <button class="filter-btn" data-filter="realestate" aria-label="Show real estate projects">Real Estate</button>
             </div>
 
             <div class="project-grid">
@@ -123,7 +130,8 @@
                         <a href="http://healthcare.morongcenter.com/"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-small magnetic-btn">
+                           class="btn btn-small magnetic-btn"
+                           aria-label="Visit RHU Morong Health System project">
                             <i class="fas fa-external-link-alt"></i>
                             Visit Project
                         </a>
@@ -140,7 +148,7 @@
                             The system evaluates students' interests, skills, and
                             academic inclinations to provide data-driven recommendations.
                             <br /><br />
-                           <strong>My Role:</strong> Developed the system independently, working
+                            <strong>My Role:</strong> Developed the system independently, working
                             on the database, front-end, system features, and deployment. This project
                             gave me hands-on experience in building a complete web application and
                             helped me better understand how its different parts work together.
@@ -161,7 +169,8 @@
                         <a href="https://angononhs-onlinecareerassessment.online/"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-small magnetic-btn">
+                           class="btn btn-small magnetic-btn"
+                           aria-label="Visit Angono NHS Career Assessment project">
                             <i class="fas fa-external-link-alt"></i>
                             Visit Project
                         </a>
@@ -201,7 +210,8 @@
                         <a href="https://howcan-i-help.org/"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-small magnetic-btn">
+                           class="btn btn-small magnetic-btn"
+                           aria-label="Visit HowCan-i-Help project">
                             <i class="fas fa-external-link-alt"></i>
                             Visit Project
                         </a>
@@ -239,7 +249,8 @@
                         <a href="https://ritremis.com/"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-small magnetic-btn">
+                           class="btn btn-small magnetic-btn"
+                           aria-label="Visit RITREMIS project">
                             <i class="fas fa-external-link-alt"></i>
                             Visit Project
                         </a>
@@ -248,8 +259,12 @@
 
             </div>
 
-            <div class="center-btn" style="margin-top:40px;">
-                <a href="index.html#contact" class="btn btn-primary magnetic-btn">
+            <!-- ===== BACK TO HOME + CTA BUTTONS ===== -->
+            <div class="center-btn" style="margin-top:40px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                <a href="index.html" class="btn btn-secondary magnetic-btn" aria-label="Go back to homepage">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <a href="index.html#contact" class="btn btn-primary magnetic-btn" aria-label="Contact me to build a project">
                     <i class="fas fa-rocket"></i> Let's Build Something Together
                 </a>
             </div>
@@ -261,16 +276,16 @@
         <div class="container">
             <div class="footer-divider"></div>
             <div class="footer-social">
-                <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub profile">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook">
+                <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook profile">
                     <i class="fab fa-facebook"></i>
                 </a>
-                <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram">
+                <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram profile">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="mailto:cthyrnmngt718@gmail.com" aria-label="Email">
+                <a href="mailto:cthyrnmgt718@gmail.com" aria-label="Send me an email">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
@@ -299,7 +314,7 @@
 
     <!-- ========== FLOATING BUTTON ========== -->
     <div class="floating-buttons">
-        <button id="scroll-btn" aria-label="Scroll">
+        <button id="scroll-btn" aria-label="Scroll to top or bottom">
             <i class="fas fa-chevron-down" id="scroll-icon"></i>
             <span class="scroll-tooltip" id="scroll-tooltip">Scroll Down</span>
         </button>
