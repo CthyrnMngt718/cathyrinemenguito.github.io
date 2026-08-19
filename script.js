@@ -92,7 +92,6 @@ getVisitorCount();
 // 6. QUOTE OF THE DAY (Church of Christ Bible Verses)
 // ============================================
 const bibleVerses = [
-    // ===== CHURCH OF CHRIST BIBLE VERSES =====
     { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13" },
     { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", author: "Jeremiah 29:11" },
     { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", author: "Joshua 1:9" },
@@ -143,23 +142,19 @@ function displayQuote() {
     
     if (!quoteText) return;
     
-    // Get Philippine Time (PHT UTC+8)
     const now = new Date();
     const philippineTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
     
-    // Calculate day of year based on Philippine Time
     const startOfYear = new Date(philippineTime.getFullYear(), 0, 0);
     const diff = philippineTime - startOfYear;
     const dayOfYear = Math.floor(diff / 86400000);
     
-    // Cycle through verses based on day of year
     const verseIndex = dayOfYear % bibleVerses.length;
     
     const selectedVerse = bibleVerses[verseIndex];
     quoteText.textContent = selectedVerse.text;
     quoteAuthor.textContent = `— ${selectedVerse.author}`;
     
-    // Update type badge
     if (quoteType) {
         quoteType.innerHTML = '<i class="fas fa-bible"></i> Verse of the Day';
         quoteType.style.color = '#ffdd44';
@@ -689,8 +684,10 @@ if (slides.length > 0) {
 }
 
 // ============================================
-// 22. RADAR CHART
+// 22. RADAR CHART (FIXED - No Duplicates)
 // ============================================
+let radarChartInstance = null;
+
 function loadRadarChart() {
     const canvas = document.getElementById('radarChart');
     if (!canvas) return;
@@ -711,7 +708,14 @@ function createRadarChart(canvas) {
     const textColor = isLight ? '#0b1a14' : '#e8f5ed';
     const gridColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
 
-    new Chart(ctx, {
+    // === DESTROY OLD CHART INSTANCE ===
+    if (radarChartInstance) {
+        radarChartInstance.destroy();
+        radarChartInstance = null;
+    }
+
+    // === CREATE NEW CHART ===
+    radarChartInstance = new Chart(ctx, {
         type: 'radar',
         data: {
             labels: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL', 'UI/UX'],
