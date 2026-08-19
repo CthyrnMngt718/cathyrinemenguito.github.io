@@ -39,7 +39,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
     
-    <!-- ===== FIX: Tagline Cut-Off & New Badge Styles ===== -->
+    <!-- ===== FIX: Tagline Cut-Off ===== -->
     <style>
         .tagline {
             white-space: normal !important;
@@ -75,39 +75,6 @@
                 font-size: 0.9rem;
                 min-height: 3rem;
             }
-        }
-
-        /* ===== SKILLS BADGES ===== */
-        .skills-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .skill-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-secondary, #f0f0f0);
-            border: 1px solid var(--border-color, #ddd);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--text-primary, #333);
-            transition: all 0.3s ease;
-        }
-
-        .skill-badge:hover {
-            background: var(--mint-primary, #00ffab);
-            color: #000;
-            border-color: var(--mint-primary, #00ffab);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 255, 171, 0.3);
-        }
-
-        .skill-badge i {
-            font-size: 1rem;
         }
     </style>
 </head>
@@ -177,9 +144,8 @@
                 Hi, I'm <span class="gradient-text">Cathyrine Menguito</span>
             </h1>
             
-            <!-- ===== UPDATED TAGLINE (Value-Driven) ===== -->
             <p class="tagline" id="tagline">
-                I build web systems that solve <span class="gradient-text">real-world problems</span>
+                Computer Science Graduate
             </p>
             
             <p class="description">
@@ -194,7 +160,7 @@
                     <i class="fas fa-rocket"></i> View My Work
                 </a>
                 <a href="#services" class="btn btn-secondary magnetic-btn">
-                    <i class="fas fa-cogs"></i> What I Offer
+                    <i class="fas fa-cogs"></i> My Services
                 </a>
                 <a href="#contact" class="btn btn-secondary magnetic-btn">
                     <i class="fas fa-paper-plane"></i> Contact Me
@@ -424,37 +390,34 @@
                     </a>
                 </div>
                 <div class="about-skills">
-                    <!-- ===== UPDATED SKILLS BADGES ===== -->
                     <h3>Technical Skills</h3>
-                    <div class="skills-badges">
-                        <span class="skill-badge"><i class="fab fa-html5"></i> HTML5</span>
-                        <span class="skill-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
-                        <span class="skill-badge"><i class="fab fa-js"></i> JavaScript</span>
-                        <span class="skill-badge"><i class="fas fa-database"></i> MySQL</span>
-                        <span class="skill-badge"><i class="fab fa-git-alt"></i> Git</span>
-                        <span class="skill-badge"><i class="fab fa-github"></i> GitHub</span>
-                        <span class="skill-badge"><i class="fas fa-pencil-alt"></i> UI/UX Design</span>
-                        <span class="skill-badge"><i class="fas fa-code"></i> Web Development</span>
-                    </div>
-
+                    <ul class="skills-list">
+                        <li><i class="fab fa-html5"></i> HTML5</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                        <li><i class="fab fa-js"></i> JavaScript (Basic)</li>
+                        <li><i class="fas fa-database"></i> MySQL</li>
+                        <li><i class="fab fa-git-alt"></i> Git</li>
+                        <li><i class="fab fa-github"></i> GitHub</li>
+                        <li><i class="fas fa-pencil-alt"></i> UI/UX Design</li>
+                        <li><i class="fas fa-code"></i> Web Development</li>
+                    </ul>
                     <h3>Tools &amp; Technologies</h3>
-                    <div class="skills-badges">
-                        <span class="skill-badge"><i class="fas fa-file-word"></i> Microsoft Office</span>
-                        <span class="skill-badge"><i class="fas fa-paint-brush"></i> Canva</span>
-                        <span class="skill-badge"><i class="fab fa-google"></i> Google Workspace</span>
-                        <span class="skill-badge"><i class="fab fa-windows"></i> Windows OS</span>
-                        <span class="skill-badge"><i class="fas fa-code"></i> VS Code</span>
-                    </div>
-
+                    <ul class="skills-list">
+                        <li><i class="fas fa-file-word"></i> Microsoft Office</li>
+                        <li><i class="fas fa-paint-brush"></i> Canva</li>
+                        <li><i class="fab fa-google"></i> Google Workspace</li>
+                        <li><i class="fab fa-windows"></i> Windows OS</li>
+                        <li><i class="fas fa-code"></i> VS Code</li>
+                    </ul>
                     <h3>Professional Skills</h3>
-                    <div class="skills-badges">
-                        <span class="skill-badge"><i class="fas fa-lightbulb"></i> Problem-Solving</span>
-                        <span class="skill-badge"><i class="fas fa-comments"></i> Communication</span>
-                        <span class="skill-badge"><i class="fas fa-users"></i> Team Collaboration</span>
-                        <span class="skill-badge"><i class="fas fa-clock"></i> Time Management</span>
-                        <span class="skill-badge"><i class="fas fa-search"></i> Detail-Oriented</span>
-                        <span class="skill-badge"><i class="fas fa-graduation-cap"></i> Continuous Learning</span>
-                    </div>
+                    <ul class="skills-list">
+                        <li><i class="fas fa-lightbulb"></i> Problem-Solving</li>
+                        <li><i class="fas fa-comments"></i> Communication</li>
+                        <li><i class="fas fa-users"></i> Team Collaboration</li>
+                        <li><i class="fas fa-clock"></i> Time Management</li>
+                        <li><i class="fas fa-search"></i> Detail-Oriented</li>
+                        <li><i class="fas fa-graduation-cap"></i> Continuous Learning</li>
+                    </ul>
 
                     <!-- ===== SKILLS VISUALIZATION ===== -->
                     <div class="skills-visualization">
@@ -705,49 +668,49 @@
             </div>
     </section>
 
-    <!-- ========== FOR CLIENTS ========== -->
-    <section id="for-clients">
-        <div class="container">
-            <div class="client-banner">
-                <h3>
-                    Have a <span class="gradient-text">Web System</span>
-                    or Digital Project in Mind?
-                </h3>
-                <p>
-                    I work with a development team to build practical web-based
-                    systems and applications for businesses, organizations, and
-                    project teams. We focus on functional solutions, user-friendly
-                    interfaces, and systems designed around specific requirements.
-                </p>
-                <div class="client-services">
-                    <span>
-                        <i class="fas fa-check-circle"></i>
-                        Custom Web Applications
-                    </span>
-                    <span>
-                        <i class="fas fa-check-circle"></i>
-                        Web-Based Systems
-                    </span>
-                    <span>
-                        <i class="fas fa-check-circle"></i>
-                        Application-Based Systems
-                    </span>
-                    <span>
-                        <i class="fas fa-check-circle"></i>
-                        UI/UX Design
-                    </span>
-                    <span>
-                        <i class="fas fa-check-circle"></i>
-                        System Maintenance
-                    </span>
-                </div>
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i>
-                    Discuss a Project
-                </a>
+<!-- ========== FOR CLIENTS ========== -->
+<section id="for-clients">
+    <div class="container">
+        <div class="client-banner">
+            <h3>
+                Have a <span class="gradient-text">Web System</span>
+                or Digital Project in Mind?
+            </h3>
+            <p>
+                I work with a development team to build practical web-based
+                systems and applications for businesses, organizations, and
+                project teams. We focus on functional solutions, user-friendly
+                interfaces, and systems designed around specific requirements.
+            </p>
+            <div class="client-services">
+                <span>
+                    <i class="fas fa-check-circle"></i>
+                    Custom Web Applications
+                </span>
+                <span>
+                    <i class="fas fa-check-circle"></i>
+                    Web-Based Systems
+                </span>
+                <span>
+                    <i class="fas fa-check-circle"></i>
+                    Application-Based Systems
+                </span>
+                <span>
+                    <i class="fas fa-check-circle"></i>
+                    UI/UX Design
+                </span>
+                <span>
+                    <i class="fas fa-check-circle"></i>
+                    System Maintenance
+                </span>
             </div>
+            <a href="#contact" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i>
+                Discuss a Project
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- ========== FEATURED PROJECTS ========== -->
     <section id="featured-projects">
@@ -758,7 +721,7 @@
             </div>
             <div class="project-grid">
 
-                <!-- ===== PROJECT 1: RHU Morong (UPDATED Case Study) ===== -->
+                <!-- ===== PROJECT 1: RHU Morong ===== -->
                 <div class="project-card" data-tilt>
                     <div class="project-header">
                         <div class="project-badges">
@@ -770,10 +733,12 @@
                     </div>
                     <div class="project-info">
                         <h3>RHU Morong Health System</h3>
+                        <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal.</p>
+                        
                         <div class="project-metrics">
                             <div class="metric">
                                 <span class="metric-number">70%</span>
-                                <span class="metric-label">Less Paperwork</span>
+                                <span class="metric-label">Reduced Paperwork</span>
                             </div>
                             <div class="metric-divider"></div>
                             <div class="metric">
@@ -800,7 +765,7 @@
                     </div>
                 </div>
 
-                <!-- ===== PROJECT 2: Angono NHS (UPDATED Case Study) ===== -->
+                <!-- ===== PROJECT 2: Angono NHS ===== -->
                 <div class="project-card" data-tilt>
                     <div class="project-header">
                         <div class="project-badges">
@@ -812,6 +777,8 @@
                     </div>
                     <div class="project-info">
                         <h3>Angono NHS Career Assessment</h3>
+                        <p>Web‑based career assessment tool for incoming Senior High School students.</p>
+                        
                         <div class="project-metrics">
                             <div class="metric">
                                 <span class="metric-number">100+</span>
@@ -842,7 +809,7 @@
                     </div>
                 </div>
 
-                <!-- ===== PROJECT 3: HowCan-i-Help (UPDATED Case Study) ===== -->
+                <!-- ===== PROJECT 3: HowCan-i-Help ===== -->
                 <div class="project-card" data-tilt>
                     <div class="project-header">
                         <div class="project-badges">
@@ -854,6 +821,8 @@
                     </div>
                     <div class="project-info">
                         <h3>HowCan‑i‑Help</h3>
+                        <p>Integrated clinic record and healthcare management system connecting patients, clinics, and donors.</p>
+                        
                         <div class="project-metrics">
                             <div class="metric">
                                 <span class="metric-number">3</span>
