@@ -19,6 +19,13 @@
         connect-src 'self' https://formspree.io https://api.countapi.xyz;
     " />
     
+    <!-- ===== OPEN GRAPH / SOCIAL SHARING ===== -->
+    <meta property="og:title" content="Cathyrine Menguito | Web Developer & UI/UX Designer" />
+    <meta property="og:description" content="Computer Science graduate building practical web systems for healthcare, education, and real estate." />
+    <meta property="og:image" content="https://cthyrnmngt718.github.io/og-image.jpg" />
+    <meta property="og:url" content="https://cthyrnmngt718.github.io/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -95,30 +102,41 @@
     <div class="custom-cursor" id="custom-cursor"></div>
 
     <!-- ========== FLOATING CTA ========== -->
-    <a href="#contact" class="floating-cta" id="floating-cta">
+    <a href="#contact" class="floating-cta" id="floating-cta" aria-label="Contact me">
         <i class="fas fa-paper-plane"></i>
         <span>Let's Talk</span>
+    </a>
+
+    <!-- ========== RESUME FLOATING CTA ========== -->
+    <a href="Cathyrine%20Menguito%20Resume.pdf" 
+       target="_blank" 
+       class="floating-cta floating-cta-secondary" 
+       id="resume-cta"
+       style="bottom:170px; background:transparent; border:1px solid var(--border-mint); color:var(--text-primary); box-shadow: none;"
+       aria-label="Download resume PDF">
+        <i class="fas fa-file-pdf"></i>
+        <span>Resume</span>
     </a>
 
     <!-- ========== NAVIGATION ========== -->
     <header>
         <nav>
             <div class="logo">
-                <a href="index.html">
+                <a href="index.html" aria-label="Home">
                     <span class="logo-c">C</span>
                     <span class="logo-m">M</span>
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html" class="active" aria-label="Home page">Home</a></li>
+                <li><a href="projects.html" aria-label="View my projects">Projects</a></li>
+                <li><a href="#about" aria-label="About me section">About</a></li>
+                <li><a href="#contact" aria-label="Contact me">Contact</a></li>
             </ul>
-            <button id="theme-toggle" aria-label="Toggle theme">
+            <button id="theme-toggle" aria-label="Toggle dark/light theme">
                 <i class="fas fa-moon"></i>
             </button>
-            <div class="menu-toggle" id="mobile-menu">
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" role="button" tabindex="0">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -129,7 +147,7 @@
     <!-- ========== HERO SECTION ========== -->
     <section id="hero">
         <div class="hero-content">
-            <a href="#contact" class="hero-badge" style="text-decoration:none;cursor:pointer;">
+            <a href="#contact" class="hero-badge" style="text-decoration:none;cursor:pointer;" aria-label="Contact for opportunities">
                 <span class="badge-dot"></span>
                 Available for opportunities &amp; freelance projects
             </a>
@@ -156,10 +174,10 @@
                 learning, gain real-world experience, and begin my journey in the IT industry.
             </p>
             <div class="hero-buttons">
-                <a href="projects.html" class="btn btn-primary magnetic-btn">
+                <a href="projects.html" class="btn btn-primary magnetic-btn" aria-label="View my projects">
                     <i class="fas fa-rocket"></i> Projects
                 </a>
-                <a href="#contact" class="btn btn-secondary magnetic-btn">
+                <a href="#contact" class="btn btn-secondary magnetic-btn" aria-label="Contact me">
                     <i class="fas fa-paper-plane"></i> Contact Me
                 </a>
             </div>
@@ -187,7 +205,7 @@
         </div>
         <div class="hero-image">
             <div class="hero-image-wrapper" data-tilt>
-                <img src="1000014492.jpg" alt="Cathyrine Menguito" loading="lazy" />
+                <img src="1000014492.jpg" alt="Cathyrine Menguito - Web Developer and UI/UX Designer" loading="lazy" />
                 <div class="hero-image-ring"></div>
             </div>
         </div>
@@ -260,7 +278,6 @@
                         documentation related to software projects.
                     </p>
                 </div>
-                <!-- ===== NEW: BRANDING SERVICE ===== -->
                 <div class="service-card" data-tilt>
                     <div class="service-icon">
                         <i class="fas fa-paint-brush"></i>
@@ -398,7 +415,7 @@
                             Class President 2024–2025
                         </span>
                     </div>
-                    <a href="Cathyrine%20Menguito%20Resume.pdf" class="btn btn-primary magnetic-btn" target="_blank">
+                    <a href="Cathyrine%20Menguito%20Resume.pdf" class="btn btn-primary magnetic-btn" target="_blank" aria-label="Download resume PDF">
                         <i class="fas fa-file-pdf"></i> View Resume
                     </a>
                 </div>
@@ -625,6 +642,28 @@
         </div>
     </section>
 
+    <!-- ========== TESTIMONIALS ========== -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Testimonials</span>
+                <h2>What People <span class="gradient-text">Say</span></h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Cathyrine's UI work on the RHU system was exceptional. She translated complex healthcare workflows into an intuitive, clean interface that our staff adopted immediately."</p>
+                    <span class="author-name">— Ariel B. Eubanas, Jr.</span>
+                    <span class="author-title">Full Stack Developer, Real IT OPC</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Her attention to detail and ability to collaborate across front-end and back-end concerns made her an invaluable part of our development team."</p>
+                    <span class="author-name">— Kenji Akira Bergaño</span>
+                    <span class="author-title">Project Lead, Real IT OPC</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== CO-DEVELOPER / TEAM ========== -->
     <section id="team">
         <div class="container">
@@ -717,7 +756,7 @@
                         System Maintenance
                     </span>
                 </div>
-                <a href="#contact" class="btn btn-primary">
+                <a href="#contact" class="btn btn-primary" aria-label="Discuss a project">
                     <i class="fas fa-paper-plane"></i>
                     Discuss a Project
                 </a>
@@ -746,6 +785,12 @@
                         <h3>RHU Morong Health System</h3>
                         <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal.</p>
                         
+                        <!-- ===== STATUS BADGE ===== -->
+                        <div class="status-badge">
+                            <span class="status-dot green"></span>
+                            <span>Live in Production</span>
+                        </div>
+                        
                         <div class="project-metrics">
                             <div class="metric">
                                 <span class="metric-number">70%</span>
@@ -766,7 +811,7 @@
                             <span>MySQL</span>
                             <span>Bootstrap</span>
                         </div>
-                        <a href="http://healthcare.morongcenter.com/" target="_blank" class="btn btn-small magnetic-btn">
+                        <a href="http://healthcare.morongcenter.com/" target="_blank" class="btn btn-small magnetic-btn" aria-label="View RHU Morong Health System project">
                             <i class="fas fa-external-link-alt"></i> View Project
                         </a>
                     </div>
@@ -783,6 +828,12 @@
                     <div class="project-info">
                         <h3>Angono NHS Career Assessment</h3>
                         <p>Web‑based career assessment tool for incoming Senior High School students.</p>
+                        
+                        <!-- ===== STATUS BADGE ===== -->
+                        <div class="status-badge">
+                            <span class="status-dot green"></span>
+                            <span>Live in Production</span>
+                        </div>
                         
                         <div class="project-metrics">
                             <div class="metric">
@@ -804,7 +855,7 @@
                             <span>MySQL</span>
                             <span>Bootstrap</span>
                         </div>
-                        <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" class="btn btn-small magnetic-btn">
+                        <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" class="btn btn-small magnetic-btn" aria-label="View Angono NHS Career Assessment project">
                             <i class="fas fa-external-link-alt"></i> View Project
                         </a>
                     </div>
@@ -821,6 +872,12 @@
                     <div class="project-info">
                         <h3>HowCan‑i‑Help</h3>
                         <p>Integrated clinic record and healthcare management system connecting patients, clinics, and donors.</p>
+                        
+                        <!-- ===== STATUS BADGE ===== -->
+                        <div class="status-badge">
+                            <span class="status-dot green"></span>
+                            <span>Live — Active Clinic Use</span>
+                        </div>
                         
                         <div class="project-metrics">
                             <div class="metric">
@@ -842,7 +899,7 @@
                             <span>MySQL</span>
                             <span>Bootstrap</span>
                         </div>
-                        <a href="https://howcan-i-help.org/" target="_blank" class="btn btn-small magnetic-btn">
+                        <a href="https://howcan-i-help.org/" target="_blank" class="btn btn-small magnetic-btn" aria-label="View HowCan-i-Help project">
                             <i class="fas fa-external-link-alt"></i> View Project
                         </a>
                     </div>
@@ -850,7 +907,7 @@
 
             </div>
             <div class="center-btn">
-                <a href="projects.html" class="btn btn-primary magnetic-btn">See All Projects</a>
+                <a href="projects.html" class="btn btn-primary magnetic-btn" aria-label="See all projects">See All Projects</a>
             </div>
         </div>
     </section>
@@ -921,8 +978,8 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-btn prev" id="carousel-prev">❮</button>
-                <button class="carousel-btn next" id="carousel-next">❯</button>
+                <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous slide">❮</button>
+                <button class="carousel-btn next" id="carousel-next" aria-label="Next slide">❯</button>
                 <div class="carousel-dots" id="carousel-dots"></div>
             </div>
         </div>
@@ -954,16 +1011,16 @@
                         <span>Morong, Rizal, Philippines</span>
                     </div>
                     <div class="social-links">
-                        <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub">
+                        <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub profile">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook">
+                        <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook profile">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram">
+                        <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram profile">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="mailto:cthyrnmgt718@gmail.com" aria-label="Email">
+                        <a href="mailto:cthyrnmgt718@gmail.com" aria-label="Send me an email">
                             <i class="fas fa-envelope"></i>
                         </a>
                     </div>
@@ -971,9 +1028,9 @@
 
                 <!-- ===== FORMSPREE FORM (AJAX - No Refresh) ===== -->
                 <form class="contact-form" id="contact-form">
-                    <input type="text" name="name" placeholder="Your Name" required />
-                    <input type="email" name="email" placeholder="Your Email" required />
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <input type="text" name="name" placeholder="Your Name" required aria-label="Your name" />
+                    <input type="email" name="email" placeholder="Your Email" required aria-label="Your email address" />
+                    <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your message"></textarea>
                     
                     <!-- Honeypot for spam protection -->
                     <input type="text" name="_gotcha" style="display:none;" />
@@ -981,7 +1038,7 @@
                     <!-- Add captcha for extra spam protection -->
                     <input type="hidden" name="_captcha" value="true" />
                     
-                    <button type="submit" class="btn btn-primary magnetic-btn">
+                    <button type="submit" class="btn btn-primary magnetic-btn" aria-label="Send message">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
                 </form>
@@ -1011,23 +1068,23 @@
 
             <!-- Social Links -->
             <div class="footer-social">
-                <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub profile">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook">
+                <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook profile">
                     <i class="fab fa-facebook"></i>
                 </a>
-                <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram">
+                <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram profile">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="mailto:cthyrnmgt718@gmail.com" aria-label="Email">
+                <a href="mailto:cthyrnmgt718@gmail.com" aria-label="Send me an email">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
 
             <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p class="footer-copy">&copy; 2026 Cathyrine Menguito. All rights reserved.</p>
+                <p class="footer-copy">&copy; <span id="year">2026</span> Cathyrine Menguito. All rights reserved.</p>
                 <div class="footer-badge">
                     <span class="badge-dot-small"></span>
                     <span>Available for opportunities</span>
@@ -1045,7 +1102,7 @@
 
     <!-- ========== FLOATING BUTTON ========== -->
     <div class="floating-buttons">
-        <button id="scroll-btn" aria-label="Scroll">
+        <button id="scroll-btn" aria-label="Scroll to top or bottom">
             <i class="fas fa-chevron-down" id="scroll-icon"></i>
             <span class="scroll-tooltip" id="scroll-tooltip">Scroll Down</span>
         </button>
