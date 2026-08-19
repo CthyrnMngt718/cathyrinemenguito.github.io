@@ -811,9 +811,9 @@ document.head.appendChild(dynamicStyles);
 const taglineElement = document.getElementById('tagline');
 const taglines = [
     'Computer Science Graduate',
+    'Aspiring IT Professional',
     'Web Developer',
-    'UI/UX Designer',
-    'Problem Solver'
+    'UI/UX Enthusiast'
 ];
 let typeIndex = 0;
 let charIndex = 0;
