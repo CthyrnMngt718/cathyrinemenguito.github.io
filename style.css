@@ -3599,3 +3599,84 @@ textarea:focus-visible {
 [data-theme="light"] .visitor-badge {
     background: rgba(0, 200, 120, 0.06);
 }
+/* ============================================
+   RIPPLE EFFECT ON BUTTONS
+   ============================================ */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(0);
+    animation: rippleAnim 0.7s ease-out forwards;
+    pointer-events: none;
+}
+
+[data-theme="light"] .ripple {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+@keyframes rippleAnim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   SECONDARY FLOATING CTA (RESUME)
+   ============================================ */
+.floating-cta-secondary {
+    background: transparent !important;
+    border: 1px solid var(--border-mint) !important;
+    color: var(--text-primary) !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(12px);
+    background: var(--bg-card) !important;
+}
+
+.floating-cta-secondary:hover {
+    border-color: var(--mint-primary) !important;
+    color: var(--mint-primary) !important;
+    box-shadow: 0 8px 40px var(--mint-glow) !important;
+    background: rgba(0, 255, 171, 0.05) !important;
+}
+
+/* ============================================
+   ENHANCED VISITOR BADGE
+   ============================================ */
+.visitor-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    background: rgba(0, 255, 171, 0.04);
+    padding: 4px 14px;
+    border-radius: 50px;
+    border: 1px solid var(--border-mint);
+    margin-top: 8px;
+}
+
+.visitor-badge i {
+    color: var(--mint-primary);
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.visitor-badge .visitor-label {
+    opacity: 0.6;
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES FOR VISITOR BADGE
+   ============================================ */
+[data-theme="light"] .visitor-badge {
+    background: rgba(0, 200, 120, 0.04);
+    color: #2a4a3a;
+}
