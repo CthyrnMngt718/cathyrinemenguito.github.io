@@ -3766,3 +3766,35 @@ body::before {
     background-image: 
         radial-gradient(circle, rgba(0, 200, 120, 0.06) 1.5px, transparent 1.5px);
 }
+/* ============================================
+   TYPING CURSOR ANIMATION
+   ============================================ */
+.tagline {
+    position: relative;
+    display: inline-block !important;
+}
+
+.tagline::after {
+    content: '|';
+    animation: blink 0.8s step-end infinite;
+    color: var(--mint-primary);
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-left: 2px;
+    opacity: 0.8;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+[data-theme="light"] .tagline::after {
+    color: var(--mint-primary);
+}
+
+@media (max-width: 480px) {
+    .tagline::after {
+        font-size: 1rem;
+    }
+}
