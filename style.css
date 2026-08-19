@@ -3084,7 +3084,7 @@ textarea:focus-visible {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
 }
 
@@ -3181,33 +3181,5 @@ textarea:focus-visible {
         grid-template-columns: 1fr;
         max-width: 320px;
         margin: 0 auto;
-    }
-}
-
-/* ============================================
-   FOR CLIENTS SECTION
-   ============================================ */
-#for-clients {
-    background: var(--bg-primary);
-    border-top: 1px solid var(--border-mint);
-    border-bottom: 1px solid var(--border-mint);
-    padding: 60px 0;
-}
-
-.client-banner {
-    text-align: center;
-    padding: 40px;
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    border: 1px solid var(--border-mint);
-}
-
-[data-theme="light"] .client-banner {
-    background: rgba(255, 255, 255, 0.7);
-}
-
-@media (max-width: 768px) {
-    .client-banner {
-        padding: 24px 16px;
     }
 }
