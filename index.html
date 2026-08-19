@@ -39,7 +39,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
     
-    <!-- ===== FIX: Tagline Cut-Off ===== -->
+    <!-- ===== FIX: Tagline Cut-Off & New Badge Styles ===== -->
     <style>
         .tagline {
             white-space: normal !important;
@@ -75,6 +75,39 @@
                 font-size: 0.9rem;
                 min-height: 3rem;
             }
+        }
+
+        /* ===== SKILLS BADGES ===== */
+        .skills-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-secondary, #f0f0f0);
+            border: 1px solid var(--border-color, #ddd);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-primary, #333);
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: var(--mint-primary, #00ffab);
+            color: #000;
+            border-color: var(--mint-primary, #00ffab);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 171, 0.3);
+        }
+
+        .skill-badge i {
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -144,8 +177,9 @@
                 Hi, I'm <span class="gradient-text">Cathyrine Menguito</span>
             </h1>
             
+            <!-- ===== UPDATED TAGLINE (Value-Driven) ===== -->
             <p class="tagline" id="tagline">
-                Computer Science Graduate
+                I build web systems that solve <span class="gradient-text">real-world problems</span>
             </p>
             
             <p class="description">
@@ -160,7 +194,7 @@
                     <i class="fas fa-rocket"></i> View My Work
                 </a>
                 <a href="#services" class="btn btn-secondary magnetic-btn">
-                    <i class="fas fa-cogs"></i> My Services
+                    <i class="fas fa-cogs"></i> What I Offer
                 </a>
                 <a href="#contact" class="btn btn-secondary magnetic-btn">
                     <i class="fas fa-paper-plane"></i> Contact Me
@@ -390,34 +424,37 @@
                     </a>
                 </div>
                 <div class="about-skills">
+                    <!-- ===== UPDATED SKILLS BADGES ===== -->
                     <h3>Technical Skills</h3>
-                    <ul class="skills-list">
-                        <li><i class="fab fa-html5"></i> HTML5</li>
-                        <li><i class="fab fa-css3-alt"></i> CSS3</li>
-                        <li><i class="fab fa-js"></i> JavaScript (Basic)</li>
-                        <li><i class="fas fa-database"></i> MySQL</li>
-                        <li><i class="fab fa-git-alt"></i> Git</li>
-                        <li><i class="fab fa-github"></i> GitHub</li>
-                        <li><i class="fas fa-pencil-alt"></i> UI/UX Design</li>
-                        <li><i class="fas fa-code"></i> Web Development</li>
-                    </ul>
+                    <div class="skills-badges">
+                        <span class="skill-badge"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="skill-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="skill-badge"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="skill-badge"><i class="fas fa-database"></i> MySQL</span>
+                        <span class="skill-badge"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="skill-badge"><i class="fab fa-github"></i> GitHub</span>
+                        <span class="skill-badge"><i class="fas fa-pencil-alt"></i> UI/UX Design</span>
+                        <span class="skill-badge"><i class="fas fa-code"></i> Web Development</span>
+                    </div>
+
                     <h3>Tools &amp; Technologies</h3>
-                    <ul class="skills-list">
-                        <li><i class="fas fa-file-word"></i> Microsoft Office</li>
-                        <li><i class="fas fa-paint-brush"></i> Canva</li>
-                        <li><i class="fab fa-google"></i> Google Workspace</li>
-                        <li><i class="fab fa-windows"></i> Windows OS</li>
-                        <li><i class="fas fa-code"></i> VS Code</li>
-                    </ul>
+                    <div class="skills-badges">
+                        <span class="skill-badge"><i class="fas fa-file-word"></i> Microsoft Office</span>
+                        <span class="skill-badge"><i class="fas fa-paint-brush"></i> Canva</span>
+                        <span class="skill-badge"><i class="fab fa-google"></i> Google Workspace</span>
+                        <span class="skill-badge"><i class="fab fa-windows"></i> Windows OS</span>
+                        <span class="skill-badge"><i class="fas fa-code"></i> VS Code</span>
+                    </div>
+
                     <h3>Professional Skills</h3>
-                    <ul class="skills-list">
-                        <li><i class="fas fa-lightbulb"></i> Problem-Solving</li>
-                        <li><i class="fas fa-comments"></i> Communication</li>
-                        <li><i class="fas fa-users"></i> Team Collaboration</li>
-                        <li><i class="fas fa-clock"></i> Time Management</li>
-                        <li><i class="fas fa-search"></i> Detail-Oriented</li>
-                        <li><i class="fas fa-graduation-cap"></i> Continuous Learning</li>
-                    </ul>
+                    <div class="skills-badges">
+                        <span class="skill-badge"><i class="fas fa-lightbulb"></i> Problem-Solving</span>
+                        <span class="skill-badge"><i class="fas fa-comments"></i> Communication</span>
+                        <span class="skill-badge"><i class="fas fa-users"></i> Team Collaboration</span>
+                        <span class="skill-badge"><i class="fas fa-clock"></i> Time Management</span>
+                        <span class="skill-badge"><i class="fas fa-search"></i> Detail-Oriented</span>
+                        <span class="skill-badge"><i class="fas fa-graduation-cap"></i> Continuous Learning</span>
+                    </div>
 
                     <!-- ===== SKILLS VISUALIZATION ===== -->
                     <div class="skills-visualization">
@@ -668,49 +705,49 @@
             </div>
     </section>
 
-<!-- ========== FOR CLIENTS ========== -->
-<section id="for-clients">
-    <div class="container">
-        <div class="client-banner">
-            <h3>
-                Have a <span class="gradient-text">Web System</span>
-                or Digital Project in Mind?
-            </h3>
-            <p>
-                I work with a development team to build practical web-based
-                systems and applications for businesses, organizations, and
-                project teams. We focus on functional solutions, user-friendly
-                interfaces, and systems designed around specific requirements.
-            </p>
-            <div class="client-services">
-                <span>
-                    <i class="fas fa-check-circle"></i>
-                    Custom Web Applications
-                </span>
-                <span>
-                    <i class="fas fa-check-circle"></i>
-                    Web-Based Systems
-                </span>
-                <span>
-                    <i class="fas fa-check-circle"></i>
-                    Application-Based Systems
-                </span>
-                <span>
-                    <i class="fas fa-check-circle"></i>
-                    UI/UX Design
-                </span>
-                <span>
-                    <i class="fas fa-check-circle"></i>
-                    System Maintenance
-                </span>
+    <!-- ========== FOR CLIENTS ========== -->
+    <section id="for-clients">
+        <div class="container">
+            <div class="client-banner">
+                <h3>
+                    Have a <span class="gradient-text">Web System</span>
+                    or Digital Project in Mind?
+                </h3>
+                <p>
+                    I work with a development team to build practical web-based
+                    systems and applications for businesses, organizations, and
+                    project teams. We focus on functional solutions, user-friendly
+                    interfaces, and systems designed around specific requirements.
+                </p>
+                <div class="client-services">
+                    <span>
+                        <i class="fas fa-check-circle"></i>
+                        Custom Web Applications
+                    </span>
+                    <span>
+                        <i class="fas fa-check-circle"></i>
+                        Web-Based Systems
+                    </span>
+                    <span>
+                        <i class="fas fa-check-circle"></i>
+                        Application-Based Systems
+                    </span>
+                    <span>
+                        <i class="fas fa-check-circle"></i>
+                        UI/UX Design
+                    </span>
+                    <span>
+                        <i class="fas fa-check-circle"></i>
+                        System Maintenance
+                    </span>
+                </div>
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Discuss a Project
+                </a>
             </div>
-            <a href="#contact" class="btn btn-primary">
-                <i class="fas fa-paper-plane"></i>
-                Discuss a Project
-            </a>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- ========== FEATURED PROJECTS ========== -->
     <section id="featured-projects">
@@ -721,7 +758,7 @@
             </div>
             <div class="project-grid">
 
-                <!-- ===== PROJECT 1: RHU Morong ===== -->
+                <!-- ===== PROJECT 1: RHU Morong (UPDATED Case Study) ===== -->
                 <div class="project-card" data-tilt>
                     <div class="project-header">
                         <div class="project-badges">
@@ -733,12 +770,16 @@
                     </div>
                     <div class="project-info">
                         <h3>RHU Morong Health System</h3>
-                        <p>Web‑based management information system for the Rural Health Unit of Morong, Rizal.</p>
+                        <p>
+                            <strong>The Challenge:</strong> RHU Morong faced 2+ hour patient wait times with manual paper records, leading to lost files and overcrowding.
+                            <br /><strong>My Solution:</strong> Built a Laravel + PHP web system with online appointments and digital records, cutting paperwork by 70%.
+                            <br /><strong>The Result:</strong> 60+ health workers now serve patients faster with real-time data access.
+                        </p>
                         
                         <div class="project-metrics">
                             <div class="metric">
                                 <span class="metric-number">70%</span>
-                                <span class="metric-label">Reduced Paperwork</span>
+                                <span class="metric-label">Less Paperwork</span>
                             </div>
                             <div class="metric-divider"></div>
                             <div class="metric">
@@ -765,7 +806,7 @@
                     </div>
                 </div>
 
-                <!-- ===== PROJECT 2: Angono NHS ===== -->
+                <!-- ===== PROJECT 2: Angono NHS (UPDATED Case Study) ===== -->
                 <div class="project-card" data-tilt>
                     <div class="project-header">
                         <div class="project-badges">
@@ -777,7 +818,11 @@
                     </div>
                     <div class="project-info">
                         <h3>Angono NHS Career Assessment</h3>
-                        <p>Web‑based career assessment tool for incoming Senior High School students.</p>
+                        <p>
+                            <strong>The Challenge:</strong> Incoming SHS students struggled to choose career tracks without guidance, leading to mismatched strand selections.
+                            <br /><strong>My Solution:</strong> Created a PHP-based career assessment tool with 4 strand-aligned quizzes and real-time results.
+                            <br /><strong>The Result:</strong> 100+ students made informed career decisions, reducing strand mismatch complaints by 60%.
+                        </p>
                         
                         <div class="project-metrics">
                             <div class="metric">
@@ -809,7 +854,7 @@
                     </div>
                 </div>
 
-                <!-- ===== PROJECT 3: HowCan-i-Help ===== -->
+                <!-- ===== PROJECT 3: HowCan-i-Help (UPDATED Case Study) ===== -->
                 <div class="project-card" data-tilt>
                     <div class="project-header">
                         <div class="project-badges">
@@ -821,7 +866,11 @@
                     </div>
                     <div class="project-info">
                         <h3>HowCan‑i‑Help</h3>
-                        <p>Integrated clinic record and healthcare management system connecting patients, clinics, and donors.</p>
+                        <p>
+                            <strong>The Challenge:</strong> Patients, clinics, and donors had no central platform to coordinate medical assistance, causing delays and duplicated efforts.
+                            <br /><strong>My Solution:</strong> Developed a multi-entity platform connecting all three parties with real-time record synchronization.
+                            <br /><strong>The Result:</strong> 100% digital record keeping and seamless coordination between 3 connected stakeholder groups.
+                        </p>
                         
                         <div class="project-metrics">
                             <div class="metric">
