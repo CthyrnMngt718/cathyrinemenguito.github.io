@@ -171,56 +171,6 @@ function displayQuote() {
 document.addEventListener('DOMContentLoaded', displayQuote);
 
 // ============================================
-// TYPING ANIMATION (Tagline)
-// ============================================
-const taglineElement = document.getElementById('tagline');
-if (taglineElement) {
-    const phrases = [
-        'Computer Science Graduate',
-        'Web Developer',
-        'UI/UX Enthusiast',
-        'IT Professional'
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let currentText = '';
-
-    function typeEffect() {
-        const fullText = phrases[phraseIndex];
-        
-        if (!isDeleting) {
-            currentText = fullText.substring(0, charIndex + 1);
-            charIndex++;
-            
-            if (charIndex === fullText.length) {
-                isDeleting = true;
-                setTimeout(typeEffect, 2500);
-                return;
-            }
-        } else {
-            currentText = fullText.substring(0, charIndex - 1);
-            charIndex--;
-            
-            if (charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                setTimeout(typeEffect, 500);
-                return;
-            }
-        }
-        
-        taglineElement.textContent = currentText;
-        const speed = isDeleting ? 30 : 60;
-        setTimeout(typeEffect, speed);
-    }
-    
-    window.addEventListener('load', () => {
-        setTimeout(typeEffect, 1000);
-    });
-}
-
-// ============================================
 // 7. MOBILE MENU TOGGLE
 // ============================================
 const mobileMenu = document.getElementById('mobile-menu');
