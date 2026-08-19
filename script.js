@@ -219,6 +219,7 @@ if (taglineElement) {
         setTimeout(typeEffect, 1000);
     });
 }
+
 // ============================================
 // 7. MOBILE MENU TOGGLE
 // ============================================
@@ -254,28 +255,7 @@ window.addEventListener('scroll', () => {
     }
 
     updateScrollButton();
-    updateProgressRing();
 });
-
-// ============================================
-// 8b. SCROLL PROGRESS RING
-// ============================================
-const ringFill = document.querySelector('.progress-ring-fill');
-const percentDisplay = document.getElementById('progress-percent');
-const circumference = 2 * Math.PI * 26; // 163.36
-
-function updateProgressRing() {
-    if (!ringFill) return;
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    const offset = circumference - (progress / 100) * circumference;
-    ringFill.style.strokeDashoffset = offset;
-    if (percentDisplay) {
-        percentDisplay.textContent = Math.round(progress) + '%';
-    }
-}
-updateProgressRing();
 
 // ============================================
 // 9. VERSATILE SCROLL BUTTON
