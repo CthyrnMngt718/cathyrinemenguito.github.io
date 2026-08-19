@@ -804,3 +804,72 @@ dynamicStyles.textContent = `
     }
 `;
 document.head.appendChild(dynamicStyles);
+
+// ============================================
+// 24. TYPEWRITER EFFECT
+// ============================================
+const taglineElement = document.getElementById('tagline');
+const taglines = [
+    'Computer Science Graduate',
+    'Web Developer',
+    'UI/UX Designer',
+    'Problem Solver'
+];
+let typeIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+    if (!taglineElement) return;
+    const current = taglines[typeIndex];
+    if (isDeleting) {
+        taglineElement.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        taglineElement.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    let speed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && charIndex === current.length) {
+        speed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        typeIndex = (typeIndex + 1) % taglines.length;
+        speed = 500;
+    }
+    setTimeout(typeEffect, speed);
+}
+// Start the typewriter effect after page loads
+if (taglineElement) {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(typeEffect, 800);
+    });
+}
+
+// ============================================
+// 25. CLICK RIPPLE EFFECT
+// ============================================
+document.querySelectorAll('.btn, .floating-cta, .carousel-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 700);
+    });
+});
+
+// ============================================
+// 26. DYNAMIC COPYRIGHT YEAR
+// ============================================
+const yearElement = document.getElementById('year');
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
