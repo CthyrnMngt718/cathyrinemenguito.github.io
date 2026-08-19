@@ -3522,3 +3522,28 @@ textarea:focus-visible {
         padding: 3px 10px;
     }
 }
+/* ============================================
+   LIGHT MODE OVERRIDES FOR QUOTE SECTION
+   ============================================ */
+[data-theme="light"] #quote-section {
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .quote-text {
+    color: #0b1a14 !important;
+}
+
+[data-theme="light"] .quote-author {
+    color: #2a4a3a !important;
+}
+
+[data-theme="light"] .quote-icon {
+    color: var(--mint-primary) !important;
+    opacity: 0.3 !important;
+}
+
+[data-theme="light"] .quote-type {
+    background: rgba(0, 200, 120, 0.08) !important;
+    color: var(--mint-primary) !important;
+    border-color: rgba(0, 200, 120, 0.2) !important;
+}
