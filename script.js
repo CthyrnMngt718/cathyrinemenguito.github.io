@@ -873,3 +873,15 @@ const yearElement = document.getElementById('year');
 if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
+// ============================================
+// 27. SERVICE WORKER REGISTRATION
+// ============================================
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+            console.log('Service Worker registered successfully');
+        })
+        .catch((error) => {
+            console.log('Service Worker registration failed:', error);
+        });
+}
