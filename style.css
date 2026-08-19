@@ -3547,3 +3547,55 @@ textarea:focus-visible {
     color: var(--mint-primary) !important;
     border-color: rgba(0, 200, 120, 0.2) !important;
 }
+/* ============================================
+   ENHANCED VISITOR COUNTER BADGE
+   ============================================ */
+.visitor-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 255, 171, 0.06);
+    border: 1px solid var(--border-mint);
+    padding: 6px 18px 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    margin-top: 8px;
+    transition: all 0.3s var(--ease-spring);
+}
+
+.visitor-badge:hover {
+    border-color: var(--mint-primary);
+    box-shadow: 0 0 20px var(--mint-glow);
+    transform: translateY(-2px);
+}
+
+.visitor-badge i {
+    color: var(--mint-primary);
+    font-size: 0.9rem;
+    animation: pulseEye 2s ease-in-out infinite;
+}
+
+@keyframes pulseEye {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+.visitor-badge #visitor-count {
+    font-weight: 700;
+    color: var(--mint-primary);
+    font-size: 1.1rem;
+    min-width: 30px;
+    text-align: center;
+}
+
+.visitor-badge .visitor-label {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    font-weight: 400;
+}
+
+[data-theme="light"] .visitor-badge {
+    background: rgba(0, 200, 120, 0.06);
+}
