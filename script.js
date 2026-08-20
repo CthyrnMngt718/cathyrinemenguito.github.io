@@ -11,24 +11,7 @@ if (cursorGlow) {
 }
 
 // ============================================
-// 2. CUSTOM CURSOR
-// ============================================
-const customCursor = document.getElementById('custom-cursor');
-
-if (customCursor) {
-    document.addEventListener('mousemove', (e) => {
-        customCursor.style.left = e.clientX + 'px';
-        customCursor.style.top = e.clientY + 'px';
-    });
-
-    document.querySelectorAll('a, button, .btn, .project-card, .service-card, .edu-card').forEach(el => {
-        el.addEventListener('mouseenter', () => customCursor.classList.add('active'));
-        el.addEventListener('mouseleave', () => customCursor.classList.remove('active'));
-    });
-}
-
-// ============================================
-// 3. 3D TILT EFFECT ON CARDS
+// 2. 3D TILT EFFECT ON CARDS
 // ============================================
 const tiltElements = document.querySelectorAll('[data-tilt]');
 
@@ -50,7 +33,7 @@ tiltElements.forEach(el => {
 });
 
 // ============================================
-// 4. LIVE STATUS
+// 3. LIVE STATUS
 // ============================================
 const statusTexts = [
     'Currently exploring: React.js & Tailwind CSS',
@@ -69,7 +52,7 @@ if (statusElement) {
 }
 
 // ============================================
-// 5. VISITOR COUNTER (with session check)
+// 4. VISITOR COUNTER (with session check)
 // ============================================
 async function getVisitorCount() {
     const countElement = document.getElementById('visitor-count');
@@ -94,7 +77,7 @@ async function getVisitorCount() {
 getVisitorCount();
 
 // ============================================
-// 6. QUOTE OF THE DAY (Bible Verses)
+// 5. QUOTE OF THE DAY (Bible Verses)
 // ============================================
 const bibleVerses = [
     { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13" },
@@ -168,7 +151,7 @@ function displayQuote() {
 document.addEventListener('DOMContentLoaded', displayQuote);
 
 // ============================================
-// 7. MOBILE MENU TOGGLE
+// 6. MOBILE MENU TOGGLE
 // ============================================
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -188,7 +171,7 @@ if (mobileMenu && navLinks) {
 }
 
 // ============================================
-// 8. SCROLL PROGRESS BAR
+// 7. SCROLL PROGRESS BAR
 // ============================================
 const progressBar = document.getElementById('progress-bar');
 
@@ -205,7 +188,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// 9. VERSATILE SCROLL BUTTON
+// 8. VERSATILE SCROLL BUTTON
 // ============================================
 const scrollBtn = document.getElementById('scroll-btn');
 const scrollIcon = document.getElementById('scroll-icon');
@@ -253,7 +236,7 @@ scrollBtn.addEventListener('click', () => {
 });
 
 // ============================================
-// 10. SCROLL REVEAL
+// 9. SCROLL REVEAL
 // ============================================
 const observerOptions = {
     threshold: 0.15,
@@ -281,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// 11. ACTIVE NAV LINK
+// 10. ACTIVE NAV LINK
 // ============================================
 const sections = document.querySelectorAll('section[id]');
 const navLinks2 = document.querySelectorAll('.nav-links a:not([href*="projects"])');
@@ -304,7 +287,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// 12. FORM SUBMISSION HANDLER (AJAX)
+// 11. FORM SUBMISSION HANDLER (AJAX)
 // ============================================
 const contactForm = document.querySelector('.contact-form');
 const successMsg = document.getElementById('form-success');
@@ -351,15 +334,30 @@ if (contactForm) {
 }
 
 // ============================================
-// 13. DARK/LIGHT MODE TOGGLE
+// 12. DARK/LIGHT MODE TOGGLE (Dark Mode Default)
 // ============================================
 const themeToggle = document.getElementById('theme-toggle');
-const currentTheme = localStorage.getItem('theme') || 'dark';
+
+const getPreferredTheme = () => {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved;
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
+    }
+    return 'dark';
+};
+
+const currentTheme = getPreferredTheme();
 
 if (currentTheme === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
     if (themeToggle) {
         themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+} else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    if (themeToggle) {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
     }
 }
 
@@ -392,7 +390,7 @@ if (themeToggle) {
 }
 
 // ============================================
-// 14. ANIMATED STATS COUNTERS
+// 13. ANIMATED STATS COUNTERS
 // ============================================
 const stats = document.querySelectorAll('.stat-number');
 const STAT_INCREMENT_DIVISOR = 60;
@@ -423,7 +421,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 stats.forEach(stat => counterObserver.observe(stat));
 
 // ============================================
-// 15. PARTICLE BACKGROUND
+// 14. PARTICLE BACKGROUND
 // ============================================
 const canvas = document.getElementById('particles-canvas');
 if (canvas) {
@@ -536,7 +534,7 @@ if (canvas) {
 }
 
 // ============================================
-// 16. CONFETTI EFFECT (with cleanup)
+// 15. CONFETTI EFFECT (with cleanup)
 // ============================================
 let confettiPieces = [];
 
@@ -572,7 +570,7 @@ function launchConfetti() {
 }
 
 // ============================================
-// 17. SKILLS BAR ANIMATION
+// 16. SKILLS BAR ANIMATION
 // ============================================
 const skillBars = document.querySelectorAll('.skill-bar-fill');
 
@@ -590,7 +588,7 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillBars.forEach(bar => skillObserver.observe(bar));
 
 // ============================================
-// 18. FILTER BUTTONS (Projects Page)
+// 17. FILTER BUTTONS (Projects Page)
 // ============================================
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
@@ -614,7 +612,7 @@ filterButtons.forEach(btn => {
 });
 
 // ============================================
-// 19. PAGE LOADER
+// 18. PAGE LOADER
 // ============================================
 window.addEventListener('load', () => {
     setTimeout(() => {
@@ -626,7 +624,7 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
-// 20. KEYBOARD NAVIGATION
+// 19. KEYBOARD NAVIGATION
 // ============================================
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown') {
@@ -640,7 +638,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// 21. CAROUSEL
+// 20. CAROUSEL
 // ============================================
 const track = document.getElementById('carousel-track');
 const slides = track ? track.querySelectorAll('.carousel-slide') : [];
@@ -712,7 +710,7 @@ if (slides.length > 0) {
 }
 
 // ============================================
-// 22. RADAR CHART (Lazy Load + Theme Update)
+// 21. RADAR CHART (Lazy Load + Theme Update)
 // ============================================
 let radarChartInstance = null;
 
@@ -820,7 +818,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// 23. DYNAMIC STYLES
+// 22. DYNAMIC STYLES
 // ============================================
 const dynamicStyles = document.createElement('style');
 dynamicStyles.textContent = `
@@ -836,7 +834,7 @@ dynamicStyles.textContent = `
 document.head.appendChild(dynamicStyles);
 
 // ============================================
-// 24. TYPEWRITER EFFECT
+// 23. TYPEWRITER EFFECT
 // ============================================
 const taglineElement = document.getElementById('tagline');
 const taglines = [
@@ -880,7 +878,7 @@ if (taglineElement) {
 }
 
 // ============================================
-// 25. CLICK RIPPLE EFFECT
+// 24. CLICK RIPPLE EFFECT
 // ============================================
 document.querySelectorAll('.btn, .floating-cta, .carousel-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
@@ -897,7 +895,7 @@ document.querySelectorAll('.btn, .floating-cta, .carousel-btn').forEach(btn => {
 });
 
 // ============================================
-// 26. DYNAMIC COPYRIGHT YEAR
+// 25. DYNAMIC COPYRIGHT YEAR
 // ============================================
 const yearElement = document.getElementById('year');
 if (yearElement) {
@@ -905,7 +903,7 @@ if (yearElement) {
 }
 
 // ============================================
-// 27. HIDE-ON-SCROLL NAVIGATION
+// 26. HIDE-ON-SCROLL NAVIGATION
 // ============================================
 const header = document.querySelector('header');
 let lastScrollY = window.scrollY;
@@ -989,7 +987,7 @@ setTimeout(() => {
 }, 100);
 
 // ============================================
-// 28. RESUME PDF PREVIEW MODAL
+// 27. RESUME PDF PREVIEW MODAL
 // ============================================
 const resumeModal = document.getElementById('resume-modal');
 const resumeModalClose = document.getElementById('resume-modal-close');
@@ -1139,7 +1137,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// 29. SERVICE WORKER REGISTRATION
+// 28. SERVICE WORKER REGISTRATION
 // ============================================
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
