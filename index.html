@@ -70,7 +70,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Favicon -->
+    <!-- ✅ Favicon (ensure these files exist in your root directory) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -263,7 +263,7 @@
             font-size: 0.6rem;
         }
 
-        /* --- Project Description with Bullet Points --- */
+        /* --- ✅ Improved Project Description with Bullet Points --- */
         .proj-desc {
             max-height: 4.5em;
             overflow: hidden;
@@ -383,28 +383,29 @@
             color: #fff;
         }
 
-        /* --- Filter Animations --- */
+        /* --- ✅ Filter Animations --- */
         .project-grid .project-card {
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                        display 0.4s ease;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: scale(1) translateY(0);
         }
         .project-grid .project-card.filtered-out {
             opacity: 0;
-            transform: scale(0.95) translateY(20px);
+            transform: scale(0.92) translateY(20px);
             pointer-events: none;
             display: none !important;
         }
         .project-grid .project-card.filtered-in {
             opacity: 1;
             transform: scale(1) translateY(0);
-            animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px) scale(0.97);
+                transform: translateY(30px) scale(0.96);
             }
             to {
                 opacity: 1;
@@ -412,10 +413,16 @@
             }
         }
 
-        /* --- Tech Stack Proficiency Visualization --- */
+        /* Staggered animation for cards */
+        .project-grid .project-card:nth-child(1).filtered-in { animation-delay: 0.05s; }
+        .project-grid .project-card:nth-child(2).filtered-in { animation-delay: 0.10s; }
+        .project-grid .project-card:nth-child(3).filtered-in { animation-delay: 0.15s; }
+        .project-grid .project-card:nth-child(4).filtered-in { animation-delay: 0.20s; }
+
+        /* --- ✅ Tech Stack Proficiency Visualization --- */
         .tech-stack-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 14px;
             margin-top: 16px;
         }
@@ -423,7 +430,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-mint);
             border-radius: var(--radius);
-            padding: 14px 12px;
+            padding: 14px 10px;
             text-align: center;
             transition: all 0.3s var(--ease-spring);
         }
@@ -438,7 +445,7 @@
             margin-bottom: 4px;
         }
         .tech-stack-item .tech-name {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--text-primary);
             display: block;
@@ -466,6 +473,7 @@
             transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);
             width: 0%;
         }
+        /* Trigger fill on scroll via Intersection Observer in script */
         [data-theme="light"] .tech-stack-item {
             background: rgba(255, 255, 255, 0.6);
         }
@@ -488,6 +496,33 @@
         .location-badge i {
             color: var(--mint-primary);
             font-size: 0.8rem;
+        }
+
+        /* --- ✅ Dedicated Resume Download Button in Hero --- */
+        .resume-download-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 255, 171, 0.08);
+            border: 1px solid var(--border-mint);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--mint-primary);
+            transition: all 0.3s var(--ease-spring);
+            text-decoration: none;
+            margin-top: 8px;
+        }
+        .resume-download-hero:hover {
+            background: var(--mint-primary);
+            color: #0b0e0c;
+            border-color: var(--mint-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px var(--mint-glow);
+        }
+        .resume-download-hero i {
+            font-size: 1.1rem;
         }
 
         /* --- Light Mode Adjustments --- */
@@ -515,6 +550,13 @@
         }
         [data-theme="light"] .tech-stack-item {
             background: rgba(255, 255, 255, 0.6);
+        }
+        [data-theme="light"] .resume-download-hero {
+            background: rgba(0, 200, 120, 0.08);
+        }
+        [data-theme="light"] .resume-download-hero:hover {
+            background: var(--mint-primary);
+            color: #0b0e0c;
         }
     </style>
 
@@ -581,7 +623,7 @@
     <!-- ========== MAIN CONTENT ========== -->
     <main id="main-content">
 
-        <!-- ========== HERO SECTION ========== -->
+        <!-- ========== HERO SECTION (UPDATED: Resume Download Button Added) ========== -->
         <section id="hero">
             <div class="hero-content">
                 <a href="#contact" class="hero-badge" style="text-decoration:none;cursor:pointer;" aria-label="Contact for opportunities">
@@ -618,6 +660,12 @@
                         <i class="fas fa-paper-plane"></i> <span data-i18n="hero_btn_contact">Contact Me</span>
                     </a>
                 </div>
+
+                <!-- ✅ NEW: Dedicated Resume Download Button -->
+                <a href="Cathyrine%20Menguito%20Resume.pdf" download class="resume-download-hero" aria-label="Download my resume">
+                    <i class="fas fa-file-pdf"></i>
+                    <span data-i18n="resume_download_hero">Download Resume (PDF)</span>
+                </a>
 
                 <div class="scroll-indicator">
                     <span data-i18n="scroll_text">Scroll</span>
@@ -829,6 +877,7 @@
                             <canvas id="radarChart"></canvas>
                         </div>
 
+                        <!-- ===== ✅ Tech Stack Proficiency Visualization ===== -->
                         <div class="tech-stack-visualization" style="margin-top:40px; padding-top:40px; border-top:1px solid var(--border-mint);">
                             <h3 data-i18n="tech_stack_title" style="font-size:1.1rem; font-weight:700; color:var(--text-primary); margin-bottom:4px;">Tech Stack Proficiency</h3>
                             <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;" data-i18n="tech_stack_sub">Technologies I work with and my comfort level</p>
@@ -1050,7 +1099,7 @@
                 <div class="project-grid">
 
                     <!-- ========================================= -->
-                    <!-- PROJECT 1: RHU Morong -->
+                    <!-- ✅ PROJECT 1: RHU Morong (Enhanced with bullet points & fixed GitHub link) -->
                     <!-- ========================================= -->
                     <div class="project-card" data-category="healthcare php" data-tilt>
                         <div class="project-thumbnail">
@@ -1081,6 +1130,7 @@
                                 <span class="impact-badge"><i class="fas fa-chart-line"></i> -70% Paperwork</span>
                                 <span class="impact-badge"><i class="fas fa-users"></i> 60+ Health Workers</span>
                             </div>
+                            <!-- ✅ Enhanced with bullet points -->
                             <div class="proj-desc" data-i18n="proj_1_full">
                                 <p style="margin-bottom:6px;">A comprehensive healthcare management platform built as our thesis project. This system digitized patient intake, appointment scheduling, and record management for the Rural Health Unit of Morong, Rizal.</p>
                                 <strong data-i18n="proj_1_contrib_label">My Contribution:</strong>
@@ -1097,17 +1147,20 @@
                             </div>
                             <button class="read-more-btn" data-target="desc">Read More</button>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                            <!-- ✅ FIXED: Code button links to GitHub profile -->
                             <div class="project-actions">
                                 <a href="http://healthcare.morongcenter.com/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit RHU Morong Health System project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
-                                <span class="btn-outline btn-team"><i class="fas fa-users"></i> Team Project</span>
+                                <a href="https://github.com/CthyrnMngt718" target="_blank" rel="noopener noreferrer" class="btn-outline btn-github-link" aria-label="View my GitHub profile">
+                                    <i class="fab fa-github"></i> <span data-i18n="code_link">Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- ========================================= -->
-                    <!-- PROJECT 2: Angono NHS -->
+                    <!-- ✅ PROJECT 2: Angono NHS (Enhanced with bullet points & fixed GitHub link) -->
                     <!-- ========================================= -->
                     <div class="project-card" data-category="education php bootstrap" data-tilt>
                         <div class="project-thumbnail">
@@ -1138,6 +1191,7 @@
                                 <span class="impact-badge"><i class="fas fa-graduation-cap"></i> 50+ Students</span>
                                 <span class="impact-badge"><i class="fas fa-layer-group"></i> 4 SHS Strands</span>
                             </div>
+                            <!-- ✅ Enhanced with bullet points -->
                             <div class="proj-desc" data-i18n="proj_2_full">
                                 <p style="margin-bottom:6px;">A web-based career guidance tool developed to help incoming Senior High School students identify their SHS strand. The system evaluates students' interests, skills, and academic inclinations to provide data-driven recommendations.</p>
                                 <strong data-i18n="proj_2_role_label">My Role:</strong>
@@ -1154,18 +1208,20 @@
                             </div>
                             <button class="read-more-btn" data-target="desc">Read More</button>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                            <!-- ✅ FIXED: Code button links to GitHub profile -->
                             <div class="project-actions">
                                 <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit Angono NHS Career Assessment project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
-                                <!-- ✅ Unified: Replaced "My GitHub" with "Team Project" -->
-                                <span class="btn-outline btn-team"><i class="fas fa-users"></i> Team Project</span>
+                                <a href="https://github.com/CthyrnMngt718" target="_blank" rel="noopener noreferrer" class="btn-outline btn-github-link" aria-label="View my GitHub profile">
+                                    <i class="fab fa-github"></i> <span data-i18n="code_link">Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- ========================================= -->
-                    <!-- PROJECT 3: HowCan-i-Help -->
+                    <!-- ✅ PROJECT 3: HowCan-i-Help (Enhanced with bullet points & fixed GitHub link) -->
                     <!-- ========================================= -->
                     <div class="project-card" data-category="healthcare php bootstrap" data-tilt>
                         <div class="project-thumbnail">
@@ -1176,7 +1232,6 @@
                                 <span class="browser-url">howcan-i-help.org</span>
                             </div>
                             <div class="thumbnail-body" style="--gradient-bg: linear-gradient(135deg, #2d1b00, #b85c00);">
-                                <!-- ✅ Changed: HCI → HCIH -->
                                 <span class="thumbnail-monogram">HCIH</span>
                                 <span class="thumbnail-label">Healthcare Ecosystem</span>
                                 <div class="thumbnail-divider"></div>
@@ -1197,6 +1252,7 @@
                                 <span class="impact-badge"><i class="fas fa-hospital"></i> 3 Entities</span>
                                 <span class="impact-badge"><i class="fas fa-file-alt"></i> 100% Digital</span>
                             </div>
+                            <!-- ✅ Enhanced with bullet points -->
                             <div class="proj-desc" data-i18n="proj_3_full">
                                 <p style="margin-bottom:6px;">A multi-tenant healthcare ecosystem that bridges the gap between patients, clinics, and community support networks. The platform streamlines clinical operations, donor coordination, and patient outreach through a centralized digital infrastructure.</p>
                                 <strong data-i18n="proj_3_context_label">Project Context:</strong>
@@ -1213,17 +1269,20 @@
                             </div>
                             <button class="read-more-btn" data-target="desc">Read More</button>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                            <!-- ✅ FIXED: Code button links to GitHub profile -->
                             <div class="project-actions">
                                 <a href="https://howcan-i-help.org/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit HowCan-i-Help project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
-                                <span class="btn-outline btn-team"><i class="fas fa-users"></i> Team Project</span>
+                                <a href="https://github.com/CthyrnMngt718" target="_blank" rel="noopener noreferrer" class="btn-outline btn-github-link" aria-label="View my GitHub profile">
+                                    <i class="fab fa-github"></i> <span data-i18n="code_link">Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- ========================================= -->
-                    <!-- PROJECT 4: RITREMIS -->
+                    <!-- ✅ PROJECT 4: RITREMIS (Enhanced with bullet points & fixed GitHub link) -->
                     <!-- ========================================= -->
                     <div class="project-card" data-category="realestate php bootstrap" data-tilt>
                         <div class="project-thumbnail">
@@ -1234,7 +1293,6 @@
                                 <span class="browser-url">ritremis.com</span>
                             </div>
                             <div class="thumbnail-body" style="--gradient-bg: linear-gradient(135deg, #1a1a1a, #7a6548);">
-                                <!-- ✅ Changed: RIT → RITREMES -->
                                 <span class="thumbnail-monogram">RITREMES</span>
                                 <span class="thumbnail-label">Real Estate</span>
                                 <div class="thumbnail-divider"></div>
@@ -1255,6 +1313,7 @@
                                 <span class="impact-badge"><i class="fas fa-building"></i> Property Mgmt</span>
                                 <span class="impact-badge"><i class="fas fa-chart-pie"></i> Real-time Data</span>
                             </div>
+                            <!-- ✅ Enhanced with bullet points -->
                             <div class="proj-desc" data-i18n="proj_4_full">
                                 <p style="margin-bottom:6px;">A comprehensive real estate management information system designed to centralize property records, streamline transactions, and provide stakeholders with real-time visibility into property portfolios.</p>
                                 <strong data-i18n="proj_4_context_label">Project Context:</strong>
@@ -1270,11 +1329,14 @@
                             </div>
                             <button class="read-more-btn" data-target="desc">Read More</button>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                            <!-- ✅ FIXED: Code button links to GitHub profile -->
                             <div class="project-actions">
                                 <a href="https://ritremis.com/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit RITREMIS project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
-                                <span class="btn-outline btn-team"><i class="fas fa-users"></i> Team Project</span>
+                                <a href="https://github.com/CthyrnMngt718" target="_blank" rel="noopener noreferrer" class="btn-outline btn-github-link" aria-label="View my GitHub profile">
+                                    <i class="fab fa-github"></i> <span data-i18n="code_link">Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
