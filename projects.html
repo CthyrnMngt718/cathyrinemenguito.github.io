@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cathyrine Menguito | Projects</title>
     
+    <!-- ===== SECURITY HEADERS ===== -->
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <!-- ===== META DESCRIPTION & SEO ===== -->
+    <meta name="description" content="Explore Cathyrine Menguito's portfolio of web development projects in healthcare, education, and real estate." />
+    <meta name="keywords" content="Cathyrine Menguito, portfolio, web development, healthcare system, education, real estate" />
+    
     <!-- ===== OPEN GRAPH / SOCIAL SHARING ===== -->
     <meta property="og:title" content="Cathyrine Menguito | Web Developer & UI/UX Designer" />
     <meta property="og:description" content="Explore my projects in healthcare, education, and real estate." />
@@ -28,12 +38,6 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
-    
-    <!-- Security Headers -->
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
 </head>
 <body>
     <!-- ========== PAGE LOADER ========== -->
@@ -91,10 +95,10 @@
 
             <!-- ===== FILTER BUTTONS ===== -->
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all" aria-label="Show all projects">All</button>
-                <button class="filter-btn" data-filter="healthcare" aria-label="Show healthcare projects">Healthcare</button>
-                <button class="filter-btn" data-filter="education" aria-label="Show education projects">Education</button>
-                <button class="filter-btn" data-filter="realestate" aria-label="Show real estate projects">Real Estate</button>
+                <button class="filter-btn active" data-filter="all" aria-label="Show all projects" aria-pressed="true">All</button>
+                <button class="filter-btn" data-filter="healthcare" aria-label="Show healthcare projects" aria-pressed="false">Healthcare</button>
+                <button class="filter-btn" data-filter="education" aria-label="Show education projects" aria-pressed="false">Education</button>
+                <button class="filter-btn" data-filter="realestate" aria-label="Show real estate projects" aria-pressed="false">Real Estate</button>
             </div>
 
             <div class="project-grid">
