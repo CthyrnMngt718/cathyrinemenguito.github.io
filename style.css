@@ -4189,3 +4189,158 @@ header.hidden:hover::after {
         display: none;
     }
 }
+
+/* ============================================
+   CLEANED UP / CONSOLIDATED STYLES
+   ============================================ */
+
+/* ----- PAGE LOADER ----- */
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--border-mint);
+    border-top-color: var(--mint-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loader-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    opacity: 0.6;
+}
+
+/* ----- MAGNETIC BUTTON ----- */
+.magnetic-btn {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+}
+
+.magnetic-btn:active {
+    transform: scale(0.95);
+}
+
+/* ----- CONFETTI PIECES ----- */
+.confetti-piece {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    animation: confettiFall 2.5s linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg) scale(0.2);
+        opacity: 0;
+    }
+}
+
+/* ----- RIPPLE EFFECT (Complete) ----- */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(0);
+    animation: rippleAnim 0.7s ease-out forwards;
+    pointer-events: none;
+}
+
+[data-theme="light"] .ripple {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+@keyframes rippleAnim {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ----- VISITOR BADGE (Single definition) ----- */
+.visitor-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 255, 171, 0.06);
+    border: 1px solid var(--border-mint);
+    padding: 6px 18px 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    margin-top: 8px;
+    transition: all 0.3s var(--ease-spring);
+}
+
+.visitor-badge:hover {
+    border-color: var(--mint-primary);
+    box-shadow: 0 0 20px var(--mint-glow);
+    transform: translateY(-2px);
+}
+
+.visitor-badge i {
+    color: var(--mint-primary);
+    font-size: 0.9rem;
+    animation: pulseEye 2s ease-in-out infinite;
+}
+
+@keyframes pulseEye {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+.visitor-badge #visitor-count {
+    font-weight: 700;
+    color: var(--mint-primary);
+    font-size: 1.1rem;
+    min-width: 30px;
+    text-align: center;
+}
+
+.visitor-badge .visitor-label {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    font-weight: 400;
+}
+
+[data-theme="light"] .visitor-badge {
+    background: rgba(0, 200, 120, 0.06);
+}
