@@ -69,7 +69,7 @@ if (statusElement) {
 }
 
 // ============================================
-// 5. VISITOR COUNTER
+// 5. VISITOR COUNTER (with session check)
 // ============================================
 async function getVisitorCount() {
     const countElement = document.getElementById('visitor-count');
@@ -80,10 +80,16 @@ async function getVisitorCount() {
         const data = await response.json();
         countElement.textContent = data.value || 0;
     } catch (error) {
-        let count = parseInt(localStorage.getItem('visitorCount') || '0');
-        count++;
-        localStorage.setItem('visitorCount', count);
-        countElement.textContent = count;
+        // Fallback with session check to avoid counting same session repeatedly
+        if (!sessionStorage.getItem('visitorCounted')) {
+            let count = parseInt(localStorage.getItem('visitorCount') || '0');
+            count++;
+            localStorage.setItem('visitorCount', count);
+            sessionStorage.setItem('visitorCounted', 'true');
+            countElement.textContent = count;
+        } else {
+            countElement.textContent = localStorage.getItem('visitorCount') || '0';
+        }
     }
 }
 getVisitorCount();
@@ -92,47 +98,7 @@ getVisitorCount();
 // 6. QUOTE OF THE DAY (Church of Christ Bible Verses)
 // ============================================
 const bibleVerses = [
-    { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13" },
-    { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", author: "Jeremiah 29:11" },
-    { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", author: "Joshua 1:9" },
-    { text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", author: "Proverbs 3:5-6" },
-    { text: "The Lord is my shepherd; I shall not want.", author: "Psalm 23:1" },
-    { text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.", author: "Philippians 4:6" },
-    { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", author: "John 3:16" },
-    { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles.", author: "Isaiah 40:31" },
-    { text: "The Lord is my light and my salvation—whom shall I fear?", author: "Psalm 27:1" },
-    { text: "Be still, and know that I am God.", author: "Psalm 46:10" },
-    { text: "Let your light shine before others, that they may see your good deeds and glorify your Father in heaven.", author: "Matthew 5:16" },
-    { text: "The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding.", author: "Proverbs 9:10" },
-    { text: "Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.", author: "Mark 12:30" },
-    { text: "The peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.", author: "Philippians 4:7" },
-    { text: "For we walk by faith, not by sight.", author: "2 Corinthians 5:7" },
-    { text: "The Lord will fight for you; you need only to be still.", author: "Exodus 14:14" },
-    { text: "Do not conform to the pattern of this world, but be transformed by the renewing of your mind.", author: "Romans 12:2" },
-    { text: "Above all else, guard your heart, for everything you do flows from it.", author: "Proverbs 4:23" },
-    { text: "Commit to the Lord whatever you do, and he will establish your plans.", author: "Proverbs 16:3" },
-    { text: "The Lord is gracious and compassionate, slow to anger and rich in love.", author: "Psalm 145:8" },
-    { text: "Your word is a lamp for my feet, a light on my path.", author: "Psalm 119:105" },
-    { text: "For the Lord gives wisdom; from his mouth come knowledge and understanding.", author: "Proverbs 2:6" },
-    { text: "The name of the Lord is a fortified tower; the righteous run to it and are safe.", author: "Proverbs 18:10" },
-    { text: "The Lord is my strength and my shield; my heart trusts in him, and he helps me.", author: "Psalm 28:7" },
-    { text: "Cast all your anxiety on him because he cares for you.", author: "1 Peter 5:7" },
-    { text: "For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline.", author: "2 Timothy 1:7" },
-    { text: "The Lord is good to those whose hope is in him, to the one who seeks him.", author: "Lamentations 3:25" },
-    { text: "I have hidden your word in my heart that I might not sin against you.", author: "Psalm 119:11" },
-    { text: "The Lord is near to all who call on him, to all who call on him in truth.", author: "Psalm 145:18" },
-    { text: "But those who trust in the Lord will find new strength. They will soar high on wings like eagles.", author: "Isaiah 40:31" },
-    { text: "The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you.", author: "Numbers 6:24-25" },
-    { text: "He has shown you, O mortal, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.", author: "Micah 6:8" },
-    { text: "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.", author: "Ephesians 2:10" },
-    { text: "The Lord is my rock, my fortress and my deliverer; my God is my rock, in whom I take refuge.", author: "Psalm 18:2" },
-    { text: "He gives strength to the weary and increases the power of the weak.", author: "Isaiah 40:29" },
-    { text: "The Lord is compassionate and gracious, slow to anger, abounding in love.", author: "Psalm 103:8" },
-    { text: "The path of the righteous is like the morning sun, shining ever brighter till the full light of day.", author: "Proverbs 4:18" },
-    { text: "The Lord is my helper; I will not be afraid. What can mere mortals do to me?", author: "Hebrews 13:6" },
-    { text: "Seek the Lord while he may be found; call on him while he is near.", author: "Isaiah 55:6" },
-    { text: "The Lord is faithful to all his promises and loving toward all he has made.", author: "Psalm 145:13" },
-    { text: "A heart at peace gives life to the body, but envy rots the bones.", author: "Proverbs 14:30" },
+    // ... (keep all your verses)
 ];
 
 function displayQuote() {
@@ -144,13 +110,10 @@ function displayQuote() {
     
     const now = new Date();
     const philippineTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
-    
     const startOfYear = new Date(philippineTime.getFullYear(), 0, 0);
     const diff = philippineTime - startOfYear;
     const dayOfYear = Math.floor(diff / 86400000);
-    
     const verseIndex = dayOfYear % bibleVerses.length;
-    
     const selectedVerse = bibleVerses[verseIndex];
     quoteText.textContent = selectedVerse.text;
     quoteAuthor.textContent = `— ${selectedVerse.author}`;
@@ -349,7 +312,7 @@ if (contactForm) {
 }
 
 // ============================================
-// 13. DARK/LIGHT MODE TOGGLE
+// 13. DARK/LIGHT MODE TOGGLE (UNIFIED)
 // ============================================
 const themeToggle = document.getElementById('theme-toggle');
 const currentTheme = localStorage.getItem('theme') || 'dark';
@@ -361,19 +324,43 @@ if (currentTheme === 'light') {
     }
 }
 
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+// Function to update radar chart theme (used on toggle)
+function updateRadarChartTheme() {
+    if (!radarChartInstance) return;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const textColor = isLight ? '#0b1a14' : '#e8f5ed';
+    const gridColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+    
+    radarChartInstance.options.plugins.legend.labels.color = textColor;
+    radarChartInstance.options.scales.r.angleLines.color = gridColor;
+    radarChartInstance.options.scales.r.grid.color = gridColor;
+    radarChartInstance.options.scales.r.pointLabels.color = textColor;
+    radarChartInstance.options.scales.r.ticks.color = textColor;
+    radarChartInstance.update();
+}
+
+// Theme toggle handler
+function handleThemeToggle() {
+    const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (themeToggle) {
         themeToggle.innerHTML = theme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    });
+    }
+    // Update radar chart colors without destroying
+    updateRadarChartTheme();
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', handleThemeToggle);
 }
 
 // ============================================
 // 14. ANIMATED STATS COUNTERS
 // ============================================
 const stats = document.querySelectorAll('.stat-number');
+const STAT_INCREMENT_DIVISOR = 60;
+const STAT_ANIMATION_INTERVAL = 20;
 
 const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -383,7 +370,7 @@ const counterObserver = new IntersectionObserver((entries) => {
             const isPlus = text.includes('+');
             const target = parseInt(text.replace('+', ''));
             let current = 0;
-            const increment = Math.ceil(target / 60);
+            const increment = Math.ceil(target / STAT_INCREMENT_DIVISOR);
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
@@ -391,7 +378,7 @@ const counterObserver = new IntersectionObserver((entries) => {
                     clearInterval(timer);
                 }
                 stat.textContent = isPlus ? current + '+' : current;
-            }, 20);
+            }, STAT_ANIMATION_INTERVAL);
             counterObserver.unobserve(stat);
         }
     });
@@ -513,8 +500,10 @@ if (canvas) {
 }
 
 // ============================================
-// 16. CONFETTI EFFECT
+// 16. CONFETTI EFFECT (with cleanup)
 // ============================================
+let confettiPieces = [];
+
 function launchConfetti() {
     const colors = ['#00ffab', '#00cc88', '#e8f5ed', '#88ffc8', '#00dd99', '#ff6b8a', '#ffdd44'];
     const count = 120;
@@ -537,9 +526,11 @@ function launchConfetti() {
         confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
         
         container.appendChild(confetti);
+        confettiPieces.push(confetti);
         
         setTimeout(() => {
             confetti.remove();
+            confettiPieces = confettiPieces.filter(p => p !== confetti);
         }, 3000);
     }
 }
@@ -563,15 +554,21 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillBars.forEach(bar => skillObserver.observe(bar));
 
 // ============================================
-// 18. FILTER BUTTONS (Projects Page)
+// 18. FILTER BUTTONS (Projects Page) with aria-pressed
 // ============================================
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
 filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
+        // Update aria-pressed
+        filterButtons.forEach(b => {
+            b.setAttribute('aria-pressed', 'false');
+            b.classList.remove('active');
+        });
+        btn.setAttribute('aria-pressed', 'true');
         btn.classList.add('active');
+        
         const filter = btn.dataset.filter;
 
         projectCards.forEach(card => {
@@ -627,6 +624,7 @@ function createDots() {
         const dot = document.createElement('button');
         dot.classList.add('carousel-dot');
         if (index === 0) dot.classList.add('active');
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
         dot.addEventListener('click', () => goToSlide(index));
         dotsContainer.appendChild(dot);
     });
@@ -684,7 +682,7 @@ if (slides.length > 0) {
 }
 
 // ============================================
-// 22. RADAR CHART (FIXED - No Duplicates)
+// 22. RADAR CHART (Lazy Load + Theme Update)
 // ============================================
 let radarChartInstance = null;
 
@@ -693,6 +691,7 @@ function loadRadarChart() {
     if (!canvas) return;
     
     if (typeof Chart === 'undefined') {
+        // Lazy load Chart.js
         const script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
         script.onload = () => createRadarChart(canvas);
@@ -703,18 +702,15 @@ function loadRadarChart() {
 }
 
 function createRadarChart(canvas) {
+    if (radarChartInstance) {
+        radarChartInstance.destroy();
+        radarChartInstance = null;
+    }
     const ctx = canvas.getContext('2d');
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const textColor = isLight ? '#0b1a14' : '#e8f5ed';
     const gridColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
 
-    // === DESTROY OLD CHART INSTANCE ===
-    if (radarChartInstance) {
-        radarChartInstance.destroy();
-        radarChartInstance = null;
-    }
-
-    // === CREATE NEW CHART ===
     radarChartInstance = new Chart(ctx, {
         type: 'radar',
         data: {
@@ -774,14 +770,27 @@ function createRadarChart(canvas) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', loadRadarChart);
-
-const themeToggle2 = document.getElementById('theme-toggle');
-if (themeToggle2) {
-    themeToggle2.addEventListener('click', () => {
-        setTimeout(loadRadarChart, 300);
+// Load radar chart when in viewport (lazy)
+const radarObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            loadRadarChart();
+            radarObserver.unobserve(entry.target);
+        }
     });
+}, { threshold: 0.2 });
+
+const radarContainer = document.querySelector('.radar-chart-container');
+if (radarContainer) {
+    radarObserver.observe(radarContainer);
 }
+
+// Also load on DOM ready if visible
+document.addEventListener('DOMContentLoaded', () => {
+    if (radarContainer && radarContainer.getBoundingClientRect().top < window.innerHeight) {
+        loadRadarChart();
+    }
+});
 
 // ============================================
 // 23. DYNAMIC STYLES
@@ -806,7 +815,7 @@ dynamicStyles.textContent = `
 document.head.appendChild(dynamicStyles);
 
 // ============================================
-// 24. TYPEWRITER EFFECT
+// 24. TYPEWRITER EFFECT (Cleaner)
 // ============================================
 const taglineElement = document.getElementById('tagline');
 const taglines = [
@@ -842,7 +851,7 @@ function typeEffect() {
     }
     setTimeout(typeEffect, speed);
 }
-// Start the typewriter effect after page loads
+
 if (taglineElement) {
     document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeEffect, 800);
@@ -873,6 +882,7 @@ const yearElement = document.getElementById('year');
 if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
+
 // ============================================
 // 27. SERVICE WORKER REGISTRATION
 // ============================================
