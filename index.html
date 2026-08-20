@@ -16,10 +16,9 @@
     <meta name="keywords" content="Cathyrine Menguito, web developer, UI/UX, portfolio, computer science, PHP, MySQL" />
     <link rel="canonical" href="https://cthyrnmngt718.github.io/" />
 
-    <!-- hreflang for international SEO -->
+    <!-- hreflang for English & Japanese only -->
     <link rel="alternate" hreflang="en" href="https://cthyrnmngt718.github.io/" />
     <link rel="alternate" hreflang="ja" href="https://cthyrnmngt718.github.io/?lang=ja" />
-    <link rel="alternate" hreflang="zh-TW" href="https://cthyrnmngt718.github.io/?lang=zh-TW" />
     <link rel="alternate" hreflang="x-default" href="https://cthyrnmngt718.github.io/" />
 
     <meta property="og:title" content="Cathyrine Menguito | Web Developer & UI/UX Designer" />
@@ -210,12 +209,11 @@
                 <li role="none"><a href="#contact" role="menuitem" data-i18n="nav_contact">Contact</a></li>
             </ul>
 
-            <!-- Language Switcher (Japan & Taiwan Focused) -->
+            <!-- Language Switcher (English & Japanese only) -->
             <div class="lang-switcher-wrapper">
                 <select id="language-switcher" aria-label="Select language">
                     <option value="en">🇺🇸 English</option>
                     <option value="ja">🇯🇵 日本語</option>
-                    <option value="zh-TW">🇹🇼 繁體中文</option>
                 </select>
             </div>
 
@@ -233,19 +231,19 @@
     <!-- ========== MAIN CONTENT ========== -->
     <main id="main-content">
 
-        <!-- ========== HERO SECTION (UPDATED) ========== -->
+        <!-- ========== HERO SECTION ========== -->
         <section id="hero">
             <div class="hero-content">
-                <!-- ✅ Changed: Replaced remote badge with your provided block -->
+                <!-- Hero Badge – now with data-i18n -->
                 <a href="#contact" class="hero-badge" style="text-decoration:none;cursor:pointer;" aria-label="Contact for opportunities">
                     <span class="badge-dot"></span>
-                    Available for opportunities &amp; freelance projects
+                    <span data-i18n="hero_badge">Available for opportunities &amp; freelance projects</span>
                 </a>
                 
-                <!-- ✅ Added: Live Status -->
+                <!-- Live Status – now with data-i18n -->
                 <div class="live-status">
                     <span class="status-dot"></span>
-                    <span class="status-text">Currently exploring: React.js &amp; Tailwind CSS</span>
+                    <span class="status-text" data-i18n="live_status">Currently exploring: React.js &amp; Tailwind CSS</span>
                 </div>
 
                 <h1 data-i18n="hero_title">Hi, I'm <span class="gradient-text">Cathyrine Menguito</span></h1>
@@ -634,7 +632,7 @@
             </div>
         </section>
 
-        <!-- ========== PROJECTS SECTION (UPDATED) ========== -->
+        <!-- ========== PROJECTS SECTION ========== -->
         <section id="projects-section">
             <div class="container">
                 <div class="section-header">
@@ -653,17 +651,13 @@
 
                 <div class="project-grid">
 
-                    <!-- ===== PROJECT 1: RHU Morong (UPDATED with Thumbnail & Buttons) ===== -->
+                    <!-- ===== PROJECT 1: RHU Morong ===== -->
                     <div class="project-card" data-category="healthcare php" data-tilt>
-                        <!-- ✅ Added Thumbnail -->
-                        <div class="project-thumbnail">
-                            🏥
-                        </div>
+                        <div class="project-thumbnail">🏥</div>
                         <div class="project-info">
                             <h3 data-i18n="proj_1_title">RHU Morong Health System</h3>
                             <p data-i18n="proj_1_full">A comprehensive healthcare management platform built as our thesis project. This system digitized patient intake, appointment scheduling, and record management for the Rural Health Unit of Morong, Rizal.<br /><br /><strong data-i18n="proj_1_contrib_label">My Contribution:</strong> <span data-i18n="proj_1_contrib">Spearheaded the front-end architecture and user interface design, ensuring a seamless experience for healthcare personnel. Collaborated closely with my co-developer on back-end integration and system optimization.</span><br /><br /><strong data-i18n="proj_1_recog_label">Recognition:</strong> <span data-i18n="proj_1_recog">Received the <strong>Outstanding System Design</strong> and <strong>Outstanding Thesis Writing</strong> awards for our work.</span></p>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
-                            <!-- ✅ Updated: Outline + GitHub buttons -->
                             <div class="project-actions">
                                 <a href="http://healthcare.morongcenter.com/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit RHU Morong Health System project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
@@ -675,11 +669,9 @@
                         </div>
                     </div>
 
-                    <!-- ===== PROJECT 2: Angono NHS (UPDATED) ===== -->
+                    <!-- ===== PROJECT 2: Angono NHS ===== -->
                     <div class="project-card" data-category="education php bootstrap" data-tilt>
-                        <div class="project-thumbnail">
-                            🎓
-                        </div>
+                        <div class="project-thumbnail">🎓</div>
                         <div class="project-info">
                             <h3 data-i18n="proj_2_title">Angono NHS Career Assessment</h3>
                             <p data-i18n="proj_2_full">A web-based career guidance tool developed to help incoming Senior High School students identify their SHS strand. The system evaluates students' interests, skills, and academic inclinations to provide data-driven recommendations.<br /><br /><strong data-i18n="proj_2_role_label">My Role:</strong> <span data-i18n="proj_2_role">Developed the system independently, working on the database, front-end, system features, and deployment. This project gave me hands-on experience in building a complete web application and helped me better understand how its different parts work together. It also improved my development and problem-solving skills.</span><br /><br /><strong data-i18n="proj_2_impact_label">Impact:</strong> <span data-i18n="proj_2_impact">Successfully assessed over 50 students, helping them make informed decisions about their academic pathways.</span></p>
@@ -695,11 +687,9 @@
                         </div>
                     </div>
 
-                    <!-- ===== PROJECT 3: HowCan-i-Help (UPDATED) ===== -->
+                    <!-- ===== PROJECT 3: HowCan-i-Help ===== -->
                     <div class="project-card" data-category="healthcare php bootstrap" data-tilt>
-                        <div class="project-thumbnail">
-                            🤝
-                        </div>
+                        <div class="project-thumbnail">🤝</div>
                         <div class="project-info">
                             <h3 data-i18n="proj_3_title">HowCan‑i‑Help</h3>
                             <p data-i18n="proj_3_full">A multi-tenant healthcare ecosystem that bridges the gap between patients, clinics, and community support networks. The platform streamlines clinical operations, donor coordination, and patient outreach through a centralized digital infrastructure.<br /><br /><strong data-i18n="proj_3_context_label">Project Context:</strong> <span data-i18n="proj_3_context">Developed as part of my professional work at <strong>Real IT OPC</strong>, where I collaborated with senior developers to bring this solution from concept to production. Currently deployed and actively supporting clinic workflows.</span><br /><br /><strong data-i18n="proj_3_ach_label">Key Achievement:</strong> <span data-i18n="proj_3_ach">The system has been fully integrated into the daily operations of partner clinics, replacing manual processes with efficient digital records management.</span></p>
@@ -715,11 +705,9 @@
                         </div>
                     </div>
 
-                    <!-- ===== PROJECT 4: RITREMIS (UPDATED) ===== -->
+                    <!-- ===== PROJECT 4: RITREMIS ===== -->
                     <div class="project-card" data-category="realestate php bootstrap" data-tilt>
-                        <div class="project-thumbnail">
-                            🏢
-                        </div>
+                        <div class="project-thumbnail">🏢</div>
                         <div class="project-info">
                             <h3 data-i18n="proj_4_title">RITREMIS</h3>
                             <p data-i18n="proj_4_full">A comprehensive real estate management information system designed to centralize property records, streamline transactions, and provide stakeholders with real-time visibility into property portfolios.<br /><br /><strong data-i18n="proj_4_context_label">Project Context:</strong> <span data-i18n="proj_4_context">Currently in active development at <strong>Real IT OPC</strong>, built in collaboration with our development team.</span><br /><br /><strong data-i18n="proj_4_focus_label">My Focus:</strong> <span data-i18n="proj_4_focus">Front-end implementation, UI/UX design, and ensuring a responsive, intuitive interface for property managers and clients.</span></p>
@@ -737,10 +725,10 @@
 
                 </div><!-- end project-grid -->
 
-                <!-- ✅ Updated: Removed "Back to Top", added "Let's Work Together" CTA -->
+                <!-- ✅ FIXED: "Let's Work Together" CTA with i18n on the text span -->
                 <div class="center-btn" style="margin-top:40px;">
                     <a href="#contact" class="btn btn-primary" aria-label="Let's work together" style="font-size:1rem; padding:14px 36px;">
-                        <i class="fas fa-handshake"></i> Let's Work Together
+                        <i class="fas fa-handshake"></i> <span data-i18n="projects_cta">Let's Work Together</span>
                     </a>
                 </div>
             </div>
