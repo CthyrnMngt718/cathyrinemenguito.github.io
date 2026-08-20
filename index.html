@@ -1084,35 +1084,168 @@
         </div>
     </section>
 
-    <!-- ========== RESUME PREVIEW MODAL ========== -->
-    <div class="modal-overlay" id="resume-modal">
-        <div class="modal-container modal-resume">
-            <button class="modal-close" id="resume-modal-close" aria-label="Close resume preview">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-content">
-                <h2 style="margin-bottom:4px;">My Resume</h2>
-                <p style="color:var(--text-secondary);margin-bottom:16px;font-size:0.9rem;">
-                    <i class="fas fa-file-pdf" style="color:var(--mint-primary);"></i> 
-                    Cathyrine Menguito — Computer Science Graduate
-                </p>
-                <div id="resume-pdf-viewer" style="width:100%;min-height:500px;border-radius:8px;overflow:hidden;background:var(--bg-card);border:1px solid var(--border-mint);">
-                    <div style="display:flex;align-items:center;justify-content:center;height:500px;flex-direction:column;gap:16px;color:var(--text-secondary);">
-                        <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:var(--mint-primary);"></i>
-                        <span>Loading resume preview...</span>
+<!-- ========== RESUME PREVIEW MODAL ========== -->
+<div class="modal-overlay" id="resume-modal">
+    <div class="modal-container modal-resume">
+        <button class="modal-close" id="resume-modal-close" aria-label="Close resume preview">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="resume-modal-header">
+                <div>
+                    <span class="resume-modal-tag">
+                        <i class="fas fa-file-pdf"></i> Document
+                    </span>
+                    <h2>My Resume</h2>
+                    <p>Cathyrine Menguito — Computer Science Graduate</p>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="resume-modal-body">
+                <!-- Personal Details -->
+                <section class="resume-section">
+                    <div class="resume-section-title">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <strong>Personal Details</strong>
+                            <small>Contact and location information</small>
+                        </div>
                     </div>
-                </div>
-                <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; padding-top:20px; border-top:1px solid var(--border-mint);">
-                    <a href="Cathyrine%20Menguito%20Resume.pdf" download class="btn btn-primary" style="color:#0b0e0c;">
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
-                    <button class="btn btn-secondary" id="resume-modal-close-btn">
-                        <i class="fas fa-times"></i> Close
-                    </button>
-                </div>
+                    <div class="resume-grid">
+                        <div class="resume-field">
+                            <span class="resume-label">Full Name</span>
+                            <span class="resume-value">Cathyrine Menguito</span>
+                        </div>
+                        <div class="resume-field">
+                            <span class="resume-label">Email</span>
+                            <span class="resume-value">cthyrnmngt718@gmail.com</span>
+                        </div>
+                        <div class="resume-field">
+                            <span class="resume-label">Phone</span>
+                            <span class="resume-value">+63 965 803 9637</span>
+                        </div>
+                        <div class="resume-field">
+                            <span class="resume-label">Location</span>
+                            <span class="resume-value">Morong, Rizal, Philippines</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="resume-section">
+                    <div class="resume-section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Education</strong>
+                            <small>Academic background</small>
+                        </div>
+                    </div>
+                    <div class="resume-grid">
+                        <div class="resume-field">
+                            <span class="resume-label">Degree</span>
+                            <span class="resume-value">B.S. Computer Science</span>
+                        </div>
+                        <div class="resume-field">
+                            <span class="resume-label">School</span>
+                            <span class="resume-value">Renaissance School of Science and Technology, Inc.</span>
+                        </div>
+                        <div class="resume-field">
+                            <span class="resume-label">Year</span>
+                            <span class="resume-value">2022 – 2026</span>
+                        </div>
+                        <div class="resume-field">
+                            <span class="resume-label">Achievements</span>
+                            <span class="resume-value">Outstanding System Design, Outstanding Thesis Writing, Best in CS Practicum</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience -->
+                <section class="resume-section">
+                    <div class="resume-section-title">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <strong>Experience</strong>
+                            <small>Professional background</small>
+                        </div>
+                    </div>
+                    <div class="resume-grid">
+                        <div class="resume-field">
+                            <span class="resume-label">Role</span>
+                            <span class="resume-value">System Developer &amp; Client Success Officer</span>
+                        </div>
+                        <div class="resume-field">
+                            <span class="resume-label">Company</span>
+                            <span class="resume-value">Real IT OPC</span>
+                        </div>
+                        <div class="resume-field">
+                            <span class="resume-label">Duration</span>
+                            <span class="resume-value">2026 – Present</span>
+                        </div>
+                        <div class="resume-field">
+                            <span class="resume-label">Previous Role</span>
+                            <span class="resume-value">Executive Agent – Skyline CATV Industries (2018–2020)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills -->
+                <section class="resume-section">
+                    <div class="resume-section-title">
+                        <i class="fas fa-code"></i>
+                        <div>
+                            <strong>Technical Skills</strong>
+                            <small>Technologies and tools</small>
+                        </div>
+                    </div>
+                    <div class="resume-skill-tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                        <span>Bootstrap</span>
+                        <span>Git</span>
+                        <span>GitHub</span>
+                        <span>UI/UX Design</span>
+                        <span>Canva</span>
+                        <span>Microsoft Office</span>
+                        <span>Google Workspace</span>
+                    </div>
+                </section>
+
+                <!-- Resume PDF Viewer -->
+                <section class="resume-section resume-pdf-section">
+                    <div class="resume-section-title">
+                        <i class="fas fa-file-pdf"></i>
+                        <div>
+                            <strong>Resume PDF</strong>
+                            <small>Full document preview</small>
+                        </div>
+                    </div>
+                    <div id="resume-pdf-viewer" class="resume-pdf-viewer">
+                        <div class="resume-pdf-loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>Loading resume preview...</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Footer -->
+            <div class="resume-modal-footer">
+                <a href="Cathyrine%20Menguito%20Resume.pdf" download class="btn btn-primary" style="color:#0b0e0c;">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <button class="btn btn-secondary" id="resume-modal-close-btn">
+                    <i class="fas fa-times"></i> Close
+                </button>
             </div>
         </div>
     </div>
+</div>
 
     <!-- ========== FOOTER ========== -->
     <footer>
