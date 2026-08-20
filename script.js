@@ -1746,3 +1746,66 @@ if (statusElement) {
         statusElement.textContent = statusTexts[statusIndex];
     }, 5000);
 }
+
+// ============================================================
+//  LIVE STATUS ROTATOR (i18n-aware)
+// ============================================================
+let statusIndex = 0;
+const statusElement = document.querySelector('.status-text');
+
+function getStatusTexts() {
+    // Use the live_status from current language, or fallback
+    const liveStatus = translations[currentLang]?.live_status || 'Currently exploring: React.js & Tailwind CSS';
+    // Create variations from the current status
+    const base = liveStatus.replace(/Currently exploring:|Kasalukuyang nag-e-explore:|現在探求中:|현재 탐구 중:/g, '').trim();
+    return [
+        liveStatus,
+        `${translations[currentLang]?.live_status_prefix || 'Building:'} New portfolio projects`,
+        `${translations[currentLang]?.live_status_learning || 'Learning:'} Advanced JavaScript`,
+        translations[currentLang]?.live_status_available || 'Available for freelance work'
+    ];
+}
+
+// Fallback status texts if translations are missing
+const fallbackStatuses = [
+    'Currently exploring: React.js & Tailwind CSS',
+    'Building: New portfolio projects',
+    'Learning: Advanced JavaScript',
+    'Available for freelance work'
+];
+
+function rotateStatus() {
+    if (!statusElement) return;
+    
+    // Try to get translated statuses, fallback to hardcoded
+    let statuses = fallbackStatuses;
+    try {
+        const translated = getStatusTexts();
+        if (translated && translated.length > 0) {
+            statuses = translated;
+        }
+    } catch (e) {
+        // Use fallback
+    }
+    
+    statusIndex = (statusIndex + 1) % statuses.length;
+    statusElement.textContent = statuses[statusIndex];
+}
+
+// Update statuses when language changes
+function updateStatusesOnLangChange() {
+    if (statusElement) {
+        const liveStatus = translations[currentLang]?.live_status || 'Currently exploring: React.js & Tailwind CSS';
+        statusElement.textContent = liveStatus;
+        statusIndex = 0; // Reset index when language changes
+    }
+}
+
+// Add this to setLanguage() function
+// Find the setLanguage function and add this line inside it:
+// updateStatusesOnLangChange();
+
+// Start the rotator
+if (statusElement) {
+    setInterval(rotateStatus, 5000);
+}
