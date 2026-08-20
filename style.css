@@ -4626,3 +4626,142 @@ header.hidden:hover::after {
 .about-actions .btn {
     margin-top: 0;
 }
+.tagline {
+    white-space: normal !important;
+    overflow: visible !important;
+    display: block !important;
+    max-width: 100%;
+    min-height: 2.5rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.hero-content {
+    overflow: visible !important;
+}
+#hero {
+    overflow: visible !important;
+}
+
+@media (max-width: 480px) {
+    .tagline {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        white-space: normal !important;
+        min-height: 2.8rem;
+        line-height: 1.4;
+    }
+}
+@media (max-width: 380px) {
+    .tagline {
+        font-size: 0.9rem;
+        min-height: 3rem;
+    }
+}
+
+/* ----- Custom cursor active state ----- */
+.custom-cursor.active {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 255, 171, 0.3);
+    border: 2px solid var(--mint-primary);
+    box-shadow: 0 0 50px rgba(0, 255, 171, 0.2);
+}
+
+/* ----- Filter buttons with aria-pressed ----- */
+.filter-btn[aria-pressed="true"] {
+    background: var(--mint-gradient);
+    color: #0b0e0c;
+    border-color: var(--mint-primary);
+    box-shadow: 0 0 20px var(--mint-glow);
+}
+
+/* ----- Visitor badge enhancements ----- */
+.visitor-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    background: rgba(0, 255, 171, 0.04);
+    padding: 4px 14px;
+    border-radius: 50px;
+    border: 1px solid var(--border-mint);
+    margin-top: 8px;
+}
+
+.visitor-badge i {
+    color: var(--mint-primary);
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.visitor-badge .visitor-label {
+    opacity: 0.6;
+}
+
+[data-theme="light"] .visitor-badge {
+    background: rgba(0, 200, 120, 0.04);
+    color: #2a4a3a;
+}
+
+/* ----- Better contrast in light mode ----- */
+[data-theme="light"] {
+    --bg-primary: #f0f7f3;
+    --bg-secondary: #e6f0ea;
+    --bg-card: rgba(255, 255, 255, 0.75);
+    --text-primary: #0b1a14;
+    --text-secondary: #1a3a2a;  /* Darker for better contrast */
+    --border-mint: rgba(0, 200, 120, 0.2);
+    --mint-glow: rgba(0, 200, 120, 0.15);
+}
+
+/* ----- Carousel button responsive fix ----- */
+@media (max-width: 480px) {
+    .carousel-slide {
+        padding: 40px 32px;
+    }
+    .carousel-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+    }
+    .carousel-btn.prev { left: 4px; }
+    .carousel-btn.next { right: 4px; }
+}
+
+/* ----- Enhanced focus states ----- */
+:focus-visible {
+    outline: 3px solid var(--mint-primary);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* ----- Scroll reveal animations ----- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1),
+                transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays */
+.project-grid .project-card:nth-child(1) { transition-delay: 0.05s; }
+.project-grid .project-card:nth-child(2) { transition-delay: 0.15s; }
+.project-grid .project-card:nth-child(3) { transition-delay: 0.25s; }
+.education-grid .edu-card:nth-child(1) { transition-delay: 0.05s; }
+.education-grid .edu-card:nth-child(2) { transition-delay: 0.1s; }
+.education-grid .edu-card:nth-child(3) { transition-delay: 0.15s; }
+.education-grid .edu-card:nth-child(4) { transition-delay: 0.2s; }
+.education-grid .edu-card:nth-child(5) { transition-delay: 0.25s; }
+.about-grid .about-text { transition-delay: 0.1s; }
+.about-grid .about-skills { transition-delay: 0.2s; }
+.service-card:nth-child(1) { transition-delay: 0.05s; }
+.service-card:nth-child(2) { transition-delay: 0.10s; }
+.service-card:nth-child(3) { transition-delay: 0.15s; }
+.service-card:nth-child(4) { transition-delay: 0.20s; }
