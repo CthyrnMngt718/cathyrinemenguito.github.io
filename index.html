@@ -15,6 +15,8 @@
     <meta name="description" content="Cathyrine Menguito – Computer Science graduate, web developer, and UI/UX designer. Explore my projects in healthcare, education, and real estate." />
     <meta name="keywords" content="Cathyrine Menguito, web developer, UI/UX, portfolio, computer science, PHP, MySQL" />
     <link rel="canonical" href="https://cthyrnmngt718.github.io/" />
+
+    <!-- hreflang for English & Japanese only -->
     <link rel="alternate" hreflang="en" href="https://cthyrnmngt718.github.io/" />
     <link rel="alternate" hreflang="ja" href="https://cthyrnmngt718.github.io/?lang=ja" />
     <link rel="alternate" hreflang="x-default" href="https://cthyrnmngt718.github.io/" />
@@ -68,7 +70,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Favicon -->
+    <!-- Favicon (ensure these files exist in your root directory) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -77,7 +79,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- ===== CUSTOM STYLES ===== -->
+    <!-- ===== CUSTOM STYLES (ENHANCED) ===== -->
     <style>
         /* --- Project Thumbnails (Browser Mockup) --- */
         .project-thumbnail {
@@ -122,6 +124,7 @@
             background: #eef5f1;
         }
 
+        /* --- Thumbnail Content --- */
         .thumbnail-body {
             padding: 28px 20px 20px;
             text-align: center;
@@ -168,6 +171,8 @@
             margin: 6px 0;
             border-radius: 2px;
         }
+
+        /* Tech bar inside thumbnail */
         .thumbnail-tech-bar {
             display: flex;
             gap: 6px;
@@ -189,6 +194,7 @@
             letter-spacing: 0.3px;
         }
 
+        /* --- Impact Badges --- */
         .project-impact {
             display: flex;
             gap: 10px;
@@ -212,6 +218,7 @@
             opacity: 0.8;
         }
 
+        /* --- Status & Role Tags --- */
         .project-meta-tags {
             display: flex;
             gap: 8px;
@@ -256,6 +263,7 @@
             font-size: 0.6rem;
         }
 
+        /* --- Project Description with Bullet Points --- */
         .proj-desc {
             max-height: 4.5em;
             overflow: hidden;
@@ -321,6 +329,7 @@
             transform: translateX(4px);
         }
 
+        /* --- Project Actions --- */
         .project-actions {
             display: flex;
             gap: 10px;
@@ -366,37 +375,50 @@
             color: var(--mint-primary);
         }
 
+        /* --- ✅ ENHANCED Filter Animations --- */
         .project-grid .project-card {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 1;
             transform: scale(1) translateY(0);
             animation: cardEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
+
         .project-grid .project-card.filtered-out {
             opacity: 0;
             transform: scale(0.85) translateY(30px);
             pointer-events: none;
             display: none !important;
         }
+
         .project-grid .project-card.filtered-in {
             opacity: 0;
             transform: scale(0.92) translateY(20px);
             animation: cardEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
+
+        /* Staggered entrance for cards */
         .project-grid .project-card:nth-child(1) { animation-delay: 0.05s; }
         .project-grid .project-card:nth-child(2) { animation-delay: 0.12s; }
         .project-grid .project-card:nth-child(3) { animation-delay: 0.19s; }
         .project-grid .project-card:nth-child(4) { animation-delay: 0.26s; }
+
         .project-grid .project-card.filtered-in:nth-child(1) { animation-delay: 0.05s; }
         .project-grid .project-card.filtered-in:nth-child(2) { animation-delay: 0.12s; }
         .project-grid .project-card.filtered-in:nth-child(3) { animation-delay: 0.19s; }
         .project-grid .project-card.filtered-in:nth-child(4) { animation-delay: 0.26s; }
 
         @keyframes cardEntrance {
-            from { opacity: 0; transform: translateY(30px) scale(0.92); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.92);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
+        /* --- Enhanced Card Hover Effects --- */
         .project-card {
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
@@ -416,17 +438,25 @@
             transition: opacity 0.4s ease;
             pointer-events: none;
         }
-        .project-card:hover::after { opacity: 1; }
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
         [data-theme="light"] .project-card:hover {
             box-shadow: 0 20px 60px rgba(0, 200, 120, 0.15);
         }
 
+        /* --- Filter Button Animation --- */
         .filter-btn {
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
         }
-        .filter-btn:hover { transform: translateY(-2px); }
-        .filter-btn.active { transform: translateY(-2px) scale(1.02); }
+        .filter-btn:hover {
+            transform: translateY(-2px);
+        }
+        .filter-btn.active {
+            transform: translateY(-2px) scale(1.02);
+        }
 
         /* --- Tech Stack Proficiency Visualization --- */
         .tech-stack-grid {
@@ -467,10 +497,6 @@
             font-family: var(--font-mono);
             letter-spacing: 0.3px;
         }
-        .tech-stack-item .tech-level .skill-percentage {
-            font-weight: 700;
-            color: var(--mint-primary);
-        }
         .tech-stack-item .tech-level-bar {
             width: 100%;
             height: 3px;
@@ -490,6 +516,7 @@
             background: rgba(255, 255, 255, 0.6);
         }
 
+        /* --- Location Badge --- */
         .location-badge {
             display: inline-flex;
             align-items: center;
@@ -509,6 +536,7 @@
             font-size: 0.8rem;
         }
 
+        /* --- Dedicated Resume Download Button in Hero --- */
         .resume-download-hero {
             display: inline-flex;
             align-items: center;
@@ -571,14 +599,6 @@
         [data-theme="light"] .project-card:hover {
             box-shadow: 0 20px 60px rgba(0, 200, 120, 0.12);
         }
-
-        /* ===== Last Updated ===== */
-        .last-updated {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            opacity: 0.4;
-            margin-top: 4px;
-        }
     </style>
 
     <!-- Custom CSS (external) -->
@@ -593,19 +613,6 @@
         <div class="loader-spinner"></div>
         <p class="loader-text" data-i18n="loader_text">Loading...</p>
     </div>
-
-    <!-- ===== EMERGENCY LOADER FALLBACK (hides loader even if script.js fails) ===== -->
-    <script>
-        (function() {
-            var loader = document.getElementById('page-loader');
-            if (loader) {
-                setTimeout(function() {
-                    loader.classList.add('hidden');
-                    console.log('⚠️ Loader hidden by fallback (script.js may not have loaded)');
-                }, 3000);
-            }
-        })();
-    </script>
 
     <!-- ========== PARTICLES CANVAS ========== -->
     <canvas id="particles-canvas"></canvas>
@@ -635,6 +642,7 @@
                 <li role="none"><a href="#contact" role="menuitem" data-i18n="nav_contact">Contact</a></li>
             </ul>
 
+            <!-- Language Switcher (English & Japanese only) -->
             <div class="lang-switcher-wrapper">
                 <select id="language-switcher" aria-label="Select language">
                     <option value="en">🇺🇸 English</option>
@@ -694,6 +702,7 @@
                     </a>
                 </div>
 
+                <!-- Dedicated Resume Download Button -->
                 <a href="Cathyrine%20Menguito%20Resume.pdf" download class="resume-download-hero" aria-label="Download my resume">
                     <i class="fas fa-file-pdf"></i>
                     <span data-i18n="resume_download_hero">Download Resume (PDF)</span>
@@ -894,7 +903,7 @@
                             <li><i class="fas fa-graduation-cap"></i> Continuous Learning</li>
                         </ul>
                         
-                        <!-- Tech Stack Proficiency Visualization (Enhanced with animated counters) -->
+                        <!-- Tech Stack Proficiency Visualization -->
                         <div class="tech-stack-visualization" style="margin-top:40px; padding-top:40px; border-top:1px solid var(--border-mint);">
                             <h3 data-i18n="tech_stack_title" style="font-size:1.1rem; font-weight:700; color:var(--text-primary); margin-bottom:4px;">Tech Stack Proficiency</h3>
                             <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;" data-i18n="tech_stack_sub">Technologies I work with and my comfort level</p>
@@ -902,66 +911,50 @@
                                 <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fab fa-html5" style="color:#e34f26;"></i></span>
                                     <span class="tech-name">HTML5</span>
-                                    <span class="tech-level">
-                                        <span class="skill-percentage" data-target="90">0%</span>
-                                    </span>
-                                    <div class="tech-level-bar"><div class="fill" data-width="90" style="width:0%;"></div></div>
+                                    <span class="tech-level">Proficient</span>
+                                    <div class="tech-level-bar"><div class="fill" style="width:90%;"></div></div>
                                 </div>
                                 <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fab fa-css3-alt" style="color:#2965f1;"></i></span>
                                     <span class="tech-name">CSS3</span>
-                                    <span class="tech-level">
-                                        <span class="skill-percentage" data-target="85">0%</span>
-                                    </span>
-                                    <div class="tech-level-bar"><div class="fill" data-width="85" style="width:0%;"></div></div>
+                                    <span class="tech-level">Proficient</span>
+                                    <div class="tech-level-bar"><div class="fill" style="width:85%;"></div></div>
                                 </div>
                                 <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fab fa-js" style="color:#f7df1e;"></i></span>
                                     <span class="tech-name">JavaScript</span>
-                                    <span class="tech-level">
-                                        <span class="skill-percentage" data-target="65">0%</span>
-                                    </span>
-                                    <div class="tech-level-bar"><div class="fill" data-width="65" style="width:0%;"></div></div>
+                                    <span class="tech-level">Intermediate</span>
+                                    <div class="tech-level-bar"><div class="fill" style="width:65%;"></div></div>
                                 </div>
                                 <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fab fa-php" style="color:#777bb4;"></i></span>
                                     <span class="tech-name">PHP</span>
-                                    <span class="tech-level">
-                                        <span class="skill-percentage" data-target="75">0%</span>
-                                    </span>
-                                    <div class="tech-level-bar"><div class="fill" data-width="75" style="width:0%;"></div></div>
+                                    <span class="tech-level">Proficient</span>
+                                    <div class="tech-level-bar"><div class="fill" style="width:75%;"></div></div>
                                 </div>
                                 <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fas fa-database" style="color:#00758f;"></i></span>
                                     <span class="tech-name">MySQL</span>
-                                    <span class="tech-level">
-                                        <span class="skill-percentage" data-target="70">0%</span>
-                                    </span>
-                                    <div class="tech-level-bar"><div class="fill" data-width="70" style="width:0%;"></div></div>
+                                    <span class="tech-level">Intermediate</span>
+                                    <div class="tech-level-bar"><div class="fill" style="width:70%;"></div></div>
                                 </div>
                                 <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fab fa-git-alt" style="color:#f05032;"></i></span>
                                     <span class="tech-name">Git</span>
-                                    <span class="tech-level">
-                                        <span class="skill-percentage" data-target="65">0%</span>
-                                    </span>
-                                    <div class="tech-level-bar"><div class="fill" data-width="65" style="width:0%;"></div></div>
+                                    <span class="tech-level">Intermediate</span>
+                                    <div class="tech-level-bar"><div class="fill" style="width:65%;"></div></div>
                                 </div>
                                 <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fab fa-github" style="color:#181717;"></i></span>
                                     <span class="tech-name">GitHub</span>
-                                    <span class="tech-level">
-                                        <span class="skill-percentage" data-target="75">0%</span>
-                                    </span>
-                                    <div class="tech-level-bar"><div class="fill" data-width="75" style="width:0%;"></div></div>
+                                    <span class="tech-level">Proficient</span>
+                                    <div class="tech-level-bar"><div class="fill" style="width:75%;"></div></div>
                                 </div>
                                 <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fas fa-pencil-alt" style="color:#6c5ce7;"></i></span>
                                     <span class="tech-name">UI/UX Design</span>
-                                    <span class="tech-level">
-                                        <span class="skill-percentage" data-target="80">0%</span>
-                                    </span>
-                                    <div class="tech-level-bar"><div class="fill" data-width="80" style="width:0%;"></div></div>
+                                    <span class="tech-level">Proficient</span>
+                                    <div class="tech-level-bar"><div class="fill" style="width:80%;"></div></div>
                                 </div>
                             </div>
                         </div>
@@ -1112,7 +1105,7 @@
             </div>
         </section>
 
-        <!-- ========== PROJECTS SECTION ========== -->
+        <!-- ========== PROJECTS SECTION (ENHANCED) ========== -->
         <section id="projects-section">
             <div class="container">
                 <div class="section-header">
@@ -1121,6 +1114,7 @@
                 </div>
                 <p class="projects-sub" style="color:var(--text-secondary);margin-bottom:30px;font-size:1.05rem;" data-i18n="projects_sub">A collection of academic and professional work showcasing my growth in web development, system design, and collaborative problem-solving.</p>
 
+                <!-- Filter Buttons -->
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all" aria-label="Show all projects" data-i18n="filter_all">All</button>
                     <button class="filter-btn" data-filter="healthcare" aria-label="Show healthcare projects" data-i18n="filter_healthcare">Healthcare</button>
@@ -1129,7 +1123,10 @@
                 </div>
 
                 <div class="project-grid">
+
+                    <!-- ========================================= -->
                     <!-- PROJECT 1: RHU Morong -->
+                    <!-- ========================================= -->
                     <div class="project-card" data-category="healthcare php" data-tilt>
                         <div class="project-thumbnail">
                             <div class="browser-mockup">
@@ -1179,12 +1176,15 @@
                                 <a href="http://healthcare.morongcenter.com/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit RHU Morong Health System project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
+                                <!-- ✅ Reverted to Team Project badge -->
                                 <span class="btn-team"><i class="fas fa-users"></i> Team Project</span>
                             </div>
                         </div>
                     </div>
 
+                    <!-- ========================================= -->
                     <!-- PROJECT 2: Angono NHS -->
+                    <!-- ========================================= -->
                     <div class="project-card" data-category="education php bootstrap" data-tilt>
                         <div class="project-thumbnail">
                             <div class="browser-mockup">
@@ -1234,12 +1234,15 @@
                                 <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit Angono NHS Career Assessment project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
+                                <!-- ✅ Reverted to Team Project badge -->
                                 <span class="btn-team"><i class="fas fa-users"></i> Team Project</span>
                             </div>
                         </div>
                     </div>
 
+                    <!-- ========================================= -->
                     <!-- PROJECT 3: HowCan-i-Help -->
+                    <!-- ========================================= -->
                     <div class="project-card" data-category="healthcare php bootstrap" data-tilt>
                         <div class="project-thumbnail">
                             <div class="browser-mockup">
@@ -1289,12 +1292,15 @@
                                 <a href="https://howcan-i-help.org/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit HowCan-i-Help project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
+                                <!-- ✅ Reverted to Team Project badge -->
                                 <span class="btn-team"><i class="fas fa-users"></i> Team Project</span>
                             </div>
                         </div>
                     </div>
 
+                    <!-- ========================================= -->
                     <!-- PROJECT 4: RITREMIS -->
+                    <!-- ========================================= -->
                     <div class="project-card" data-category="realestate php bootstrap" data-tilt>
                         <div class="project-thumbnail">
                             <div class="browser-mockup">
@@ -1343,12 +1349,15 @@
                                 <a href="https://ritremis.com/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit RITREMIS project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
+                                <!-- ✅ Reverted to Team Project badge -->
                                 <span class="btn-team"><i class="fas fa-users"></i> Team Project</span>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div><!-- end project-grid -->
+
+                <!-- CTA -->
                 <div class="center-btn" style="margin-top:40px;">
                     <a href="#contact" class="btn btn-primary" aria-label="Let's work together" style="font-size:1rem; padding:14px 36px;">
                         <i class="fas fa-handshake"></i> <span data-i18n="projects_cta">Let's Work Together</span>
@@ -1467,10 +1476,6 @@
                 <p class="visitor-count">
                     <i class="fas fa-eye"></i> 
                     <span id="visitor-count">0</span> <span data-i18n="visitor_label">visitors</span>
-                </p>
-                <!-- ===== LAST UPDATED ===== -->
-                <p class="last-updated">
-                    Last updated: <span id="last-updated">August 19, 2026</span>
                 </p>
             </div>
         </div>
