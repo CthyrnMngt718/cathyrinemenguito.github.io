@@ -3969,3 +3969,64 @@ footer .container {
         padding: 3px 8px;
     }
 }
+/* ===== SKIP LINK ===== */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--mint-primary);
+    color: #0b0e0c;
+    padding: 12px 24px;
+    border-radius: 0 0 8px 8px;
+    z-index: 9999;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.3s ease;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* ===== REMOTE BADGE (enhanced) ===== */
+.hero-badge .badge-dot {
+    background: #00ff88;
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
+}
+
+/* ===== ARIA enhancements ===== */
+[role="menubar"] {
+    list-style: none;
+}
+
+/* ===== Focus indicators ===== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--mint-primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ===== Projects section heading fix ===== */
+#projects-section .section-header h2 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+@media (max-width: 768px) {
+    #projects-section .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+/* ===== Ensure service cards have consistent height ===== */
+.service-card {
+    display: flex;
+    flex-direction: column;
+}
+.service-card p {
+    flex: 1;
+}
