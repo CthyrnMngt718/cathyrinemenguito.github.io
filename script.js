@@ -1149,6 +1149,7 @@ document.addEventListener('keydown', (e) => {
         closeResumeModal();
     }
 });
+
 // ============================================
 // 28. SERVICE WORKER REGISTRATION
 // ============================================
@@ -1161,6 +1162,7 @@ if ('serviceWorker' in navigator) {
             console.log('Service Worker registration failed:', error);
         });
 }
+
 // ============================================
 // I18N TRANSLATIONS DICTIONARY
 // ============================================
@@ -2341,55 +2343,6 @@ const translations = {
     }
 };
 
-// ============================================
-// I18N ENGINE
-// ============================================
-const defaultLang = 'en';
-let currentLang = localStorage.getItem('preferredLang') ||
-                  (navigator.language.startsWith('fil') ? 'fil' :
-                   navigator.language.startsWith('ko') ? 'ko' :
-                   navigator.language.startsWith('ja') ? 'ja' :
-                   navigator.language.startsWith('th') ? 'th' : 'en');
-
-function applyTranslations(lang) {
-    const t = translations[lang] || translations[defaultLang];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key] !== undefined) {
-            el.innerHTML = t[key];
-        }
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.getAttribute('data-i18n-placeholder');
-        if (t[key] !== undefined) {
-            el.placeholder = t[key];
-        }
-    });
-    const switcher = document.getElementById('language-switcher');
-    if (switcher) switcher.value = lang;
-    localStorage.setItem('preferredLang', lang);
-    currentLang = lang;
-    // Update dynamic content if needed
-    updateDynamicContent(lang);
-}
-
-function updateDynamicContent(lang) {
-    const t = translations[lang] || translations[defaultLang];
-    const statusEl = document.querySelector('.status-text');
-    if (statusEl && t.live_status) {
-        statusEl.textContent = t.live_status;
-    }
-    // Update floating CTA
-    const floatingCta = document.querySelector('.floating-cta span');
-    if (floatingCta && t.floating_cta) {
-        floatingCta.textContent = t.floating_cta;
-    }
-    // Update scroll tooltip
-    const tooltip = document.getElementById('scroll-tooltip');
-    if (tooltip && t.scroll_tooltip) {
-        tooltip.textContent = t.scroll_tooltip;
-    }
-}
 // ============================================
 // I18N ENGINE – INIT (runs immediately)
 // ============================================
