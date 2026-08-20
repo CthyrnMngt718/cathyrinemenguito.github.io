@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cathyrine Menguito | Portfolio</title>
-    
+    <title>Cathyrine Menguito | Web Developer & UI/UX Designer</title>
+
     <!-- ===== SECURITY HEADERS ===== -->
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        script-src 'self' https://cdn.jsdelivr.net https://formspree.io https://api.countapi.xyz;
-        style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
-        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
-        img-src 'self' data:;
-        connect-src 'self' https://formspree.io https://api.countapi.xyz;
-    " />
-    
-    <!-- ===== META DESCRIPTION & SEO ===== -->
+
+    <!-- ===== SEO & OPEN GRAPH ===== -->
     <meta name="description" content="Cathyrine Menguito – Computer Science graduate, web developer, and UI/UX designer. Explore my projects in healthcare, education, and real estate." />
     <meta name="keywords" content="Cathyrine Menguito, web developer, UI/UX, portfolio, computer science, PHP, MySQL" />
-    
-    <!-- ===== OPEN GRAPH / SOCIAL SHARING ===== -->
+    <link rel="canonical" href="https://cthyrnmngt718.github.io/" />
+
+    <!-- hreflang for international SEO -->
+    <link rel="alternate" hreflang="en" href="https://cthyrnmngt718.github.io/" />
+    <link rel="alternate" hreflang="fil" href="https://cthyrnmngt718.github.io/?lang=fil" />
+    <link rel="alternate" hreflang="ko" href="https://cthyrnmngt718.github.io/?lang=ko" />
+    <link rel="alternate" hreflang="ja" href="https://cthyrnmngt718.github.io/?lang=ja" />
+    <link rel="alternate" hreflang="th" href="https://cthyrnmngt718.github.io/?lang=th" />
+    <link rel="alternate" hreflang="x-default" href="https://cthyrnmngt718.github.io/" />
+
     <meta property="og:title" content="Cathyrine Menguito | Web Developer & UI/UX Designer" />
     <meta property="og:description" content="Computer Science graduate building practical web systems for healthcare, education, and real estate." />
     <meta property="og:image" content="https://cthyrnmngt718.github.io/og-image.jpg" />
     <meta property="og:url" content="https://cthyrnmngt718.github.io/" />
     <meta name="twitter:card" content="summary_large_image" />
-    
+
     <!-- ===== JSON-LD STRUCTURED DATA ===== -->
     <script type="application/ld+json">
     {
@@ -67,84 +67,28 @@
         }
     }
     </script>
-    
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Cathyrine Menguito Portfolio Projects",
-        "description": "A collection of web development projects in healthcare, education, and real estate.",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                    "@type": "SoftwareApplication",
-                    "name": "RHU Morong Health System",
-                    "description": "Healthcare management system for Rural Health Unit of Morong, Rizal.",
-                    "applicationCategory": "HealthApplication",
-                    "operatingSystem": "Web",
-                    "url": "http://healthcare.morongcenter.com/"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "item": {
-                    "@type": "SoftwareApplication",
-                    "name": "Angono NHS Career Assessment",
-                    "description": "Career assessment tool for Senior High School students.",
-                    "applicationCategory": "EducationApplication",
-                    "operatingSystem": "Web",
-                    "url": "https://angononhs-onlinecareerassessment.online/"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "item": {
-                    "@type": "SoftwareApplication",
-                    "name": "HowCan-i-Help",
-                    "description": "Healthcare assistance platform connecting patients, clinics, and donors.",
-                    "applicationCategory": "HealthApplication",
-                    "operatingSystem": "Web",
-                    "url": "https://howcan-i-help.org/"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "item": {
-                    "@type": "SoftwareApplication",
-                    "name": "RITREMIS",
-                    "description": "Real estate management information system.",
-                    "applicationCategory": "BusinessApplication",
-                    "operatingSystem": "Web",
-                    "url": "https://ritremis.com/"
-                }
-            }
-        ]
-    }
-    </script>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet" />
-    
+
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <!-- ========== SKIP TO CONTENT ========== -->
+    <a href="#main-content" class="skip-link" data-i18n="skip_link">Skip to main content</a>
+
     <!-- ========== PAGE LOADER ========== -->
     <div class="loader" id="page-loader">
         <div class="loader-spinner"></div>
@@ -165,20 +109,20 @@
 
     <!-- ========== NAVIGATION ========== -->
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <div class="logo">
-                <a href="index.html" aria-label="Home">
+                <a href="#" aria-label="Home">
                     <span class="logo-c">C</span>
                     <span class="logo-m">M</span>
                 </a>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active" data-i18n="nav_home" aria-label="Home page">Home</a></li>
-                <li><a href="projects.html" data-i18n="nav_projects" aria-label="View my projects">Projects</a></li>
-                <li><a href="#about" data-i18n="nav_about" aria-label="About me section">About</a></li>
-                <li><a href="#contact" data-i18n="nav_contact" aria-label="Contact me">Contact</a></li>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="#hero" role="menuitem" class="active" data-i18n="nav_home">Home</a></li>
+                <li role="none"><a href="#projects-section" role="menuitem" data-i18n="nav_projects">Projects</a></li>
+                <li role="none"><a href="#about" role="menuitem" data-i18n="nav_about">About</a></li>
+                <li role="none"><a href="#contact" role="menuitem" data-i18n="nav_contact">Contact</a></li>
             </ul>
-            
+
             <!-- Language Switcher -->
             <div class="lang-switcher-wrapper">
                 <select id="language-switcher" aria-label="Select language">
@@ -201,538 +145,511 @@
         </nav>
     </header>
 
-    <!-- ========== HERO SECTION ========== -->
-    <section id="hero">
-        <div class="hero-content">
-            <a href="#contact" class="hero-badge" style="text-decoration:none;cursor:pointer;" aria-label="Contact for opportunities">
-                <span class="badge-dot"></span>
-                <span data-i18n="hero_badge">Available for opportunities &amp; freelance projects</span>
-            </a>
-            
-            <!-- ===== LIVE STATUS ===== -->
-            <div class="live-status">
-                <span class="status-dot"></span>
-                <span class="status-text" data-i18n="live_status">Currently exploring: React.js &amp; Tailwind CSS</span>
-            </div>
-            
-            <h1 data-i18n="hero_title">Hi, I'm <span class="gradient-text">Cathyrine Menguito</span></h1>
-            
-            <p class="tagline" id="tagline" role="text" aria-label="Tagline"></p>
-            
-            <p class="description" data-i18n="hero_description">
-                I'm a recent Computer Science graduate with a growing interest in
-                web development, UI/UX, and technology. My academic projects gave me
-                opportunities to build web-based systems and explore how thoughtful
-                design can make technology easier and more useful. I'm excited to keep
-                learning, gain real-world experience, and begin my journey in the IT industry.
-            </p>
-            <div class="hero-buttons">
-                <a href="projects.html" class="btn btn-primary" aria-label="View my projects">
-                    <i class="fas fa-rocket"></i> <span data-i18n="hero_btn_projects">Projects</span>
-                </a>
-                <a href="#contact" class="btn btn-secondary" aria-label="Contact me">
-                    <i class="fas fa-paper-plane"></i> <span data-i18n="hero_btn_contact">Contact Me</span>
-                </a>
-            </div>
-            <!-- ===== SCROLL INDICATOR ===== -->
-            <div class="scroll-indicator">
-                <span data-i18n="scroll_text">Scroll</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">4+</span>
-                    <span class="stat-label" data-i18n="stat_projects">Projects</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">1</span>
-                    <span class="stat-label" data-i18n="stat_experience">Year Experience</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">5</span>
-                    <span class="stat-label" data-i18n="stat_certifications">Certifications</span>
-                </div>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="hero-image-wrapper" data-tilt>
-                <img src="1000014492.jpg" alt="Cathyrine Menguito - Web Developer and UI/UX Designer" loading="lazy" />
-                <div class="hero-image-ring"></div>
-            </div>
-        </div>
-    </section>
+    <!-- ========== MAIN CONTENT ========== -->
+    <main id="main-content">
 
-    <!-- ========== QUOTE OF THE DAY ========== -->
-    <section id="quote-section">
-        <div class="container">
-            <div class="quote-box">
-                <div class="quote-type" id="quote-type">
-                    <i class="fas fa-bible"></i> <span data-i18n="quote_label">Verse of the Day</span>
+        <!-- ========== HERO SECTION ========== -->
+        <section id="hero">
+            <div class="hero-content">
+                <!-- Open to Remote Work badge -->
+                <div class="hero-badge" style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,255,171,0.06);border:1px solid var(--border-mint);padding:4px 16px 4px 12px;border-radius:50px;font-size:0.75rem;font-weight:500;color:var(--text-secondary);margin-bottom:20px;font-family:var(--font-mono);">
+                    <span class="badge-dot"></span>
+                    <span data-i18n="remote_badge">🌍 Open to remote work worldwide</span>
                 </div>
-                <i class="fas fa-quote-left quote-icon"></i>
-                <p class="quote-text" id="quote-text">Loading...</p>
-                <p class="quote-author" id="quote-author">— </p>
-            </div>
-        </div>
-    </section>
 
-    <!-- ========== SERVICES SECTION ========== -->
-    <section id="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="services_tag">What I Can Help With</span>
-                <h2><span data-i18n="services_title_prefix">Areas I Can</span> <span class="gradient-text" data-i18n="services_title_gradient">Contribute</span></h2>
-            </div>
-    
-            <div class="services-grid">
-                <div class="service-card" data-tilt>
-                    <div class="service-icon"><i class="fas fa-code"></i></div>
-                    <h3 data-i18n="service_1_title">Web Development</h3>
-                    <p data-i18n="service_1_desc">Developing responsive and functional websites and web-based applications using technologies such as HTML, CSS, JavaScript, PHP, and MySQL.</p>
-                </div>
-                <div class="service-card" data-tilt>
-                    <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
-                    <h3 data-i18n="service_2_title">UI/UX &amp; Interface Design</h3>
-                    <p data-i18n="service_2_desc">Designing clean and intuitive user interfaces with attention to usability, organization, and the overall user experience.</p>
-                </div>
-                <div class="service-card" data-tilt>
-                    <div class="service-icon"><i class="fas fa-project-diagram"></i></div>
-                    <h3 data-i18n="service_3_title">Academic System Development</h3>
-                    <p data-i18n="service_3_desc">Providing technical assistance for academic and capstone projects, including web-based systems, system interfaces, and related development tasks.</p>
-                </div>
-                <div class="service-card" data-tilt>
-                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
-                    <h3 data-i18n="service_4_title">Technical Documentation</h3>
-                    <p data-i18n="service_4_desc">Assisting with system documentation, technical diagrams, project presentations, and other documentation related to software projects.</p>
-                </div>
-                <div class="service-card" data-tilt>
-                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3 data-i18n="service_5_title">Branding &amp; Visual Identity</h3>
-                    <p data-i18n="service_5_desc">Creating cohesive visual identities including logo design, color palettes, typography systems, and brand guidelines that help businesses and projects stand out with a consistent and memorable presence.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <h1 data-i18n="hero_title">Hi, I'm <span class="gradient-text">Cathyrine Menguito</span></h1>
 
-    <!-- ========== WORK EXPERIENCE ========== -->
-    <section id="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="exp_tag">Experience</span>
-                <h2><span data-i18n="exp_title_prefix">My</span> <span class="gradient-text" data-i18n="exp_title_gradient">Career Journey</span></h2>
+                <p class="tagline" id="tagline" role="text" aria-label="Tagline"></p>
+
+                <p class="description" data-i18n="hero_description">
+                    I'm a recent Computer Science graduate with a growing interest in
+                    web development, UI/UX, and technology. My academic projects gave me
+                    opportunities to build web-based systems and explore how thoughtful
+                    design can make technology easier and more useful. I'm excited to keep
+                    learning, gain real-world experience, and begin my journey in the IT industry.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects-section" class="btn btn-primary" aria-label="View my projects">
+                        <i class="fas fa-rocket"></i> <span data-i18n="hero_btn_projects">Projects</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary" aria-label="Contact me">
+                        <i class="fas fa-paper-plane"></i> <span data-i18n="hero_btn_contact">Contact Me</span>
+                    </a>
+                </div>
+
+                <div class="scroll-indicator">
+                    <span data-i18n="scroll_text">Scroll</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label" data-i18n="stat_projects">Projects</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label" data-i18n="stat_experience">Year Experience</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label" data-i18n="stat_certifications">Certifications</span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="experience-grid">
-                <!-- Real IT OPC -->
-                <div class="experience-card" data-tilt>
-                    <div class="experience-header">
-                        <div class="experience-icon"><i class="fas fa-briefcase"></i></div>
-                        <div class="experience-meta">
-                            <span class="experience-company" data-i18n="exp_company_1">Real IT OPC</span>
-                            <span class="experience-role" data-i18n="exp_role_1">Operations &amp; Client Success Officer | System Developer</span>
-                            <span class="experience-date" data-i18n="exp_date_1">2026 – Present</span>
+            <div class="hero-image">
+                <div class="hero-image-wrapper" data-tilt>
+                    <img src="1000014492.jpg" alt="Cathyrine Menguito - Web Developer and UI/UX Designer" loading="lazy" />
+                    <div class="hero-image-ring"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== QUOTE OF THE DAY ========== -->
+        <section id="quote-section" aria-labelledby="quote-heading">
+            <div class="container">
+                <div class="quote-box">
+                    <div class="quote-type" id="quote-type">
+                        <i class="fas fa-bible"></i> <span data-i18n="quote_label">Verse of the Day</span>
+                    </div>
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="quote-text" id="quote-text" aria-live="polite">Loading...</p>
+                    <p class="quote-author" id="quote-author">— </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SERVICES SECTION ========== -->
+        <section id="services">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="services_tag">What I Can Help With</span>
+                    <h2><span data-i18n="services_title_prefix">Areas I Can</span> <span class="gradient-text" data-i18n="services_title_gradient">Contribute</span></h2>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card" data-tilt>
+                        <div class="service-icon"><i class="fas fa-code"></i></div>
+                        <h3 data-i18n="service_1_title">Web Development</h3>
+                        <p data-i18n="service_1_desc">Developing responsive and functional websites and web-based applications using technologies such as HTML, CSS, JavaScript, PHP, and MySQL.</p>
+                    </div>
+                    <div class="service-card" data-tilt>
+                        <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
+                        <h3 data-i18n="service_2_title">UI/UX &amp; Interface Design</h3>
+                        <p data-i18n="service_2_desc">Designing clean and intuitive user interfaces with attention to usability, organization, and the overall user experience.</p>
+                    </div>
+                    <div class="service-card" data-tilt>
+                        <div class="service-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3 data-i18n="service_3_title">Academic System Development</h3>
+                        <p data-i18n="service_3_desc">Providing technical assistance for academic and capstone projects, including web-based systems, system interfaces, and related development tasks.</p>
+                    </div>
+                    <div class="service-card" data-tilt>
+                        <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3 data-i18n="service_4_title">Technical Documentation</h3>
+                        <p data-i18n="service_4_desc">Assisting with system documentation, technical diagrams, project presentations, and other documentation related to software projects.</p>
+                    </div>
+                    <div class="service-card" data-tilt>
+                        <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3 data-i18n="service_5_title">Branding &amp; Visual Identity</h3>
+                        <p data-i18n="service_5_desc">Creating cohesive visual identities including logo design, color palettes, typography systems, and brand guidelines that help businesses and projects stand out with a consistent and memorable presence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== WORK EXPERIENCE ========== -->
+        <section id="experience">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="exp_tag">Experience</span>
+                    <h2><span data-i18n="exp_title_prefix">My</span> <span class="gradient-text" data-i18n="exp_title_gradient">Career Journey</span></h2>
+                </div>
+
+                <div class="experience-grid">
+                    <!-- Real IT OPC -->
+                    <div class="experience-card" data-tilt>
+                        <div class="experience-header">
+                            <div class="experience-icon"><i class="fas fa-briefcase"></i></div>
+                            <div class="experience-meta">
+                                <span class="experience-company" data-i18n="exp_company_1">Real IT OPC</span>
+                                <span class="experience-role" data-i18n="exp_role_1">Operations &amp; Client Success Officer | System Developer</span>
+                                <span class="experience-date" data-i18n="exp_date_1">2026 – Present</span>
+                            </div>
+                        </div>
+                        <div class="experience-body">
+                            <p data-i18n="exp_desc_1">Contributing to the development of web-based systems and digital solutions, including system functionality, user interface implementation, and project-related technical work. This role allows me to apply my Computer Science knowledge to practical projects while continuing to strengthen my technical and professional skills.</p>
+                            <div class="experience-highlights">
+                                <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_1">System Development</span></span>
+                                <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_2">UI/UX Implementation</span></span>
+                                <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_3">Front-End Development</span></span>
+                                <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_4">Project Coordination</span></span>
+                                <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_5">Client Collaboration</span></span>
+                            </div>
+                            <div class="project-tech">
+                                <span>PHP</span><span>JavaScript</span><span>Bootstrap</span><span>HTML</span><span>CSS</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="experience-body">
-                        <p data-i18n="exp_desc_1">Contributing to the development of web-based systems and digital solutions, including system functionality, user interface implementation, and project-related technical work. This role allows me to apply my Computer Science knowledge to practical projects while continuing to strengthen my technical and professional skills.</p>
-                        <div class="experience-highlights">
-                            <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_1">System Development</span></span>
-                            <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_2">UI/UX Implementation</span></span>
-                            <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_3">Front-End Development</span></span>
-                            <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_4">Project Coordination</span></span>
-                            <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_1_5">Client Collaboration</span></span>
-                        </div>
-                        <div class="project-tech">
-                            <span>PHP</span><span>JavaScript</span><span>Bootstrap</span><span>HTML</span><span>CSS</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Skyline CATV -->
-                <div class="experience-card" data-tilt>
-                    <div class="experience-header">
-                        <div class="experience-icon"><i class="fas fa-headset"></i></div>
-                        <div class="experience-meta">
-                            <span class="experience-company" data-i18n="exp_company_2">Skyline CATV Industries</span>
-                            <span class="experience-role" data-i18n="exp_role_2">Executive Agent</span>
-                            <span class="experience-date" data-i18n="exp_date_2">2018 – 2020</span>
+                    <!-- Skyline CATV -->
+                    <div class="experience-card" data-tilt>
+                        <div class="experience-header">
+                            <div class="experience-icon"><i class="fas fa-headset"></i></div>
+                            <div class="experience-meta">
+                                <span class="experience-company" data-i18n="exp_company_2">Skyline CATV Industries</span>
+                                <span class="experience-role" data-i18n="exp_role_2">Executive Agent</span>
+                                <span class="experience-date" data-i18n="exp_date_2">2018 – 2020</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="experience-body">
-                        <p data-i18n="exp_desc_2">Delivered professional customer support by handling inquiries, resolving service-related concerns, and coordinating requests to ensure customer satisfaction and efficient operations.</p>
-                        <div class="experience-highlights">
-                            <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_2_1">Customer Support</span></span>
-                            <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_2_2">Service Resolution</span></span>
-                            <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_2_3">Client Coordination</span></span>
+                        <div class="experience-body">
+                            <p data-i18n="exp_desc_2">Delivered professional customer support by handling inquiries, resolving service-related concerns, and coordinating requests to ensure customer satisfaction and efficient operations.</p>
+                            <div class="experience-highlights">
+                                <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_2_1">Customer Support</span></span>
+                                <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_2_2">Service Resolution</span></span>
+                                <span><i class="fas fa-check-circle"></i> <span data-i18n="exp_hl_2_3">Client Coordination</span></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ========== ABOUT SECTION ========== -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="about_tag">About Me</span>
-                <h2><span data-i18n="about_title_prefix">Passionate About Building</span> <span class="gradient-text" data-i18n="about_title_gradient">Meaningful Solutions</span></h2>
-            </div>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p data-i18n="about_p1">I'm Cathyrine Menguito, a Bachelor of Science in Computer Science graduate from Renaissance School of Science and Technology, Inc. I have a growing interest in web development, user interface design, and creating practical technology solutions that address real-world needs.</p>
-                    <p data-i18n="about_p2">Throughout my academic journey, I gained hands-on experience through software development projects, particularly in building web-based systems. I worked on projects involving healthcare management, career assessment, and other practical applications, where I developed my foundation in front-end development, interface design, and user experience.</p>
-                    <p data-i18n="about_p3">I also hold a TESDA National Certificate II in Computer Systems Servicing and have developed experience in leadership, collaboration, and project-based work. As I begin my professional journey, I am continuously learning and strengthening my technical skills while looking for opportunities to contribute, gain real-world experience, and grow as an IT professional.</p>
-                    
-                    <div class="about-badges">
-                        <span><i class="fas fa-award"></i> <span data-i18n="about_badge_1">TESDA NC II – Computer Systems Servicing</span></span>
-                        <span><i class="fas fa-trophy"></i> <span data-i18n="about_badge_2">Outstanding System Design</span></span>
-                        <span><i class="fas fa-users"></i> <span data-i18n="about_badge_3">Class President 2024–2025</span></span>
-                    </div>
-                    
-                    <!-- Resume Preview & Download Buttons -->
-                    <div class="about-actions">
-                        <button class="btn btn-primary" id="resume-preview-btn" aria-label="Preview resume">
-                            <i class="fas fa-file-pdf"></i> <span data-i18n="about_btn_preview">Preview Resume</span>
-                        </button>
-                        <a href="Cathyrine%20Menguito%20Resume.pdf" download class="btn btn-secondary" aria-label="Download resume PDF">
-                            <i class="fas fa-download"></i> <span data-i18n="about_btn_download">Download PDF</span>
-                        </a>
-                    </div>
+        <!-- ========== ABOUT SECTION ========== -->
+        <section id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="about_tag">About Me</span>
+                    <h2><span data-i18n="about_title_prefix">Passionate About Building</span> <span class="gradient-text" data-i18n="about_title_gradient">Meaningful Solutions</span></h2>
                 </div>
-                <div class="about-skills">
-                    <h3 data-i18n="skills_tech_title">Technical Skills</h3>
-                    <ul class="skills-list">
-                        <li><i class="fab fa-html5"></i> HTML5</li>
-                        <li><i class="fab fa-css3-alt"></i> CSS3</li>
-                        <li><i class="fab fa-js"></i> JavaScript (Basic)</li>
-                        <li><i class="fas fa-database"></i> MySQL</li>
-                        <li><i class="fab fa-git-alt"></i> Git</li>
-                        <li><i class="fab fa-github"></i> GitHub</li>
-                        <li><i class="fas fa-pencil-alt"></i> UI/UX Design</li>
-                        <li><i class="fas fa-code"></i> Web Development</li>
-                    </ul>
-                    <h3 data-i18n="skills_tools_title">Tools &amp; Technologies</h3>
-                    <ul class="skills-list">
-                        <li><i class="fas fa-file-word"></i> Microsoft Office</li>
-                        <li><i class="fas fa-paint-brush"></i> Canva</li>
-                        <li><i class="fab fa-google"></i> Google Workspace</li>
-                        <li><i class="fab fa-windows"></i> Windows OS</li>
-                        <li><i class="fas fa-code"></i> VS Code</li>
-                    </ul>
-                    <h3 data-i18n="skills_prof_title">Professional Skills</h3>
-                    <ul class="skills-list">
-                        <li><i class="fas fa-lightbulb"></i> Problem-Solving</li>
-                        <li><i class="fas fa-comments"></i> Communication</li>
-                        <li><i class="fas fa-users"></i> Team Collaboration</li>
-                        <li><i class="fas fa-clock"></i> Time Management</li>
-                        <li><i class="fas fa-search"></i> Detail-Oriented</li>
-                        <li><i class="fas fa-graduation-cap"></i> Continuous Learning</li>
-                    </ul>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p data-i18n="about_p1">I'm Cathyrine Menguito, a Bachelor of Science in Computer Science graduate from Renaissance School of Science and Technology, Inc. I have a growing interest in web development, user interface design, and creating practical technology solutions that address real-world needs.</p>
+                        <p data-i18n="about_p2">Throughout my academic journey, I gained hands-on experience through software development projects, particularly in building web-based systems. I worked on projects involving healthcare management, career assessment, and other practical applications, where I developed my foundation in front-end development, interface design, and user experience.</p>
+                        <p data-i18n="about_p3">I also hold a TESDA National Certificate II in Computer Systems Servicing and have developed experience in leadership, collaboration, and project-based work. As I begin my professional journey, I am continuously learning and strengthening my technical skills while looking for opportunities to contribute, gain real-world experience, and grow as an IT professional.</p>
 
-                    <!-- ===== SKILLS VISUALIZATION ===== -->
-                    <div class="skills-visualization">
-                        <h3 data-i18n="skills_prof_title">Skill Proficiency</h3>
-                        <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">HTML5</span><span class="skill-percent">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
-                        <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">CSS3</span><span class="skill-percent">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
-                        <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">JavaScript</span><span class="skill-percent">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div></div>
-                        <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">PHP</span><span class="skill-percent">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div></div>
-                        <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">MySQL</span><span class="skill-percent">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div></div>
-                        <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">UI/UX Design</span><span class="skill-percent">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
-                    </div>
-
-                    <!-- ===== SKILLS RADAR CHART ===== -->
-                    <div class="radar-chart-container">
-                        <h3 data-i18n="skills_radar_title">Skill Distribution</h3>
-                        <canvas id="radarChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== EDUCATION & CERTIFICATIONS ========== -->
-    <section id="education">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="edu_tag">Education</span>
-                <h2><span data-i18n="edu_title_prefix">My</span> <span class="gradient-text" data-i18n="edu_title_gradient">Academic Journey</span></h2>
-            </div>
-            <div class="education-grid">
-                <!-- Tertiary -->
-                <div class="edu-card" data-tilt>
-                    <div class="edu-header">
-                        <span class="edu-tag"><i class="fas fa-graduation-cap"></i> <span data-i18n="edu_tertiary_tag">Tertiary</span></span>
-                        <span class="edu-year" data-i18n="edu_tertiary_year">2022 – 2026</span>
-                    </div>
-                    <h3 data-i18n="edu_tertiary_title">Bachelor of Science in Computer Science</h3>
-                    <p class="edu-school" data-i18n="edu_tertiary_school">Renaissance School of Science and Technology, Inc.</p>
-                    <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_tertiary_loc">Morong, Rizal</span></p>
-                    <div class="edu-achievements">
-                        <span><i class="fas fa-trophy"></i> <span data-i18n="edu_ach_1">Outstanding System Design</span></span>
-                        <span><i class="fas fa-trophy"></i> <span data-i18n="edu_ach_2">Outstanding Thesis Writing</span></span>
-                        <span><i class="fas fa-trophy"></i> <span data-i18n="edu_ach_3">Best in CS Practicum</span></span>
-                        <span><i class="fas fa-trophy"></i> <span data-i18n="edu_ach_4">Best in OJT Narrative</span></span>
-                        <span><i class="fas fa-star"></i> <span data-i18n="edu_ach_5">Loyalty Award</span></span>
-                    </div>
-                </div>
-                <!-- Senior High -->
-                <div class="edu-card" data-tilt>
-                    <div class="edu-header">
-                        <span class="edu-tag"><i class="fas fa-school"></i> <span data-i18n="edu_shs_tag">Senior High</span></span>
-                        <span class="edu-year" data-i18n="edu_shs_year">2021 – 2022</span>
-                    </div>
-                    <h3 data-i18n="edu_shs_title">HUMSS Strand</h3>
-                    <p class="edu-school" data-i18n="edu_shs_school">Renaissance School of Science and Technology, Inc.</p>
-                    <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_shs_loc">Morong, Rizal</span></p>
-                    <div class="edu-achievements">
-                        <span><i class="fas fa-star"></i> <span data-i18n="edu_shs_ach">With Honors (Grade 11 – 12)</span></span>
-                    </div>
-                    <div class="edu-secondary">
-                        <p class="edu-school" style="font-size:0.9rem;" data-i18n="edu_jhs_school">Morong National High School</p>
-                        <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_jhs_loc">Morong, Rizal</span></p>
-                        <p class="edu-year" style="font-size:0.8rem;color:var(--text-secondary);" data-i18n="edu_jhs_year">2019 – 2020</p>
-                    </div>
-                </div>
-                <!-- Junior High -->
-                <div class="edu-card" data-tilt>
-                    <div class="edu-header">
-                        <span class="edu-tag"><i class="fas fa-school"></i> <span data-i18n="edu_jhs_tag">Junior High</span></span>
-                        <span class="edu-year" data-i18n="edu_jhs_year2">2015 – 2019</span>
-                    </div>
-                    <h3 data-i18n="edu_jhs_title">Junior High School</h3>
-                    <p class="edu-school" data-i18n="edu_jhs_school2">Morong National High School</p>
-                    <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_jhs_loc2">Morong, Rizal</span></p>
-                </div>
-                <!-- Elementary -->
-                <div class="edu-card" data-tilt>
-                    <div class="edu-header">
-                        <span class="edu-tag"><i class="fas fa-child"></i> <span data-i18n="edu_elem_tag">Elementary</span></span>
-                        <span class="edu-year" data-i18n="edu_elem_year">2009 – 2015</span>
-                    </div>
-                    <h3 data-i18n="edu_elem_title">Elementary School</h3>
-                    <p class="edu-school" data-i18n="edu_elem_school">Tomas Claudio Memorial Elementary School</p>
-                    <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_elem_loc">Morong, Rizal</span></p>
-                </div>
-                <!-- Certification -->
-                <div class="edu-card cert-card" data-tilt>
-                    <div class="edu-header">
-                        <span class="edu-tag" style="background:rgba(0,255,171,0.2);color:var(--mint-primary);"><i class="fas fa-certificate"></i> <span data-i18n="edu_cert_tag">Certification</span></span>
-                        <span class="edu-year" data-i18n="edu_cert_date">May 8, 2024</span>
-                    </div>
-                    <h3 data-i18n="edu_cert_title">National Certificate II (NC II)</h3>
-                    <p class="edu-school" data-i18n="edu_cert_sub">Computer Systems Servicing (CSS)</p>
-                    <p class="edu-location"><i class="fas fa-building"></i> <span data-i18n="edu_cert_org">TESDA</span></p>
-                    <div class="edu-achievements">
-                        <span><i class="fas fa-check-circle"></i> <span data-i18n="edu_cert_badge">Certified</span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PROJECTS TIMELINE ========== -->
-    <section id="timeline-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="timeline_tag">Journey</span>
-                <h2><span data-i18n="timeline_title_prefix">Project</span> <span class="gradient-text" data-i18n="timeline_title_gradient">Timeline</span></h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><span class="timeline-year">2025</span><h3 data-i18n="tl_1_title">RHU Morong Health System</h3><p data-i18n="tl_1_desc">Academic thesis project - a healthcare management system for the Rural Health Unit of Morong, Rizal. Co-developed with Ariel B. Eubanas, Jr. Received Outstanding System Design and Outstanding Thesis Writing awards.</p></div></div>
-                <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><span class="timeline-year">2026</span><h3 data-i18n="tl_2_title">Angono NHS Career Assessment</h3><p data-i18n="tl_2_desc">An independently developed academic project - a web-based career assessment tool designed to help incoming Senior High School students explore suitable SHS strands based on their interests and skills.</p></div></div>
-                <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><span class="timeline-year">2026</span><h3 data-i18n="tl_3_title">HowCan‑i‑Help</h3><p data-i18n="tl_3_desc">Professional project developed at Real IT OPC in collaboration with Kenji Akira Bergaño and Ariel B. Eubanas, Jr. A healthcare and assistance platform actively used in clinic workflows.</p></div></div>
-                <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><span class="timeline-year">2026</span><h3 data-i18n="tl_4_title">RITREMIS</h3><p data-i18n="tl_4_desc">Professional project developed at Real IT OPC in collaboration with Kenji Akira Bergaño and Ariel B. Eubanas, Jr. A real estate management and property information platform.</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PEOPLE I'VE WORKED WITH ========== -->
-    <section id="team">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="team_tag">Collaboration</span>
-                <h2><span data-i18n="team_title_prefix">People I've</span> <span class="gradient-text" data-i18n="team_title_gradient">Worked With</span></h2>
-            </div>
-            <p class="team-sub" style="color:var(--text-secondary);max-width:600px;margin:0 auto 48px;text-align:center;line-height:1.8;" data-i18n="team_sub">I thrive on teamwork. Here are some of the talented developers I've collaborated with.</p>
-            <div class="team-grid">
-                <div class="team-card" data-tilt>
-                    <div class="team-avatar"><span class="team-initials">AE</span></div>
-                    <div class="team-info">
-                        <h3>Ariel B. Eubanas, Jr.</h3>
-                        <p class="team-role" data-i18n="team_role_1">Full Stack Web Developer</p>
-                        <p class="team-project" data-i18n="team_company_1">Real IT OPC</p>
-                        <ul class="team-skills"><li><i class="fas fa-check-circle"></i> PHP</li><li><i class="fas fa-check-circle"></i> MySQL</li><li><i class="fas fa-check-circle"></i> HTML</li><li><i class="fas fa-check-circle"></i> CSS</li><li><i class="fas fa-check-circle"></i> Bootstrap</li><li><i class="fas fa-check-circle"></i> JavaScript</li></ul>
-                    </div>
-                </div>
-                <div class="team-card" data-tilt>
-                    <div class="team-avatar"><span class="team-initials">KB</span></div>
-                    <div class="team-info">
-                        <h3>Kenji Akira Bergaño</h3>
-                        <p class="team-role" data-i18n="team_role_2">Project Lead / Full Stack Web Developer</p>
-                        <p class="team-project" data-i18n="team_company_2">Real IT OPC</p>
-                        <ul class="team-skills"><li><i class="fas fa-check-circle"></i> PHP</li><li><i class="fas fa-check-circle"></i> MySQL</li><li><i class="fas fa-check-circle"></i> JavaScript</li><li><i class="fas fa-check-circle"></i> HTML</li><li><i class="fas fa-check-circle"></i> CSS</li><li><i class="fas fa-check-circle"></i> Bootstrap</li></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== FOR CLIENTS ========== -->
-    <section id="for-clients">
-        <div class="container">
-            <div class="client-banner">
-                <h3><span data-i18n="client_title_prefix">Have a</span> <span class="gradient-text" data-i18n="client_title_gradient">Web System</span> <span data-i18n="client_title_suffix">or Digital Project in Mind?</span></h3>
-                <p data-i18n="client_desc">I work with a development team to build practical web-based systems and applications for businesses, organizations, and project teams. We focus on functional solutions, user-friendly interfaces, and systems designed around specific requirements.</p>
-                <div class="client-services">
-                    <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_1">Custom Web Applications</span></span>
-                    <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_2">Web-Based Systems</span></span>
-                    <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_3">Application-Based Systems</span></span>
-                    <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_4">UI/UX Design</span></span>
-                    <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_5">System Maintenance</span></span>
-                </div>
-                <a href="#contact" class="btn btn-primary" aria-label="Discuss a project">
-                    <i class="fas fa-paper-plane"></i> <span data-i18n="client_btn">Discuss a Project</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== FEATURED PROJECTS ========== -->
-    <section id="featured-projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="featured_tag">Portfolio</span>
-                <h2><span data-i18n="featured_title_prefix">Featured</span> <span class="gradient-text" data-i18n="featured_title_gradient">Projects</span></h2>
-            </div>
-            <div class="project-grid">
-
-                <!-- ===== PROJECT 1 ===== -->
-                <div class="project-card" data-tilt>
-                    <div class="project-header">
-                        <div class="project-badges"><span class="badge badge-healthcare" data-i18n="badge_healthcare">Healthcare</span></div>
-                        <span class="project-emoji">🏥</span>
-                    </div>
-                    <div class="project-info">
-                        <h3 data-i18n="proj_1_title">RHU Morong Health System</h3>
-                        <p data-i18n="proj_1_desc">Web‑based management information system for the Rural Health Unit of Morong, Rizal.</p>
-                        <div class="status-badge"><span class="status-dot green"></span><span data-i18n="status_live">Live in Production</span></div>
-                        <div class="project-metrics">
-                            <div class="metric"><span class="metric-number">70%</span><span class="metric-label" data-i18n="metric_1_label">Reduced Paperwork</span></div>
-                            <div class="metric-divider"></div>
-                            <div class="metric"><span class="metric-number">60+</span><span class="metric-label" data-i18n="metric_2_label">Health Workers Served</span></div>
+                        <div class="about-badges">
+                            <span><i class="fas fa-award"></i> <span data-i18n="about_badge_1">TESDA NC II – Computer Systems Servicing</span></span>
+                            <span><i class="fas fa-trophy"></i> <span data-i18n="about_badge_2">Outstanding System Design</span></span>
+                            <span><i class="fas fa-users"></i> <span data-i18n="about_badge_3">Class President 2024–2025</span></span>
                         </div>
-                        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
-                        <div class="project-actions"><a href="http://healthcare.morongcenter.com/" target="_blank" class="btn btn-small" aria-label="View RHU Morong Health System project"><i class="fas fa-external-link-alt"></i> <span data-i18n="view_project">View Project</span></a></div>
-                    </div>
-                </div>
 
-                <!-- ===== PROJECT 2 ===== -->
-                <div class="project-card" data-tilt>
-                    <div class="project-header">
-                        <div class="project-badges"><span class="badge badge-education" data-i18n="badge_education">Education</span></div>
-                        <span class="project-emoji">🎓</span>
-                    </div>
-                    <div class="project-info">
-                        <h3 data-i18n="proj_2_title">Angono NHS Career Assessment</h3>
-                        <p data-i18n="proj_2_desc">Web‑based career assessment tool for incoming Senior High School students.</p>
-                        <div class="status-badge"><span class="status-dot green"></span><span data-i18n="status_live">Live in Production</span></div>
-                        <div class="project-metrics">
-                            <div class="metric"><span class="metric-number">54+</span><span class="metric-label" data-i18n="metric_3_label">Students Assessed</span></div>
-                            <div class="metric-divider"></div>
-                            <div class="metric"><span class="metric-number">4</span><span class="metric-label" data-i18n="metric_4_label">SHS Strands</span></div>
+                        <!-- Resume Preview & Download Buttons -->
+                        <div class="about-actions">
+                            <button class="btn btn-primary" id="resume-preview-btn" aria-label="Preview resume">
+                                <i class="fas fa-file-pdf"></i> <span data-i18n="about_btn_preview">Preview Resume</span>
+                            </button>
+                            <a href="Cathyrine%20Menguito%20Resume.pdf" download class="btn btn-secondary" aria-label="Download resume PDF">
+                                <i class="fas fa-download"></i> <span data-i18n="about_btn_download">Download PDF</span>
+                            </a>
                         </div>
-                        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
-                        <div class="project-actions"><a href="https://angononhs-onlinecareerassessment.online/" target="_blank" class="btn btn-small" aria-label="View Angono NHS Career Assessment project"><i class="fas fa-external-link-alt"></i> <span data-i18n="view_project">View Project</span></a></div>
                     </div>
-                </div>
+                    <div class="about-skills">
+                        <h3 data-i18n="skills_tech_title">Technical Skills</h3>
+                        <ul class="skills-list">
+                            <li><i class="fab fa-html5"></i> HTML5</li>
+                            <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                            <li><i class="fab fa-js"></i> JavaScript (Basic)</li>
+                            <li><i class="fas fa-database"></i> MySQL</li>
+                            <li><i class="fab fa-git-alt"></i> Git</li>
+                            <li><i class="fab fa-github"></i> GitHub</li>
+                            <li><i class="fas fa-pencil-alt"></i> UI/UX Design</li>
+                            <li><i class="fas fa-code"></i> Web Development</li>
+                        </ul>
+                        <h3 data-i18n="skills_tools_title">Tools &amp; Technologies</h3>
+                        <ul class="skills-list">
+                            <li><i class="fas fa-file-word"></i> Microsoft Office</li>
+                            <li><i class="fas fa-paint-brush"></i> Canva</li>
+                            <li><i class="fab fa-google"></i> Google Workspace</li>
+                            <li><i class="fab fa-windows"></i> Windows OS</li>
+                            <li><i class="fas fa-code"></i> VS Code</li>
+                        </ul>
+                        <h3 data-i18n="skills_prof_title">Professional Skills</h3>
+                        <ul class="skills-list">
+                            <li><i class="fas fa-lightbulb"></i> Problem-Solving</li>
+                            <li><i class="fas fa-comments"></i> Communication</li>
+                            <li><i class="fas fa-users"></i> Team Collaboration</li>
+                            <li><i class="fas fa-clock"></i> Time Management</li>
+                            <li><i class="fas fa-search"></i> Detail-Oriented</li>
+                            <li><i class="fas fa-graduation-cap"></i> Continuous Learning</li>
+                        </ul>
 
-                <!-- ===== PROJECT 3 ===== -->
-                <div class="project-card" data-tilt>
-                    <div class="project-header">
-                        <div class="project-badges"><span class="badge badge-healthcare" data-i18n="badge_healthcare">Healthcare</span></div>
-                        <span class="project-emoji">🤝</span>
-                    </div>
-                    <div class="project-info">
-                        <h3 data-i18n="proj_3_title">HowCan‑i‑Help</h3>
-                        <p data-i18n="proj_3_desc">Integrated clinic record and healthcare management system connecting patients, clinics, and donors.</p>
-                        <div class="status-badge"><span class="status-dot green"></span><span data-i18n="status_live2">Live — Active Clinic Use</span></div>
-                        <div class="project-metrics">
-                            <div class="metric"><span class="metric-number">3</span><span class="metric-label" data-i18n="metric_5_label">Connected Entities</span></div>
-                            <div class="metric-divider"></div>
-                            <div class="metric"><span class="metric-number">100%</span><span class="metric-label" data-i18n="metric_6_label">Digital Records</span></div>
+                        <!-- Skills Visualization -->
+                        <div class="skills-visualization">
+                            <h3 data-i18n="skills_prof_title">Skill Proficiency</h3>
+                            <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">HTML5</span><span class="skill-percent">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
+                            <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">CSS3</span><span class="skill-percent">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
+                            <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">JavaScript</span><span class="skill-percent">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div></div>
+                            <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">PHP</span><span class="skill-percent">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div></div>
+                            <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">MySQL</span><span class="skill-percent">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div></div>
+                            <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">UI/UX Design</span><span class="skill-percent">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
                         </div>
-                        <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
-                        <div class="project-actions"><a href="https://howcan-i-help.org/" target="_blank" class="btn btn-small" aria-label="View HowCan-i-Help project"><i class="fas fa-external-link-alt"></i> <span data-i18n="view_project">View Project</span></a></div>
+
+                        <!-- Radar Chart -->
+                        <div class="radar-chart-container">
+                            <h3 data-i18n="skills_radar_title">Skill Distribution</h3>
+                            <canvas id="radarChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="center-btn">
-                <a href="projects.html" class="btn btn-primary" aria-label="See all projects"><span data-i18n="see_all">See All Projects</span></a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ========== RECENT WORK CAROUSEL ========== -->
-    <section id="carousel-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="carousel_tag">Recent Work</span>
-                <h2><span data-i18n="carousel_title_prefix">Project</span> <span class="gradient-text" data-i18n="carousel_title_gradient">Showcase</span></h2>
-            </div>
-            <div class="carousel">
-                <div class="carousel-track" id="carousel-track">
-                    <div class="carousel-slide"><div class="carousel-content"><h3 data-i18n="carousel_1_title">RHU Morong Health System</h3><p data-i18n="carousel_1_desc">Healthcare management system</p><div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;"><span class="carousel-tag">HTML</span><span class="carousel-tag">CSS</span><span class="carousel-tag">JavaScript</span><span class="carousel-tag">PHP</span><span class="carousel-tag">MySQL</span><span class="carousel-tag">Bootstrap</span></div></div></div>
-                    <div class="carousel-slide"><div class="carousel-content"><h3 data-i18n="carousel_2_title">Angono NHS Career Assessment</h3><p data-i18n="carousel_2_desc">Education career tool</p><div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;"><span class="carousel-tag">HTML</span><span class="carousel-tag">CSS</span><span class="carousel-tag">JavaScript</span><span class="carousel-tag">PHP</span><span class="carousel-tag">MySQL</span><span class="carousel-tag">Bootstrap</span></div></div></div>
-                    <div class="carousel-slide"><div class="carousel-content"><h3 data-i18n="carousel_3_title">HowCan‑i‑Help</h3><p data-i18n="carousel_3_desc">Healthcare assistance platform</p><div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;"><span class="carousel-tag">HTML</span><span class="carousel-tag">CSS</span><span class="carousel-tag">JavaScript</span><span class="carousel-tag">PHP</span><span class="carousel-tag">MySQL</span><span class="carousel-tag">Bootstrap</span></div></div></div>
-                    <div class="carousel-slide"><div class="carousel-content"><h3 data-i18n="carousel_4_title">RITREMIS</h3><p data-i18n="carousel_4_desc">Real Estate Management</p><div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;"><span class="carousel-tag">HTML</span><span class="carousel-tag">CSS</span><span class="carousel-tag">JavaScript</span><span class="carousel-tag">PHP</span><span class="carousel-tag">MySQL</span><span class="carousel-tag">Bootstrap</span></div></div></div>
+        <!-- ========== EDUCATION & CERTIFICATIONS ========== -->
+        <section id="education">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="edu_tag">Education</span>
+                    <h2><span data-i18n="edu_title_prefix">My</span> <span class="gradient-text" data-i18n="edu_title_gradient">Academic Journey</span></h2>
                 </div>
-                <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous slide">❮</button>
-                <button class="carousel-btn next" id="carousel-next" aria-label="Next slide">❯</button>
-                <div class="carousel-dots" id="carousel-dots"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== CONTACT SECTION ========== -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-i18n="contact_tag">Contact</span>
-                <h2><span data-i18n="contact_title_prefix">Get In</span> <span class="gradient-text" data-i18n="contact_title_gradient">Touch</span></h2>
-            </div>
-            <p class="contact-sub" data-i18n="contact_sub">I'm always open to new opportunities, collaborations, or just a friendly chat. Feel free to reach out!</p>
-            <div class="contact-content">
-                <div class="contact-details">
-                    <div class="contact-item"><i class="fas fa-envelope"></i><span>cthyrnmngt718@gmail.com</span></div>
-                    <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+63 965 803 9637</span></div>
-                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span data-i18n="contact_location">Morong, Rizal, Philippines</span></div>
-                    <div class="social-links">
-                        <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
-                        <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook profile"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
-                        <a href="mailto:cthyrnmngt718@gmail.com" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+                <div class="education-grid">
+                    <!-- Tertiary -->
+                    <div class="edu-card" data-tilt>
+                        <div class="edu-header">
+                            <span class="edu-tag"><i class="fas fa-graduation-cap"></i> <span data-i18n="edu_tertiary_tag">Tertiary</span></span>
+                            <span class="edu-year" data-i18n="edu_tertiary_year">2022 – 2026</span>
+                        </div>
+                        <h3 data-i18n="edu_tertiary_title">Bachelor of Science in Computer Science</h3>
+                        <p class="edu-school" data-i18n="edu_tertiary_school">Renaissance School of Science and Technology, Inc.</p>
+                        <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_tertiary_loc">Morong, Rizal</span></p>
+                        <div class="edu-achievements">
+                            <span><i class="fas fa-trophy"></i> <span data-i18n="edu_ach_1">Outstanding System Design</span></span>
+                            <span><i class="fas fa-trophy"></i> <span data-i18n="edu_ach_2">Outstanding Thesis Writing</span></span>
+                            <span><i class="fas fa-trophy"></i> <span data-i18n="edu_ach_3">Best in CS Practicum</span></span>
+                            <span><i class="fas fa-trophy"></i> <span data-i18n="edu_ach_4">Best in OJT Narrative</span></span>
+                            <span><i class="fas fa-star"></i> <span data-i18n="edu_ach_5">Loyalty Award</span></span>
+                        </div>
+                    </div>
+                    <!-- Senior High -->
+                    <div class="edu-card" data-tilt>
+                        <div class="edu-header">
+                            <span class="edu-tag"><i class="fas fa-school"></i> <span data-i18n="edu_shs_tag">Senior High</span></span>
+                            <span class="edu-year" data-i18n="edu_shs_year">2021 – 2022</span>
+                        </div>
+                        <h3 data-i18n="edu_shs_title">HUMSS Strand</h3>
+                        <p class="edu-school" data-i18n="edu_shs_school">Renaissance School of Science and Technology, Inc.</p>
+                        <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_shs_loc">Morong, Rizal</span></p>
+                        <div class="edu-achievements">
+                            <span><i class="fas fa-star"></i> <span data-i18n="edu_shs_ach">With Honors (Grade 11 – 12)</span></span>
+                        </div>
+                        <div class="edu-secondary">
+                            <p class="edu-school" style="font-size:0.9rem;" data-i18n="edu_jhs_school">Morong National High School</p>
+                            <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_jhs_loc">Morong, Rizal</span></p>
+                            <p class="edu-year" style="font-size:0.8rem;color:var(--text-secondary);" data-i18n="edu_jhs_year">2019 – 2020</p>
+                        </div>
+                    </div>
+                    <!-- Junior High -->
+                    <div class="edu-card" data-tilt>
+                        <div class="edu-header">
+                            <span class="edu-tag"><i class="fas fa-school"></i> <span data-i18n="edu_jhs_tag">Junior High</span></span>
+                            <span class="edu-year" data-i18n="edu_jhs_year2">2015 – 2019</span>
+                        </div>
+                        <h3 data-i18n="edu_jhs_title">Junior High School</h3>
+                        <p class="edu-school" data-i18n="edu_jhs_school2">Morong National High School</p>
+                        <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_jhs_loc2">Morong, Rizal</span></p>
+                    </div>
+                    <!-- Elementary -->
+                    <div class="edu-card" data-tilt>
+                        <div class="edu-header">
+                            <span class="edu-tag"><i class="fas fa-child"></i> <span data-i18n="edu_elem_tag">Elementary</span></span>
+                            <span class="edu-year" data-i18n="edu_elem_year">2009 – 2015</span>
+                        </div>
+                        <h3 data-i18n="edu_elem_title">Elementary School</h3>
+                        <p class="edu-school" data-i18n="edu_elem_school">Tomas Claudio Memorial Elementary School</p>
+                        <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_elem_loc">Morong, Rizal</span></p>
+                    </div>
+                    <!-- Certification -->
+                    <div class="edu-card cert-card" data-tilt>
+                        <div class="edu-header">
+                            <span class="edu-tag" style="background:rgba(0,255,171,0.2);color:var(--mint-primary);"><i class="fas fa-certificate"></i> <span data-i18n="edu_cert_tag">Certification</span></span>
+                            <span class="edu-year" data-i18n="edu_cert_date">May 8, 2024</span>
+                        </div>
+                        <h3 data-i18n="edu_cert_title">National Certificate II (NC II)</h3>
+                        <p class="edu-school" data-i18n="edu_cert_sub">Computer Systems Servicing (CSS)</p>
+                        <p class="edu-location"><i class="fas fa-building"></i> <span data-i18n="edu_cert_org">TESDA</span></p>
+                        <div class="edu-achievements">
+                            <span><i class="fas fa-check-circle"></i> <span data-i18n="edu_cert_badge">Certified</span></span>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <form class="contact-form" id="contact-form">
-                    <input type="text" name="name" placeholder="Your Name" required aria-label="Your name" data-i18n-placeholder="form_name" />
-                    <input type="email" name="email" placeholder="Your Email" required aria-label="Your email address" data-i18n-placeholder="form_email" />
-                    <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your message" data-i18n-placeholder="form_message"></textarea>
-                    <input type="hidden" name="_captcha" value="true" />
-                    <button type="submit" class="btn btn-primary" aria-label="Send message"><i class="fas fa-paper-plane"></i> <span data-i18n="form_submit">Send Message</span></button>
-                </form>
-
-                <div id="form-success" style="display:none; padding:24px; border:1px solid var(--mint-primary); border-radius:var(--radius); background:rgba(0,255,171,0.05); text-align:center; margin-top:20px;">
-                    <i class="fas fa-check-circle" style="color:var(--mint-primary);font-size:2.5rem;display:block;margin-bottom:12px;"></i>
-                    <h3 style="color:var(--text-primary);" data-i18n="success_title">Thank You!</h3>
-                    <p style="color:var(--text-secondary);" data-i18n="success_msg">Your message has been sent. I'll get back to you soon!</p>
+        <!-- ========== PROJECTS TIMELINE ========== -->
+        <section id="timeline-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="timeline_tag">Journey</span>
+                    <h2><span data-i18n="timeline_title_prefix">Project</span> <span class="gradient-text" data-i18n="timeline_title_gradient">Timeline</span></h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><span class="timeline-year">2025</span><h3 data-i18n="tl_1_title">RHU Morong Health System</h3><p data-i18n="tl_1_desc">Academic thesis project - a healthcare management system for the Rural Health Unit of Morong, Rizal. Co-developed with Ariel B. Eubanas, Jr. Received Outstanding System Design and Outstanding Thesis Writing awards.</p></div></div>
+                    <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><span class="timeline-year">2026</span><h3 data-i18n="tl_2_title">Angono NHS Career Assessment</h3><p data-i18n="tl_2_desc">An independently developed academic project - a web-based career assessment tool designed to help incoming Senior High School students explore suitable SHS strands based on their interests and skills.</p></div></div>
+                    <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><span class="timeline-year">2026</span><h3 data-i18n="tl_3_title">HowCan‑i‑Help</h3><p data-i18n="tl_3_desc">Professional project developed at Real IT OPC in collaboration with Kenji Akira Bergaño and Ariel B. Eubanas, Jr. A healthcare and assistance platform actively used in clinic workflows.</p></div></div>
+                    <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><span class="timeline-year">2026</span><h3 data-i18n="tl_4_title">RITREMIS</h3><p data-i18n="tl_4_desc">Professional project developed at Real IT OPC in collaboration with Kenji Akira Bergaño and Ariel B. Eubanas, Jr. A real estate management and property information platform.</p></div></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- ========== PEOPLE I'VE WORKED WITH ========== -->
+        <section id="team">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="team_tag">Collaboration</span>
+                    <h2><span data-i18n="team_title_prefix">People I've</span> <span class="gradient-text" data-i18n="team_title_gradient">Worked With</span></h2>
+                </div>
+                <p class="team-sub" style="color:var(--text-secondary);max-width:600px;margin:0 auto 48px;text-align:center;line-height:1.8;" data-i18n="team_sub">I thrive on teamwork. Here are some of the talented developers I've collaborated with.</p>
+                <div class="team-grid">
+                    <div class="team-card" data-tilt>
+                        <div class="team-avatar"><span class="team-initials">AE</span></div>
+                        <div class="team-info">
+                            <h3>Ariel B. Eubanas, Jr.</h3>
+                            <p class="team-role" data-i18n="team_role_1">Full Stack Web Developer</p>
+                            <p class="team-project" data-i18n="team_company_1">Real IT OPC</p>
+                            <ul class="team-skills"><li><i class="fas fa-check-circle"></i> PHP</li><li><i class="fas fa-check-circle"></i> MySQL</li><li><i class="fas fa-check-circle"></i> HTML</li><li><i class="fas fa-check-circle"></i> CSS</li><li><i class="fas fa-check-circle"></i> Bootstrap</li><li><i class="fas fa-check-circle"></i> JavaScript</li></ul>
+                        </div>
+                    </div>
+                    <div class="team-card" data-tilt>
+                        <div class="team-avatar"><span class="team-initials">KB</span></div>
+                        <div class="team-info">
+                            <h3>Kenji Akira Bergaño</h3>
+                            <p class="team-role" data-i18n="team_role_2">Project Lead / Full Stack Web Developer</p>
+                            <p class="team-project" data-i18n="team_company_2">Real IT OPC</p>
+                            <ul class="team-skills"><li><i class="fas fa-check-circle"></i> PHP</li><li><i class="fas fa-check-circle"></i> MySQL</li><li><i class="fas fa-check-circle"></i> JavaScript</li><li><i class="fas fa-check-circle"></i> HTML</li><li><i class="fas fa-check-circle"></i> CSS</li><li><i class="fas fa-check-circle"></i> Bootstrap</li></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FOR CLIENTS ========== -->
+        <section id="for-clients">
+            <div class="container">
+                <div class="client-banner">
+                    <h3><span data-i18n="client_title_prefix">Have a</span> <span class="gradient-text" data-i18n="client_title_gradient">Web System</span> <span data-i18n="client_title_suffix">or Digital Project in Mind?</span></h3>
+                    <p data-i18n="client_desc">I work with a development team to build practical web-based systems and applications for businesses, organizations, and project teams. We focus on functional solutions, user-friendly interfaces, and systems designed around specific requirements.</p>
+                    <div class="client-services">
+                        <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_1">Custom Web Applications</span></span>
+                        <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_2">Web-Based Systems</span></span>
+                        <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_3">Application-Based Systems</span></span>
+                        <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_4">UI/UX Design</span></span>
+                        <span><i class="fas fa-check-circle"></i> <span data-i18n="client_svc_5">System Maintenance</span></span>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" aria-label="Discuss a project">
+                        <i class="fas fa-paper-plane"></i> <span data-i18n="client_btn">Discuss a Project</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PROJECTS SECTION (Full List with Filters) ========== -->
+        <section id="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="projects_tag">Portfolio</span>
+                    <h2><span class="gradient-text" data-i18n="projects_title">Projects</span></h2>
+                </div>
+                <p class="projects-sub" style="color:var(--text-secondary);margin-bottom:30px;font-size:1.05rem;" data-i18n="projects_sub">A collection of academic and professional work showcasing my growth in web development, system design, and collaborative problem-solving.</p>
+
+                <!-- Filter Buttons -->
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all" aria-label="Show all projects" data-i18n="filter_all">All</button>
+                    <button class="filter-btn" data-filter="healthcare" aria-label="Show healthcare projects" data-i18n="filter_healthcare">Healthcare</button>
+                    <button class="filter-btn" data-filter="education" aria-label="Show education projects" data-i18n="filter_education">Education</button>
+                    <button class="filter-btn" data-filter="realestate" aria-label="Show real estate projects" data-i18n="filter_realestate">Real Estate</button>
+                </div>
+
+                <div class="project-grid">
+
+                    <!-- PROJECT 1: RHU Morong -->
+                    <div class="project-card" data-category="healthcare php" data-tilt>
+                        <div class="project-info">
+                            <h3 data-i18n="proj_1_title">RHU Morong Health System</h3>
+                            <p data-i18n="proj_1_full">A comprehensive healthcare management platform built as our thesis project. This system digitized patient intake, appointment scheduling, and record management for the Rural Health Unit of Morong, Rizal.<br /><br /><strong data-i18n="proj_1_contrib_label">My Contribution:</strong> <span data-i18n="proj_1_contrib">Spearheaded the front-end architecture and user interface design, ensuring a seamless experience for healthcare personnel. Collaborated closely with my co-developer on back-end integration and system optimization.</span><br /><br /><strong data-i18n="proj_1_recog_label">Recognition:</strong> <span data-i18n="proj_1_recog">Received the <strong>Outstanding System Design</strong> and <strong>Outstanding Thesis Writing</strong> awards for our work.</span></p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                            <a href="http://healthcare.morongcenter.com/" target="_blank" rel="noopener noreferrer" class="btn btn-small" aria-label="Visit RHU Morong Health System project"><i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span></a>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 2: Angono NHS -->
+                    <div class="project-card" data-category="education php bootstrap" data-tilt>
+                        <div class="project-info">
+                            <h3 data-i18n="proj_2_title">Angono NHS Career Assessment</h3>
+                            <p data-i18n="proj_2_full">A web-based career guidance tool developed to help incoming Senior High School students identify their SHS strand. The system evaluates students' interests, skills, and academic inclinations to provide data-driven recommendations.<br /><br /><strong data-i18n="proj_2_role_label">My Role:</strong> <span data-i18n="proj_2_role">Developed the system independently, working on the database, front-end, system features, and deployment. This project gave me hands-on experience in building a complete web application and helped me better understand how its different parts work together. It also improved my development and problem-solving skills.</span><br /><br /><strong data-i18n="proj_2_impact_label">Impact:</strong> <span data-i18n="proj_2_impact">Successfully assessed over 50 students, helping them make informed decisions about their academic pathways.</span></p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                            <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" rel="noopener noreferrer" class="btn btn-small" aria-label="Visit Angono NHS Career Assessment project"><i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span></a>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 3: HowCan-i-Help -->
+                    <div class="project-card" data-category="healthcare php bootstrap" data-tilt>
+                        <div class="project-info">
+                            <h3 data-i18n="proj_3_title">HowCan‑i‑Help</h3>
+                            <p data-i18n="proj_3_full">A multi-tenant healthcare ecosystem that bridges the gap between patients, clinics, and community support networks. The platform streamlines clinical operations, donor coordination, and patient outreach through a centralized digital infrastructure.<br /><br /><strong data-i18n="proj_3_context_label">Project Context:</strong> <span data-i18n="proj_3_context">Developed as part of my professional work at <strong>Real IT OPC</strong>, where I collaborated with senior developers to bring this solution from concept to production. Currently deployed and actively supporting clinic workflows.</span><br /><br /><strong data-i18n="proj_3_ach_label">Key Achievement:</strong> <span data-i18n="proj_3_ach">The system has been fully integrated into the daily operations of partner clinics, replacing manual processes with efficient digital records management.</span></p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                            <a href="https://howcan-i-help.org/" target="_blank" rel="noopener noreferrer" class="btn btn-small" aria-label="Visit HowCan-i-Help project"><i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span></a>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 4: RITREMIS -->
+                    <div class="project-card" data-category="realestate php bootstrap" data-tilt>
+                        <div class="project-info">
+                            <h3 data-i18n="proj_4_title">RITREMIS</h3>
+                            <p data-i18n="proj_4_full">A comprehensive real estate management information system designed to centralize property records, streamline transactions, and provide stakeholders with real-time visibility into property portfolios.<br /><br /><strong data-i18n="proj_4_context_label">Project Context:</strong> <span data-i18n="proj_4_context">Currently in active development at <strong>Real IT OPC</strong>, built in collaboration with our development team.</span><br /><br /><strong data-i18n="proj_4_focus_label">My Focus:</strong> <span data-i18n="proj_4_focus">Front-end implementation, UI/UX design, and ensuring a responsive, intuitive interface for property managers and clients.</span></p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                            <a href="https://ritremis.com/" target="_blank" rel="noopener noreferrer" class="btn btn-small" aria-label="Visit RITREMIS project"><i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span></a>
+                        </div>
+                    </div>
+
+                </div><!-- end project-grid -->
+
+                <!-- Back to Top (optional) -->
+                <div class="center-btn" style="margin-top:40px;">
+                    <a href="#hero" class="btn btn-secondary" aria-label="Back to top"><i class="fas fa-arrow-up"></i> <span data-i18n="back_top">Back to Top</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CONTACT SECTION ========== -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="contact_tag">Contact</span>
+                    <h2><span data-i18n="contact_title_prefix">Get In</span> <span class="gradient-text" data-i18n="contact_title_gradient">Touch</span></h2>
+                </div>
+                <p class="contact-sub" data-i18n="contact_sub">I'm always open to new opportunities, collaborations, or just a friendly chat. Feel free to reach out!</p>
+                <div class="contact-content">
+                    <div class="contact-details">
+                        <div class="contact-item"><i class="fas fa-envelope"></i><span>cthyrnmngt718@gmail.com</span></div>
+                        <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+63 965 803 9637</span></div>
+                        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span data-i18n="contact_location">Morong, Rizal, Philippines</span></div>
+                        <div class="social-links">
+                            <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+                            <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook profile"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
+                            <a href="mailto:cthyrnmngt718@gmail.com" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contact-form">
+                        <input type="text" name="name" placeholder="Your Name" required aria-label="Your name" data-i18n-placeholder="form_name" />
+                        <input type="email" name="email" placeholder="Your Email" required aria-label="Your email address" data-i18n-placeholder="form_email" />
+                        <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your message" data-i18n-placeholder="form_message"></textarea>
+                        <input type="hidden" name="_captcha" value="true" />
+                        <button type="submit" class="btn btn-primary" aria-label="Send message"><i class="fas fa-paper-plane"></i> <span data-i18n="form_submit">Send Message</span></button>
+                    </form>
+
+                    <div id="form-success" style="display:none; padding:24px; border:1px solid var(--mint-primary); border-radius:var(--radius); background:rgba(0,255,171,0.05); text-align:center; margin-top:20px;">
+                        <i class="fas fa-check-circle" style="color:var(--mint-primary);font-size:2.5rem;display:block;margin-bottom:12px;"></i>
+                        <h3 style="color:var(--text-primary);" data-i18n="success_title">Thank You!</h3>
+                        <p style="color:var(--text-secondary);" data-i18n="success_msg">Your message has been sent. I'll get back to you soon!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- ========== RESUME PREVIEW MODAL ========== -->
     <div class="modal-overlay" id="resume-modal">
@@ -780,7 +697,7 @@
                     <span class="signature-line"></span>
                 </div>
                 <p class="signature-title" data-i18n="footer_name">Cathyrine Menguito</p>
-                <p class="signature-sub" data-i18n="footer_title">Computer Science Graduate &middot; Web Developer &middot; UI/UX Designer</p>
+                <p class="signature-sub" data-i18n="footer_title">Computer Science Graduate · Web Developer · UI/UX Designer</p>
             </div>
 
             <!-- Real-time Clock -->
@@ -821,6 +738,7 @@
         </button>
     </div>
 
+    <!-- ========== SCRIPTS ========== -->
     <script src="script.js"></script>
 </body>
 </html>
