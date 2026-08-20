@@ -69,7 +69,7 @@ if (statusElement) {
 }
 
 // ============================================
-// 5. VISITOR COUNTER
+// 5. VISITOR COUNTER (with session check)
 // ============================================
 async function getVisitorCount() {
     const countElement = document.getElementById('visitor-count');
@@ -80,16 +80,21 @@ async function getVisitorCount() {
         const data = await response.json();
         countElement.textContent = data.value || 0;
     } catch (error) {
-        let count = parseInt(localStorage.getItem('visitorCount') || '0');
-        count++;
-        localStorage.setItem('visitorCount', count);
-        countElement.textContent = count;
+        if (!sessionStorage.getItem('visitorCounted')) {
+            let count = parseInt(localStorage.getItem('visitorCount') || '0');
+            count++;
+            localStorage.setItem('visitorCount', count);
+            sessionStorage.setItem('visitorCounted', 'true');
+            countElement.textContent = count;
+        } else {
+            countElement.textContent = localStorage.getItem('visitorCount') || '0';
+        }
     }
 }
 getVisitorCount();
 
 // ============================================
-// 6. QUOTE OF THE DAY (Church of Christ Bible Verses)
+// 6. QUOTE OF THE DAY (Bible Verses)
 // ============================================
 const bibleVerses = [
     { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13" },
@@ -144,13 +149,10 @@ function displayQuote() {
     
     const now = new Date();
     const philippineTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Manila' }));
-    
     const startOfYear = new Date(philippineTime.getFullYear(), 0, 0);
     const diff = philippineTime - startOfYear;
     const dayOfYear = Math.floor(diff / 86400000);
-    
     const verseIndex = dayOfYear % bibleVerses.length;
-    
     const selectedVerse = bibleVerses[verseIndex];
     quoteText.textContent = selectedVerse.text;
     quoteAuthor.textContent = `— ${selectedVerse.author}`;
@@ -361,19 +363,40 @@ if (currentTheme === 'light') {
     }
 }
 
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+function updateRadarChartTheme() {
+    if (!radarChartInstance) return;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const textColor = isLight ? '#0b1a14' : '#e8f5ed';
+    const gridColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+    
+    radarChartInstance.options.plugins.legend.labels.color = textColor;
+    radarChartInstance.options.scales.r.angleLines.color = gridColor;
+    radarChartInstance.options.scales.r.grid.color = gridColor;
+    radarChartInstance.options.scales.r.pointLabels.color = textColor;
+    radarChartInstance.options.scales.r.ticks.color = textColor;
+    radarChartInstance.update();
+}
+
+function handleThemeToggle() {
+    const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (themeToggle) {
         themeToggle.innerHTML = theme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    });
+    }
+    updateRadarChartTheme();
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', handleThemeToggle);
 }
 
 // ============================================
 // 14. ANIMATED STATS COUNTERS
 // ============================================
 const stats = document.querySelectorAll('.stat-number');
+const STAT_INCREMENT_DIVISOR = 60;
+const STAT_ANIMATION_INTERVAL = 20;
 
 const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -383,7 +406,7 @@ const counterObserver = new IntersectionObserver((entries) => {
             const isPlus = text.includes('+');
             const target = parseInt(text.replace('+', ''));
             let current = 0;
-            const increment = Math.ceil(target / 60);
+            const increment = Math.ceil(target / STAT_INCREMENT_DIVISOR);
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
@@ -391,7 +414,7 @@ const counterObserver = new IntersectionObserver((entries) => {
                     clearInterval(timer);
                 }
                 stat.textContent = isPlus ? current + '+' : current;
-            }, 20);
+            }, STAT_ANIMATION_INTERVAL);
             counterObserver.unobserve(stat);
         }
     });
@@ -513,8 +536,10 @@ if (canvas) {
 }
 
 // ============================================
-// 16. CONFETTI EFFECT
+// 16. CONFETTI EFFECT (with cleanup)
 // ============================================
+let confettiPieces = [];
+
 function launchConfetti() {
     const colors = ['#00ffab', '#00cc88', '#e8f5ed', '#88ffc8', '#00dd99', '#ff6b8a', '#ffdd44'];
     const count = 120;
@@ -537,9 +562,11 @@ function launchConfetti() {
         confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
         
         container.appendChild(confetti);
+        confettiPieces.push(confetti);
         
         setTimeout(() => {
             confetti.remove();
+            confettiPieces = confettiPieces.filter(p => p !== confetti);
         }, 3000);
     }
 }
@@ -627,6 +654,7 @@ function createDots() {
         const dot = document.createElement('button');
         dot.classList.add('carousel-dot');
         if (index === 0) dot.classList.add('active');
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
         dot.addEventListener('click', () => goToSlide(index));
         dotsContainer.appendChild(dot);
     });
@@ -684,7 +712,7 @@ if (slides.length > 0) {
 }
 
 // ============================================
-// 22. RADAR CHART (FIXED - No Duplicates)
+// 22. RADAR CHART (Lazy Load + Theme Update)
 // ============================================
 let radarChartInstance = null;
 
@@ -703,18 +731,15 @@ function loadRadarChart() {
 }
 
 function createRadarChart(canvas) {
+    if (radarChartInstance) {
+        radarChartInstance.destroy();
+        radarChartInstance = null;
+    }
     const ctx = canvas.getContext('2d');
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const textColor = isLight ? '#0b1a14' : '#e8f5ed';
     const gridColor = isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
 
-    // === DESTROY OLD CHART INSTANCE ===
-    if (radarChartInstance) {
-        radarChartInstance.destroy();
-        radarChartInstance = null;
-    }
-
-    // === CREATE NEW CHART ===
     radarChartInstance = new Chart(ctx, {
         type: 'radar',
         data: {
@@ -774,14 +799,25 @@ function createRadarChart(canvas) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', loadRadarChart);
-
-const themeToggle2 = document.getElementById('theme-toggle');
-if (themeToggle2) {
-    themeToggle2.addEventListener('click', () => {
-        setTimeout(loadRadarChart, 300);
+const radarObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            loadRadarChart();
+            radarObserver.unobserve(entry.target);
+        }
     });
+}, { threshold: 0.2 });
+
+const radarContainer = document.querySelector('.radar-chart-container');
+if (radarContainer) {
+    radarObserver.observe(radarContainer);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (radarContainer && radarContainer.getBoundingClientRect().top < window.innerHeight) {
+        loadRadarChart();
+    }
+});
 
 // ============================================
 // 23. DYNAMIC STYLES
@@ -789,14 +825,8 @@ if (themeToggle2) {
 const dynamicStyles = document.createElement('style');
 dynamicStyles.textContent = `
     @keyframes confettiFall {
-        0% {
-            transform: translateY(0) rotate(0deg) scale(1);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(100vh) rotate(720deg) scale(0.2);
-            opacity: 0;
-        }
+        0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(720deg) scale(0.2); opacity: 0; }
     }
     @keyframes fadeIn {
         from { opacity: 0; transform: scale(0.95); }
@@ -842,7 +872,7 @@ function typeEffect() {
     }
     setTimeout(typeEffect, speed);
 }
-// Start the typewriter effect after page loads
+
 if (taglineElement) {
     document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeEffect, 800);
@@ -873,8 +903,243 @@ const yearElement = document.getElementById('year');
 if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
 }
+
 // ============================================
-// 27. SERVICE WORKER REGISTRATION
+// 27. HIDE-ON-SCROLL NAVIGATION
+// ============================================
+const header = document.querySelector('header');
+let lastScrollY = window.scrollY;
+let ticking = false;
+let headerHidden = false;
+
+function handleHeaderScroll() {
+    const currentScrollY = window.scrollY;
+    
+    if (window.innerWidth <= 768) {
+        header.classList.remove('hidden');
+        header.classList.add('show');
+        lastScrollY = currentScrollY;
+        return;
+    }
+    
+    if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        if (!headerHidden) {
+            header.classList.add('hidden');
+            header.classList.remove('show');
+            headerHidden = true;
+        }
+    } else if (currentScrollY < lastScrollY) {
+        if (headerHidden) {
+            header.classList.remove('hidden');
+            header.classList.add('show');
+            headerHidden = false;
+        }
+    }
+    
+    if (currentScrollY < 50) {
+        header.classList.remove('hidden');
+        header.classList.add('show');
+        headerHidden = false;
+    }
+    
+    if (currentScrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    
+    lastScrollY = currentScrollY;
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            handleHeaderScroll();
+        });
+        ticking = true;
+    }
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768) {
+        header.classList.remove('hidden');
+        header.classList.add('show');
+        headerHidden = false;
+    }
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (e.clientY < 80 && headerHidden) {
+        header.classList.remove('hidden');
+        header.classList.add('show');
+        clearTimeout(window.headerShowTimeout);
+        window.headerShowTimeout = setTimeout(() => {
+            if (window.scrollY > 150) {
+                header.classList.add('hidden');
+                header.classList.remove('show');
+                headerHidden = true;
+            }
+        }, 2000);
+    }
+});
+
+setTimeout(() => {
+    handleHeaderScroll();
+}, 100);
+
+// ============================================
+// 28. RESUME PDF PREVIEW MODAL
+// ============================================
+const resumeModal = document.getElementById('resume-modal');
+const resumeModalClose = document.getElementById('resume-modal-close');
+const resumeModalCloseBtn = document.getElementById('resume-modal-close-btn');
+const resumePreviewBtn = document.getElementById('resume-preview-btn');
+const pdfViewer = document.getElementById('resume-pdf-viewer');
+
+const PDFJS_SCRIPT = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+
+function loadPDFViewer() {
+    if (!pdfViewer) return;
+    
+    if (typeof pdfjsLib !== 'undefined') {
+        renderPDFWithPDFJS();
+        return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = PDFJS_SCRIPT;
+    script.onload = () => {
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        renderPDFWithPDFJS();
+    };
+    script.onerror = () => {
+        renderPDFWithIframe();
+    };
+    document.head.appendChild(script);
+}
+
+function renderPDFWithPDFJS() {
+    const viewer = pdfViewer;
+    const pdfUrl = 'Cathyrine%20Menguito%20Resume.pdf';
+    
+    viewer.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;height:500px;flex-direction:column;gap:16px;color:var(--text-secondary);">
+            <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:var(--mint-primary);"></i>
+            <span>Loading resume...</span>
+        </div>
+    `;
+    
+    pdfjsLib.getDocument(pdfUrl).promise
+        .then((pdf) => {
+            return pdf.getPage(1).then((page) => {
+                const scale = 1.5;
+                const viewport = page.getViewport({ scale: scale });
+                
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                canvas.style.width = '100%';
+                canvas.style.height = 'auto';
+                canvas.style.display = 'block';
+                canvas.style.margin = '0 auto';
+                
+                viewer.innerHTML = '';
+                viewer.appendChild(canvas);
+                
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                
+                page.render(renderContext).promise.then(() => {
+                    const pageInfo = document.createElement('div');
+                    pageInfo.style.cssText = `
+                        text-align: center;
+                        padding: 8px 0;
+                        font-size: 0.75rem;
+                        color: var(--text-secondary);
+                        font-family: var(--font-mono);
+                        opacity: 0.6;
+                    `;
+                    pageInfo.textContent = `Page 1 of ${pdf.numPages}`;
+                    viewer.appendChild(pageInfo);
+                });
+            });
+        })
+        .catch((error) => {
+            console.error('PDF.js error:', error);
+            renderPDFWithIframe();
+        });
+}
+
+function renderPDFWithIframe() {
+    const viewer = pdfViewer;
+    const pdfUrl = 'Cathyrine%20Menguito%20Resume.pdf';
+    
+    viewer.innerHTML = `
+        <iframe src="${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0" 
+                style="width:100%;height:600px;border:none;display:block;"
+                loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.pdf-error').style.display='flex';">
+        </iframe>
+        <div class="pdf-error" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:500px;color:var(--text-secondary);text-align:center;padding:24px;">
+            <i class="fas fa-file-pdf" style="font-size:3rem;color:var(--mint-primary);opacity:0.3;margin-bottom:16px;"></i>
+            <p>Unable to preview the resume directly.</p>
+            <p style="font-size:0.85rem;opacity:0.6;margin-top:4px;">Please download the PDF to view it.</p>
+            <a href="${pdfUrl}" download class="btn btn-primary" style="margin-top:16px;color:#0b0e0c;">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    `;
+    
+    const iframe = viewer.querySelector('iframe');
+    if (iframe) {
+        iframe.addEventListener('error', () => {
+            iframe.style.display = 'none';
+            const errorDiv = viewer.querySelector('.pdf-error');
+            if (errorDiv) errorDiv.style.display = 'flex';
+        });
+    }
+}
+
+if (resumePreviewBtn) {
+    resumePreviewBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        resumeModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        loadPDFViewer();
+    });
+}
+
+function closeResumeModal() {
+    resumeModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+if (resumeModalClose) {
+    resumeModalClose.addEventListener('click', closeResumeModal);
+}
+
+if (resumeModalCloseBtn) {
+    resumeModalCloseBtn.addEventListener('click', closeResumeModal);
+}
+
+resumeModal.addEventListener('click', (e) => {
+    if (e.target === resumeModal) {
+        closeResumeModal();
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && resumeModal.classList.contains('active')) {
+        closeResumeModal();
+    }
+});
+
+// ============================================
+// 29. SERVICE WORKER REGISTRATION
 // ============================================
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
