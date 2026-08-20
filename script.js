@@ -1710,11 +1710,6 @@ updateClock();
 setInterval(updateClock, 1000);
 
 // ============================================
-// PAGE TRANSITIONS (View Transitions API) - disabled for now
-// ============================================
-// (We keep it simple – no external page loads)
-
-// ============================================
 // SKILL PERCENTAGE COUNTER ANIMATION
 // ============================================
 const skillItems = document.querySelectorAll('.tech-stack-item');
