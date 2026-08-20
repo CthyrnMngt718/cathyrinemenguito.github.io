@@ -18,7 +18,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- ===== ANALYTICS (Plausible) ===== -->
+    <!-- ===== ANALYTICS ===== -->
     <script defer data-domain="cthyrnmngt718.github.io" src="https://plausible.io/js/script.js"></script>
     
     <!-- ===== META DESCRIPTION & SEO ===== -->
@@ -151,7 +151,14 @@
                     <li><a href="/index.html#about" data-i18n="nav_about" aria-label="About me section">About</a></li>
                     <li><a href="/index.html#contact" data-i18n="nav_contact" aria-label="Contact me">Contact</a></li>
                 </ul>
-                <button id="lang-toggle" aria-label="Toggle language">🇵🇭</button>
+                <div class="lang-selector">
+                    <select id="lang-select" aria-label="Select language">
+                        <option value="en">🇺🇸 English</option>
+                        <option value="fil">🇵🇭 Filipino</option>
+                        <option value="ko">🇰🇷 Korean</option>
+                        <option value="ja">🇯🇵 Japanese</option>
+                    </select>
+                </div>
                 <button id="theme-toggle" aria-label="Toggle dark/light theme">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -175,7 +182,6 @@
                     in web development, system design, and collaborative problem-solving.
                 </p>
 
-                <!-- ===== FILTER BUTTONS ===== -->
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all" aria-label="Show all projects" data-i18n="filter_all">All</button>
                     <button class="filter-btn" data-filter="healthcare" aria-label="Show healthcare projects" data-i18n="filter_healthcare">Healthcare</button>
@@ -328,7 +334,7 @@
                 </div>
                 <div class="footer-text">
                     <p class="footer-name">Cathyrine Menguito</p>
-                    <p class="footer-tagline">
+                    <p class="footer-tagline" data-i18n="footer_sub">
                         <i class="fas fa-code"></i> Computer Science Graduate 
                         <i class="fas fa-circle" style="font-size:4px;color:var(--mint-primary);vertical-align:middle;margin:0 8px;"></i>
                         Web Development 
@@ -341,23 +347,15 @@
                         <span id="visitor-count">0</span>
                         <span class="visitor-label" data-i18n="visitor_label">visitors</span>
                     </div>
+                    <div class="clock-badge">
+                        <i class="fas fa-globe"></i>
+                        <span id="live-clock">--:-- --</span>
+                        <span class="clock-label">Your Local Time</span>
+                    </div>
                 </div>
             </div>
         </footer>
     </div> <!-- End #app -->
-
-    <!-- ========== LIVE CHAT ========== -->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function() {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/YOUR_WIDGET_ID/default';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
 
     <script src="script.js"></script>
 </body>
