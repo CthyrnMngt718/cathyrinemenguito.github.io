@@ -12,7 +12,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' https://cdn.jsdelivr.net https://formspree.io https://api.countapi.xyz https://api.github.com https://cdnjs.cloudflare.com;
+        script-src 'self' https://cdn.jsdelivr.net https://formspree.io https://api.countapi.xyz https://api.github.com;
         style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
         font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
         img-src 'self' data:;
@@ -414,7 +414,7 @@
         </div>
     </section>
 
-    <!-- ========== ABOUT SECTION (UPDATED WITH RESUME BUTTONS) ========== -->
+    <!-- ========== ABOUT SECTION ========== -->
     <section id="about">
         <div class="container">
             <div class="section-header">
@@ -461,16 +461,9 @@
                             Class President 2024–2025
                         </span>
                     </div>
-                    
-                    <!-- Updated: Resume Preview & Download Buttons -->
-                    <div class="about-actions">
-                        <button class="btn btn-primary magnetic-btn" id="resume-preview-btn" aria-label="Preview resume">
-                            <i class="fas fa-file-pdf"></i> Preview Resume
-                        </button>
-                        <a href="Cathyrine%20Menguito%20Resume.pdf" download class="btn btn-secondary magnetic-btn" aria-label="Download resume PDF">
-                            <i class="fas fa-download"></i> Download PDF
-                        </a>
-                    </div>
+                    <a href="Cathyrine%20Menguito%20Resume.pdf" class="btn btn-primary magnetic-btn" target="_blank" aria-label="Download resume PDF">
+                        <i class="fas fa-file-pdf"></i> View Resume
+                    </a>
                 </div>
                 <div class="about-skills">
                     <h3>Technical Skills</h3>
@@ -1084,7 +1077,7 @@
                     </div>
                 </div>
 
-                <!-- ===== FORMSPREE FORM ===== -->
+                <!-- ===== FORMSPREE FORM (AJAX - No Refresh) ===== -->
                 <form class="contact-form" id="contact-form">
                     <input type="text" name="name" placeholder="Your Name" required aria-label="Your name" />
                     <input type="email" name="email" placeholder="Your Email" required aria-label="Your email address" />
@@ -1092,6 +1085,8 @@
                     
                     <!-- Honeypot for spam protection -->
                     <input type="text" name="_gotcha" style="display:none;" />
+                    
+                    <!-- Add captcha for extra spam protection -->
                     <input type="hidden" name="_captcha" value="true" />
                     
                     <button type="submit" class="btn btn-primary magnetic-btn" aria-label="Send message">
@@ -1108,36 +1103,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ========== RESUME PREVIEW MODAL ========== -->
-    <div class="modal-overlay" id="resume-modal">
-        <div class="modal-container modal-resume">
-            <button class="modal-close" id="resume-modal-close" aria-label="Close resume preview">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-content">
-                <h2 style="margin-bottom:4px;">My Resume</h2>
-                <p style="color:var(--text-secondary);margin-bottom:16px;font-size:0.9rem;">
-                    <i class="fas fa-file-pdf" style="color:var(--mint-primary);"></i> 
-                    Cathyrine Menguito — Computer Science Graduate
-                </p>
-                <div id="resume-pdf-viewer" style="width:100%;min-height:500px;border-radius:8px;overflow:hidden;background:var(--bg-card);border:1px solid var(--border-mint);">
-                    <div style="display:flex;align-items:center;justify-content:center;height:500px;flex-direction:column;gap:16px;color:var(--text-secondary);">
-                        <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:var(--mint-primary);"></i>
-                        <span>Loading resume preview...</span>
-                    </div>
-                </div>
-                <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; padding-top:20px; border-top:1px solid var(--border-mint);">
-                    <a href="Cathyrine%20Menguito%20Resume.pdf" download class="btn btn-primary magnetic-btn" style="color:#0b0e0c;">
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
-                    <button class="btn btn-secondary magnetic-btn" id="resume-modal-close-btn">
-                        <i class="fas fa-times"></i> Close
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- ========== FOOTER ========== -->
     <footer>
