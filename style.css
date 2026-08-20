@@ -4030,3 +4030,200 @@ select:focus-visible {
 .service-card p {
     flex: 1;
 }
+/* ============================================
+   ENHANCEMENT: Mobile Navigation (transform-based)
+   ============================================ */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-primary);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 8px;
+        transform: translateY(-120%);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border-bottom: 1px solid var(--border-mint);
+        clip-path: none !important;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .nav-links.active {
+        transform: translateY(0);
+    }
+    .nav-links a {
+        padding: 14px 20px;
+        font-size: 1rem;
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+    [data-theme="light"] .nav-links {
+        background: var(--bg-primary);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+}
+
+/* ============================================
+   ENHANCEMENT: Tech Radar Visualization
+   ============================================ */
+.tech-radar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.tech-radar {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+}
+@media (min-width: 768px) {
+    .tech-radar { width: 320px; height: 320px; }
+}
+.radar-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--border-mint);
+    background: radial-gradient(circle, transparent 55%, var(--bg-card) 100%);
+}
+.radar-ring::after {
+    content: '';
+    position: absolute;
+    inset: 25%;
+    border-radius: 50%;
+    border: 1px dashed var(--border-mint);
+    opacity: 0.4;
+}
+.radar-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(var(--rotation)) translateX(calc(110px * (var(--level) / 100)));
+    transform-origin: 0 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--mint-primary);
+    background: var(--bg-card);
+    padding: 4px 12px;
+    border-radius: 50px;
+    border: 1px solid var(--border-mint);
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+.radar-item:hover {
+    transform: translate(-50%, -50%) rotate(var(--rotation)) translateX(calc(120px * (var(--level) / 100))) scale(1.08);
+    border-color: var(--mint-primary);
+    box-shadow: 0 0 30px var(--mint-glow);
+}
+[data-theme="light"] .radar-item {
+    background: rgba(255,255,255,0.8);
+    color: #0b1a14;
+}
+[data-theme="light"] .radar-ring {
+    background: radial-gradient(circle, transparent 55%, rgba(255,255,255,0.3) 100%);
+}
+
+/* ============================================
+   ENHANCEMENT: Project Progress Indicators
+   ============================================ */
+.project-progress {
+    margin: 12px 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.progress-track {
+    flex: 1;
+    height: 5px;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border-mint);
+}
+.progress-fill {
+    height: 100%;
+    background: var(--mint-gradient);
+    border-radius: 4px;
+    transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);
+    width: 0%;
+}
+.progress-percent {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--mint-primary);
+    font-family: var(--font-mono);
+    min-width: 36px;
+    text-align: right;
+}
+[data-theme="light"] .progress-track {
+    background: rgba(0,0,0,0.06);
+}
+
+/* ============================================
+   ENHANCEMENT: Unified Filtering Animations
+   ============================================ */
+.project-card.filtered-out {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+    pointer-events: none;
+    display: none !important;
+}
+.project-card.filtered-in {
+    animation: cardEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes cardEntrance {
+    from { opacity: 0; transform: scale(0.92) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ============================================
+   ENHANCEMENT: Skeleton Loading (for project cards)
+   ============================================ */
+.skeleton-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.skeleton-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--border-mint);
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+.skeleton-thumbnail {
+    height: 140px;
+    background: var(--border-mint);
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+.skeleton-title {
+    height: 24px;
+    width: 70%;
+    background: var(--border-mint);
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+.skeleton-text {
+    height: 16px;
+    width: 100%;
+    background: var(--border-mint);
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+.skeleton-text.short {
+    width: 60%;
+}
+@keyframes shimmer {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
