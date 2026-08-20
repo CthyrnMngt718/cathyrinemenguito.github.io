@@ -5,12 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cathyrine Menguito | Projects</title>
     
+    <!-- ===== SECURITY HEADERS ===== -->
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <!-- ===== META DESCRIPTION & SEO ===== -->
+    <meta name="description" content="Explore Cathyrine Menguito's portfolio of web development projects in healthcare, education, and real estate." />
+    <meta name="keywords" content="Cathyrine Menguito, portfolio, web development, healthcare system, education, real estate" />
+    
     <!-- ===== OPEN GRAPH / SOCIAL SHARING ===== -->
     <meta property="og:title" content="Cathyrine Menguito | Web Developer & UI/UX Designer" />
     <meta property="og:description" content="Explore my projects in healthcare, education, and real estate." />
     <meta property="og:image" content="https://cthyrnmngt718.github.io/og-image.jpg" />
     <meta property="og:url" content="https://cthyrnmngt718.github.io/projects.html" />
     <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- ===== JSON-LD STRUCTURED DATA ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Cathyrine Menguito Projects",
+        "description": "A collection of web development projects in healthcare, education, and real estate.",
+        "url": "https://cthyrnmngt718.github.io/projects.html",
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item": {
+                        "@type": "SoftwareApplication",
+                        "name": "RHU Morong Health System",
+                        "description": "Healthcare management system for Rural Health Unit of Morong, Rizal.",
+                        "applicationCategory": "HealthApplication",
+                        "operatingSystem": "Web",
+                        "url": "http://healthcare.morongcenter.com/"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "item": {
+                        "@type": "SoftwareApplication",
+                        "name": "Angono NHS Career Assessment",
+                        "description": "Career assessment tool for Senior High School students.",
+                        "applicationCategory": "EducationApplication",
+                        "operatingSystem": "Web",
+                        "url": "https://angononhs-onlinecareerassessment.online/"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "item": {
+                        "@type": "SoftwareApplication",
+                        "name": "HowCan-i-Help",
+                        "description": "Healthcare assistance platform connecting patients, clinics, and donors.",
+                        "applicationCategory": "HealthApplication",
+                        "operatingSystem": "Web",
+                        "url": "https://howcan-i-help.org/"
+                    }
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "item": {
+                        "@type": "SoftwareApplication",
+                        "name": "RITREMIS",
+                        "description": "Real estate management information system.",
+                        "applicationCategory": "BusinessApplication",
+                        "operatingSystem": "Web",
+                        "url": "https://ritremis.com/"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,12 +102,6 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
-    
-    <!-- Security Headers -->
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
 </head>
 <body>
     <!-- ========== PAGE LOADER ========== -->
@@ -130,7 +198,7 @@
                         <a href="http://healthcare.morongcenter.com/"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-small magnetic-btn"
+                           class="btn btn-small"
                            aria-label="Visit RHU Morong Health System project">
                             <i class="fas fa-external-link-alt"></i>
                             Visit Project
@@ -169,7 +237,7 @@
                         <a href="https://angononhs-onlinecareerassessment.online/"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-small magnetic-btn"
+                           class="btn btn-small"
                            aria-label="Visit Angono NHS Career Assessment project">
                             <i class="fas fa-external-link-alt"></i>
                             Visit Project
@@ -210,7 +278,7 @@
                         <a href="https://howcan-i-help.org/"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-small magnetic-btn"
+                           class="btn btn-small"
                            aria-label="Visit HowCan-i-Help project">
                             <i class="fas fa-external-link-alt"></i>
                             Visit Project
@@ -249,7 +317,7 @@
                         <a href="https://ritremis.com/"
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="btn btn-small magnetic-btn"
+                           class="btn btn-small"
                            aria-label="Visit RITREMIS project">
                             <i class="fas fa-external-link-alt"></i>
                             Visit Project
@@ -261,10 +329,10 @@
 
             <!-- ===== BACK TO HOME + CTA BUTTONS ===== -->
             <div class="center-btn" style="margin-top:40px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-                <a href="index.html" class="btn btn-secondary magnetic-btn" aria-label="Go back to homepage">
+                <a href="index.html" class="btn btn-secondary" aria-label="Go back to homepage">
                     <i class="fas fa-arrow-left"></i> Back to Home
                 </a>
-                <a href="index.html#contact" class="btn btn-primary magnetic-btn" aria-label="Contact me to build a project">
+                <a href="index.html#contact" class="btn btn-primary" aria-label="Contact me to build a project">
                     <i class="fas fa-rocket"></i> Let's Build Something Together
                 </a>
             </div>
@@ -299,7 +367,6 @@
                     UI/UX Design
                 </p>
                 <p class="footer-copy">&copy; <span id="year">2026</span> Cathyrine Menguito. All rights reserved.</p>
-                <!-- ===== ENHANCED VISITOR COUNTER ===== -->
                 <div class="visitor-badge">
                     <i class="fas fa-eye"></i>
                     <span id="visitor-count">0</span>
