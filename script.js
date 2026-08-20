@@ -1196,3 +1196,72 @@ if ('serviceWorker' in navigator) {
             console.log('Service Worker registration failed:', error);
         });
 }
+// ============================================
+// 30. MAGNETIC BUTTON EFFECT
+// ============================================
+const magneticBtns = document.querySelectorAll('.magnetic-btn');
+
+magneticBtns.forEach(btn => {
+    // Ensure the button has content wrapper for better control
+    if (!btn.querySelector('.btn-content')) {
+        const content = btn.innerHTML;
+        btn.innerHTML = `<span class="btn-content">${content}</span>`;
+        btn.classList.add('has-content');
+    }
+
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate offset from center (range: -1 to 1)
+        const offsetX = (x - centerX) / centerX;
+        const offsetY = (y - centerY) / centerY;
+        
+        // Apply magnetic pull with strength limiting
+        const maxPull = 20; // max pixels to pull
+        const pullX = offsetX * maxPull * 0.6;
+        const pullY = offsetY * maxPull * 0.6;
+        
+        // Apply transform with smooth spring-like transition
+        btn.style.transform = `translate(${pullX}px, ${pullY}px) scale(1.04)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        // Spring back with ease
+        btn.style.transform = 'translate(0, 0) scale(1)';
+        // Reset transition for smooth return
+        btn.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        
+        // Remove transition after animation completes to allow mousemove to override
+        setTimeout(() => {
+            btn.style.transition = '';
+        }, 400);
+    });
+
+    // Optional: add a subtle shadow effect on hover
+    btn.addEventListener('mouseenter', () => {
+        btn.style.boxShadow = '0 8px 40px var(--mint-glow)';
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+        btn.style.boxShadow = '';
+    });
+});
+
+// For floating CTA and other special buttons
+document.querySelectorAll('.floating-cta, .btn-primary, .btn-secondary').forEach(btn => {
+    if (!btn.classList.contains('magnetic-btn')) {
+        btn.classList.add('magnetic-btn');
+    }
+});
+
+// Re-run when DOM updates (for dynamically added buttons)
+const magneticObserver = new MutationObserver(() => {
+    document.querySelectorAll('.btn:not(.magnetic-btn)').forEach(btn => {
+        btn.classList.add('magnetic-btn');
+    });
+});
+magneticObserver.observe(document.body, { childList: true, subtree: true });
