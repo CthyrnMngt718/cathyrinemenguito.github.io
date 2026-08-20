@@ -4344,3 +4344,174 @@ header.hidden:hover::after {
 [data-theme="light"] .visitor-badge {
     background: rgba(0, 200, 120, 0.06);
 }
+/* ============================================
+   ANIMATED GRADIENT BORDER ON CARDS
+   ============================================ */
+.project-card,
+.service-card,
+.edu-card,
+.experience-card,
+.team-card,
+.github-item {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated border effect using conic-gradient */
+.project-card::before,
+.service-card::before,
+.edu-card::before,
+.experience-card::before,
+.team-card::before,
+.github-item::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 0%,
+        var(--mint-primary) 10%,
+        var(--mint-secondary) 20%,
+        transparent 30%,
+        transparent 70%,
+        var(--mint-primary) 80%,
+        var(--mint-secondary) 90%,
+        transparent 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    animation: borderSpin 4s linear infinite;
+    animation-play-state: paused;
+}
+
+/* Properties for the animation */
+.project-card,
+.service-card,
+.edu-card,
+.experience-card,
+.team-card,
+.github-item {
+    --border-angle: 0deg;
+}
+
+/* Show border on hover */
+.project-card:hover::before,
+.service-card:hover::before,
+.edu-card:hover::before,
+.experience-card:hover::before,
+.team-card:hover::before,
+.github-item:hover::before {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* Inner content needs z-index to stay above border */
+.project-card .project-header,
+.project-card .project-info,
+.service-card .service-icon,
+.service-card h3,
+.service-card p,
+.edu-card .edu-header,
+.edu-card h3,
+.edu-card p,
+.experience-card .experience-header,
+.experience-card .experience-body,
+.team-card .team-avatar,
+.team-card .team-info,
+.github-item .github-icon,
+.github-item .github-info {
+    position: relative;
+    z-index: 1;
+}
+
+/* Keyframe for spinning border */
+@keyframes borderSpin {
+    from { --border-angle: 0deg; }
+    to { --border-angle: 360deg; }
+}
+
+/* Property for animation (fallback) */
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+/* Light mode adjustments */
+[data-theme="light"] .project-card::before,
+[data-theme="light"] .service-card::before,
+[data-theme="light"] .edu-card::before,
+[data-theme="light"] .experience-card::before,
+[data-theme="light"] .team-card::before,
+[data-theme="light"] .github-item::before {
+    background: conic-gradient(
+        from var(--border-angle, 0deg),
+        transparent 0%,
+        #00cc88 10%,
+        #00aa66 20%,
+        transparent 30%,
+        transparent 70%,
+        #00cc88 80%,
+        #00aa66 90%,
+        transparent 100%
+    );
+}
+
+/* Subtle glow on the border when active */
+.project-card:hover,
+.service-card:hover,
+.edu-card:hover,
+.experience-card:hover,
+.team-card:hover,
+.github-item:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 171, 0.08), inset 0 0 30px rgba(0, 255, 171, 0.02);
+}
+
+[data-theme="light"] .project-card:hover,
+[data-theme="light"] .service-card:hover,
+[data-theme="light"] .edu-card:hover,
+[data-theme="light"] .experience-card:hover,
+[data-theme="light"] .team-card:hover,
+[data-theme="light"] .github-item:hover {
+    box-shadow: 0 0 30px rgba(0, 200, 120, 0.1), inset 0 0 30px rgba(0, 200, 120, 0.02);
+}
+/* ============================================
+   MAGNETIC BUTTON EFFECT
+   ============================================ */
+.magnetic-btn {
+    position: relative;
+    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+    will-change: transform;
+}
+
+/* The button content wrapper - we'll use a span inside */
+.magnetic-btn .btn-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* For buttons without the span wrapper, apply to the button itself */
+.magnetic-btn:not(.has-content) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Subtle scale on hover (already in your CSS, but enhanced) */
+.magnetic-btn:hover {
+    transform: scale(1.02);
+}
+
+/* Magnetic effect is applied via JS, but we keep the base */
