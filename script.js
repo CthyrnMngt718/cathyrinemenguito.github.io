@@ -1202,7 +1202,6 @@ if ('serviceWorker' in navigator) {
 const magneticBtns = document.querySelectorAll('.magnetic-btn');
 
 magneticBtns.forEach(btn => {
-    // Ensure the button has content wrapper for better control
     if (!btn.querySelector('.btn-content')) {
         const content = btn.innerHTML;
         btn.innerHTML = `<span class="btn-content">${content}</span>`;
@@ -1216,32 +1215,25 @@ magneticBtns.forEach(btn => {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        // Calculate offset from center (range: -1 to 1)
         const offsetX = (x - centerX) / centerX;
         const offsetY = (y - centerY) / centerY;
         
-        // Apply magnetic pull with strength limiting
-        const maxPull = 20; // max pixels to pull
+        const maxPull = 20;
         const pullX = offsetX * maxPull * 0.6;
         const pullY = offsetY * maxPull * 0.6;
         
-        // Apply transform with smooth spring-like transition
         btn.style.transform = `translate(${pullX}px, ${pullY}px) scale(1.04)`;
     });
 
     btn.addEventListener('mouseleave', () => {
-        // Spring back with ease
         btn.style.transform = 'translate(0, 0) scale(1)';
-        // Reset transition for smooth return
         btn.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
         
-        // Remove transition after animation completes to allow mousemove to override
         setTimeout(() => {
             btn.style.transition = '';
         }, 400);
     });
 
-    // Optional: add a subtle shadow effect on hover
     btn.addEventListener('mouseenter', () => {
         btn.style.boxShadow = '0 8px 40px var(--mint-glow)';
     });
@@ -1251,17 +1243,152 @@ magneticBtns.forEach(btn => {
     });
 });
 
-// For floating CTA and other special buttons
-document.querySelectorAll('.floating-cta, .btn-primary, .btn-secondary').forEach(btn => {
-    if (!btn.classList.contains('magnetic-btn')) {
-        btn.classList.add('magnetic-btn');
+// ============================================
+// 31. RESUME PDF PREVIEW MODAL
+// ============================================
+const resumeModal = document.getElementById('resume-modal');
+const resumeModalClose = document.getElementById('resume-modal-close');
+const resumeModalCloseBtn = document.getElementById('resume-modal-close-btn');
+const resumePreviewBtn = document.getElementById('resume-preview-btn');
+const pdfViewer = document.getElementById('resume-pdf-viewer');
+
+const PDFJS_SCRIPT = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+
+function loadPDFViewer() {
+    if (!pdfViewer) return;
+    
+    if (typeof pdfjsLib !== 'undefined') {
+        renderPDFWithPDFJS();
+        return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = PDFJS_SCRIPT;
+    script.onload = () => {
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        renderPDFWithPDFJS();
+    };
+    script.onerror = () => {
+        renderPDFWithIframe();
+    };
+    document.head.appendChild(script);
+}
+
+function renderPDFWithPDFJS() {
+    const viewer = pdfViewer;
+    const pdfUrl = 'Cathyrine%20Menguito%20Resume.pdf';
+    
+    viewer.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;height:500px;flex-direction:column;gap:16px;color:var(--text-secondary);">
+            <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:var(--mint-primary);"></i>
+            <span>Loading resume...</span>
+        </div>
+    `;
+    
+    pdfjsLib.getDocument(pdfUrl).promise
+        .then((pdf) => {
+            return pdf.getPage(1).then((page) => {
+                const scale = 1.5;
+                const viewport = page.getViewport({ scale: scale });
+                
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                canvas.style.width = '100%';
+                canvas.style.height = 'auto';
+                canvas.style.display = 'block';
+                canvas.style.margin = '0 auto';
+                
+                viewer.innerHTML = '';
+                viewer.appendChild(canvas);
+                
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                
+                page.render(renderContext).promise.then(() => {
+                    const pageInfo = document.createElement('div');
+                    pageInfo.style.cssText = `
+                        text-align: center;
+                        padding: 8px 0;
+                        font-size: 0.75rem;
+                        color: var(--text-secondary);
+                        font-family: var(--font-mono);
+                        opacity: 0.6;
+                    `;
+                    pageInfo.textContent = `Page 1 of ${pdf.numPages}`;
+                    viewer.appendChild(pageInfo);
+                });
+            });
+        })
+        .catch((error) => {
+            console.error('PDF.js error:', error);
+            renderPDFWithIframe();
+        });
+}
+
+function renderPDFWithIframe() {
+    const viewer = pdfViewer;
+    const pdfUrl = 'Cathyrine%20Menguito%20Resume.pdf';
+    
+    viewer.innerHTML = `
+        <iframe src="${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0" 
+                style="width:100%;height:600px;border:none;display:block;"
+                loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.pdf-error').style.display='flex';">
+        </iframe>
+        <div class="pdf-error" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:500px;color:var(--text-secondary);text-align:center;padding:24px;">
+            <i class="fas fa-file-pdf" style="font-size:3rem;color:var(--mint-primary);opacity:0.3;margin-bottom:16px;"></i>
+            <p>Unable to preview the resume directly.</p>
+            <p style="font-size:0.85rem;opacity:0.6;margin-top:4px;">Please download the PDF to view it.</p>
+            <a href="${pdfUrl}" download class="btn btn-primary" style="margin-top:16px;color:#0b0e0c;">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    `;
+    
+    const iframe = viewer.querySelector('iframe');
+    if (iframe) {
+        iframe.addEventListener('error', () => {
+            iframe.style.display = 'none';
+            const errorDiv = viewer.querySelector('.pdf-error');
+            if (errorDiv) errorDiv.style.display = 'flex';
+        });
+    }
+}
+
+if (resumePreviewBtn) {
+    resumePreviewBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        resumeModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        loadPDFViewer();
+    });
+}
+
+function closeResumeModal() {
+    resumeModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+if (resumeModalClose) {
+    resumeModalClose.addEventListener('click', closeResumeModal);
+}
+
+if (resumeModalCloseBtn) {
+    resumeModalCloseBtn.addEventListener('click', closeResumeModal);
+}
+
+resumeModal.addEventListener('click', (e) => {
+    if (e.target === resumeModal) {
+        closeResumeModal();
     }
 });
 
-// Re-run when DOM updates (for dynamically added buttons)
-const magneticObserver = new MutationObserver(() => {
-    document.querySelectorAll('.btn:not(.magnetic-btn)').forEach(btn => {
-        btn.classList.add('magnetic-btn');
-    });
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && resumeModal.classList.contains('active')) {
+        closeResumeModal();
+    }
 });
-magneticObserver.observe(document.body, { childList: true, subtree: true });
