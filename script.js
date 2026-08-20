@@ -1197,6 +1197,18 @@ const translations = {
         
         // Projects - Recognition (split for bullet points)
         proj_1_recog_2: "Received Outstanding Thesis Writing award",
+        // Hero - Resume Download
+        resume_download_hero: "Download Resume (PDF)",
+        
+        // Projects - Code Link
+        code_link: "Code",
+        
+        // Tech Stack (already added previously)
+        tech_stack_title: "Tech Stack Proficiency",
+        tech_stack_sub: "Technologies I work with and my comfort level",
+        
+        // Projects - Recognition (split for bullet points)
+        proj_1_recog_2: "Received Outstanding Thesis Writing award",
         // Quote
         quote_label: "Verse of the Day",
         // Services
@@ -1416,6 +1428,18 @@ const translations = {
         location_badge: "📍 モロン、リサール、フィリピン (GMT+8)",
         
         // About - Tech Stack
+        tech_stack_title: "テクノロジースタック習熟度",
+        tech_stack_sub: "私が使用するテクノロジーと習熟度",
+        
+        // Projects - Recognition
+        proj_1_recog_2: "優秀論文執筆賞を受賞",
+        // Hero - Resume Download
+        resume_download_hero: "履歴書をダウンロード (PDF)",
+        
+        // Projects - Code Link
+        code_link: "コード",
+        
+        // Tech Stack
         tech_stack_title: "テクノロジースタック習熟度",
         tech_stack_sub: "私が使用するテクノロジーと習熟度",
         
