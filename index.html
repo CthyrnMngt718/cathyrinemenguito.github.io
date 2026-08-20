@@ -79,36 +79,241 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- ===== CUSTOM STYLES (ADDED FOR THUMBNAILS & BUTTONS) ===== -->
+    <!-- ===== CUSTOM STYLES (ENHANCED) ===== -->
     <style>
-        /* Project Thumbnails */
+        /* --- Project Thumbnails (Browser Mockup) --- */
         .project-thumbnail {
-            height: 140px;
-            background: linear-gradient(135deg, var(--bg-secondary), rgba(0, 255, 171, 0.06));
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-mint);
+            padding: 0;
+            overflow: hidden;
+        }
+        .browser-mockup {
+            background: var(--bg-card);
+            padding: 8px 14px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 6px;
             border-bottom: 1px solid var(--border-mint);
-            font-size: 3.5rem;
-            color: var(--mint-primary);
-            transition: var(--transition);
         }
-        .project-card:hover .project-thumbnail {
-            background: linear-gradient(135deg, var(--bg-secondary), rgba(0, 255, 171, 0.12));
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
         }
-        [data-theme="light"] .project-thumbnail {
-            background: linear-gradient(135deg, #f0f7f3, rgba(0, 200, 120, 0.06));
+        .browser-dot.red { background: #ff5f56; }
+        .browser-dot.yellow { background: #ffbd2e; }
+        .browser-dot.green { background: #27c93f; }
+        .browser-url {
+            flex: 1;
+            background: var(--bg-primary);
+            border-radius: 4px;
+            padding: 2px 10px;
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            text-align: center;
+            font-family: var(--font-mono);
+            opacity: 0.7;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        [data-theme="light"] .project-card:hover .project-thumbnail {
-            background: linear-gradient(135deg, #f0f7f3, rgba(0, 200, 120, 0.12));
+        [data-theme="light"] .browser-url {
+            background: #eef5f1;
         }
 
-        /* Project Actions - Outline & GitHub Buttons */
+        /* --- Thumbnail Content --- */
+        .thumbnail-body {
+            padding: 28px 20px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+        }
+        .thumbnail-monogram {
+            font-size: 3.5rem;
+            font-weight: 900;
+            font-family: var(--font-mono);
+            line-height: 1;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            color: #fff;
+        }
+        .thumbnail-label {
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            color: #fff;
+            margin-top: 2px;
+        }
+        .thumbnail-metric {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .thumbnail-metric-label {
+            font-size: 0.6rem;
+            opacity: 0.8;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        .thumbnail-divider {
+            width: 40px;
+            height: 2px;
+            background: rgba(255,255,255,0.25);
+            margin: 6px 0;
+            border-radius: 2px;
+        }
+        /* Tech bar inside thumbnail */
+        .thumbnail-tech-bar {
+            display: flex;
+            gap: 6px;
+            padding: 8px 12px;
+            width: 100%;
+            background: rgba(0,0,0,0.25);
+            justify-content: center;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            flex-wrap: wrap;
+        }
+        .thumbnail-tech-bar span {
+            font-size: 0.55rem;
+            background: rgba(255,255,255,0.12);
+            padding: 2px 10px;
+            border-radius: 4px;
+            color: #fff;
+            font-family: var(--font-mono);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* --- Impact Badges --- */
+        .project-impact {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 6px 0 12px 0;
+        }
+        .impact-badge {
+            background: rgba(0, 255, 171, 0.06);
+            border: 1px solid var(--border-mint);
+            padding: 2px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--mint-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .impact-badge i {
+            font-size: 0.6rem;
+            opacity: 0.8;
+        }
+
+        /* --- Status & Role Tags --- */
+        .project-meta-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .status-dot.green {
+            background: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+        .status-dot.yellow {
+            background: #ffaa44;
+            box-shadow: 0 0 10px rgba(255, 170, 68, 0.3);
+        }
+        .role-tag {
+            font-size: 0.65rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-mint);
+            padding: 2px 12px;
+            border-radius: 50px;
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .role-tag i {
+            color: var(--mint-primary);
+            font-size: 0.6rem;
+        }
+
+        /* --- Read More Toggle --- */
+        .proj-desc {
+            max-height: 4.5em;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .proj-desc.expanded {
+            max-height: 2000px;
+        }
+        .proj-desc::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 24px;
+            background: linear-gradient(transparent, var(--bg-card));
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .proj-desc.expanded::after {
+            opacity: 0;
+        }
+        .proj-desc strong {
+            color: var(--text-primary);
+        }
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--mint-primary);
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 6px 0 2px 0;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .read-more-btn:hover {
+            opacity: 0.7;
+            transform: translateX(4px);
+        }
+
+        /* --- Project Actions --- */
         .project-actions {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-            margin-top: 4px;
+            margin-top: 12px;
         }
         .project-actions .btn-outline {
             background: transparent;
@@ -131,40 +336,59 @@
             box-shadow: 0 0 20px var(--mint-glow);
             transform: translateY(-2px);
         }
-        .project-actions .btn-github {
+        .project-actions .btn-team {
             background: var(--bg-card);
             border-color: var(--border-mint);
             color: var(--text-secondary);
+            cursor: default;
+            opacity: 0.8;
         }
-        .project-actions .btn-github:hover {
+        .project-actions .btn-team i {
+            color: var(--mint-primary);
+        }
+        .project-actions .btn-github-link {
+            border-color: var(--border-mint);
+            color: var(--text-secondary);
+        }
+        .project-actions .btn-github-link:hover {
             background: #333;
             border-color: #333;
             color: #fff;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
         }
-        [data-theme="light"] .project-actions .btn-github:hover {
+        [data-theme="light"] .project-actions .btn-github-link:hover {
             background: #24292e;
             border-color: #24292e;
             color: #fff;
         }
-        .project-actions .btn-primary {
-            background: var(--mint-gradient);
-            color: #0b0e0c;
-            border: none;
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.3s var(--ease-spring);
-            cursor: pointer;
-            text-decoration: none;
+
+        /* --- Light Mode Adjustments --- */
+        [data-theme="light"] .proj-desc::after {
+            background: linear-gradient(transparent, rgba(255,255,255,0.7));
         }
-        .project-actions .btn-primary:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 0 30px var(--mint-glow);
+        [data-theme="light"] .thumbnail-body {
+            background: linear-gradient(135deg, #e6f0ea, #c8ddd0);
+        }
+        [data-theme="light"] .thumbnail-tech-bar {
+            background: rgba(0,0,0,0.08);
+        }
+        [data-theme="light"] .thumbnail-tech-bar span {
+            background: rgba(0,0,0,0.06);
+            color: #0b1a14;
+        }
+        [data-theme="light"] .thumbnail-monogram,
+        [data-theme="light"] .thumbnail-label,
+        [data-theme="light"] .thumbnail-metric,
+        [data-theme="light"] .thumbnail-metric-label {
+            color: #0b1a14;
+        }
+        [data-theme="light"] .thumbnail-divider {
+            background: rgba(0,0,0,0.15);
+        }
+        /* Override gradient for light mode on individual cards using data attributes or classes, but we'll keep it dark and let light mode handle text color */
+        /* For the gradient backgrounds, they are set inline, so we need to handle light mode text color via the classes above */
+        .thumbnail-body {
+            background: var(--gradient-bg, linear-gradient(135deg, #0b1a14, #004d3a));
         }
     </style>
 
@@ -234,13 +458,11 @@
         <!-- ========== HERO SECTION ========== -->
         <section id="hero">
             <div class="hero-content">
-                <!-- Hero Badge – now with data-i18n -->
                 <a href="#contact" class="hero-badge" style="text-decoration:none;cursor:pointer;" aria-label="Contact for opportunities">
                     <span class="badge-dot"></span>
                     <span data-i18n="hero_badge">Available for opportunities &amp; freelance projects</span>
                 </a>
                 
-                <!-- Live Status – now with data-i18n -->
                 <div class="live-status">
                     <span class="status-dot"></span>
                     <span class="status-text" data-i18n="live_status">Currently exploring: React.js &amp; Tailwind CSS</span>
@@ -357,7 +579,6 @@
                 </div>
 
                 <div class="experience-grid">
-                    <!-- Real IT OPC -->
                     <div class="experience-card" data-tilt>
                         <div class="experience-header">
                             <div class="experience-icon"><i class="fas fa-briefcase"></i></div>
@@ -382,7 +603,6 @@
                         </div>
                     </div>
 
-                    <!-- Skyline CATV -->
                     <div class="experience-card" data-tilt>
                         <div class="experience-header">
                             <div class="experience-icon"><i class="fas fa-headset"></i></div>
@@ -424,7 +644,6 @@
                             <span><i class="fas fa-users"></i> <span data-i18n="about_badge_3">Class President 2024–2025</span></span>
                         </div>
 
-                        <!-- Resume Preview & Download Buttons -->
                         <div class="about-actions">
                             <button class="btn btn-primary" id="resume-preview-btn" aria-label="Preview resume">
                                 <i class="fas fa-file-pdf"></i> <span data-i18n="about_btn_preview">Preview Resume</span>
@@ -464,7 +683,6 @@
                             <li><i class="fas fa-graduation-cap"></i> Continuous Learning</li>
                         </ul>
 
-                        <!-- Skills Visualization -->
                         <div class="skills-visualization">
                             <h3 data-i18n="skills_prof_title">Skill Proficiency</h3>
                             <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">HTML5</span><span class="skill-percent">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
@@ -475,7 +693,6 @@
                             <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">UI/UX Design</span><span class="skill-percent">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
                         </div>
 
-                        <!-- Radar Chart -->
                         <div class="radar-chart-container">
                             <h3 data-i18n="skills_radar_title">Skill Distribution</h3>
                             <canvas id="radarChart"></canvas>
@@ -493,7 +710,6 @@
                     <h2><span data-i18n="edu_title_prefix">My</span> <span class="gradient-text" data-i18n="edu_title_gradient">Academic Journey</span></h2>
                 </div>
                 <div class="education-grid">
-                    <!-- Tertiary -->
                     <div class="edu-card" data-tilt>
                         <div class="edu-header">
                             <span class="edu-tag"><i class="fas fa-graduation-cap"></i> <span data-i18n="edu_tertiary_tag">Tertiary</span></span>
@@ -510,7 +726,6 @@
                             <span><i class="fas fa-star"></i> <span data-i18n="edu_ach_5">Loyalty Award</span></span>
                         </div>
                     </div>
-                    <!-- Senior High -->
                     <div class="edu-card" data-tilt>
                         <div class="edu-header">
                             <span class="edu-tag"><i class="fas fa-school"></i> <span data-i18n="edu_shs_tag">Senior High</span></span>
@@ -528,7 +743,6 @@
                             <p class="edu-year" style="font-size:0.8rem;color:var(--text-secondary);" data-i18n="edu_jhs_year">2019 – 2020</p>
                         </div>
                     </div>
-                    <!-- Junior High -->
                     <div class="edu-card" data-tilt>
                         <div class="edu-header">
                             <span class="edu-tag"><i class="fas fa-school"></i> <span data-i18n="edu_jhs_tag">Junior High</span></span>
@@ -538,7 +752,6 @@
                         <p class="edu-school" data-i18n="edu_jhs_school2">Morong National High School</p>
                         <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_jhs_loc2">Morong, Rizal</span></p>
                     </div>
-                    <!-- Elementary -->
                     <div class="edu-card" data-tilt>
                         <div class="edu-header">
                             <span class="edu-tag"><i class="fas fa-child"></i> <span data-i18n="edu_elem_tag">Elementary</span></span>
@@ -548,7 +761,6 @@
                         <p class="edu-school" data-i18n="edu_elem_school">Tomas Claudio Memorial Elementary School</p>
                         <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_elem_loc">Morong, Rizal</span></p>
                     </div>
-                    <!-- Certification -->
                     <div class="edu-card cert-card" data-tilt>
                         <div class="edu-header">
                             <span class="edu-tag" style="background:rgba(0,255,171,0.2);color:var(--mint-primary);"><i class="fas fa-certificate"></i> <span data-i18n="edu_cert_tag">Certification</span></span>
@@ -632,7 +844,7 @@
             </div>
         </section>
 
-        <!-- ========== PROJECTS SECTION ========== -->
+        <!-- ========== PROJECTS SECTION (ENHANCED) ========== -->
         <section id="projects-section">
             <div class="container">
                 <div class="section-header">
@@ -651,81 +863,193 @@
 
                 <div class="project-grid">
 
-                    <!-- ===== PROJECT 1: RHU Morong ===== -->
+                    <!-- ========================================= -->
+                    <!-- PROJECT 1: RHU Morong (ENHANCED) -->
+                    <!-- ========================================= -->
                     <div class="project-card" data-category="healthcare php" data-tilt>
-                        <div class="project-thumbnail">🏥</div>
+                        <div class="project-thumbnail">
+                            <!-- Browser Mockup -->
+                            <div class="browser-mockup">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                                <span class="browser-url">healthcare.morongcenter.com</span>
+                            </div>
+                            <!-- Thumbnail Body -->
+                            <div class="thumbnail-body" style="--gradient-bg: linear-gradient(135deg, #0b2a1a, #006644);">
+                                <span class="thumbnail-monogram">RHU</span>
+                                <span class="thumbnail-label">Health System</span>
+                                <div class="thumbnail-divider"></div>
+                                <span class="thumbnail-metric">-70%</span>
+                                <span class="thumbnail-metric-label">Reduced Paperwork</span>
+                            </div>
+                            <!-- Tech Bar -->
+                            <div class="thumbnail-tech-bar">
+                                <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bootstrap</span>
+                            </div>
+                        </div>
                         <div class="project-info">
+                            <!-- Meta Tags -->
+                            <div class="project-meta-tags">
+                                <span class="status-badge"><span class="status-dot green"></span> Live</span>
+                                <span class="role-tag"><i class="fas fa-user-check"></i> UI/UX &amp; Frontend</span>
+                            </div>
                             <h3 data-i18n="proj_1_title">RHU Morong Health System</h3>
-                            <p data-i18n="proj_1_full">A comprehensive healthcare management platform built as our thesis project. This system digitized patient intake, appointment scheduling, and record management for the Rural Health Unit of Morong, Rizal.<br /><br /><strong data-i18n="proj_1_contrib_label">My Contribution:</strong> <span data-i18n="proj_1_contrib">Spearheaded the front-end architecture and user interface design, ensuring a seamless experience for healthcare personnel. Collaborated closely with my co-developer on back-end integration and system optimization.</span><br /><br /><strong data-i18n="proj_1_recog_label">Recognition:</strong> <span data-i18n="proj_1_recog">Received the <strong>Outstanding System Design</strong> and <strong>Outstanding Thesis Writing</strong> awards for our work.</span></p>
+                            <!-- Impact Badges -->
+                            <div class="project-impact">
+                                <span class="impact-badge"><i class="fas fa-chart-line"></i> -70% Paperwork</span>
+                                <span class="impact-badge"><i class="fas fa-users"></i> 60+ Health Workers</span>
+                            </div>
+                            <!-- Description with Read More -->
+                            <div class="proj-desc" data-i18n="proj_1_full">A comprehensive healthcare management platform built as our thesis project. This system digitized patient intake, appointment scheduling, and record management for the Rural Health Unit of Morong, Rizal.<br /><br /><strong data-i18n="proj_1_contrib_label">My Contribution:</strong> <span data-i18n="proj_1_contrib">Spearheaded the front-end architecture and user interface design, ensuring a seamless experience for healthcare personnel. Collaborated closely with my co-developer on back-end integration and system optimization.</span><br /><br /><strong data-i18n="proj_1_recog_label">Recognition:</strong> <span data-i18n="proj_1_recog">Received the <strong>Outstanding System Design</strong> and <strong>Outstanding Thesis Writing</strong> awards for our work.</span></div>
+                            <button class="read-more-btn" data-target="desc">Read More</button>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
                             <div class="project-actions">
                                 <a href="http://healthcare.morongcenter.com/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit RHU Morong Health System project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-outline btn-github" aria-label="View source code on GitHub">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
+                                <span class="btn-outline btn-team"><i class="fas fa-users"></i> Team Project</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ===== PROJECT 2: Angono NHS ===== -->
+                    <!-- ========================================= -->
+                    <!-- PROJECT 2: Angono NHS (ENHANCED) -->
+                    <!-- ========================================= -->
                     <div class="project-card" data-category="education php bootstrap" data-tilt>
-                        <div class="project-thumbnail">🎓</div>
+                        <div class="project-thumbnail">
+                            <div class="browser-mockup">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                                <span class="browser-url">angononhs-assessment.online</span>
+                            </div>
+                            <div class="thumbnail-body" style="--gradient-bg: linear-gradient(135deg, #1a1a3e, #4a3f8a);">
+                                <span class="thumbnail-monogram">ANHS</span>
+                                <span class="thumbnail-label">Career Assessment</span>
+                                <div class="thumbnail-divider"></div>
+                                <span class="thumbnail-metric">50+</span>
+                                <span class="thumbnail-metric-label">Students Assessed</span>
+                            </div>
+                            <div class="thumbnail-tech-bar">
+                                <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bootstrap</span>
+                            </div>
+                        </div>
                         <div class="project-info">
+                            <div class="project-meta-tags">
+                                <span class="status-badge"><span class="status-dot green"></span> Live</span>
+                                <span class="role-tag"><i class="fas fa-code"></i> Full Stack</span>
+                            </div>
                             <h3 data-i18n="proj_2_title">Angono NHS Career Assessment</h3>
-                            <p data-i18n="proj_2_full">A web-based career guidance tool developed to help incoming Senior High School students identify their SHS strand. The system evaluates students' interests, skills, and academic inclinations to provide data-driven recommendations.<br /><br /><strong data-i18n="proj_2_role_label">My Role:</strong> <span data-i18n="proj_2_role">Developed the system independently, working on the database, front-end, system features, and deployment. This project gave me hands-on experience in building a complete web application and helped me better understand how its different parts work together. It also improved my development and problem-solving skills.</span><br /><br /><strong data-i18n="proj_2_impact_label">Impact:</strong> <span data-i18n="proj_2_impact">Successfully assessed over 50 students, helping them make informed decisions about their academic pathways.</span></p>
+                            <div class="project-impact">
+                                <span class="impact-badge"><i class="fas fa-graduation-cap"></i> 50+ Students</span>
+                                <span class="impact-badge"><i class="fas fa-layer-group"></i> 4 SHS Strands</span>
+                            </div>
+                            <div class="proj-desc" data-i18n="proj_2_full">A web-based career guidance tool developed to help incoming Senior High School students identify their SHS strand. The system evaluates students' interests, skills, and academic inclinations to provide data-driven recommendations.<br /><br /><strong data-i18n="proj_2_role_label">My Role:</strong> <span data-i18n="proj_2_role">Developed the system independently, working on the database, front-end, system features, and deployment. This project gave me hands-on experience in building a complete web application and helped me better understand how its different parts work together. It also improved my development and problem-solving skills.</span><br /><br /><strong data-i18n="proj_2_impact_label">Impact:</strong> <span data-i18n="proj_2_impact">Successfully assessed over 50 students, helping them make informed decisions about their academic pathways.</span></div>
+                            <button class="read-more-btn" data-target="desc">Read More</button>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
                             <div class="project-actions">
                                 <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit Angono NHS Career Assessment project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-outline btn-github" aria-label="View source code on GitHub">
-                                    <i class="fab fa-github"></i> Code
+                                <a href="https://github.com/CthyrnMngt718" target="_blank" class="btn-outline btn-github-link" aria-label="View my GitHub profile">
+                                    <i class="fab fa-github"></i> My GitHub
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ===== PROJECT 3: HowCan-i-Help ===== -->
+                    <!-- ========================================= -->
+                    <!-- PROJECT 3: HowCan-i-Help (ENHANCED) -->
+                    <!-- ========================================= -->
                     <div class="project-card" data-category="healthcare php bootstrap" data-tilt>
-                        <div class="project-thumbnail">🤝</div>
+                        <div class="project-thumbnail">
+                            <div class="browser-mockup">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                                <span class="browser-url">howcan-i-help.org</span>
+                            </div>
+                            <div class="thumbnail-body" style="--gradient-bg: linear-gradient(135deg, #2d1b00, #b85c00);">
+                                <span class="thumbnail-monogram">HCI</span>
+                                <span class="thumbnail-label">Healthcare Ecosystem</span>
+                                <div class="thumbnail-divider"></div>
+                                <span class="thumbnail-metric">3</span>
+                                <span class="thumbnail-metric-label">Connected Entities</span>
+                            </div>
+                            <div class="thumbnail-tech-bar">
+                                <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bootstrap</span>
+                            </div>
+                        </div>
                         <div class="project-info">
+                            <div class="project-meta-tags">
+                                <span class="status-badge"><span class="status-dot green"></span> Live</span>
+                                <span class="role-tag"><i class="fas fa-pencil-ruler"></i> UI/UX &amp; Frontend</span>
+                            </div>
                             <h3 data-i18n="proj_3_title">HowCan‑i‑Help</h3>
-                            <p data-i18n="proj_3_full">A multi-tenant healthcare ecosystem that bridges the gap between patients, clinics, and community support networks. The platform streamlines clinical operations, donor coordination, and patient outreach through a centralized digital infrastructure.<br /><br /><strong data-i18n="proj_3_context_label">Project Context:</strong> <span data-i18n="proj_3_context">Developed as part of my professional work at <strong>Real IT OPC</strong>, where I collaborated with senior developers to bring this solution from concept to production. Currently deployed and actively supporting clinic workflows.</span><br /><br /><strong data-i18n="proj_3_ach_label">Key Achievement:</strong> <span data-i18n="proj_3_ach">The system has been fully integrated into the daily operations of partner clinics, replacing manual processes with efficient digital records management.</span></p>
+                            <div class="project-impact">
+                                <span class="impact-badge"><i class="fas fa-hospital"></i> 3 Entities</span>
+                                <span class="impact-badge"><i class="fas fa-file-alt"></i> 100% Digital</span>
+                            </div>
+                            <div class="proj-desc" data-i18n="proj_3_full">A multi-tenant healthcare ecosystem that bridges the gap between patients, clinics, and community support networks. The platform streamlines clinical operations, donor coordination, and patient outreach through a centralized digital infrastructure.<br /><br /><strong data-i18n="proj_3_context_label">Project Context:</strong> <span data-i18n="proj_3_context">Developed as part of my professional work at <strong>Real IT OPC</strong>, where I collaborated with senior developers to bring this solution from concept to production. Currently deployed and actively supporting clinic workflows.</span><br /><br /><strong data-i18n="proj_3_ach_label">Key Achievement:</strong> <span data-i18n="proj_3_ach">The system has been fully integrated into the daily operations of partner clinics, replacing manual processes with efficient digital records management.</span></div>
+                            <button class="read-more-btn" data-target="desc">Read More</button>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
                             <div class="project-actions">
                                 <a href="https://howcan-i-help.org/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit HowCan-i-Help project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-outline btn-github" aria-label="View source code on GitHub">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
+                                <span class="btn-outline btn-team"><i class="fas fa-users"></i> Team Project</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ===== PROJECT 4: RITREMIS ===== -->
+                    <!-- ========================================= -->
+                    <!-- PROJECT 4: RITREMIS (ENHANCED) -->
+                    <!-- ========================================= -->
                     <div class="project-card" data-category="realestate php bootstrap" data-tilt>
-                        <div class="project-thumbnail">🏢</div>
+                        <div class="project-thumbnail">
+                            <div class="browser-mockup">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                                <span class="browser-url">ritremis.com</span>
+                            </div>
+                            <div class="thumbnail-body" style="--gradient-bg: linear-gradient(135deg, #1a1a1a, #7a6548);">
+                                <span class="thumbnail-monogram">RIT</span>
+                                <span class="thumbnail-label">Real Estate</span>
+                                <div class="thumbnail-divider"></div>
+                                <span class="thumbnail-metric" style="font-size:1.2rem;">⚡ Active Dev</span>
+                                <span class="thumbnail-metric-label">In Development</span>
+                            </div>
+                            <div class="thumbnail-tech-bar">
+                                <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bootstrap</span>
+                            </div>
+                        </div>
                         <div class="project-info">
+                            <div class="project-meta-tags">
+                                <span class="status-badge"><span class="status-dot yellow"></span> In Development</span>
+                                <span class="role-tag"><i class="fas fa-user-check"></i> UI/UX &amp; Frontend</span>
+                            </div>
                             <h3 data-i18n="proj_4_title">RITREMIS</h3>
-                            <p data-i18n="proj_4_full">A comprehensive real estate management information system designed to centralize property records, streamline transactions, and provide stakeholders with real-time visibility into property portfolios.<br /><br /><strong data-i18n="proj_4_context_label">Project Context:</strong> <span data-i18n="proj_4_context">Currently in active development at <strong>Real IT OPC</strong>, built in collaboration with our development team.</span><br /><br /><strong data-i18n="proj_4_focus_label">My Focus:</strong> <span data-i18n="proj_4_focus">Front-end implementation, UI/UX design, and ensuring a responsive, intuitive interface for property managers and clients.</span></p>
+                            <div class="project-impact">
+                                <span class="impact-badge"><i class="fas fa-building"></i> Property Mgmt</span>
+                                <span class="impact-badge"><i class="fas fa-chart-pie"></i> Real-time Data</span>
+                            </div>
+                            <div class="proj-desc" data-i18n="proj_4_full">A comprehensive real estate management information system designed to centralize property records, streamline transactions, and provide stakeholders with real-time visibility into property portfolios.<br /><br /><strong data-i18n="proj_4_context_label">Project Context:</strong> <span data-i18n="proj_4_context">Currently in active development at <strong>Real IT OPC</strong>, built in collaboration with our development team.</span><br /><br /><strong data-i18n="proj_4_focus_label">My Focus:</strong> <span data-i18n="proj_4_focus">Front-end implementation, UI/UX design, and ensuring a responsive, intuitive interface for property managers and clients.</span></div>
+                            <button class="read-more-btn" data-target="desc">Read More</button>
                             <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
                             <div class="project-actions">
                                 <a href="https://ritremis.com/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit RITREMIS project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-outline btn-github" aria-label="View source code on GitHub">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
+                                <span class="btn-outline btn-team"><i class="fas fa-users"></i> Team Project</span>
                             </div>
                         </div>
                     </div>
 
                 </div><!-- end project-grid -->
 
-                <!-- ✅ FIXED: "Let's Work Together" CTA with i18n on the text span -->
+                <!-- CTA -->
                 <div class="center-btn" style="margin-top:40px;">
                     <a href="#contact" class="btn btn-primary" aria-label="Let's work together" style="font-size:1rem; padding:14px 36px;">
                         <i class="fas fa-handshake"></i> <span data-i18n="projects_cta">Let's Work Together</span>
@@ -823,7 +1147,6 @@
                 <p class="signature-sub" data-i18n="footer_title">Computer Science Graduate · Web Developer · UI/UX Designer</p>
             </div>
 
-            <!-- Real-time Clock -->
             <div class="clock-wrapper">
                 <i class="fas fa-clock"></i>
                 <span id="clock-display">--:--:--</span>
@@ -863,5 +1186,21 @@
 
     <!-- ========== SCRIPTS ========== -->
     <script src="script.js"></script>
+
+    <!-- ===== READ MORE TOGGLE SCRIPT ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const readMoreBtns = document.querySelectorAll('.read-more-btn');
+            readMoreBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const desc = this.previousElementSibling;
+                    if (desc && desc.classList.contains('proj-desc')) {
+                        desc.classList.toggle('expanded');
+                        this.textContent = desc.classList.contains('expanded') ? 'Read Less' : 'Read More';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
