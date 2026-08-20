@@ -257,29 +257,37 @@
     <div id="app">
         <!-- ========== NAVIGATION ========== -->
         <header>
-            <nav>
-                <div class="logo">
-                    <a href="/index.html" aria-label="Home">
-                        <span class="logo-c">C</span>
-                        <span class="logo-m">M</span>
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="/index.html" class="active" data-i18n="nav_home" aria-label="Home page">Home</a></li>
-                    <li><a href="/projects.html" data-i18n="nav_projects" aria-label="View my projects">Projects</a></li>
-                    <li><a href="#about" data-i18n="nav_about" aria-label="About me section">About</a></li>
-                    <li><a href="#contact" data-i18n="nav_contact" aria-label="Contact me">Contact</a></li>
-                </ul>
-                <button id="lang-toggle" aria-label="Toggle language">🇵🇭</button>
-                <button id="theme-toggle" aria-label="Toggle dark/light theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" role="button" tabindex="0">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </nav>
+          <nav>
+            <div class="logo">
+                <a href="/index.html" aria-label="Home">
+                    <span class="logo-c">C</span>
+                    <span class="logo-m">M</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/index.html" class="active" data-i18n="nav_home" aria-label="Home page">Home</a></li>
+                <li><a href="/projects.html" data-i18n="nav_projects" aria-label="View my projects">Projects</a></li>
+                <li><a href="#about" data-i18n="nav_about" aria-label="About me section">About</a></li>
+                <li><a href="#contact" data-i18n="nav_contact" aria-label="Contact me">Contact</a></li>
+            </ul>
+            
+            <!-- LANGUAGE DROPDOWN (replaces the old button) -->
+            <div class="lang-selector">
+                <select id="lang-select" aria-label="Select language">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="fil">🇵🇭 Filipino</option>
+                </select>
+            </div>
+            
+            <button id="theme-toggle" aria-label="Toggle dark/light theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
         </header>
 
         <!-- ========== HERO SECTION ========== -->
