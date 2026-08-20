@@ -1581,11 +1581,6 @@ const translations = {
         scroll_tooltip: "Mag-scroll Pababa",
         skip_link: "Laktawan sa pangunahing nilalaman"
     },
-   const translations = {
-  en: {
-    // ... (your existing English strings, omitted here for brevity)
-  },
-
   fil: {
     // Loader
     loader_text: "Naglo-load...",
