@@ -581,22 +581,19 @@
     <!-- ========== MAIN CONTENT ========== -->
     <main id="main-content">
 
-        <!-- ========== HERO SECTION (UPDATED: Location Badge Added) ========== -->
+        <!-- ========== HERO SECTION ========== -->
         <section id="hero">
             <div class="hero-content">
-                <!-- Hero Badge -->
                 <a href="#contact" class="hero-badge" style="text-decoration:none;cursor:pointer;" aria-label="Contact for opportunities">
                     <span class="badge-dot"></span>
                     <span data-i18n="hero_badge">Available for opportunities &amp; freelance projects</span>
                 </a>
                 
-                <!-- ✅ NEW: Location Badge -->
                 <div class="location-badge">
                     <i class="fas fa-map-pin"></i>
                     <span data-i18n="location_badge">📍 Morong, Rizal, Philippines (GMT+8)</span>
                 </div>
                 
-                <!-- Live Status -->
                 <div class="live-status">
                     <span class="status-dot"></span>
                     <span class="status-text" data-i18n="live_status">Currently exploring: React.js &amp; Tailwind CSS</span>
@@ -817,7 +814,6 @@
                             <li><i class="fas fa-graduation-cap"></i> Continuous Learning</li>
                         </ul>
 
-                        <!-- Skills Visualization -->
                         <div class="skills-visualization">
                             <h3 data-i18n="skills_prof_title">Skill Proficiency</h3>
                             <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">HTML5</span><span class="skill-percent">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
@@ -828,13 +824,11 @@
                             <div class="skill-bar"><div class="skill-bar-info"><span class="skill-name">UI/UX Design</span><span class="skill-percent">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
                         </div>
 
-                        <!-- Radar Chart -->
                         <div class="radar-chart-container">
                             <h3 data-i18n="skills_radar_title">Skill Distribution</h3>
                             <canvas id="radarChart"></canvas>
                         </div>
 
-                        <!-- ===== ✅ NEW: Tech Stack Proficiency Visualization ===== -->
                         <div class="tech-stack-visualization" style="margin-top:40px; padding-top:40px; border-top:1px solid var(--border-mint);">
                             <h3 data-i18n="tech_stack_title" style="font-size:1.1rem; font-weight:700; color:var(--text-primary); margin-bottom:4px;">Tech Stack Proficiency</h3>
                             <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;" data-i18n="tech_stack_sub">Technologies I work with and my comfort level</p>
@@ -1056,7 +1050,7 @@
                 <div class="project-grid">
 
                     <!-- ========================================= -->
-                    <!-- PROJECT 1: RHU Morong (ENHANCED) -->
+                    <!-- PROJECT 1: RHU Morong -->
                     <!-- ========================================= -->
                     <div class="project-card" data-category="healthcare php" data-tilt>
                         <div class="project-thumbnail">
@@ -1087,7 +1081,6 @@
                                 <span class="impact-badge"><i class="fas fa-chart-line"></i> -70% Paperwork</span>
                                 <span class="impact-badge"><i class="fas fa-users"></i> 60+ Health Workers</span>
                             </div>
-                            <!-- ✅ Enhanced description with bullet points -->
                             <div class="proj-desc" data-i18n="proj_1_full">
                                 <p style="margin-bottom:6px;">A comprehensive healthcare management platform built as our thesis project. This system digitized patient intake, appointment scheduling, and record management for the Rural Health Unit of Morong, Rizal.</p>
                                 <strong data-i18n="proj_1_contrib_label">My Contribution:</strong>
@@ -1114,7 +1107,7 @@
                     </div>
 
                     <!-- ========================================= -->
-                    <!-- PROJECT 2: Angono NHS (ENHANCED) -->
+                    <!-- PROJECT 2: Angono NHS -->
                     <!-- ========================================= -->
                     <div class="project-card" data-category="education php bootstrap" data-tilt>
                         <div class="project-thumbnail">
@@ -1165,15 +1158,14 @@
                                 <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" rel="noopener noreferrer" class="btn-outline" aria-label="Visit Angono NHS Career Assessment project">
                                     <i class="fas fa-external-link-alt"></i> <span data-i18n="visit_project">Visit Project</span>
                                 </a>
-                                <a href="https://github.com/CthyrnMngt718" target="_blank" class="btn-outline btn-github-link" aria-label="View my GitHub profile">
-                                    <i class="fab fa-github"></i> My GitHub
-                                </a>
+                                <!-- ✅ Unified: Replaced "My GitHub" with "Team Project" -->
+                                <span class="btn-outline btn-team"><i class="fas fa-users"></i> Team Project</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- ========================================= -->
-                    <!-- PROJECT 3: HowCan-i-Help (ENHANCED) -->
+                    <!-- PROJECT 3: HowCan-i-Help -->
                     <!-- ========================================= -->
                     <div class="project-card" data-category="healthcare php bootstrap" data-tilt>
                         <div class="project-thumbnail">
@@ -1184,7 +1176,8 @@
                                 <span class="browser-url">howcan-i-help.org</span>
                             </div>
                             <div class="thumbnail-body" style="--gradient-bg: linear-gradient(135deg, #2d1b00, #b85c00);">
-                                <span class="thumbnail-monogram">HCI</span>
+                                <!-- ✅ Changed: HCI → HCIH -->
+                                <span class="thumbnail-monogram">HCIH</span>
                                 <span class="thumbnail-label">Healthcare Ecosystem</span>
                                 <div class="thumbnail-divider"></div>
                                 <span class="thumbnail-metric">3</span>
@@ -1230,7 +1223,7 @@
                     </div>
 
                     <!-- ========================================= -->
-                    <!-- PROJECT 4: RITREMIS (ENHANCED) -->
+                    <!-- PROJECT 4: RITREMIS -->
                     <!-- ========================================= -->
                     <div class="project-card" data-category="realestate php bootstrap" data-tilt>
                         <div class="project-thumbnail">
@@ -1241,7 +1234,8 @@
                                 <span class="browser-url">ritremis.com</span>
                             </div>
                             <div class="thumbnail-body" style="--gradient-bg: linear-gradient(135deg, #1a1a1a, #7a6548);">
-                                <span class="thumbnail-monogram">RIT</span>
+                                <!-- ✅ Changed: RIT → RITREMES -->
+                                <span class="thumbnail-monogram">RITREMES</span>
                                 <span class="thumbnail-label">Real Estate</span>
                                 <div class="thumbnail-divider"></div>
                                 <span class="thumbnail-metric" style="font-size:1.2rem;">⚡ Active Dev</span>
