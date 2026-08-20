@@ -2390,7 +2390,6 @@ function updateDynamicContent(lang) {
         tooltip.textContent = t.scroll_tooltip;
     }
 }
-
 // ============================================
 // I18N ENGINE – INIT (runs immediately)
 // ============================================
@@ -2419,7 +2418,6 @@ function applyTranslations(lang) {
     if (switcher) switcher.value = lang;
     localStorage.setItem('preferredLang', lang);
     currentLang = lang;
-    // Update dynamic content (live status, floating CTA, tooltip)
     updateDynamicContent(lang);
 }
 
@@ -2458,7 +2456,6 @@ function updateClock() {
     const display = document.getElementById('clock-display');
     if (display) display.textContent = timeStr;
 }
-// Run immediately and then every second
 updateClock();
 setInterval(updateClock, 1000);
 
