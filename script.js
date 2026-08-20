@@ -1188,6 +1188,15 @@ const translations = {
         live_status: "Currently exploring: React.js & Tailwind CSS",
         floating_cta: "Let's Talk",
         hero_badge: "Available for opportunities & freelance projects",
+        // Hero
+        location_badge: "📍 Morong, Rizal, Philippines (GMT+8)",
+        
+        // About - Tech Stack
+        tech_stack_title: "Tech Stack Proficiency",
+        tech_stack_sub: "Technologies I work with and my comfort level",
+        
+        // Projects - Recognition (split for bullet points)
+        proj_1_recog_2: "Received Outstanding Thesis Writing award",
         // Quote
         quote_label: "Verse of the Day",
         // Services
@@ -1403,6 +1412,15 @@ const translations = {
         live_status: "現在探索中: React.js & Tailwind CSS",
         floating_cta: "話しましょう",
         hero_badge: "機会とフリーランスプロジェクトに対応可能",
+        // Hero
+        location_badge: "📍 モロン、リサール、フィリピン (GMT+8)",
+        
+        // About - Tech Stack
+        tech_stack_title: "テクノロジースタック習熟度",
+        tech_stack_sub: "私が使用するテクノロジーと習熟度",
+        
+        // Projects - Recognition
+        proj_1_recog_2: "優秀論文執筆賞を受賞",
         // Quote
         quote_label: "今日の聖句",
         // Services
