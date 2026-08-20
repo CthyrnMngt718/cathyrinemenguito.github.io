@@ -80,7 +80,6 @@ async function getVisitorCount() {
         const data = await response.json();
         countElement.textContent = data.value || 0;
     } catch (error) {
-        // Fallback with session check to avoid counting same session repeatedly
         if (!sessionStorage.getItem('visitorCounted')) {
             let count = parseInt(localStorage.getItem('visitorCount') || '0');
             count++;
@@ -95,10 +94,50 @@ async function getVisitorCount() {
 getVisitorCount();
 
 // ============================================
-// 6. QUOTE OF THE DAY (Church of Christ Bible Verses)
+// 6. QUOTE OF THE DAY (Bible Verses)
 // ============================================
 const bibleVerses = [
-    // ... (keep all your verses)
+    { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13" },
+    { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", author: "Jeremiah 29:11" },
+    { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", author: "Joshua 1:9" },
+    { text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", author: "Proverbs 3:5-6" },
+    { text: "The Lord is my shepherd; I shall not want.", author: "Psalm 23:1" },
+    { text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.", author: "Philippians 4:6" },
+    { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", author: "John 3:16" },
+    { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles.", author: "Isaiah 40:31" },
+    { text: "The Lord is my light and my salvation—whom shall I fear?", author: "Psalm 27:1" },
+    { text: "Be still, and know that I am God.", author: "Psalm 46:10" },
+    { text: "Let your light shine before others, that they may see your good deeds and glorify your Father in heaven.", author: "Matthew 5:16" },
+    { text: "The fear of the Lord is the beginning of wisdom, and knowledge of the Holy One is understanding.", author: "Proverbs 9:10" },
+    { text: "Love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength.", author: "Mark 12:30" },
+    { text: "The peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.", author: "Philippians 4:7" },
+    { text: "For we walk by faith, not by sight.", author: "2 Corinthians 5:7" },
+    { text: "The Lord will fight for you; you need only to be still.", author: "Exodus 14:14" },
+    { text: "Do not conform to the pattern of this world, but be transformed by the renewing of your mind.", author: "Romans 12:2" },
+    { text: "Above all else, guard your heart, for everything you do flows from it.", author: "Proverbs 4:23" },
+    { text: "Commit to the Lord whatever you do, and he will establish your plans.", author: "Proverbs 16:3" },
+    { text: "The Lord is gracious and compassionate, slow to anger and rich in love.", author: "Psalm 145:8" },
+    { text: "Your word is a lamp for my feet, a light on my path.", author: "Psalm 119:105" },
+    { text: "For the Lord gives wisdom; from his mouth come knowledge and understanding.", author: "Proverbs 2:6" },
+    { text: "The name of the Lord is a fortified tower; the righteous run to it and are safe.", author: "Proverbs 18:10" },
+    { text: "The Lord is my strength and my shield; my heart trusts in him, and he helps me.", author: "Psalm 28:7" },
+    { text: "Cast all your anxiety on him because he cares for you.", author: "1 Peter 5:7" },
+    { text: "For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline.", author: "2 Timothy 1:7" },
+    { text: "The Lord is good to those whose hope is in him, to the one who seeks him.", author: "Lamentations 3:25" },
+    { text: "I have hidden your word in my heart that I might not sin against you.", author: "Psalm 119:11" },
+    { text: "The Lord is near to all who call on him, to all who call on him in truth.", author: "Psalm 145:18" },
+    { text: "But those who trust in the Lord will find new strength. They will soar high on wings like eagles.", author: "Isaiah 40:31" },
+    { text: "The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you.", author: "Numbers 6:24-25" },
+    { text: "He has shown you, O mortal, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.", author: "Micah 6:8" },
+    { text: "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.", author: "Ephesians 2:10" },
+    { text: "The Lord is my rock, my fortress and my deliverer; my God is my rock, in whom I take refuge.", author: "Psalm 18:2" },
+    { text: "He gives strength to the weary and increases the power of the weak.", author: "Isaiah 40:29" },
+    { text: "The Lord is compassionate and gracious, slow to anger, abounding in love.", author: "Psalm 103:8" },
+    { text: "The path of the righteous is like the morning sun, shining ever brighter till the full light of day.", author: "Proverbs 4:18" },
+    { text: "The Lord is my helper; I will not be afraid. What can mere mortals do to me?", author: "Hebrews 13:6" },
+    { text: "Seek the Lord while he may be found; call on him while he is near.", author: "Isaiah 55:6" },
+    { text: "The Lord is faithful to all his promises and loving toward all he has made.", author: "Psalm 145:13" },
+    { text: "A heart at peace gives life to the body, but envy rots the bones.", author: "Proverbs 14:30" },
 ];
 
 function displayQuote() {
@@ -324,7 +363,6 @@ if (currentTheme === 'light') {
     }
 }
 
-// Function to update radar chart theme (used on toggle)
 function updateRadarChartTheme() {
     if (!radarChartInstance) return;
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
@@ -339,7 +377,6 @@ function updateRadarChartTheme() {
     radarChartInstance.update();
 }
 
-// Theme toggle handler
 function handleThemeToggle() {
     const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', theme);
@@ -347,7 +384,6 @@ function handleThemeToggle() {
     if (themeToggle) {
         themeToggle.innerHTML = theme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     }
-    // Update radar chart colors without destroying
     updateRadarChartTheme();
 }
 
@@ -561,7 +597,6 @@ const projectCards = document.querySelectorAll('.project-card');
 
 filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        // Update aria-pressed
         filterButtons.forEach(b => {
             b.setAttribute('aria-pressed', 'false');
             b.classList.remove('active');
@@ -691,7 +726,6 @@ function loadRadarChart() {
     if (!canvas) return;
     
     if (typeof Chart === 'undefined') {
-        // Lazy load Chart.js
         const script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
         script.onload = () => createRadarChart(canvas);
@@ -770,7 +804,6 @@ function createRadarChart(canvas) {
     });
 }
 
-// Load radar chart when in viewport (lazy)
 const radarObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -785,7 +818,6 @@ if (radarContainer) {
     radarObserver.observe(radarContainer);
 }
 
-// Also load on DOM ready if visible
 document.addEventListener('DOMContentLoaded', () => {
     if (radarContainer && radarContainer.getBoundingClientRect().top < window.innerHeight) {
         loadRadarChart();
@@ -815,7 +847,7 @@ dynamicStyles.textContent = `
 document.head.appendChild(dynamicStyles);
 
 // ============================================
-// 24. TYPEWRITER EFFECT (Cleaner)
+// 24. TYPEWRITER EFFECT
 // ============================================
 const taglineElement = document.getElementById('tagline');
 const taglines = [
@@ -884,7 +916,276 @@ if (yearElement) {
 }
 
 // ============================================
-// 27. SERVICE WORKER REGISTRATION
+// 27. HIDE-ON-SCROLL NAVIGATION
+// ============================================
+const header = document.querySelector('header');
+let lastScrollY = window.scrollY;
+let ticking = false;
+let headerHidden = false;
+
+function handleHeaderScroll() {
+    const currentScrollY = window.scrollY;
+    
+    if (window.innerWidth <= 768) {
+        header.classList.remove('hidden');
+        header.classList.add('show');
+        lastScrollY = currentScrollY;
+        return;
+    }
+    
+    if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        if (!headerHidden) {
+            header.classList.add('hidden');
+            header.classList.remove('show');
+            headerHidden = true;
+        }
+    } else if (currentScrollY < lastScrollY) {
+        if (headerHidden) {
+            header.classList.remove('hidden');
+            header.classList.add('show');
+            headerHidden = false;
+        }
+    }
+    
+    if (currentScrollY < 50) {
+        header.classList.remove('hidden');
+        header.classList.add('show');
+        headerHidden = false;
+    }
+    
+    if (currentScrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    
+    lastScrollY = currentScrollY;
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            handleHeaderScroll();
+        });
+        ticking = true;
+    }
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768) {
+        header.classList.remove('hidden');
+        header.classList.add('show');
+        headerHidden = false;
+    }
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (e.clientY < 80 && headerHidden) {
+        header.classList.remove('hidden');
+        header.classList.add('show');
+        clearTimeout(window.headerShowTimeout);
+        window.headerShowTimeout = setTimeout(() => {
+            if (window.scrollY > 150) {
+                header.classList.add('hidden');
+                header.classList.remove('show');
+                headerHidden = true;
+            }
+        }, 2000);
+    }
+});
+
+setTimeout(() => {
+    handleHeaderScroll();
+}, 100);
+
+// ============================================
+// 28. LIVE GITHUB ACTIVITY FEED
+// ============================================
+async function fetchGitHubActivity() {
+    const feedContainer = document.getElementById('github-feed');
+    if (!feedContainer) return;
+    
+    const username = 'CthyrnMngt718';
+    
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}/events/public?per_page=6`);
+        
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
+        }
+        
+        const events = await response.json();
+        
+        if (!events || events.length === 0) {
+            feedContainer.innerHTML = `
+                <div class="github-error">
+                    <i class="fas fa-inbox"></i>
+                    <p>No recent activity found.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        const relevantEvents = events.filter(event => 
+            ['PushEvent', 'CreateEvent', 'PublicEvent', 'WatchEvent', 'ForkEvent', 'PullRequestEvent', 'IssuesEvent'].includes(event.type)
+        ).slice(0, 5);
+        
+        if (relevantEvents.length === 0) {
+            feedContainer.innerHTML = `
+                <div class="github-error">
+                    <i class="fas fa-inbox"></i>
+                    <p>No recent public activity.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        let html = '';
+        
+        relevantEvents.forEach(event => {
+            const repoName = event.repo.name;
+            const repoUrl = `https://github.com/${repoName}`;
+            const icon = getEventIcon(event.type);
+            const emoji = getEventEmoji(event.type);
+            const message = formatEventMessage(event);
+            const timeAgo = getTimeAgo(new Date(event.created_at));
+            
+            html += `
+                <div class="github-item">
+                    <div class="github-icon">
+                        <i class="${icon}"></i>
+                    </div>
+                    <div class="github-info">
+                        <div class="repo-name">
+                            <a href="${repoUrl}" target="_blank" rel="noopener noreferrer">${repoName}</a>
+                        </div>
+                        <div class="commit-message">${message}</div>
+                        <div class="commit-meta">
+                            <span><i class="far fa-clock"></i> ${timeAgo}</span>
+                            <span><i class="fas fa-code-branch"></i> ${event.type.replace('Event', '')}</span>
+                        </div>
+                    </div>
+                    <div class="github-emoji">${emoji}</div>
+                </div>
+            `;
+        });
+        
+        feedContainer.innerHTML = html;
+        
+    } catch (error) {
+        console.error('GitHub feed error:', error);
+        feedContainer.innerHTML = `
+            <div class="github-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Unable to load GitHub activity. Please try again later.</p>
+            </div>
+        `;
+    }
+}
+
+function getEventIcon(type) {
+    const icons = {
+        'PushEvent': 'fas fa-code-commit',
+        'CreateEvent': 'fas fa-plus-circle',
+        'PublicEvent': 'fas fa-globe',
+        'WatchEvent': 'fas fa-star',
+        'ForkEvent': 'fas fa-code-branch',
+        'PullRequestEvent': 'fas fa-code-pull-request',
+        'IssuesEvent': 'fas fa-exclamation-circle'
+    };
+    return icons[type] || 'fab fa-github';
+}
+
+function getEventEmoji(type) {
+    const emojis = {
+        'PushEvent': '📦',
+        'CreateEvent': '✨',
+        'PublicEvent': '🌍',
+        'WatchEvent': '⭐',
+        'ForkEvent': '🍴',
+        'PullRequestEvent': '🔀',
+        'IssuesEvent': '🐛'
+    };
+    return emojis[type] || '💻';
+}
+
+function formatEventMessage(event) {
+    const repo = event.repo.name;
+    
+    switch (event.type) {
+        case 'PushEvent':
+            const commits = event.payload.commits || [];
+            if (commits.length > 0) {
+                const firstCommit = commits[0].message || 'No commit message';
+                const restCount = commits.length - 1;
+                return `${firstCommit}${restCount > 0 ? ` (+ ${restCount} more commits)` : ''}`;
+            }
+            return `Pushed to ${repo}`;
+        
+        case 'CreateEvent':
+            const ref = event.payload.ref || '';
+            const refType = event.payload.ref_type || 'branch';
+            return `Created ${refType} "${ref}" in ${repo}`;
+        
+        case 'PublicEvent':
+            return `Made ${repo} public 🎉`;
+        
+        case 'WatchEvent':
+            return `Starred ${repo} ⭐`;
+        
+        case 'ForkEvent':
+            return `Forked ${repo} 🍴`;
+        
+        case 'PullRequestEvent':
+            const action = event.payload.action || 'opened';
+            return `${action} a pull request in ${repo}`;
+        
+        case 'IssuesEvent':
+            const issueAction = event.payload.action || 'opened';
+            return `${issueAction} an issue in ${repo}`;
+        
+        default:
+            return `Activity on ${repo}`;
+    }
+}
+
+function getTimeAgo(date) {
+    const now = new Date();
+    const diffMs = now - date;
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMins / 60);
+    const diffDays = Math.floor(diffHours / 24);
+    
+    if (diffMins < 1) return 'just now';
+    if (diffMins < 60) return `${diffMins} min${diffMins > 1 ? 's' : ''} ago`;
+    if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+    if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+const githubSection = document.getElementById('github-activity');
+if (githubSection) {
+    const githubObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                fetchGitHubActivity();
+                githubObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    githubObserver.observe(githubSection);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (githubSection && githubSection.getBoundingClientRect().top < window.innerHeight) {
+        fetchGitHubActivity();
+    }
+});
+
+// ============================================
+// 29. SERVICE WORKER REGISTRATION
 // ============================================
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
