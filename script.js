@@ -612,15 +612,32 @@ filterButtons.forEach(btn => {
 });
 
 // ============================================
-// 18. PAGE LOADER
+// 18. PAGE LOADER (Robust)
 // ============================================
+function hideLoader() {
+    const loader = document.getElementById('page-loader');
+    if (loader) {
+        loader.classList.add('hidden');
+        console.log('✅ Loader hidden');
+    }
+}
+
+// Try on DOMContentLoaded (faster)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(hideLoader, 300);
+    });
+} else {
+    // If DOM already loaded
+    setTimeout(hideLoader, 300);
+}
+
+// Fallback: hide after 2 seconds even if nothing else works
+setTimeout(hideLoader, 2000);
+
+// Also keep the original load event for safety
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        const loader = document.getElementById('page-loader');
-        if (loader) {
-            loader.classList.add('hidden');
-        }
-    }, 600);
+    setTimeout(hideLoader, 100);
 });
 
 // ============================================
