@@ -1713,3 +1713,48 @@ setInterval(updateClock, 1000);
 // PAGE TRANSITIONS (View Transitions API) - disabled for now
 // ============================================
 // (We keep it simple – no external page loads)
+
+// ============================================
+// SKILL PERCENTAGE COUNTER ANIMATION
+// ============================================
+const skillItems = document.querySelectorAll('.tech-stack-item');
+
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const item = entry.target;
+            const fill = item.querySelector('.fill');
+            const percentageSpan = item.querySelector('.skill-percentage');
+            
+            if (fill && percentageSpan) {
+                const target = parseInt(percentageSpan.dataset.target) || 0;
+                let current = 0;
+                const increment = target / 50; // animate over ~50 frames
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    fill.style.width = current + '%';
+                    percentageSpan.textContent = Math.round(current) + '%';
+                }, 20);
+            }
+            
+            skillObserver.unobserve(item);
+        }
+    });
+}, { threshold: 0.3 });
+
+skillItems.forEach(item => skillObserver.observe(item));
+
+// ============================================
+// SET LAST UPDATED DATE
+// ============================================
+const lastUpdatedSpan = document.getElementById('last-updated');
+if (lastUpdatedSpan) {
+    const now = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    lastUpdatedSpan.textContent = now.toLocaleDateString('en-US', options);
+}
