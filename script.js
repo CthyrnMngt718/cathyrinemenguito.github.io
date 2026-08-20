@@ -2392,46 +2392,57 @@ function updateDynamicContent(lang) {
 }
 
 // ============================================
-// I18N ENGINE - INIT (runs immediately if DOM ready)
+// I18N ENGINE – INIT (runs immediately)
 // ============================================
-function initI18n() {
+const defaultLang = 'en';
+let currentLang = localStorage.getItem('preferredLang') ||
+                  (navigator.language.startsWith('fil') ? 'fil' :
+                   navigator.language.startsWith('ko') ? 'ko' :
+                   navigator.language.startsWith('ja') ? 'ja' :
+                   navigator.language.startsWith('th') ? 'th' : 'en');
+
+function applyTranslations(lang) {
+    const t = translations[lang] || translations[defaultLang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) {
+            el.innerHTML = t[key];
+        }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) {
+            el.placeholder = t[key];
+        }
+    });
     const switcher = document.getElementById('language-switcher');
-    if (switcher) {
-        switcher.value = currentLang;
-        switcher.addEventListener('change', (e) => {
-            applyTranslations(e.target.value);
-        });
-    }
-    applyTranslations(currentLang);
+    if (switcher) switcher.value = lang;
+    localStorage.setItem('preferredLang', lang);
+    currentLang = lang;
+    // Update dynamic content (live status, floating CTA, tooltip)
+    updateDynamicContent(lang);
 }
 
-// Run now if DOM is already loaded, otherwise wait for it
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initI18n);
-} else {
-    initI18n();
+function updateDynamicContent(lang) {
+    const t = translations[lang] || translations[defaultLang];
+    const statusEl = document.querySelector('.status-text');
+    if (statusEl && t.live_status) statusEl.textContent = t.live_status;
+    const floatingCta = document.querySelector('.floating-cta span');
+    if (floatingCta && t.floating_cta) floatingCta.textContent = t.floating_cta;
+    const tooltip = document.getElementById('scroll-tooltip');
+    if (tooltip && t.scroll_tooltip) tooltip.textContent = t.scroll_tooltip;
 }
 
-// ============================================
-// PAGE TRANSITIONS (View Transitions API)
-// ============================================
-document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[href]');
-    if (!link) return;
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-    // Allow external links, hash links, mailto, tel to behave normally
-    // Also allow links that open in new tab (target="_blank")
-    if (link.target === '_blank') return;
-    e.preventDefault();
-    if (document.startViewTransition) {
-        document.startViewTransition(() => {
-            window.location.href = href;
-        });
-    } else {
-        window.location.href = href;
-    }
-});
+// --- Attach event listener to switcher ---
+const switcher = document.getElementById('language-switcher');
+if (switcher) {
+    switcher.value = currentLang;
+    switcher.addEventListener('change', (e) => {
+        applyTranslations(e.target.value);
+    });
+}
+// Apply current language immediately
+applyTranslations(currentLang);
 
 // ============================================
 // REAL-TIME CLOCK (Local Time)
@@ -2447,5 +2458,25 @@ function updateClock() {
     const display = document.getElementById('clock-display');
     if (display) display.textContent = timeStr;
 }
-setInterval(updateClock, 1000);
+// Run immediately and then every second
 updateClock();
+setInterval(updateClock, 1000);
+
+// ============================================
+// PAGE TRANSITIONS (View Transitions API)
+// ============================================
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+    if (link.target === '_blank') return;
+    e.preventDefault();
+    if (document.startViewTransition) {
+        document.startViewTransition(() => {
+            window.location.href = href;
+        });
+    } else {
+        window.location.href = href;
+    }
+});
