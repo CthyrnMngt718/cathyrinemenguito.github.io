@@ -1078,17 +1078,14 @@ function renderPDFWithIframe() {
     
     viewer.innerHTML = `
         <iframe src="${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0" 
-                style="width:100%;height:600px;border:none;display:block;"
+                style="width:100%;height:100%;min-height:400px;border:none;display:block;"
                 loading="lazy"
                 onerror="this.style.display='none'; this.parentElement.querySelector('.pdf-error').style.display='flex';">
         </iframe>
-        <div class="pdf-error" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:500px;color:var(--text-secondary);text-align:center;padding:24px;">
-            <i class="fas fa-file-pdf" style="font-size:3rem;color:var(--mint-primary);opacity:0.3;margin-bottom:16px;"></i>
-            <p>Unable to preview the resume directly.</p>
-            <p style="font-size:0.85rem;opacity:0.6;margin-top:4px;">Please download the PDF to view it.</p>
-            <a href="${pdfUrl}" download class="btn btn-primary" style="margin-top:16px;color:#0b0e0c;">
-                <i class="fas fa-download"></i> Download Resume
-            </a>
+        <div class="pdf-error" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:400px;color:var(--text-secondary);text-align:center;padding:24px;gap:12px;">
+            <i class="fas fa-file-pdf" style="font-size:3.5rem;color:var(--text-secondary);opacity:0.3;"></i>
+            <p style="font-size:0.95rem;margin:0;">Resume preview unavailable.</p>
+            <p style="font-size:0.85rem;opacity:0.6;margin:0;">Use the Download button below to view the full PDF.</p>
         </div>
     `;
     
@@ -1135,7 +1132,6 @@ document.addEventListener('keydown', (e) => {
         closeResumeModal();
     }
 });
-
 // ============================================
 // 28. SERVICE WORKER REGISTRATION
 // ============================================
