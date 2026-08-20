@@ -2391,7 +2391,10 @@ function updateDynamicContent(lang) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// ============================================
+// I18N ENGINE - INIT (runs immediately if DOM ready)
+// ============================================
+function initI18n() {
     const switcher = document.getElementById('language-switcher');
     if (switcher) {
         switcher.value = currentLang;
@@ -2400,7 +2403,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     applyTranslations(currentLang);
-});
+}
+
+// Run now if DOM is already loaded, otherwise wait for it
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initI18n);
+} else {
+    initI18n();
+}
 
 // ============================================
 // PAGE TRANSITIONS (View Transitions API)
