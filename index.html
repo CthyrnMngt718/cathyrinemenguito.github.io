@@ -12,12 +12,16 @@
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://formspree.io https://api.countapi.xyz;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+        script-src 'self' https://cdn.jsdelivr.net https://formspree.io https://api.countapi.xyz;
+        style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
         font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
         img-src 'self' data:;
         connect-src 'self' https://formspree.io https://api.countapi.xyz;
     " />
+    
+    <!-- ===== META DESCRIPTION & SEO ===== -->
+    <meta name="description" content="Cathyrine Menguito – Computer Science graduate, web developer, and UI/UX designer. Explore my projects in healthcare, education, and real estate." />
+    <meta name="keywords" content="Cathyrine Menguito, web developer, UI/UX, portfolio, computer science, PHP, MySQL" />
     
     <!-- ===== OPEN GRAPH / SOCIAL SHARING ===== -->
     <meta property="og:title" content="Cathyrine Menguito | Web Developer & UI/UX Designer" />
@@ -31,7 +35,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet" />
     
-    <!-- Favicon -->
+    <!-- Favicon (create these files) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -40,50 +44,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
-    <!-- Chart.js for Radar Chart -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
-    
-    <!-- ===== FIX: Tagline Cut-Off ===== -->
-    <style>
-        .tagline {
-            white-space: normal !important;
-            overflow: visible !important;
-            display: block !important;
-            max-width: 100%;
-            min-height: 2.5rem;
-            line-height: 1.4;
-            word-break: break-word;
-        }
-        .hero-content {
-            overflow: visible !important;
-        }
-        #hero {
-            overflow: visible !important;
-        }
-        @media (max-width: 480px) {
-            .tagline {
-                font-size: 1rem;
-                white-space: normal !important;
-                min-height: 2.8rem;
-                line-height: 1.4;
-            }
-            .hero-content {
-                overflow: visible !important;
-            }
-            #hero {
-                overflow: visible !important;
-            }
-        }
-        @media (max-width: 380px) {
-            .tagline {
-                font-size: 0.9rem;
-                min-height: 3rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- ========== PAGE LOADER ========== -->
@@ -151,9 +113,7 @@
                 Hi, I'm <span class="gradient-text">Cathyrine Menguito</span>
             </h1>
             
-            <p class="tagline" id="tagline">
-                Computer Science Graduate
-            </p>
+            <p class="tagline" id="tagline" role="text" aria-label="Tagline"></p>
             
             <p class="description">
                 I'm a recent Computer Science graduate with a growing interest in
