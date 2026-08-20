@@ -3956,3 +3956,236 @@ body::before {
 .service-card:nth-child(2) { transition-delay: 0.10s; }
 .service-card:nth-child(3) { transition-delay: 0.15s; }
 .service-card:nth-child(4) { transition-delay: 0.20s; }
+
+/* ============================================
+   ADDITIONS: HIDE-ON-SCROLL NAVIGATION
+   ============================================ */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(7, 10, 8, 0.75);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border-bottom: 1px solid var(--border-mint);
+    padding: 0 24px;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.4s ease,
+                box-shadow 0.4s ease;
+    will-change: transform;
+}
+
+header.hidden {
+    transform: translateY(-100%);
+}
+
+header.scrolled {
+    background: rgba(7, 10, 8, 0.92);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border-bottom-color: rgba(0, 255, 171, 0.2);
+}
+
+header.show {
+    transform: translateY(0);
+}
+
+[data-theme="light"] header.scrolled {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Tiny indicator at top when header is hidden */
+header.hidden::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--mint-gradient);
+    opacity: 0.3;
+    border-radius: 2px;
+    transition: opacity 0.3s ease;
+}
+
+header.hidden:hover::after {
+    opacity: 0.8;
+}
+
+/* ============================================
+   ADDITIONS: GITHUB ACTIVITY FEED
+   ============================================ */
+#github-activity {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-mint);
+    border-bottom: 1px solid var(--border-mint);
+    padding: 60px 0;
+}
+
+.github-feed {
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+.github-loading {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    padding: 40px 0;
+}
+
+.github-loading i {
+    color: var(--mint-primary);
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.github-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-mint);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    transition: all 0.3s var(--ease-spring);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.github-item:hover {
+    border-color: var(--mint-primary);
+    transform: translateX(8px);
+    box-shadow: 0 8px 30px var(--mint-glow);
+}
+
+.github-item .github-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 255, 171, 0.08);
+    border: 1px solid var(--border-mint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--mint-primary);
+}
+
+.github-item .github-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.github-item .github-info .repo-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.github-item .github-info .repo-name a {
+    color: var(--mint-primary);
+    text-decoration: none;
+}
+
+.github-item .github-info .repo-name a:hover {
+    text-decoration: underline;
+}
+
+.github-item .github-info .commit-message {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-top: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.github-item .github-info .commit-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    flex-wrap: wrap;
+}
+
+.github-item .github-info .commit-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.github-item .github-info .commit-meta i {
+    color: var(--mint-primary);
+    font-size: 0.6rem;
+}
+
+.github-item .github-emoji {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    opacity: 0.5;
+    align-self: center;
+}
+
+.github-error {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 20px;
+}
+
+.github-error i {
+    color: #ff6b6b;
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+/* ============================================
+   ADDITIONS: PROJECT ACTIONS
+   ============================================ */
+.project-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+/* ============================================
+   ADDITIONS: LIGHT MODE OVERRIDES
+   ============================================ */
+[data-theme="light"] .github-item {
+    background: rgba(255, 255, 255, 0.7);
+}
+[data-theme="light"] .github-item .github-icon {
+    background: rgba(0, 200, 120, 0.06);
+}
+
+/* ============================================
+   ADDITIONS: RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .github-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 16px;
+    }
+    .github-item .github-emoji {
+        align-self: flex-start;
+    }
+    
+    /* Header hide on mobile - always visible */
+    header.hidden {
+        transform: translateY(0);
+    }
+    header.hidden::after {
+        display: none;
+    }
+}
