@@ -11,16 +11,6 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     
-    <!-- ===== PWA ===== -->
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    
-    <!-- ===== ANALYTICS ===== -->
-    <script defer data-domain="cthyrnmngt718.github.io" src="https://plausible.io/js/script.js"></script>
-    
     <!-- ===== META DESCRIPTION & SEO ===== -->
     <meta name="description" content="Explore Cathyrine Menguito's portfolio of web development projects in healthcare, education, and real estate." />
     <meta name="keywords" content="Cathyrine Menguito, portfolio, web development, healthcare system, education, real estate" />
@@ -32,7 +22,7 @@
     <meta property="og:url" content="https://cthyrnmngt718.github.io/projects.html" />
     <meta name="twitter:card" content="summary_large_image" />
     
-    <!-- ===== JSON-LD ===== -->
+    <!-- ===== JSON-LD STRUCTURED DATA ===== -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -101,6 +91,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet" />
     
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -120,8 +116,263 @@
     <!-- ========== CURSOR GLOW ========== -->
     <div id="cursor-glow"></div>
 
-    <!-- ========== TOAST CONTAINER ========== -->
-    <div class="toast-container" id="toast-container"></div>
+    <!-- ========== CUSTOM CURSOR ========== -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html" aria-label="Home">
+                    <span class="logo-c">C</span>
+                    <span class="logo-m">M</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" aria-label="Home page">Home</a></li>
+                <li><a href="projects.html" class="active" aria-label="View my projects">Projects</a></li>
+                <li><a href="index.html#about" aria-label="About me section">About</a></li>
+                <li><a href="index.html#contact" aria-label="Contact me">Contact</a></li>
+            </ul>
+            <button id="theme-toggle" aria-label="Toggle dark/light theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========== PROJECTS PAGE ========== -->
+    <section id="projects-page">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h1 style="font-size:2.8rem;font-weight:700;margin-bottom:8px;"><span class="gradient-text">Projects</span></h1>
+            </div>
+            <p class="projects-sub" style="color:var(--text-secondary);margin-bottom:30px;font-size:1.05rem;">
+                A collection of academic and professional work showcasing my growth
+                in web development, system design, and collaborative problem-solving.
+            </p>
+
+            <!-- ===== FILTER BUTTONS ===== -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" aria-label="Show all projects">All</button>
+                <button class="filter-btn" data-filter="healthcare" aria-label="Show healthcare projects">Healthcare</button>
+                <button class="filter-btn" data-filter="education" aria-label="Show education projects">Education</button>
+                <button class="filter-btn" data-filter="realestate" aria-label="Show real estate projects">Real Estate</button>
+            </div>
+
+            <div class="project-grid">
+
+                <!-- ===== PROJECT 1: RHU Morong ===== -->
+                <div class="project-card" data-category="healthcare php" data-tilt>
+                    <div class="project-info">
+                        <h3>RHU Morong Health System</h3>
+                        <p>
+                            A comprehensive healthcare management platform built as our
+                            thesis project. This system digitized patient intake,
+                            appointment scheduling, and record management for the Rural
+                            Health Unit of Morong, Rizal.
+                            <br /><br />
+                            <strong>My Contribution:</strong> Spearheaded the front-end
+                            architecture and user interface design, ensuring a seamless
+                            experience for healthcare personnel. Collaborated closely
+                            with my co-developer on back-end integration and system
+                            optimization.
+                            <br /><br />
+                            <strong>Recognition:</strong> Received the <strong>Outstanding
+                            System Design</strong> and <strong>Outstanding Thesis
+                            Writing</strong> awards for our work.
+                        </p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>Bootstrap</span>
+                        </div>
+                        <a href="http://healthcare.morongcenter.com/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-small"
+                           aria-label="Visit RHU Morong Health System project">
+                            <i class="fas fa-external-link-alt"></i>
+                            Visit Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ===== PROJECT 2: Angono NHS Career Assessment ===== -->
+                <div class="project-card" data-category="education php bootstrap" data-tilt>
+                    <div class="project-info">
+                        <h3>Angono NHS Career Assessment</h3>
+                        <p>
+                            A web-based career guidance tool developed to help incoming
+                            Senior High School students identify their SHS strand.
+                            The system evaluates students' interests, skills, and
+                            academic inclinations to provide data-driven recommendations.
+                            <br /><br />
+                            <strong>My Role:</strong> Developed the system independently, working
+                            on the database, front-end, system features, and deployment. This project
+                            gave me hands-on experience in building a complete web application and
+                            helped me better understand how its different parts work together.
+                            It also improved my development and problem-solving skills.
+                            <br /><br />
+                            <strong>Impact:</strong> Successfully assessed over 50 students,
+                            helping them make informed decisions about their academic
+                            pathways.
+                        </p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>Bootstrap</span>
+                        </div>
+                        <a href="https://angononhs-onlinecareerassessment.online/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-small"
+                           aria-label="Visit Angono NHS Career Assessment project">
+                            <i class="fas fa-external-link-alt"></i>
+                            Visit Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ===== PROJECT 3: HowCan-i-Help ===== -->
+                <div class="project-card" data-category="healthcare php bootstrap" data-tilt>
+                    <div class="project-info">
+                        <h3>HowCan‑i‑Help</h3>
+                        <p>
+                            A multi-tenant healthcare ecosystem that bridges the gap
+                            between patients, clinics, and community support networks.
+                            The platform streamlines clinical operations, donor
+                            coordination, and patient outreach through a centralized
+                            digital infrastructure.
+                            <br /><br />
+                            <strong>Project Context:</strong> Developed as part of my
+                            professional work at <strong>Real IT OPC</strong>, where I
+                            collaborated with senior developers to bring this solution
+                            from concept to production. Currently deployed and actively
+                            supporting clinic workflows.
+                            <br /><br />
+                            <strong>Key Achievement:</strong> The system has been fully
+                            integrated into the daily operations of partner clinics,
+                            replacing manual processes with efficient digital records
+                            management.
+                        </p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>Bootstrap</span>
+                        </div>
+                        <a href="https://howcan-i-help.org/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-small"
+                           aria-label="Visit HowCan-i-Help project">
+                            <i class="fas fa-external-link-alt"></i>
+                            Visit Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ===== PROJECT 4: RITREMIS ===== -->
+                <div class="project-card" data-category="realestate php bootstrap" data-tilt>
+                    <div class="project-info">
+                        <h3>RITREMIS</h3>
+                        <p>
+                            A comprehensive real estate management information system
+                            designed to centralize property records, streamline
+                            transactions, and provide stakeholders with real-time
+                            visibility into property portfolios.
+                            <br /><br />
+                            <strong>Project Context:</strong> Currently in active
+                            development at <strong>Real IT OPC</strong>, built in
+                            collaboration with our development team. 
+                            <br /><br />
+                            <strong>My Focus:</strong> Front-end implementation,
+                            UI/UX design, and ensuring a responsive, intuitive
+                            interface for property managers and clients.
+                        </p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>Bootstrap</span>
+                        </div>
+                        <a href="https://ritremis.com/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-small"
+                           aria-label="Visit RITREMIS project">
+                            <i class="fas fa-external-link-alt"></i>
+                            Visit Project
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ===== BACK TO HOME + CTA BUTTONS ===== -->
+            <div class="center-btn" style="margin-top:40px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                <a href="index.html" class="btn btn-secondary" aria-label="Go back to homepage">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <a href="index.html#contact" class="btn btn-primary" aria-label="Contact me to build a project">
+                    <i class="fas fa-rocket"></i> Let's Build Something Together
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-divider"></div>
+            <div class="footer-social">
+                <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub profile">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook profile">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram profile">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:cthyrnmngt718@gmail.com" aria-label="Send me an email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <div class="footer-text">
+                <p class="footer-name">Cathyrine Menguito</p>
+                <p class="footer-tagline">
+                    <i class="fas fa-code"></i> Computer Science Graduate 
+                    <i class="fas fa-circle" style="font-size:4px;color:var(--mint-primary);vertical-align:middle;margin:0 8px;"></i>
+                    Web Development 
+                    <i class="fas fa-circle" style="font-size:4px;color:var(--mint-primary);vertical-align:middle;margin:0 8px;"></i>
+                    UI/UX Design
+                </p>
+                <p class="footer-copy">&copy; <span id="year">2026</span> Cathyrine Menguito. All rights reserved.</p>
+                <div class="visitor-badge">
+                    <i class="fas fa-eye"></i>
+                    <span id="visitor-count">0</span>
+                    <span class="visitor-label">visitors</span>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- ========== SCROLL PROGRESS BAR ========== -->
     <div id="progress-bar"></div>
@@ -130,232 +381,9 @@
     <div class="floating-buttons">
         <button id="scroll-btn" aria-label="Scroll to top or bottom">
             <i class="fas fa-chevron-down" id="scroll-icon"></i>
-            <span class="scroll-tooltip" id="scroll-tooltip" data-i18n="scroll_down">Scroll Down</span>
+            <span class="scroll-tooltip" id="scroll-tooltip">Scroll Down</span>
         </button>
     </div>
-
-    <!-- ========== APP WRAPPER ========== -->
-    <div id="app">
-        <!-- ========== NAVIGATION ========== -->
-        <header>
-            <nav>
-                <div class="logo">
-                    <a href="/index.html" aria-label="Home">
-                        <span class="logo-c">C</span>
-                        <span class="logo-m">M</span>
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="/index.html" data-i18n="nav_home" aria-label="Home page">Home</a></li>
-                    <li><a href="/projects.html" class="active" data-i18n="nav_projects" aria-label="View my projects">Projects</a></li>
-                    <li><a href="/index.html#about" data-i18n="nav_about" aria-label="About me section">About</a></li>
-                    <li><a href="/index.html#contact" data-i18n="nav_contact" aria-label="Contact me">Contact</a></li>
-                </ul>
-                <div class="lang-selector">
-                    <select id="lang-select" aria-label="Select language">
-                        <option value="en">🇺🇸 English</option>
-                        <option value="fil">🇵🇭 Filipino</option>
-                        <option value="ko">🇰🇷 Korean</option>
-                        <option value="ja">🇯🇵 Japanese</option>
-                    </select>
-                </div>
-                <button id="theme-toggle" aria-label="Toggle dark/light theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" role="button" tabindex="0">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </nav>
-        </header>
-
-        <!-- ========== PROJECTS PAGE CONTENT ========== -->
-        <section id="projects-page">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag" data-i18n="projects_tag">Portfolio</span>
-                    <h1 style="font-size:2.8rem;font-weight:700;margin-bottom:8px;"><span class="gradient-text" data-i18n="projects_page_title">Projects</span></h1>
-                </div>
-                <p class="projects-sub" style="color:var(--text-secondary);margin-bottom:30px;font-size:1.05rem;" data-i18n="projects_page_sub">
-                    A collection of academic and professional work showcasing my growth
-                    in web development, system design, and collaborative problem-solving.
-                </p>
-
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all" aria-label="Show all projects" data-i18n="filter_all">All</button>
-                    <button class="filter-btn" data-filter="healthcare" aria-label="Show healthcare projects" data-i18n="filter_healthcare">Healthcare</button>
-                    <button class="filter-btn" data-filter="education" aria-label="Show education projects" data-i18n="filter_education">Education</button>
-                    <button class="filter-btn" data-filter="realestate" aria-label="Show real estate projects" data-i18n="filter_realestate">Real Estate</button>
-                </div>
-
-                <div class="project-grid">
-                    <!-- PROJECT 1 -->
-                    <div class="project-card" data-category="healthcare php" data-tilt>
-                        <div class="project-info">
-                            <h3>RHU Morong Health System</h3>
-                            <p data-i18n="project_rhu_long">
-                                A comprehensive healthcare management platform built as our
-                                thesis project. This system digitized patient intake,
-                                appointment scheduling, and record management for the Rural
-                                Health Unit of Morong, Rizal.
-                                <br /><br />
-                                <strong>My Contribution:</strong> Spearheaded the front-end
-                                architecture and user interface design, ensuring a seamless
-                                experience for healthcare personnel. Collaborated closely
-                                with my co-developer on back-end integration and system
-                                optimization.
-                                <br /><br />
-                                <strong>Recognition:</strong> Received the <strong>Outstanding
-                                System Design</strong> and <strong>Outstanding Thesis
-                                Writing</strong> awards for our work.
-                            </p>
-                            <div class="project-tech">
-                                <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                                <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
-                            </div>
-                            <a href="http://healthcare.morongcenter.com/" target="_blank" rel="noopener noreferrer" class="btn btn-small" aria-label="Visit RHU Morong Health System project">
-                                <i class="fas fa-external-link-alt"></i> Visit Project
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- PROJECT 2 -->
-                    <div class="project-card" data-category="education php bootstrap" data-tilt>
-                        <div class="project-info">
-                            <h3>Angono NHS Career Assessment</h3>
-                            <p data-i18n="project_angono_long">
-                                A web-based career guidance tool developed to help incoming
-                                Senior High School students identify their SHS strand.
-                                The system evaluates students' interests, skills, and
-                                academic inclinations to provide data-driven recommendations.
-                                <br /><br />
-                                <strong>My Role:</strong> Developed the system independently, working
-                                on the database, front-end, system features, and deployment. This project
-                                gave me hands-on experience in building a complete web application and
-                                helped me better understand how its different parts work together.
-                                It also improved my development and problem-solving skills.
-                                <br /><br />
-                                <strong>Impact:</strong> Successfully assessed over 50 students,
-                                helping them make informed decisions about their academic
-                                pathways.
-                            </p>
-                            <div class="project-tech">
-                                <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                                <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
-                            </div>
-                            <a href="https://angononhs-onlinecareerassessment.online/" target="_blank" rel="noopener noreferrer" class="btn btn-small" aria-label="Visit Angono NHS Career Assessment project">
-                                <i class="fas fa-external-link-alt"></i> Visit Project
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- PROJECT 3 -->
-                    <div class="project-card" data-category="healthcare php bootstrap" data-tilt>
-                        <div class="project-info">
-                            <h3>HowCan‑i‑Help</h3>
-                            <p data-i18n="project_hci_long">
-                                A multi-tenant healthcare ecosystem that bridges the gap
-                                between patients, clinics, and community support networks.
-                                The platform streamlines clinical operations, donor
-                                coordination, and patient outreach through a centralized
-                                digital infrastructure.
-                                <br /><br />
-                                <strong>Project Context:</strong> Developed as part of my
-                                professional work at <strong>Real IT OPC</strong>, where I
-                                collaborated with senior developers to bring this solution
-                                from concept to production. Currently deployed and actively
-                                supporting clinic workflows.
-                                <br /><br />
-                                <strong>Key Achievement:</strong> The system has been fully
-                                integrated into the daily operations of partner clinics,
-                                replacing manual processes with efficient digital records
-                                management.
-                            </p>
-                            <div class="project-tech">
-                                <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                                <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
-                            </div>
-                            <a href="https://howcan-i-help.org/" target="_blank" rel="noopener noreferrer" class="btn btn-small" aria-label="Visit HowCan-i-Help project">
-                                <i class="fas fa-external-link-alt"></i> Visit Project
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- PROJECT 4 -->
-                    <div class="project-card" data-category="realestate php bootstrap" data-tilt>
-                        <div class="project-info">
-                            <h3>RITREMIS</h3>
-                            <p data-i18n="project_ritremis_long">
-                                A comprehensive real estate management information system
-                                designed to centralize property records, streamline
-                                transactions, and provide stakeholders with real-time
-                                visibility into property portfolios.
-                                <br /><br />
-                                <strong>Project Context:</strong> Currently in active
-                                development at <strong>Real IT OPC</strong>, built in
-                                collaboration with our development team. 
-                                <br /><br />
-                                <strong>My Focus:</strong> Front-end implementation,
-                                UI/UX design, and ensuring a responsive, intuitive
-                                interface for property managers and clients.
-                            </p>
-                            <div class="project-tech">
-                                <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                                <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
-                            </div>
-                            <a href="https://ritremis.com/" target="_blank" rel="noopener noreferrer" class="btn btn-small" aria-label="Visit RITREMIS project">
-                                <i class="fas fa-external-link-alt"></i> Visit Project
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="center-btn" style="margin-top:40px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-                    <a href="/index.html" class="btn btn-secondary" aria-label="Go back to homepage">
-                        <i class="fas fa-arrow-left"></i> <span data-i18n="back_home">Back to Home</span>
-                    </a>
-                    <a href="/index.html#contact" class="btn btn-primary" aria-label="Contact me to build a project">
-                        <i class="fas fa-rocket"></i> <span data-i18n="lets_build">Let's Build Something Together</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== FOOTER ========== -->
-        <footer>
-            <div class="container">
-                <div class="footer-divider"></div>
-                <div class="footer-social">
-                    <a href="https://github.com/CthyrnMngt718" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
-                    <a href="https://www.facebook.com/cathyrine.menguito" target="_blank" aria-label="Facebook profile"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/itsme_cthymngt/" target="_blank" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:cthyrnmngt718@gmail.com" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
-                </div>
-                <div class="footer-text">
-                    <p class="footer-name">Cathyrine Menguito</p>
-                    <p class="footer-tagline" data-i18n="footer_sub">
-                        <i class="fas fa-code"></i> Computer Science Graduate 
-                        <i class="fas fa-circle" style="font-size:4px;color:var(--mint-primary);vertical-align:middle;margin:0 8px;"></i>
-                        Web Development 
-                        <i class="fas fa-circle" style="font-size:4px;color:var(--mint-primary);vertical-align:middle;margin:0 8px;"></i>
-                        UI/UX Design
-                    </p>
-                    <p class="footer-copy">&copy; <span id="year">2026</span> Cathyrine Menguito. All rights reserved.</p>
-                    <div class="visitor-badge">
-                        <i class="fas fa-eye"></i>
-                        <span id="visitor-count">0</span>
-                        <span class="visitor-label" data-i18n="visitor_label">visitors</span>
-                    </div>
-                    <div class="clock-badge">
-                        <i class="fas fa-globe"></i>
-                        <span id="live-clock">--:-- --</span>
-                        <span class="clock-label">Your Local Time</span>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div> <!-- End #app -->
 
     <script src="script.js"></script>
 </body>
