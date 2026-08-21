@@ -699,10 +699,8 @@ function addSkillDistribution() {
     const container = document.querySelector('.tech-stack-visualization');
     if (!container) return;
 
-    // Check if already added
     if (container.querySelector('.skill-distribution-container')) return;
 
-    // Skill data: name, level (0-100), icon color
     const skills = [
         { name: 'HTML5', level: 90, color: '#e34f26' },
         { name: 'CSS3', level: 85, color: '#2965f1' },
@@ -714,7 +712,6 @@ function addSkillDistribution() {
         { name: 'Git', level: 65, color: '#f05032' }
     ];
 
-    // Sort by level (highest first)
     skills.sort((a, b) => b.level - a.level);
 
     let barsHTML = `
@@ -756,7 +753,6 @@ function addSkillDistribution() {
         </div>
     `;
 
-    // Insert after the heading but before the grid
     const heading = container.querySelector('h3');
     if (heading) {
         heading.insertAdjacentHTML('afterend', barsHTML);
@@ -764,7 +760,6 @@ function addSkillDistribution() {
         container.insertAdjacentHTML('afterbegin', barsHTML);
     }
 
-    // Animate bars when they come into view
     const bars = container.querySelectorAll('.skill-distribution-bar');
     const barObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -780,7 +775,6 @@ function addSkillDistribution() {
     bars.forEach(bar => barObserver.observe(bar));
 }
 
-// Call after DOM ready
 document.addEventListener('DOMContentLoaded', addSkillDistribution);
 
 // ============================================
@@ -791,7 +785,7 @@ function addProjectProgress() {
     const progressMap = {
         'RHU Morong Health System': 95,
         'Angono NHS Career Assessment': 85,
-        'HowCan‑i‑Help': 98,
+        'HowCan‑i‑Help': 100,  // ← CHANGED to 100%
         'RITREMIS': 70
     };
 
@@ -852,7 +846,7 @@ if ('requestIdleCallback' in window) {
 }
 
 // ============================================
-// 22. PAGE LOADER (Robust)
+// 22. PAGE LOADER (FIXED)
 // ============================================
 function hideLoader() {
     const loader = document.getElementById('page-loader');
@@ -862,19 +856,24 @@ function hideLoader() {
     }
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(hideLoader, 300);
-    });
+// Multiple fallbacks to ensure loader hides
+if (document.readyState === 'complete') {
+    hideLoader();
 } else {
-    setTimeout(hideLoader, 300);
+    window.addEventListener('load', function() {
+        setTimeout(hideLoader, 100);
+    });
 }
 
-setTimeout(hideLoader, 2000);
+// Fallback: hide after 1.5 seconds even if nothing else works
+setTimeout(hideLoader, 1500);
 
-window.addEventListener('load', () => {
-    setTimeout(hideLoader, 100);
-});
+// Also try on DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(hideLoader, 200);
+    });
+}
 
 // ============================================
 // 23. KEYBOARD NAVIGATION
@@ -1400,7 +1399,7 @@ if ('serviceWorker' in navigator) {
 }
 
 // ============================================
-// 33. I18N TRANSLATIONS
+// 33. I18N TRANSLATIONS (FIXED)
 // ============================================
 const translations = {
     en: {
@@ -1525,11 +1524,14 @@ const translations = {
         team_tag: "Collaboration",
         team_title_prefix: "People I've",
         team_title_gradient: "Worked With",
-        team_sub: "I thrive on teamwork. Here are some of the talented developers I've collaborated with.",
+        team_sub: "I believe good work comes from collaboration. Here are some of the people I've had the privilege of working with and learning from.",
         team_role_1: "Full Stack Web Developer",
         team_company_1: "Real IT OPC",
         team_role_2: "Project Lead / Full Stack Web Developer",
         team_company_2: "Real IT OPC",
+        team_built_together: "Built Together",
+        team_learned_label: "Learned from this collaboration",
+        team_connection_label: "3 projects · 2 collaborators · 1 team",
         client_title_prefix: "Have a",
         client_title_gradient: "Web System",
         client_title_suffix: "or Digital Project in Mind?",
@@ -1540,6 +1542,16 @@ const translations = {
         client_svc_4: "UI/UX Design",
         client_svc_5: "System Maintenance",
         client_btn: "Discuss a Project",
+        client_badge: "Let's Build Together",
+        client_process_discuss: "Discuss",
+        client_process_build: "Build",
+        client_process_launch: "Launch",
+        client_process_discuss_desc: "We talk about your vision and requirements.",
+        client_process_build_desc: "We design and develop your system with care.",
+        client_process_launch_desc: "We deploy, test, and ensure everything runs smoothly.",
+        client_trust_projects: "Projects Built",
+        client_trust_members: "Team Members",
+        client_trust_year: "Year of Collaboration",
         projects_tag: "Portfolio",
         projects_title: "Projects",
         projects_sub: "A collection of academic and professional work showcasing my growth in web development, system design, and collaborative problem-solving.",
@@ -1604,24 +1616,8 @@ const translations = {
         footer_copy: "Cathyrine Menguito. All rights reserved.",
         footer_badge: "Available for opportunities",
         visitor_label: "visitors",
-        scroll_tooltip: "Scroll Down",
-        team_sub: "I believe good work comes from collaboration. Here are some of the people I've had the privilege of working with and learning from.",
-        team_built_together: "Built Together",
-        team_learned_label: "Learned from this collaboration",
-        team_connection_label: "3 projects · 2 collaborators · 1 team",
-    
-        // === FOR CLIENTS (New translations) ===
-        client_badge: "Let's Build Together",
-        client_process_discuss: "Discuss",
-        client_process_build: "Build",
-        client_process_launch: "Launch",
-        client_process_discuss_desc: "We talk about your vision and requirements.",
-        client_process_build_desc: "We design and develop your system with care.",
-        client_process_launch_desc: "We deploy, test, and ensure everything runs smoothly.",
-        client_trust_projects: "Projects Built",
-        client_trust_members: "Team Members",
-        client_trust_year: "Year of Collaboration",
-        },
+        scroll_tooltip: "Scroll Down"
+    },
     ja: {
         loader_text: "読み込み中...",
         skip_link: "メインコンテンツへスキップ",
@@ -1744,11 +1740,14 @@ const translations = {
         team_tag: "コラボレーション",
         team_title_prefix: "一緒に働いた",
         team_title_gradient: "人々",
-        team_sub: "私はチームワークで力を発揮します。ここに私が協力した才能ある開発者たちをご紹介します。",
+        team_sub: "良い仕事はコラボレーションから生まれると信じています。ここでは、一緒に働き、学ぶ機会を得た人々を紹介します。",
         team_role_1: "フルスタックウェブ開発者",
         team_company_1: "Real IT OPC",
         team_role_2: "プロジェクトリード / フルスタックウェブ開発者",
         team_company_2: "Real IT OPC",
+        team_built_together: "一緒に作ったもの",
+        team_learned_label: "このコラボレーションから学んだこと",
+        team_connection_label: "3プロジェクト · 2人のコラボレーター · 1チーム",
         client_title_prefix: "ウェブシステムや",
         client_title_gradient: "デジタルプロジェクトの",
         client_title_suffix: "アイデアはありますか？",
@@ -1759,6 +1758,16 @@ const translations = {
         client_svc_4: "UI/UXデザイン",
         client_svc_5: "システムメンテナンス",
         client_btn: "プロジェクトについて話し合う",
+        client_badge: "一緒に作りましょう",
+        client_process_discuss: "話し合う",
+        client_process_build: "開発する",
+        client_process_launch: "公開する",
+        client_process_discuss_desc: "ビジョンと要件について話し合います。",
+        client_process_build_desc: "システムを丁寧にデザインし、開発します。",
+        client_process_launch_desc: "デプロイ、テスト、そしてスムーズな動作を確認します。",
+        client_trust_projects: "構築したプロジェクト",
+        client_trust_members: "チームメンバー",
+        client_trust_year: "コラボレーション年数",
         projects_tag: "ポートフォリオ",
         projects_title: "プロジェクト",
         projects_sub: "ウェブ開発、システムデザイン、協調的問題解決における成長を示す学術および専門的な作品集です。",
@@ -1823,22 +1832,7 @@ const translations = {
         footer_copy: "Cathyrine Menguito. All rights reserved.",
         footer_badge: "機会を募集中",
         visitor_label: "訪問者",
-        scroll_tooltip: "下へスクロール",
-        ja: {
-        team_sub: "良い仕事はコラボレーションから生まれると信じています。ここでは、一緒に働き、学ぶ機会を得た人々を紹介します。",
-        team_built_together: "一緒に作ったもの",
-        team_learned_label: "このコラボレーションから学んだこと",
-        team_connection_label: "3プロジェクト · 2人のコラボレーター · 1チーム",
-        client_badge: "一緒に作りましょう",
-        client_process_discuss: "話し合う",
-        client_process_build: "開発する",
-        client_process_launch: "公開する",
-        client_process_discuss_desc: "ビジョンと要件について話し合います。",
-        client_process_build_desc: "システムを丁寧にデザインし、開発します。",
-        client_process_launch_desc: "デプロイ、テスト、そしてスムーズな動作を確認します。",
-        client_trust_projects: "構築したプロジェクト",
-        client_trust_members: "チームメンバー",
-        client_trust_year: "コラボレーション年数",
+        scroll_tooltip: "下へスクロール"
     }
 };
 
