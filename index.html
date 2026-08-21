@@ -664,6 +664,142 @@
             background: var(--mint-primary);
             color: #0b0e0c;
         }
+
+        /* ===== PARTICLES EFFECT ON ALL CARDS ===== */
+        .card-particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.04;
+            z-index: 0;
+        }
+        .card-particle-1 {
+            width: 120px;
+            height: 120px;
+            top: -40px;
+            right: -40px;
+            background: var(--mint-primary);
+            animation: floatParticle 8s ease-in-out infinite;
+        }
+        .card-particle-2 {
+            width: 80px;
+            height: 80px;
+            bottom: -20px;
+            left: -20px;
+            background: var(--mint-secondary);
+            animation: floatParticle 10s ease-in-out infinite reverse;
+        }
+        .card-particle-3 {
+            width: 40px;
+            height: 40px;
+            top: 50%;
+            right: 10%;
+            background: var(--mint-primary);
+            animation: floatParticle 6s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        @keyframes floatParticle {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.04; }
+            50% { transform: translate(-20px, -30px) scale(1.5); opacity: 0.08; }
+        }
+
+        [data-theme="light"] .card-particle-1,
+        [data-theme="light"] .card-particle-2,
+        [data-theme="light"] .card-particle-3 {
+            opacity: 0.08;
+        }
+        [data-theme="light"] .card-particle-1 {
+            background: #00bb77;
+        }
+        [data-theme="light"] .card-particle-2 {
+            background: #009966;
+        }
+        [data-theme="light"] .card-particle-3 {
+            background: #00bb77;
+        }
+        [data-theme="light"] .card-particle-1,
+        [data-theme="light"] .card-particle-2,
+        [data-theme="light"] .card-particle-3 {
+            opacity: 0.10;
+        }
+
+        /* Apply particles to cards */
+        .project-card,
+        .service-card,
+        .edu-card,
+        .experience-card,
+        .team-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card .card-particle,
+        .service-card .card-particle,
+        .edu-card .card-particle,
+        .experience-card .card-particle,
+        .team-card .card-particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .project-card .card-particle-1,
+        .service-card .card-particle-1,
+        .edu-card .card-particle-1,
+        .experience-card .card-particle-1,
+        .team-card .card-particle-1 {
+            width: 100px;
+            height: 100px;
+            top: -30px;
+            right: -30px;
+            background: var(--mint-primary);
+            opacity: 0.03;
+            animation: floatParticle 8s ease-in-out infinite;
+        }
+        .project-card .card-particle-2,
+        .service-card .card-particle-2,
+        .edu-card .card-particle-2,
+        .experience-card .card-particle-2,
+        .team-card .card-particle-2 {
+            width: 60px;
+            height: 60px;
+            bottom: -15px;
+            left: -15px;
+            background: var(--mint-secondary);
+            opacity: 0.03;
+            animation: floatParticle 10s ease-in-out infinite reverse;
+        }
+        .project-card .card-particle-3,
+        .service-card .card-particle-3,
+        .edu-card .card-particle-3,
+        .experience-card .card-particle-3,
+        .team-card .card-particle-3 {
+            width: 30px;
+            height: 30px;
+            top: 40%;
+            right: 5%;
+            background: var(--mint-primary);
+            opacity: 0.03;
+            animation: floatParticle 6s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        [data-theme="light"] .project-card .card-particle-1,
+        [data-theme="light"] .service-card .card-particle-1,
+        [data-theme="light"] .edu-card .card-particle-1,
+        [data-theme="light"] .experience-card .card-particle-1,
+        [data-theme="light"] .team-card .card-particle-1,
+        [data-theme="light"] .project-card .card-particle-2,
+        [data-theme="light"] .service-card .card-particle-2,
+        [data-theme="light"] .edu-card .card-particle-2,
+        [data-theme="light"] .experience-card .card-particle-2,
+        [data-theme="light"] .team-card .card-particle-2,
+        [data-theme="light"] .project-card .card-particle-3,
+        [data-theme="light"] .service-card .card-particle-3,
+        [data-theme="light"] .edu-card .card-particle-3,
+        [data-theme="light"] .experience-card .card-particle-3,
+        [data-theme="light"] .team-card .card-particle-3 {
+            opacity: 0.08;
+        }
     </style>
 
     <!-- Custom CSS (external) -->
@@ -826,26 +962,37 @@
 
                 <div class="services-grid">
                     <div class="service-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="service-icon"><i class="fas fa-code"></i></div>
                         <h3 data-i18n="service_1_title">Web Development</h3>
                         <p data-i18n="service_1_desc">Developing responsive and functional websites and web-based applications using technologies such as HTML, CSS, JavaScript, PHP, and MySQL.</p>
                     </div>
                     <div class="service-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
                         <h3 data-i18n="service_2_title">UI/UX &amp; Interface Design</h3>
                         <p data-i18n="service_2_desc">Designing clean and intuitive user interfaces with attention to usability, organization, and the overall user experience.</p>
                     </div>
                     <div class="service-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="service-icon"><i class="fas fa-project-diagram"></i></div>
                         <h3 data-i18n="service_3_title">Academic System Development</h3>
                         <p data-i18n="service_3_desc">Providing technical assistance for academic and capstone projects, including web-based systems, system interfaces, and related development tasks.</p>
                     </div>
                     <div class="service-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="service-icon"><i class="fas fa-file-alt"></i></div>
                         <h3 data-i18n="service_4_title">Technical Documentation</h3>
                         <p data-i18n="service_4_desc">Assisting with system documentation, technical diagrams, project presentations, and other documentation related to software projects.</p>
                     </div>
                     <div class="service-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
+                        <div class="card-particle card-particle-3"></div>
                         <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
                         <h3 data-i18n="service_5_title">Branding &amp; Visual Identity</h3>
                         <p data-i18n="service_5_desc">Creating cohesive visual identities including logo design, color palettes, typography systems, and brand guidelines that help businesses and projects stand out with a consistent and memorable presence.</p>
@@ -864,6 +1011,8 @@
 
                 <div class="experience-grid">
                     <div class="experience-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="experience-header">
                             <div class="experience-icon"><i class="fas fa-briefcase"></i></div>
                             <div class="experience-meta">
@@ -888,6 +1037,8 @@
                     </div>
 
                     <div class="experience-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="experience-header">
                             <div class="experience-icon"><i class="fas fa-headset"></i></div>
                             <div class="experience-meta">
@@ -1028,17 +1179,6 @@
                                             <span style="font-size: 0.55rem; color: var(--text-secondary); font-family: var(--font-mono); opacity: 0.5; min-width: 55px; text-align: right;">Intermediate</span>
                                         </div>
                                     </div>
-                                    <!-- GitHub: 75% -->
-                                    <div style="display: grid; grid-template-columns: 100px 1fr 70px; align-items: center; gap: 12px;">
-                                        <span style="font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); white-space: nowrap;">GitHub</span>
-                                        <div style="height: 6px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden; border: 1px solid var(--border-mint);">
-                                            <div style="width: 75%; height: 100%; background: linear-gradient(90deg, #18171744, #181717); border-radius: 4px;" class="skill-distribution-bar"></div>
-                                        </div>
-                                        <div style="display: flex; align-items: center; gap: 6px; justify-content: flex-end;">
-                                            <span style="font-size: 0.7rem; font-weight: 600; color: var(--mint-primary); font-family: var(--font-mono); min-width: 30px; text-align: right;">75%</span>
-                                            <span style="font-size: 0.55rem; color: var(--text-secondary); font-family: var(--font-mono); opacity: 0.5; min-width: 55px; text-align: right;">Intermediate</span>
-                                        </div>
-                                    </div>
                                     <!-- JavaScript: 78% -->
                                     <div style="display: grid; grid-template-columns: 100px 1fr 70px; align-items: center; gap: 12px;">
                                         <span style="font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); white-space: nowrap;">JavaScript</span>
@@ -1047,6 +1187,17 @@
                                         </div>
                                         <div style="display: flex; align-items: center; gap: 6px; justify-content: flex-end;">
                                             <span style="font-size: 0.7rem; font-weight: 600; color: var(--mint-primary); font-family: var(--font-mono); min-width: 30px; text-align: right;">78%</span>
+                                            <span style="font-size: 0.55rem; color: var(--text-secondary); font-family: var(--font-mono); opacity: 0.5; min-width: 55px; text-align: right;">Intermediate</span>
+                                        </div>
+                                    </div>
+                                    <!-- GitHub: 75% -->
+                                    <div style="display: grid; grid-template-columns: 100px 1fr 70px; align-items: center; gap: 12px;">
+                                        <span style="font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); white-space: nowrap;">GitHub</span>
+                                        <div style="height: 6px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden; border: 1px solid var(--border-mint);">
+                                            <div style="width: 75%; height: 100%; background: linear-gradient(90deg, #18171744, #181717); border-radius: 4px;" class="skill-distribution-bar"></div>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 6px; justify-content: flex-end;">
+                                            <span style="font-size: 0.7rem; font-weight: 600; color: var(--mint-primary); font-family: var(--font-mono); min-width: 30px; text-align: right;">75%</span>
                                             <span style="font-size: 0.55rem; color: var(--text-secondary); font-family: var(--font-mono); opacity: 0.5; min-width: 55px; text-align: right;">Intermediate</span>
                                         </div>
                                     </div>
@@ -1102,16 +1253,16 @@
                                     <div class="tech-level-bar"><div class="fill" style="width:80%;"></div></div>
                                 </div>
                                 <div class="tech-stack-item">
-                                    <span class="tech-icon"><i class="fab fa-github" style="color:#181717;"></i></span>
-                                    <span class="tech-name">GitHub</span>
-                                    <span class="tech-level">Intermediate</span>
-                                    <div class="tech-level-bar"><div class="fill" style="width:75%;"></div></div>
-                                </div>
-                                <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fab fa-js" style="color:#f7df1e;"></i></span>
                                     <span class="tech-name">JavaScript</span>
                                     <span class="tech-level">Intermediate</span>
                                     <div class="tech-level-bar"><div class="fill" style="width:78%;"></div></div>
+                                </div>
+                                <div class="tech-stack-item">
+                                    <span class="tech-icon"><i class="fab fa-github" style="color:#181717;"></i></span>
+                                    <span class="tech-name">GitHub</span>
+                                    <span class="tech-level">Intermediate</span>
+                                    <div class="tech-level-bar"><div class="fill" style="width:75%;"></div></div>
                                 </div>
                                 <div class="tech-stack-item">
                                     <span class="tech-icon"><i class="fas fa-database" style="color:#00758f;"></i></span>
@@ -1141,6 +1292,8 @@
                 </div>
                 <div class="education-grid">
                     <div class="edu-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="edu-header">
                             <span class="edu-tag"><i class="fas fa-graduation-cap"></i> <span data-i18n="edu_tertiary_tag">Tertiary</span></span>
                             <span class="edu-year" data-i18n="edu_tertiary_year">2022 – 2026</span>
@@ -1157,6 +1310,8 @@
                         </div>
                     </div>
                     <div class="edu-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="edu-header">
                             <span class="edu-tag"><i class="fas fa-school"></i> <span data-i18n="edu_shs_tag">Senior High</span></span>
                             <span class="edu-year" data-i18n="edu_shs_year">2021 – 2022</span>
@@ -1174,6 +1329,8 @@
                         </div>
                     </div>
                     <div class="edu-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="edu-header">
                             <span class="edu-tag"><i class="fas fa-school"></i> <span data-i18n="edu_jhs_tag">Junior High</span></span>
                             <span class="edu-year" data-i18n="edu_jhs_year2">2015 – 2019</span>
@@ -1183,6 +1340,8 @@
                         <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_jhs_loc2">Morong, Rizal</span></p>
                     </div>
                     <div class="edu-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="edu-header">
                             <span class="edu-tag"><i class="fas fa-child"></i> <span data-i18n="edu_elem_tag">Elementary</span></span>
                             <span class="edu-year" data-i18n="edu_elem_year">2009 – 2015</span>
@@ -1192,6 +1351,9 @@
                         <p class="edu-location"><i class="fas fa-map-pin"></i> <span data-i18n="edu_elem_loc">Morong, Rizal</span></p>
                     </div>
                     <div class="edu-card cert-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
+                        <div class="card-particle card-particle-3"></div>
                         <div class="edu-header">
                             <span class="edu-tag" style="background:rgba(0,255,171,0.2);color:var(--mint-primary);"><i class="fas fa-certificate"></i> <span data-i18n="edu_cert_tag">Certification</span></span>
                             <span class="edu-year" data-i18n="edu_cert_date">May 8, 2024</span>
@@ -1245,6 +1407,8 @@
                 <div class="team-grid">
                     <!-- ===== ARIEL B. EUBANAS, JR. ===== -->
                     <div class="team-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="team-card-inner">
                             <div class="team-avatar-wrapper">
                                 <div class="team-avatar">
@@ -1297,6 +1461,8 @@
 
                     <!-- ===== KENJI AKIRA BERGAÑO ===== -->
                     <div class="team-card" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
                         <div class="team-card-inner">
                             <div class="team-avatar-wrapper">
                                 <div class="team-avatar">
@@ -1363,6 +1529,9 @@
         <section id="for-clients">
             <div class="container">
                 <div class="client-banner">
+                    <div class="card-particle card-particle-1"></div>
+                    <div class="card-particle card-particle-2"></div>
+                    <div class="card-particle card-particle-3"></div>
                     <div class="client-banner-content">
                         <span class="client-badge">
                             <i class="fas fa-handshake"></i> <span data-i18n="client_badge">Let's Build Together</span>
@@ -1468,6 +1637,9 @@
 
                     <!-- ========== PROJECT 1: RHU Morong ========== -->
                     <div class="project-card" data-category="healthcare php" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
+                        <div class="card-particle card-particle-3"></div>
                         <div class="project-thumbnail">
                             <div class="browser-mockup">
                                 <span class="browser-dot red"></span>
@@ -1523,6 +1695,9 @@
 
                     <!-- ========== PROJECT 2: Angono NHS ========== -->
                     <div class="project-card" data-category="education php bootstrap" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
+                        <div class="card-particle card-particle-3"></div>
                         <div class="project-thumbnail">
                             <div class="browser-mockup">
                                 <span class="browser-dot red"></span>
@@ -1549,7 +1724,7 @@
                             <h3 data-i18n="proj_2_title">Angono NHS Career Assessment</h3>
                             <div class="project-impact">
                                 <span class="impact-badge"><i class="fas fa-graduation-cap"></i> 50+ Students</span>
-                                <span class="impact-badge"><i class="fas fa-layer-group"></i> 4 SHS Strands</span>
+                                <span class="impact-badge"><i class="fas fa-layer-group"></i> 6 Strands</span>
                             </div>
                             <div class="proj-desc" data-i18n="proj_2_full">
                                 <p style="margin-bottom:6px;">A web-based career guidance tool developed to help incoming Senior High School students identify their SHS strand. The system evaluates students' interests, skills, and academic inclinations to provide data-driven recommendations.</p>
@@ -1578,6 +1753,9 @@
 
                     <!-- ========== PROJECT 3: HowCan-i-Help ========== -->
                     <div class="project-card" data-category="healthcare php bootstrap" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
+                        <div class="card-particle card-particle-3"></div>
                         <div class="project-thumbnail">
                             <div class="browser-mockup">
                                 <span class="browser-dot red"></span>
@@ -1631,8 +1809,11 @@
                         </div>
                     </div>
 
-                    <!-- ========== PROJECT 4: RITREMIS ========== -->
+                    <!-- ========== PROJECT 4: RITREMIS (Fixed: was "Ritremes") ========== -->
                     <div class="project-card" data-category="realestate php bootstrap" data-tilt>
+                        <div class="card-particle card-particle-1"></div>
+                        <div class="card-particle card-particle-2"></div>
+                        <div class="card-particle card-particle-3"></div>
                         <div class="project-thumbnail">
                             <div class="browser-mockup">
                                 <span class="browser-dot red"></span>
@@ -1641,7 +1822,7 @@
                                 <span class="browser-url">ritremis.com</span>
                             </div>
                             <div class="thumbnail-body thumbnail-theme-ritremis">
-                                <span class="thumbnail-monogram">RITREMES</span>
+                                <span class="thumbnail-monogram">RITREMIS</span>
                                 <span class="thumbnail-label">Real Estate</span>
                                 <div class="thumbnail-divider"></div>
                                 <span class="thumbnail-metric" style="font-size:1.2rem;">⚡ Active Dev</span>
@@ -1825,7 +2006,7 @@
     <!-- ========== SCRIPTS ========== -->
     <script src="script.js"></script>
 
-    <!-- ===== READ MORE TOGGLE SCRIPT ===== -->
+    <!-- ===== READ MORE TOGGLE SCRIPT (Each card independent) ===== -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const readMoreBtns = document.querySelectorAll('.read-more-btn');
