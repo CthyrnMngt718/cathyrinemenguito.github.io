@@ -790,8 +790,8 @@ function addProjectProgress() {
     const cards = document.querySelectorAll('.project-card');
     const progressMap = {
         'RHU Morong Health System': 95,
-        'Angono NHS Career Assessment': 90,
-        'HowCan‑i‑Help': 85,
+        'Angono NHS Career Assessment': 85,
+        'HowCan‑i‑Help': 98,
         'RITREMIS': 70
     };
 
@@ -1604,8 +1604,24 @@ const translations = {
         footer_copy: "Cathyrine Menguito. All rights reserved.",
         footer_badge: "Available for opportunities",
         visitor_label: "visitors",
-        scroll_tooltip: "Scroll Down"
-    },
+        scroll_tooltip: "Scroll Down",
+        team_sub: "I believe good work comes from collaboration. Here are some of the people I've had the privilege of working with and learning from.",
+        team_built_together: "Built Together",
+        team_learned_label: "Learned from this collaboration",
+        team_connection_label: "3 projects · 2 collaborators · 1 team",
+    
+        // === FOR CLIENTS (New translations) ===
+        client_badge: "Let's Build Together",
+        client_process_discuss: "Discuss",
+        client_process_build: "Build",
+        client_process_launch: "Launch",
+        client_process_discuss_desc: "We talk about your vision and requirements.",
+        client_process_build_desc: "We design and develop your system with care.",
+        client_process_launch_desc: "We deploy, test, and ensure everything runs smoothly.",
+        client_trust_projects: "Projects Built",
+        client_trust_members: "Team Members",
+        client_trust_year: "Year of Collaboration",
+        },
     ja: {
         loader_text: "読み込み中...",
         skip_link: "メインコンテンツへスキップ",
@@ -1807,7 +1823,22 @@ const translations = {
         footer_copy: "Cathyrine Menguito. All rights reserved.",
         footer_badge: "機会を募集中",
         visitor_label: "訪問者",
-        scroll_tooltip: "下へスクロール"
+        scroll_tooltip: "下へスクロール",
+        ja: {
+        team_sub: "良い仕事はコラボレーションから生まれると信じています。ここでは、一緒に働き、学ぶ機会を得た人々を紹介します。",
+        team_built_together: "一緒に作ったもの",
+        team_learned_label: "このコラボレーションから学んだこと",
+        team_connection_label: "3プロジェクト · 2人のコラボレーター · 1チーム",
+        client_badge: "一緒に作りましょう",
+        client_process_discuss: "話し合う",
+        client_process_build: "開発する",
+        client_process_launch: "公開する",
+        client_process_discuss_desc: "ビジョンと要件について話し合います。",
+        client_process_build_desc: "システムを丁寧にデザインし、開発します。",
+        client_process_launch_desc: "デプロイ、テスト、そしてスムーズな動作を確認します。",
+        client_trust_projects: "構築したプロジェクト",
+        client_trust_members: "チームメンバー",
+        client_trust_year: "コラボレーション年数",
     }
 };
 
