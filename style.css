@@ -5039,3 +5039,224 @@ select:focus-visible {
 [data-theme="light"] #for-clients::before {
     opacity: 0.1;
 }
+/* ============================================
+   ENHANCEMENT: Light Mode – Premium Theme
+   ============================================ */
+
+[data-theme="light"] {
+    /* --- Softer, Warmer Backgrounds --- */
+    --bg-primary: #f5f7f6;
+    --bg-secondary: #eef2f0;
+    --bg-card: rgba(255, 255, 255, 0.82);
+    --text-primary: #1a2a22;
+    --text-secondary: #2d4a3a;
+    
+    /* --- Softer Mint Accent (more readable) --- */
+    --mint-primary: #00bb77;
+    --mint-secondary: #009966;
+    --mint-glow: rgba(0, 187, 119, 0.12);
+    --mint-gradient: linear-gradient(135deg, #00bb77, #009966, #00bb77);
+    
+    /* --- Softer Borders --- */
+    --border-mint: rgba(0, 187, 119, 0.15);
+}
+
+/* --- Background with subtle warmth --- */
+[data-theme="light"] body {
+    background: #f5f7f6;
+}
+
+[data-theme="light"] body::after {
+    background: radial-gradient(ellipse, rgba(0, 187, 119, 0.03), transparent 70%);
+}
+
+/* --- Cards with depth (light shadows) --- */
+[data-theme="light"] .project-card,
+[data-theme="light"] .service-card,
+[data-theme="light"] .edu-card,
+[data-theme="light"] .experience-card,
+[data-theme="light"] .team-card,
+[data-theme="light"] .client-banner {
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(4px);
+}
+
+[data-theme="light"] .project-card:hover,
+[data-theme="light"] .service-card:hover,
+[data-theme="light"] .edu-card:hover,
+[data-theme="light"] .experience-card:hover,
+[data-theme="light"] .team-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 187, 119, 0.10);
+    border-color: var(--mint-primary);
+}
+
+/* --- Hero Section --- */
+[data-theme="light"] #hero {
+    background: linear-gradient(180deg, #f5f7f6 0%, #eef2f0 100%);
+}
+
+[data-theme="light"] .hero-content h1 {
+    color: #1a2a22;
+}
+
+[data-theme="light"] .hero-badge {
+    background: rgba(0, 187, 119, 0.06);
+    border-color: rgba(0, 187, 119, 0.12);
+}
+
+[data-theme="light"] .live-status {
+    background: rgba(0, 187, 119, 0.06);
+    border-color: rgba(0, 187, 119, 0.12);
+}
+
+/* --- Section Headers --- */
+[data-theme="light"] .section-tag {
+    background: rgba(0, 187, 119, 0.06);
+    border-color: rgba(0, 187, 119, 0.12);
+    color: var(--mint-primary);
+}
+
+/* --- About Section --- */
+[data-theme="light"] #about {
+    background: #eef2f0;
+}
+
+[data-theme="light"] .about-text p {
+    color: #2d4a3a;
+}
+
+[data-theme="light"] .about-badges span {
+    background: rgba(0, 187, 119, 0.06);
+    border-color: rgba(0, 187, 119, 0.1);
+    color: #2d4a3a;
+}
+
+/* --- Skills List --- */
+[data-theme="light"] .skills-list li {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.06);
+    color: #1a2a22;
+}
+
+[data-theme="light"] .skills-list li:hover {
+    border-color: var(--mint-primary);
+    box-shadow: 0 0 20px rgba(0, 187, 119, 0.12);
+}
+
+/* --- Quote Section --- */
+[data-theme="light"] #quote-section {
+    background: #eef2f0;
+}
+
+[data-theme="light"] .quote-text {
+    color: #1a2a22;
+}
+
+[data-theme="light"] .quote-author {
+    color: #2d4a3a;
+}
+
+/* --- Timeline --- */
+[data-theme="light"] .timeline-content {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .timeline-content p {
+    color: #2d4a3a;
+}
+
+[data-theme="light"] .timeline-content h3 {
+    color: #1a2a22;
+}
+
+/* --- Footer --- */
+[data-theme="light"] footer {
+    background: #f5f7f6;
+    border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .footer-copy {
+    color: #2d4a3a;
+}
+
+[data-theme="light"] .footer-badge {
+    background: rgba(0, 187, 119, 0.06);
+    border-color: rgba(0, 187, 119, 0.1);
+    color: #2d4a3a;
+}
+
+[data-theme="light"] .footer-social a {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.06);
+    color: #2d4a3a;
+}
+
+[data-theme="light"] .footer-social a:hover {
+    background: var(--mint-primary);
+    color: #fff;
+    border-color: var(--mint-primary);
+}
+
+/* --- Particles (reduce opacity in light mode) --- */
+[data-theme="light"] #particles-canvas {
+    opacity: 0.3;
+}
+
+/* --- Progress Bars --- */
+[data-theme="light"] .progress-track {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* --- Connection Arc --- */
+[data-theme="light"] .team-connection-arc svg path {
+    stroke: var(--mint-primary);
+}
+
+/* --- Contact Form --- */
+[data-theme="light"] .contact-form input,
+[data-theme="light"] .contact-form textarea {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.08);
+    color: #1a2a22;
+}
+
+[data-theme="light"] .contact-form input:focus,
+[data-theme="light"] .contact-form textarea:focus {
+    border-color: var(--mint-primary);
+    box-shadow: 0 0 20px rgba(0, 187, 119, 0.08);
+}
+
+/* --- Clock in Light Mode --- */
+[data-theme="light"] .clock-wrapper {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+/* --- Client Banner Light Mode --- */
+[data-theme="light"] .client-trust {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .process-step {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+/* --- Skill Distribution Container Light Mode --- */
+[data-theme="light"] .skill-distribution-container {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Tech Stack Items Light Mode --- */
+[data-theme="light"] .tech-stack-item {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="light"] .tech-stack-item:hover {
+    border-color: var(--mint-primary);
+    box-shadow: 0 12px 40px rgba(0, 187, 119, 0.10);
+}
