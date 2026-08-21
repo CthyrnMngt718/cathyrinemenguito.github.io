@@ -58,11 +58,9 @@ async function getVisitorCount() {
     const countElement = document.getElementById('visitor-count');
     if (!countElement) return;
 
-    // Show cached value immediately
     const cached = localStorage.getItem('visitorCount');
     if (cached) countElement.textContent = cached;
 
-    // Retry logic with exponential backoff
     const fetchWithRetry = async (retries = 3, delay = 1000) => {
         for (let i = 0; i < retries; i++) {
             try {
@@ -641,7 +639,7 @@ if (filterButtons.length && projectCards.length) {
 
                 if (matches) {
                     card.style.display = 'block';
-                    void card.offsetWidth; // force reflow
+                    void card.offsetWidth;
                     card.classList.add('filtered-in');
                 } else {
                     card.classList.add('filtered-out');
@@ -667,12 +665,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const existingCards = grid.querySelectorAll('.project-card');
     if (existingCards.length) {
-        // Hide real cards initially
         existingCards.forEach(c => {
             c.style.display = 'none';
         });
 
-        // Create skeleton wrapper
         const skeletonWrapper = document.createElement('div');
         skeletonWrapper.className = 'skeleton-wrapper';
         skeletonWrapper.id = 'skeleton-wrapper';
@@ -684,7 +680,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         grid.prepend(skeletonWrapper);
 
-        // Simulate loading delay
         setTimeout(() => {
             const skeleton = document.getElementById('skeleton-wrapper');
             if (skeleton) skeleton.remove();
@@ -692,45 +687,101 @@ document.addEventListener('DOMContentLoaded', () => {
                 c.style.display = 'block';
                 c.classList.add('filtered-in');
             });
-            // Add progress indicators after cards are shown
             addProjectProgress();
         }, 600);
     }
 });
 
 // ============================================
-// 19. TECH STACK RADAR (ENHANCED)
+// 19. SKILL DISTRIBUTION BARS (NEW! replaces radar)
 // ============================================
-function injectTechRadar() {
+function addSkillDistribution() {
     const container = document.querySelector('.tech-stack-visualization');
     if (!container) return;
 
-    if (container.querySelector('.tech-radar-container')) return;
+    // Check if already added
+    if (container.querySelector('.skill-distribution-container')) return;
 
-    const radarHTML = `
-        <div class="tech-radar-container">
-            <div class="tech-radar">
-                <div class="radar-ring">
-                    <div class="radar-item" style="--rotation: 0deg; --level: 90%;">HTML5</div>
-                    <div class="radar-item" style="--rotation: 60deg; --level: 85%;">CSS3</div>
-                    <div class="radar-item" style="--rotation: 120deg; --level: 65%;">JavaScript</div>
-                    <div class="radar-item" style="--rotation: 180deg; --level: 75%;">PHP</div>
-                    <div class="radar-item" style="--rotation: 240deg; --level: 70%;">MySQL</div>
-                    <div class="radar-item" style="--rotation: 300deg; --level: 80%;">UI/UX</div>
+    // Skill data: name, level (0-100), icon color
+    const skills = [
+        { name: 'HTML5', level: 90, color: '#e34f26' },
+        { name: 'CSS3', level: 85, color: '#2965f1' },
+        { name: 'PHP', level: 75, color: '#777bb4' },
+        { name: 'UI/UX Design', level: 80, color: '#6c5ce7' },
+        { name: 'GitHub', level: 75, color: '#181717' },
+        { name: 'MySQL', level: 70, color: '#00758f' },
+        { name: 'JavaScript', level: 65, color: '#f7df1e' },
+        { name: 'Git', level: 65, color: '#f05032' }
+    ];
+
+    // Sort by level (highest first)
+    skills.sort((a, b) => b.level - a.level);
+
+    let barsHTML = `
+        <div class="skill-distribution-container" style="margin: 20px 0 16px 0; padding: 20px 24px; background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border-mint);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary); letter-spacing: 0.5px;">
+                    <i class="fas fa-chart-bar" style="color: var(--mint-primary); margin-right: 8px;"></i>
+                    Skill Distribution Overview
+                </span>
+                <span style="font-size: 0.65rem; color: var(--text-secondary); font-family: var(--font-mono); opacity: 0.6;">
+                    Sorted by proficiency
+                </span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+    `;
+
+    skills.forEach(skill => {
+        const level = skill.level;
+        const color = skill.color;
+        const label = level >= 80 ? 'Proficient' : level >= 65 ? 'Intermediate' : 'Beginner';
+        const gradient = `linear-gradient(90deg, ${color}44, ${color})`;
+
+        barsHTML += `
+            <div style="display: grid; grid-template-columns: 100px 1fr 70px; align-items: center; gap: 12px;">
+                <span style="font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); white-space: nowrap;">${skill.name}</span>
+                <div style="height: 6px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden; border: 1px solid var(--border-mint); position: relative;">
+                    <div style="width: 0%; height: 100%; background: ${gradient}; border-radius: 4px; transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);" class="skill-distribution-bar" data-level="${level}"></div>
                 </div>
+                <div style="display: flex; align-items: center; gap: 6px; justify-content: flex-end;">
+                    <span style="font-size: 0.7rem; font-weight: 600; color: var(--mint-primary); font-family: var(--font-mono); min-width: 30px; text-align: right;">${level}%</span>
+                    <span style="font-size: 0.55rem; color: var(--text-secondary); font-family: var(--font-mono); opacity: 0.5; min-width: 55px; text-align: right;">${label}</span>
+                </div>
+            </div>
+        `;
+    });
+
+    barsHTML += `
             </div>
         </div>
     `;
 
-    const existingGrid = container.querySelector('.tech-stack-grid');
-    if (existingGrid) {
-        existingGrid.insertAdjacentHTML('beforebegin', radarHTML);
+    // Insert after the heading but before the grid
+    const heading = container.querySelector('h3');
+    if (heading) {
+        heading.insertAdjacentHTML('afterend', barsHTML);
     } else {
-        container.insertAdjacentHTML('beforeend', radarHTML);
+        container.insertAdjacentHTML('afterbegin', barsHTML);
     }
+
+    // Animate bars when they come into view
+    const bars = container.querySelectorAll('.skill-distribution-bar');
+    const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                const level = bar.dataset.level;
+                bar.style.width = level + '%';
+                barObserver.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    bars.forEach(bar => barObserver.observe(bar));
 }
 
-document.addEventListener('DOMContentLoaded', injectTechRadar);
+// Call after DOM ready
+document.addEventListener('DOMContentLoaded', addSkillDistribution);
 
 // ============================================
 // 20. PROJECT PROGRESS INDICATORS (ENHANCED)
@@ -777,7 +828,6 @@ function addProjectProgress() {
 // ============================================
 // 21. PERFORMANCE OPTIMIZATIONS (ENHANCED)
 // ============================================
-// Lazy load offscreen images
 if ('IntersectionObserver' in window) {
     const lazyImages = document.querySelectorAll('img[loading="lazy"]');
     const imageObserver = new IntersectionObserver((entries) => {
@@ -795,10 +845,8 @@ if ('IntersectionObserver' in window) {
     lazyImages.forEach(img => imageObserver.observe(img));
 }
 
-// Defer non-critical scripts
 if ('requestIdleCallback' in window) {
     requestIdleCallback(() => {
-        // Any non-critical third-party scripts can be loaded here
         console.log('Non-critical resources loaded');
     });
 }
@@ -1108,7 +1156,7 @@ if (yearElement) {
 }
 
 // ============================================
-// 30. HIDE-ON-SCROLL NAVIGATION (if enabled)
+// 30. HIDE-ON-SCROLL NAVIGATION
 // ============================================
 const header = document.querySelector('header');
 let lastScrollY = window.scrollY;
@@ -1352,7 +1400,7 @@ if ('serviceWorker' in navigator) {
 }
 
 // ============================================
-// 33. I18N TRANSLATIONS (English & Japanese Only)
+// 33. I18N TRANSLATIONS
 // ============================================
 const translations = {
     en: {
@@ -1763,9 +1811,6 @@ const translations = {
     }
 };
 
-// ============================================
-// I18N ENGINE – INIT (runs immediately)
-// ============================================
 const defaultLang = 'en';
 let currentLang = localStorage.getItem('preferredLang') ||
                   (navigator.language.startsWith('ja') ? 'ja' : 'en');
@@ -1826,8 +1871,3 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 1000);
-
-// ============================================
-// PAGE TRANSITIONS (View Transitions API) - disabled for now
-// ============================================
-// (We keep it simple – no external page loads)
