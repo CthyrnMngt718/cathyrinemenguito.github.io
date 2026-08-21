@@ -693,7 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// 19. SKILL DISTRIBUTION BARS (NEW! replaces radar)
+// 19. SKILL DISTRIBUTION BARS
 // ============================================
 function addSkillDistribution() {
     const container = document.querySelector('.tech-stack-visualization');
@@ -704,11 +704,11 @@ function addSkillDistribution() {
     const skills = [
         { name: 'HTML5', level: 90, color: '#e34f26' },
         { name: 'CSS3', level: 85, color: '#2965f1' },
-        { name: 'PHP', level: 75, color: '#777bb4' },
-        { name: 'UI/UX Design', level: 80, color: '#6c5ce7' },
+        { name: 'UI/UX Design', level: 88, color: '#6c5ce7' },
+        { name: 'PHP', level: 80, color: '#777bb4' },
+        { name: 'JavaScript', level: 78, color: '#f7df1e' },
         { name: 'GitHub', level: 75, color: '#181717' },
         { name: 'MySQL', level: 70, color: '#00758f' },
-        { name: 'JavaScript', level: 65, color: '#f7df1e' },
         { name: 'Git', level: 65, color: '#f05032' }
     ];
 
@@ -731,7 +731,7 @@ function addSkillDistribution() {
     skills.forEach(skill => {
         const level = skill.level;
         const color = skill.color;
-        const label = level >= 80 ? 'Proficient' : level >= 65 ? 'Intermediate' : 'Beginner';
+        const label = level >= 80 ? 'Proficient' : level >= 70 ? 'Intermediate' : 'Beginner';
         const gradient = `linear-gradient(90deg, ${color}44, ${color})`;
 
         barsHTML += `
@@ -778,14 +778,14 @@ function addSkillDistribution() {
 document.addEventListener('DOMContentLoaded', addSkillDistribution);
 
 // ============================================
-// 20. PROJECT PROGRESS INDICATORS (ENHANCED)
+// 20. PROJECT PROGRESS INDICATORS
 // ============================================
 function addProjectProgress() {
     const cards = document.querySelectorAll('.project-card');
     const progressMap = {
         'RHU Morong Health System': 95,
         'Angono NHS Career Assessment': 85,
-        'HowCan‑i‑Help': 100,  // ← CHANGED to 100%
+        'HowCan‑i‑Help': 100,
         'RITREMIS': 70
     };
 
@@ -820,7 +820,7 @@ function addProjectProgress() {
 }
 
 // ============================================
-// 21. PERFORMANCE OPTIMIZATIONS (ENHANCED)
+// 21. PERFORMANCE OPTIMIZATIONS
 // ============================================
 if ('IntersectionObserver' in window) {
     const lazyImages = document.querySelectorAll('img[loading="lazy"]');
@@ -856,7 +856,6 @@ function hideLoader() {
     }
 }
 
-// Multiple fallbacks to ensure loader hides
 if (document.readyState === 'complete') {
     hideLoader();
 } else {
@@ -865,10 +864,8 @@ if (document.readyState === 'complete') {
     });
 }
 
-// Fallback: hide after 1.5 seconds even if nothing else works
 setTimeout(hideLoader, 1500);
 
-// Also try on DOMContentLoaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
         setTimeout(hideLoader, 200);
@@ -1399,7 +1396,7 @@ if ('serviceWorker' in navigator) {
 }
 
 // ============================================
-// 33. I18N TRANSLATIONS (FIXED)
+// 33. I18N TRANSLATIONS
 // ============================================
 const translations = {
     en: {
@@ -1881,7 +1878,7 @@ if (switcher) {
 applyTranslations(currentLang);
 
 // ============================================
-// REAL-TIME CLOCK (Local Time)
+// REAL-TIME CLOCK (Local Time) – WITH AM/PM
 // ============================================
 function updateClock() {
     const now = new Date();
@@ -1889,7 +1886,7 @@ function updateClock() {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-        hour12: false
+        hour12: true  // ✅ Shows AM/PM
     });
     const display = document.getElementById('clock-display');
     if (display) display.textContent = timeStr;
