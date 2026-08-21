@@ -4252,3 +4252,88 @@ select:focus-visible {
 [data-theme="light"] .skill-distribution-container {
     background: rgba(255, 255, 255, 0.7) !important;
 }
+/* ============================================
+   THEME-AWARE PROJECT THUMBNAILS
+   ============================================ */
+
+/* --- Dark Mode (Default) --- */
+.thumbnail-theme-rhu {
+    background: linear-gradient(135deg, #0b2a1a, #006644);
+}
+.thumbnail-theme-angono {
+    background: linear-gradient(135deg, #1a1a3e, #4a3f8a);
+}
+.thumbnail-theme-howcan {
+    background: linear-gradient(135deg, #2d1b00, #b85c00);
+}
+.thumbnail-theme-ritremis {
+    background: linear-gradient(135deg, #1a1a1a, #7a6548);
+}
+
+/* --- Dark Mode: Text Colors (white) --- */
+.thumbnail-theme-rhu .thumbnail-monogram,
+.thumbnail-theme-angono .thumbnail-monogram,
+.thumbnail-theme-howcan .thumbnail-monogram,
+.thumbnail-theme-ritremis .thumbnail-monogram,
+.thumbnail-theme-rhu .thumbnail-label,
+.thumbnail-theme-angono .thumbnail-label,
+.thumbnail-theme-howcan .thumbnail-label,
+.thumbnail-theme-ritremis .thumbnail-label,
+.thumbnail-theme-rhu .thumbnail-metric,
+.thumbnail-theme-angono .thumbnail-metric,
+.thumbnail-theme-howcan .thumbnail-metric,
+.thumbnail-theme-ritremis .thumbnail-metric,
+.thumbnail-theme-rhu .thumbnail-metric-label,
+.thumbnail-theme-angono .thumbnail-metric-label,
+.thumbnail-theme-howcan .thumbnail-metric-label,
+.thumbnail-theme-ritremis .thumbnail-metric-label {
+    color: #ffffff;
+}
+
+/* --- Light Mode Overrides --- */
+[data-theme="light"] .thumbnail-theme-rhu {
+    background: linear-gradient(135deg, #d4ece0, #66b898);
+}
+[data-theme="light"] .thumbnail-theme-angono {
+    background: linear-gradient(135deg, #e0d8f0, #8a78c4);
+}
+[data-theme="light"] .thumbnail-theme-howcan {
+    background: linear-gradient(135deg, #f0e8d8, #c4a878);
+}
+[data-theme="light"] .thumbnail-theme-ritremis {
+    background: linear-gradient(135deg, #e8e8e8, #b8a898);
+}
+
+/* --- Light Mode: Text Colors (dark) --- */
+[data-theme="light"] .thumbnail-theme-rhu .thumbnail-monogram,
+[data-theme="light"] .thumbnail-theme-angono .thumbnail-monogram,
+[data-theme="light"] .thumbnail-theme-howcan .thumbnail-monogram,
+[data-theme="light"] .thumbnail-theme-ritremis .thumbnail-monogram,
+[data-theme="light"] .thumbnail-theme-rhu .thumbnail-label,
+[data-theme="light"] .thumbnail-theme-angono .thumbnail-label,
+[data-theme="light"] .thumbnail-theme-howcan .thumbnail-label,
+[data-theme="light"] .thumbnail-theme-ritremis .thumbnail-label,
+[data-theme="light"] .thumbnail-theme-rhu .thumbnail-metric,
+[data-theme="light"] .thumbnail-theme-angono .thumbnail-metric,
+[data-theme="light"] .thumbnail-theme-howcan .thumbnail-metric,
+[data-theme="light"] .thumbnail-theme-ritremis .thumbnail-metric,
+[data-theme="light"] .thumbnail-theme-rhu .thumbnail-metric-label,
+[data-theme="light"] .thumbnail-theme-angono .thumbnail-metric-label,
+[data-theme="light"] .thumbnail-theme-howcan .thumbnail-metric-label,
+[data-theme="light"] .thumbnail-theme-ritremis .thumbnail-metric-label {
+    color: #0b1a14;
+}
+
+/* --- Light Mode: Divider (dark) --- */
+[data-theme="light"] .thumbnail-theme-rhu .thumbnail-divider,
+[data-theme="light"] .thumbnail-theme-angono .thumbnail-divider,
+[data-theme="light"] .thumbnail-theme-howcan .thumbnail-divider,
+[data-theme="light"] .thumbnail-theme-ritremis .thumbnail-divider {
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* --- Light Mode: Tech Bar text --- */
+[data-theme="light"] .thumbnail-tech-bar span {
+    background: rgba(0, 0, 0, 0.08);
+    color: #0b1a14;
+}
