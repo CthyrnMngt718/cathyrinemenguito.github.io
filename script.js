@@ -707,9 +707,9 @@ function addSkillDistribution() {
         { name: 'UI/UX Design', level: 88, color: '#6c5ce7' },
         { name: 'PHP', level: 80, color: '#777bb4' },
         { name: 'JavaScript', level: 78, color: '#f7df1e' },
-        { name: 'GitHub', level: 75, color: '#181717' },
-        { name: 'MySQL', level: 70, color: '#00758f' },
-        { name: 'Git', level: 65, color: '#f05032' }
+        { name: 'GitHub', level: 80, color: '#181717' },
+        { name: 'MySQL', level: 89, color: '#00758f' },
+        { name: 'Git', level: 79, color: '#f05032' }
     ];
 
     skills.sort((a, b) => b.level - a.level);
