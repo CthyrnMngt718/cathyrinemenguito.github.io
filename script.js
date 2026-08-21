@@ -52,29 +52,50 @@ if (statusElement) {
 }
 
 // ============================================
-// 4. VISITOR COUNTER (with session check)
+// 4. VISITOR COUNTER (Reliable with retry)
 // ============================================
 async function getVisitorCount() {
     const countElement = document.getElementById('visitor-count');
     if (!countElement) return;
-    
+
+    // Show cached value immediately
+    const cached = localStorage.getItem('visitorCount');
+    if (cached) countElement.textContent = cached;
+
+    // Retry logic with exponential backoff
+    const fetchWithRetry = async (retries = 3, delay = 1000) => {
+        for (let i = 0; i < retries; i++) {
+            try {
+                const response = await fetch('https://api.countapi.xyz/hit/cthyrnmngt718/visits');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+                if (data && typeof data.value === 'number') return data.value;
+                throw new Error('Invalid response');
+            } catch (e) {
+                if (i === retries - 1) throw e;
+                await new Promise(r => setTimeout(r, delay * Math.pow(2, i)));
+            }
+        }
+    };
+
     try {
-        const response = await fetch('https://api.countapi.xyz/hit/cthyrnmngt718/visits');
-        const data = await response.json();
-        countElement.textContent = data.value || 0;
+        const count = await fetchWithRetry();
+        countElement.textContent = count;
+        localStorage.setItem('visitorCount', count);
     } catch (error) {
+        console.warn('Visitor counter fallback:', error);
         if (!sessionStorage.getItem('visitorCounted')) {
-            let count = parseInt(localStorage.getItem('visitorCount') || '0');
-            count++;
-            localStorage.setItem('visitorCount', count);
+            let localCount = parseInt(localStorage.getItem('visitorCount') || '0');
+            localCount++;
+            localStorage.setItem('visitorCount', localCount);
             sessionStorage.setItem('visitorCounted', 'true');
-            countElement.textContent = count;
+            countElement.textContent = localCount;
         } else {
             countElement.textContent = localStorage.getItem('visitorCount') || '0';
         }
     }
 }
-getVisitorCount();
+document.addEventListener('DOMContentLoaded', getVisitorCount);
 
 // ============================================
 // 5. QUOTE OF THE DAY (Bible Verses)
@@ -151,7 +172,7 @@ function displayQuote() {
 document.addEventListener('DOMContentLoaded', displayQuote);
 
 // ============================================
-// 6. MOBILE MENU TOGGLE
+// 6. MOBILE MENU (ENHANCED)
 // ============================================
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -160,13 +181,25 @@ if (mobileMenu && navLinks) {
     mobileMenu.addEventListener('click', () => {
         mobileMenu.classList.toggle('active');
         navLinks.classList.toggle('active');
+        const expanded = mobileMenu.classList.contains('active');
+        mobileMenu.setAttribute('aria-expanded', expanded);
     });
 
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             navLinks.classList.remove('active');
+            mobileMenu.setAttribute('aria-expanded', 'false');
         });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            navLinks.classList.remove('active');
+            mobileMenu.setAttribute('aria-expanded', 'false');
+            mobileMenu.focus();
+        }
     });
 }
 
@@ -264,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// 10. ACTIVE NAV LINK (updated for sections)
+// 10. ACTIVE NAV LINK
 // ============================================
 const sections = document.querySelectorAll('section[id]');
 const navLinks2 = document.querySelectorAll('.nav-links a');
@@ -588,31 +621,190 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillBars.forEach(bar => skillObserver.observe(bar));
 
 // ============================================
-// 17. FILTER BUTTONS (Projects Page)
+// 17. FILTER BUTTONS (ENHANCED)
 // ============================================
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
-filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
+if (filterButtons.length && projectCards.length) {
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
 
-        projectCards.forEach(card => {
-            const categories = card.dataset.category ? card.dataset.category.split(' ') : [];
-            if (filter === 'all' || categories.includes(filter)) {
-                card.style.display = 'block';
-                card.style.animation = 'fadeIn 0.5s ease forwards';
-            } else {
-                card.style.display = 'none';
-            }
+            projectCards.forEach(card => {
+                const categories = card.dataset.category ? card.dataset.category.split(' ') : [];
+                const matches = filter === 'all' || categories.includes(filter);
+
+                card.classList.remove('filtered-in', 'filtered-out');
+
+                if (matches) {
+                    card.style.display = 'block';
+                    void card.offsetWidth; // force reflow
+                    card.classList.add('filtered-in');
+                } else {
+                    card.classList.add('filtered-out');
+                    const onAnimationEnd = () => {
+                        if (card.classList.contains('filtered-out')) {
+                            card.style.display = 'none';
+                        }
+                        card.removeEventListener('animationend', onAnimationEnd);
+                    };
+                    card.addEventListener('animationend', onAnimationEnd);
+                }
+            });
         });
     });
+}
+
+// ============================================
+// 18. SKELETON LOADING (ENHANCED)
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('.project-grid');
+    if (!grid) return;
+
+    const existingCards = grid.querySelectorAll('.project-card');
+    if (existingCards.length) {
+        // Hide real cards initially
+        existingCards.forEach(c => {
+            c.style.display = 'none';
+        });
+
+        // Create skeleton wrapper
+        const skeletonWrapper = document.createElement('div');
+        skeletonWrapper.className = 'skeleton-wrapper';
+        skeletonWrapper.id = 'skeleton-wrapper';
+        skeletonWrapper.innerHTML = `
+            <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-title"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+            <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-title"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+            <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-title"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+            <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-title"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
+        `;
+        grid.prepend(skeletonWrapper);
+
+        // Simulate loading delay
+        setTimeout(() => {
+            const skeleton = document.getElementById('skeleton-wrapper');
+            if (skeleton) skeleton.remove();
+            existingCards.forEach(c => {
+                c.style.display = 'block';
+                c.classList.add('filtered-in');
+            });
+            // Add progress indicators after cards are shown
+            addProjectProgress();
+        }, 600);
+    }
 });
 
 // ============================================
-// 18. PAGE LOADER (Robust)
+// 19. TECH STACK RADAR (ENHANCED)
+// ============================================
+function injectTechRadar() {
+    const container = document.querySelector('.tech-stack-visualization');
+    if (!container) return;
+
+    if (container.querySelector('.tech-radar-container')) return;
+
+    const radarHTML = `
+        <div class="tech-radar-container">
+            <div class="tech-radar">
+                <div class="radar-ring">
+                    <div class="radar-item" style="--rotation: 0deg; --level: 90%;">HTML5</div>
+                    <div class="radar-item" style="--rotation: 60deg; --level: 85%;">CSS3</div>
+                    <div class="radar-item" style="--rotation: 120deg; --level: 65%;">JavaScript</div>
+                    <div class="radar-item" style="--rotation: 180deg; --level: 75%;">PHP</div>
+                    <div class="radar-item" style="--rotation: 240deg; --level: 70%;">MySQL</div>
+                    <div class="radar-item" style="--rotation: 300deg; --level: 80%;">UI/UX</div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    const existingGrid = container.querySelector('.tech-stack-grid');
+    if (existingGrid) {
+        existingGrid.insertAdjacentHTML('beforebegin', radarHTML);
+    } else {
+        container.insertAdjacentHTML('beforeend', radarHTML);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', injectTechRadar);
+
+// ============================================
+// 20. PROJECT PROGRESS INDICATORS (ENHANCED)
+// ============================================
+function addProjectProgress() {
+    const cards = document.querySelectorAll('.project-card');
+    const progressMap = {
+        'RHU Morong Health System': 95,
+        'Angono NHS Career Assessment': 90,
+        'HowCan‑i‑Help': 85,
+        'RITREMIS': 70
+    };
+
+    cards.forEach(card => {
+        const titleEl = card.querySelector('h3');
+        if (!titleEl) return;
+        const title = titleEl.textContent.trim();
+        const progress = progressMap[title] || 75;
+
+        if (card.querySelector('.project-progress')) return;
+
+        const infoDiv = card.querySelector('.project-info');
+        if (!infoDiv) return;
+
+        const techDiv = infoDiv.querySelector('.project-tech');
+        const progressHTML = `
+            <div class="project-progress">
+                <span class="progress-label" style="font-size:0.65rem;color:var(--text-secondary);font-weight:500;">Completion</span>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: ${progress}%;"></div>
+                </div>
+                <span class="progress-percent">${progress}%</span>
+            </div>
+        `;
+
+        if (techDiv) {
+            techDiv.insertAdjacentHTML('beforebegin', progressHTML);
+        } else {
+            infoDiv.insertAdjacentHTML('beforeend', progressHTML);
+        }
+    });
+}
+
+// ============================================
+// 21. PERFORMANCE OPTIMIZATIONS (ENHANCED)
+// ============================================
+// Lazy load offscreen images
+if ('IntersectionObserver' in window) {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    lazyImages.forEach(img => imageObserver.observe(img));
+}
+
+// Defer non-critical scripts
+if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+        // Any non-critical third-party scripts can be loaded here
+        console.log('Non-critical resources loaded');
+    });
+}
+
+// ============================================
+// 22. PAGE LOADER (Robust)
 // ============================================
 function hideLoader() {
     const loader = document.getElementById('page-loader');
@@ -622,26 +814,22 @@ function hideLoader() {
     }
 }
 
-// Try on DOMContentLoaded (faster)
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         setTimeout(hideLoader, 300);
     });
 } else {
-    // If DOM already loaded
     setTimeout(hideLoader, 300);
 }
 
-// Fallback: hide after 2 seconds even if nothing else works
 setTimeout(hideLoader, 2000);
 
-// Also keep the original load event for safety
 window.addEventListener('load', () => {
     setTimeout(hideLoader, 100);
 });
 
 // ============================================
-// 19. KEYBOARD NAVIGATION
+// 23. KEYBOARD NAVIGATION
 // ============================================
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown') {
@@ -655,7 +843,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// 20. CAROUSEL
+// 24. CAROUSEL (if exists)
 // ============================================
 const track = document.getElementById('carousel-track');
 const slides = track ? track.querySelectorAll('.carousel-slide') : [];
@@ -727,7 +915,7 @@ if (slides.length > 0) {
 }
 
 // ============================================
-// 21. RADAR CHART (Lazy Load + Theme Update)
+// 25. RADAR CHART (Lazy Load + Theme Update)
 // ============================================
 let radarChartInstance = null;
 
@@ -835,7 +1023,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// 22. DYNAMIC STYLES
+// 26. DYNAMIC STYLES
 // ============================================
 const dynamicStyles = document.createElement('style');
 dynamicStyles.textContent = `
@@ -851,7 +1039,7 @@ dynamicStyles.textContent = `
 document.head.appendChild(dynamicStyles);
 
 // ============================================
-// 23. TYPEWRITER EFFECT
+// 27. TYPEWRITER EFFECT
 // ============================================
 const taglineElement = document.getElementById('tagline');
 const taglines = [
@@ -895,7 +1083,7 @@ if (taglineElement) {
 }
 
 // ============================================
-// 24. CLICK RIPPLE EFFECT
+// 28. CLICK RIPPLE EFFECT
 // ============================================
 document.querySelectorAll('.btn, .floating-cta, .carousel-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
@@ -912,7 +1100,7 @@ document.querySelectorAll('.btn, .floating-cta, .carousel-btn').forEach(btn => {
 });
 
 // ============================================
-// 25. DYNAMIC COPYRIGHT YEAR
+// 29. DYNAMIC COPYRIGHT YEAR
 // ============================================
 const yearElement = document.getElementById('year');
 if (yearElement) {
@@ -920,7 +1108,7 @@ if (yearElement) {
 }
 
 // ============================================
-// 26. HIDE-ON-SCROLL NAVIGATION
+// 30. HIDE-ON-SCROLL NAVIGATION (if enabled)
 // ============================================
 const header = document.querySelector('header');
 let lastScrollY = window.scrollY;
@@ -1004,7 +1192,7 @@ setTimeout(() => {
 }, 100);
 
 // ============================================
-// 27. RESUME PDF PREVIEW MODAL
+// 31. RESUME PDF PREVIEW MODAL
 // ============================================
 const resumeModal = document.getElementById('resume-modal');
 const resumeModalClose = document.getElementById('resume-modal-close');
@@ -1151,7 +1339,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// 28. SERVICE WORKER REGISTRATION
+// 32. SERVICE WORKER REGISTRATION
 // ============================================
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
@@ -1164,19 +1352,16 @@ if ('serviceWorker' in navigator) {
 }
 
 // ============================================
-// I18N TRANSLATIONS (English & Japanese Only)
+// 33. I18N TRANSLATIONS (English & Japanese Only)
 // ============================================
 const translations = {
     en: {
-        // Loader
         loader_text: "Loading...",
         skip_link: "Skip to main content",
-        // Navigation
         nav_home: "Home",
         nav_projects: "Projects",
         nav_about: "About",
         nav_contact: "Contact",
-        // Hero
         hero_title: "Hi, I'm <span class='gradient-text'>Cathyrine Menguito</span>",
         hero_description: "I'm a recent Computer Science graduate with a growing interest in web development, UI/UX, and technology. My academic projects gave me opportunities to build web-based systems and explore how thoughtful design can make technology easier and more useful. I'm excited to keep learning, gain real-world experience, and begin my journey in the IT industry.",
         hero_btn_projects: "Projects",
@@ -1188,30 +1373,11 @@ const translations = {
         live_status: "Currently exploring: React.js & Tailwind CSS",
         floating_cta: "Let's Talk",
         hero_badge: "Available for opportunities & freelance projects",
-        // Hero
         location_badge: "📍 Morong, Rizal, Philippines (GMT+8)",
-        
-        // About - Tech Stack
         tech_stack_title: "Tech Stack Proficiency",
         tech_stack_sub: "Technologies I work with and my comfort level",
-        
-        // Projects - Recognition (split for bullet points)
-        proj_1_recog_2: "Received Outstanding Thesis Writing award",
-        // Hero - Resume Download
         resume_download_hero: "Download Resume (PDF)",
-        
-        // Projects - Code Link
-        code_link: "Code",
-        
-        // Tech Stack (already added previously)
-        tech_stack_title: "Tech Stack Proficiency",
-        tech_stack_sub: "Technologies I work with and my comfort level",
-        
-        // Projects - Recognition (split for bullet points)
-        proj_1_recog_2: "Received Outstanding Thesis Writing award",
-        // Quote
         quote_label: "Verse of the Day",
-        // Services
         services_tag: "What I Can Help With",
         services_title_prefix: "Areas I Can",
         services_title_gradient: "Contribute",
@@ -1225,7 +1391,6 @@ const translations = {
         service_4_desc: "Assisting with system documentation, technical diagrams, project presentations, and other documentation related to software projects.",
         service_5_title: "Branding & Visual Identity",
         service_5_desc: "Creating cohesive visual identities including logo design, color palettes, typography systems, and brand guidelines that help businesses and projects stand out with a consistent and memorable presence.",
-        // Experience
         exp_tag: "Experience",
         exp_title_prefix: "My",
         exp_title_gradient: "Career Journey",
@@ -1245,7 +1410,6 @@ const translations = {
         exp_hl_2_1: "Customer Support",
         exp_hl_2_2: "Service Resolution",
         exp_hl_2_3: "Client Coordination",
-        // About
         about_tag: "About Me",
         about_title_prefix: "Passionate About Building",
         about_title_gradient: "Meaningful Solutions",
@@ -1261,7 +1425,6 @@ const translations = {
         skills_tools_title: "Tools & Technologies",
         skills_prof_title: "Skill Proficiency",
         skills_radar_title: "Skill Distribution",
-        // Education
         edu_tag: "Education",
         edu_title_prefix: "My",
         edu_title_gradient: "Academic Journey",
@@ -1300,7 +1463,6 @@ const translations = {
         edu_cert_sub: "Computer Systems Servicing (CSS)",
         edu_cert_org: "TESDA",
         edu_cert_badge: "Certified",
-        // Timeline
         timeline_tag: "Journey",
         timeline_title_prefix: "Project",
         timeline_title_gradient: "Timeline",
@@ -1312,7 +1474,6 @@ const translations = {
         tl_3_desc: "Professional project developed at Real IT OPC in collaboration with Kenji Akira Bergaño and Ariel B. Eubanas, Jr. A healthcare and assistance platform actively used in clinic workflows.",
         tl_4_title: "RITREMIS",
         tl_4_desc: "Professional project developed at Real IT OPC in collaboration with Kenji Akira Bergaño and Ariel B. Eubanas, Jr. A real estate management and property information platform.",
-        // Team
         team_tag: "Collaboration",
         team_title_prefix: "People I've",
         team_title_gradient: "Worked With",
@@ -1321,7 +1482,6 @@ const translations = {
         team_company_1: "Real IT OPC",
         team_role_2: "Project Lead / Full Stack Web Developer",
         team_company_2: "Real IT OPC",
-        // Clients
         client_title_prefix: "Have a",
         client_title_gradient: "Web System",
         client_title_suffix: "or Digital Project in Mind?",
@@ -1332,7 +1492,6 @@ const translations = {
         client_svc_4: "UI/UX Design",
         client_svc_5: "System Maintenance",
         client_btn: "Discuss a Project",
-        // Projects Section
         projects_tag: "Portfolio",
         projects_title: "Projects",
         projects_sub: "A collection of academic and professional work showcasing my growth in web development, system design, and collaborative problem-solving.",
@@ -1342,7 +1501,6 @@ const translations = {
         filter_realestate: "Real Estate",
         visit_project: "Visit Project",
         projects_cta: "Let's Work Together",
-        // Project details
         proj_1_title: "RHU Morong Health System",
         proj_1_full: "A comprehensive healthcare management platform built as our thesis project. This system digitized patient intake, appointment scheduling, and record management for the Rural Health Unit of Morong, Rizal.<br /><br /><strong>My Contribution:</strong> Spearheaded the front-end architecture and user interface design, ensuring a seamless experience for healthcare personnel. Collaborated closely with my co-developer on back-end integration and system optimization.<br /><br /><strong>Recognition:</strong> Received the <strong>Outstanding System Design</strong> and <strong>Outstanding Thesis Writing</strong> awards for our work.",
         proj_1_contrib_label: "My Contribution",
@@ -1367,7 +1525,6 @@ const translations = {
         proj_4_context: "Currently in active development at <strong>Real IT OPC</strong>, built in collaboration with our development team.",
         proj_4_focus_label: "My Focus",
         proj_4_focus: "Front-end implementation, UI/UX design, and ensuring a responsive, intuitive interface for property managers and clients.",
-        // Contact
         contact_tag: "Contact",
         contact_title_prefix: "Get In",
         contact_title_gradient: "Touch",
@@ -1379,7 +1536,6 @@ const translations = {
         form_submit: "Send Message",
         success_title: "Thank You!",
         success_msg: "Your message has been sent. I'll get back to you soon!",
-        // Resume Modal
         resume_doc_label: "Document",
         resume_title: "My Resume",
         resume_sub: "Cathyrine Menguito — Computer Science Graduate",
@@ -1395,7 +1551,6 @@ const translations = {
         resume_loading: "Loading resume preview...",
         resume_download_btn: "Download PDF",
         resume_close_btn: "Close",
-        // Footer
         footer_name: "Cathyrine Menguito",
         footer_title: "Computer Science Graduate · Web Developer · UI/UX Designer",
         footer_copy: "Cathyrine Menguito. All rights reserved.",
@@ -1404,15 +1559,12 @@ const translations = {
         scroll_tooltip: "Scroll Down"
     },
     ja: {
-        // Loader
         loader_text: "読み込み中...",
         skip_link: "メインコンテンツへスキップ",
-        // Navigation
         nav_home: "ホーム",
         nav_projects: "プロジェクト",
         nav_about: "概要",
         nav_contact: "お問い合わせ",
-        // Hero
         hero_title: "こんにちは、<span class='gradient-text'>Cathyrine Menguito</span>です",
         hero_description: "私は最近のコンピュータサイエンス卒業生で、ウェブ開発、UI/UX、テクノロジーにますます関心を持っています。学術プロジェクトを通じて、ウェブベースのシステムを構築し、思慮深いデザインがテクノロジーをより使いやすく、より有用にする方法を探求する機会を得ました。これからも学び続け、実務経験を積み、IT業界でのキャリアを始めることを楽しみにしています。",
         hero_btn_projects: "プロジェクト",
@@ -1424,30 +1576,11 @@ const translations = {
         live_status: "現在探索中: React.js & Tailwind CSS",
         floating_cta: "話しましょう",
         hero_badge: "機会とフリーランスプロジェクトに対応可能",
-        // Hero
         location_badge: "📍 モロン、リサール、フィリピン (GMT+8)",
-        
-        // About - Tech Stack
         tech_stack_title: "テクノロジースタック習熟度",
         tech_stack_sub: "私が使用するテクノロジーと習熟度",
-        
-        // Projects - Recognition
-        proj_1_recog_2: "優秀論文執筆賞を受賞",
-        // Hero - Resume Download
         resume_download_hero: "履歴書をダウンロード (PDF)",
-        
-        // Projects - Code Link
-        code_link: "コード",
-        
-        // Tech Stack
-        tech_stack_title: "テクノロジースタック習熟度",
-        tech_stack_sub: "私が使用するテクノロジーと習熟度",
-        
-        // Projects - Recognition
-        proj_1_recog_2: "優秀論文執筆賞を受賞",
-        // Quote
         quote_label: "今日の聖句",
-        // Services
         services_tag: "お手伝いできる分野",
         services_title_prefix: "私が貢献できる",
         services_title_gradient: "領域",
@@ -1461,7 +1594,6 @@ const translations = {
         service_4_desc: "システム文書、技術図、プロジェクトプレゼンテーション、その他ソフトウェアプロジェクトに関連する文書作成を支援します。",
         service_5_title: "ブランディングとビジュアルアイデンティティ",
         service_5_desc: "ロゴデザイン、カラーパレット、タイポグラフィシステム、ブランドガイドラインを含む一貫したビジュアルアイデンティティを作成し、ビジネスやプロジェクトが際立ち、記憶に残る存在となるよう支援します。",
-        // Experience
         exp_tag: "経歴",
         exp_title_prefix: "私の",
         exp_title_gradient: "キャリアの歩み",
@@ -1481,7 +1613,6 @@ const translations = {
         exp_hl_2_1: "カスタマーサポート",
         exp_hl_2_2: "サービス解決",
         exp_hl_2_3: "クライアント調整",
-        // About
         about_tag: "私について",
         about_title_prefix: "意味のあるソリューション構築に",
         about_title_gradient: "情熱を注ぐ",
@@ -1497,7 +1628,6 @@ const translations = {
         skills_tools_title: "ツールとテクノロジー",
         skills_prof_title: "スキル習熟度",
         skills_radar_title: "スキル分布",
-        // Education
         edu_tag: "教育",
         edu_title_prefix: "私の",
         edu_title_gradient: "学業の歩み",
@@ -1536,7 +1666,6 @@ const translations = {
         edu_cert_sub: "コンピュータシステムサービス (CSS)",
         edu_cert_org: "TESDA",
         edu_cert_badge: "認定済み",
-        // Timeline
         timeline_tag: "歩み",
         timeline_title_prefix: "プロジェクト",
         timeline_title_gradient: "タイムライン",
@@ -1548,7 +1677,6 @@ const translations = {
         tl_3_desc: "Real IT OPCでKenji Akira BergañoおよびAriel B. Eubanas, Jr.と協力して開発した専門プロジェクト。クリニックのワークフローで積極的に使用されている医療および支援プラットフォーム。",
         tl_4_title: "RITREMIS",
         tl_4_desc: "Real IT OPCでKenji Akira BergañoおよびAriel B. Eubanas, Jr.と協力して開発した専門プロジェクト。不動産管理および物件情報プラットフォーム。",
-        // Team
         team_tag: "コラボレーション",
         team_title_prefix: "一緒に働いた",
         team_title_gradient: "人々",
@@ -1557,7 +1685,6 @@ const translations = {
         team_company_1: "Real IT OPC",
         team_role_2: "プロジェクトリード / フルスタックウェブ開発者",
         team_company_2: "Real IT OPC",
-        // Clients
         client_title_prefix: "ウェブシステムや",
         client_title_gradient: "デジタルプロジェクトの",
         client_title_suffix: "アイデアはありますか？",
@@ -1568,7 +1695,6 @@ const translations = {
         client_svc_4: "UI/UXデザイン",
         client_svc_5: "システムメンテナンス",
         client_btn: "プロジェクトについて話し合う",
-        // Projects Section
         projects_tag: "ポートフォリオ",
         projects_title: "プロジェクト",
         projects_sub: "ウェブ開発、システムデザイン、協調的問題解決における成長を示す学術および専門的な作品集です。",
@@ -1578,7 +1704,6 @@ const translations = {
         filter_realestate: "不動産",
         visit_project: "プロジェクトを見る",
         projects_cta: "一緒に働きましょう",
-        // Project details
         proj_1_title: "RHU Morong 医療システム",
         proj_1_full: "私たちの論文プロジェクトとして構築された包括的な医療管理プラットフォームです。このシステムは、モロン、リサールの地方医療ユニットの患者受付、予約スケジュール、記録管理をデジタル化しました。<br /><br /><strong>私の貢献:</strong> 医療従事者にシームレスな体験を提供するために、フロントエンドアーキテクチャとユーザーインターフェースデザインを主導しました。バックエンド統合とシステム最適化について共同開発者と緊密に連携しました。<br /><br /><strong>受賞:</strong> <strong>優れたシステムデザイン</strong>および<strong>優れた論文執筆</strong>賞を受賞しました。",
         proj_1_contrib_label: "私の貢献",
@@ -1603,7 +1728,6 @@ const translations = {
         proj_4_context: "現在、<strong>Real IT OPC</strong>で開発チームと協力して積極的に開発中です。",
         proj_4_focus_label: "私の焦点",
         proj_4_focus: "フロントエンド実装、UI/UXデザイン、物件管理者とクライアント向けのレスポンシブで直感的なインターフェースの確保。",
-        // Contact
         contact_tag: "お問い合わせ",
         contact_title_prefix: "お",
         contact_title_gradient: "問い合わせ",
@@ -1615,7 +1739,6 @@ const translations = {
         form_submit: "メッセージを送信",
         success_title: "ありがとうございます！",
         success_msg: "メッセージが送信されました。すぐにご連絡いたします！",
-        // Resume Modal
         resume_doc_label: "書類",
         resume_title: "履歴書",
         resume_sub: "Cathyrine Menguito — コンピュータサイエンス卒業生",
@@ -1631,7 +1754,6 @@ const translations = {
         resume_loading: "履歴書プレビューを読み込み中...",
         resume_download_btn: "PDFをダウンロード",
         resume_close_btn: "閉じる",
-        // Footer
         footer_name: "Cathyrine Menguito",
         footer_title: "コンピュータサイエンス卒業生 · Web開発者 · UI/UXデザイナー",
         footer_copy: "Cathyrine Menguito. All rights reserved.",
@@ -1640,15 +1762,13 @@ const translations = {
         scroll_tooltip: "下へスクロール"
     }
 };
+
 // ============================================
 // I18N ENGINE – INIT (runs immediately)
 // ============================================
 const defaultLang = 'en';
 let currentLang = localStorage.getItem('preferredLang') ||
-                  (navigator.language.startsWith('fil') ? 'fil' :
-                   navigator.language.startsWith('ko') ? 'ko' :
-                   navigator.language.startsWith('ja') ? 'ja' :
-                   navigator.language.startsWith('th') ? 'th' : 'en');
+                  (navigator.language.startsWith('ja') ? 'ja' : 'en');
 
 function applyTranslations(lang) {
     const t = translations[lang] || translations[defaultLang];
@@ -1681,7 +1801,6 @@ function updateDynamicContent(lang) {
     if (tooltip && t.scroll_tooltip) tooltip.textContent = t.scroll_tooltip;
 }
 
-// --- Attach event listener to switcher ---
 const switcher = document.getElementById('language-switcher');
 if (switcher) {
     switcher.value = currentLang;
@@ -1689,7 +1808,6 @@ if (switcher) {
         applyTranslations(e.target.value);
     });
 }
-// Apply current language immediately
 applyTranslations(currentLang);
 
 // ============================================
